@@ -25,7 +25,8 @@ class HomeController extends Controller
     {
         $this->categoryRepo = $categoryRepository;
     }
-      public function currency(Request $request)
+      
+    public function currency(Request $request)
     {
         if($request->has('currency')){
             if( $request->input('currency') == "USD" || $request->input('currency') == "MAD"  || $request->input('currency') == "EUR"){
@@ -41,7 +42,7 @@ class HomeController extends Controller
     public function index()
     {
         
-         $currency = "MAD";
+        $currency = "MAD";
         $currency_diff = 1;
         if(Session::get('currency') == "USD" || Session::get('currency') == "EUR"){
             $currency_diff = file_get_contents('http://free.currencyconverterapi.com/api/v5/convert?q=MAD_'. Session::get('currency') .'&compact=y');
@@ -57,8 +58,6 @@ class HomeController extends Controller
         $accessories = $this->categoryRepo->findCategoryById(12);
         
         $features = $category3->products;
-
-        
 
         return view('front.index', compact('features', 'category2', 'category3','accessories', 'currency_diff' , 'currency'));
     }

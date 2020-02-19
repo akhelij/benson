@@ -24,7 +24,7 @@
 	<?php
 	
 		$orgClientId  =   "600001258";
-  		$orgAmount = $DATA["CUSTOMER_ID"];
+  		$orgAmount = $DATA["AMOUNT"];
   		$orgOkUrl =  "https://localhost/benson/cmi/Ok-Success.php";
   		$orgFailUrl = "https://localhost/benson/cmi/Ok-Fail.php";
   		$shopurl = "https://localhost/benson";
@@ -36,9 +36,8 @@
 	?>
 
 
-	<center>
 
-		<form name="pay_form" method="post" action="cmi/SendData.php" >
+		<form name="pay_form" method="post" action="cmi/SendData.php" hidden>
 			<table>
 				<tr>
 
@@ -75,12 +74,7 @@
 				
 		</form>
 
-	</center>
-	<p>
 
-		{{var_dump($DATA)}}
-
-	</p>
 </body>
 <script type="text/javascript" language="javascript">
 	function moveWindow() {

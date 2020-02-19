@@ -200,6 +200,7 @@ class CheckoutController extends Controller
      */
     public function success()
     {
+        
         $this->cartRepo->clearCart();
         if (session()->has('email') && session()->has('code_de_reduction')) {
             $newsletter = Newsletter::where("email", session()->get('email'))->where("code_de_reduction", session()->get('code_de_reduction'))->first();
@@ -380,6 +381,7 @@ class CheckoutController extends Controller
      */
     public function store(CartCheckoutRequest $request)
     {
+        
         // Si c'est vers le Maroc livraison gratuite
         $courierId = $request->session()->get('courierId', $request->input('courier'));
         $courier = $this->courierRepo->findCourierById($courierId);
@@ -396,6 +398,12 @@ class CheckoutController extends Controller
                 'passive_address' => ['required']
             ]);
             $passiveOrder = true;
+            $passive_name = htmlspecialchars(trim(preg_replace('/\s\s+/', ' ',$request->input("passive_name"))));
+            $passive_city=trim(preg_replace('/\s\s+/', ' ',$request->input("passive_city")));
+            $passive_country=trim(preg_replace('/\s\s+/', ' ',$request->input("passive_country")));
+            $passive_province=trim(preg_replace('/\s\s+/', ' ',$request->input("passive_province")));
+            $passive_address=trim(preg_replace('/\s\s+/', ' ',$request->input("passive_address")));
+            
         }
         
         $customer = new Customer();
@@ -411,21 +419,20 @@ class CheckoutController extends Controller
         }else
         {
             //Add new passive customer
-            $customer->name = htmlspecialchars($request->input('passive_name'));
-            $customer->email = $request->input('passive_email');
+            $customer->name = $passive_name;
+            $customer->email = $request->input("passive_email");
             $customer->passive_customer = true;
             $customer->save();
             $billingAddress->alias = 'passive address';
-            $billingAddress->address_1 = $request->input('passive_address');
-            $billingAddress->zip = $request->input('passive_zip');
-            $billingAddress->city_id = $request->input('passive_city');
-            $billingAddress->province_id = $request->input('passive_province');
-            $billingAddress->country_id = $request->input('passive_country');
+            $billingAddress->address_1 = $passive_address;
+            $billingAddress->zip = $request->input("passive_zip");
+            $billingAddress->city_id = $passive_city;
+            $billingAddress->province_id = $passive_province;
+            $billingAddress->country_id = $passive_country;
             $billingAddress->customer_id = $customer->id;
             $billingAddress->status = 1;
-            $billingAddress->phone = $request->input('passive_phone');
+            $billingAddress->phone = $request->input("passive_phone");
             $billingAddress->save();
-            
         }
         //Discount 
         $discount = 0;
@@ -522,7 +529,8 @@ class CheckoutController extends Controller
                 //$this->customerRepo->findCustomerById(Auth::id()) {"id","name","email","status","stripe_id","card_brand","card_last_four","trial_ends_at","phone"}
                 
                 
-                $AMOUNT = $this->cartRepo->getTotal(2, $this->cartRepo->getShippingFee($courier), $method->slug, false) * 100;
+                $AMOUNT = $this->cartRepo->getTotal(2, $this->cartRepo->getShippingFee($courier), $method->slug, false);
+                
                 $AMOUNT -= $AMOUNT * $discount / 100;
 
                 $CURRENCY_CODE = "504";
