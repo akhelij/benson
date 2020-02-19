@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-9325492-23"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ env('GOOGLE_ANALYTICS') }}');
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Chaussures haut de gamme pour homme, Benson Shoes est, depuis des décennies, un digne représentant du cousu Goodyear . La diversité de nos modèles, la qualité de nos matières et le confort de nos chaussants font le succès de nos collections">
+    <meta name="keywords" content="Chaussures haut de gamme, chaussures anglaises, richelieus, mocassin, derby, sneaker, espadrille, chassures classe, benson, bensonshoes, men's oxfords shoes, women's oxfords shoes, dress shoes, monk shoes, english shoes, benson shoes, luxury shoes">
+    <title>{{ config('app.name') }}</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ asset('front/css/bootstrap.min.css') }}" rel="stylesheet">
+    
+    <link href="{{ asset('front/style.css') }}" rel="stylesheet">
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="{{ asset('https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')}}"></script>
+    <script src="{{ asset('https://oss.maxcdn.com/respond/1.4.2/respond.min.js')}}"></script>
+    <![endif]-->
+    <link rel="icon" sizes="57x57" href="{{ asset('favicons/logo2.png')}}">
+    @yield('css')
+
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+    <meta property="og:url" content="{{ request()->url() }}"/>
+    @yield('og')
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{ asset('front/js/jquery.min.js') }}"></script>
+    
+<style>
+    .navbar{background:url('bgs/green banner.jpg') no-repeat center; background-size : 100%}
+    .Gcontainer iframe,
+    .Gcontainer object,
+    .Gcontainer embed {
+    width: 100%;
+    }
+</style>
+</head>
+
+<body class="boxed"  style="background: #f8f8f8;overflow-x:hidden">
+    <div class="container" style="background: #f8f8f8">
+    
+
+    <section>
+        
+        <header >
+            
+             <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class=" container container-fluid">
+                  <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
+                    <a class="navbar-brand" href="#"><img src="{{asset('bgs/LOGO.png')}}" alt="" srcset="" style="z-index:100"></a>
+                  </div>
+                  <div style="float: right;">
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                      <ul class="nav navbar-nav">
+                        <li id="s2" class="active"><a href="#section2">L'Esprit</a></li>
+                        <li id="s3"><a href="#section3">La Technique</a></li>
+                        <li id="s4"><a href="#section4" id="btnsection3">Le Design</a></li>
+                        <li id="s5"><a href="#section5">L'entretien</a></li>         
+                        <li id="s6"><a href="#section6">Le Savoir-Faire</a></li>
+                        <li id="s7"><a href="#section7">Contact</a></li>
+                        <li id="s8"><a href="#section8">Magasins Benson</a></li>
+                        <li id="s9"><a href="category">La Collection</a></li>
+                        
+                      </ul>
+                    </div>
+                    <div  id="section9" style="display:none;color:#ffffff; z-index: -1;background: transparent url('bgs/green banner.jpg') no-repeat ;background-size:100% 100%;position:absolute;top:100%;left:0%;width:100%;height:372px">
+                      <div style="padding:5%">
+                      <div class="col-md-3">
+                          <div class="paragraphe">
+                              <h2>Collection</h2>
+                              <br>
+                            <ul class="sub-menu">
+                                <li> > Richelieus</li>
+                                <li> > Boots & Bottines</li>
+                                <li> > Derbys</li>
+                                <li> > Boucles</li>
+                                <li> > Mocassins</li>
+                                <li> > Sneakers</li>
+                            </ul>
+                          </div>
+                      </div>
+                      <div class="col-md-3 text-center" >
+                        <div style="background-image:url('bgs/saphir-main-img-01-buttonu46248-fr.jpg')" >
+                          <div style="padding:  10%">
+                            <h1>Accessoires</h1>
+                            <div class="paragraphe">
+                              <hr>
+                            <p> Retrouvez les accessoires et les produits d’entretien pour vos chaussures en magasin !</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3  text-center">
+                          <div style="background-image:url('bgs/60216643_2288738204733767_5510413414083592192_o-buttonu26889-fr.jpg')">
+                            <div style="padding:10%">
+                              <h1>Entretien</h1>
+                              <div class="paragraphe">
+                                <hr/>
+                              <p> Retrouvez les accessoires et les produits d’entretien pour vos chaussures en magasin !</p>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-md-3  text-center">
+                          <div style="background-image:url('bgs/untitled-1.jpg')">
+                            <div style="padding:9%">
+                              <h1>Nouvelle Collection</h1>
+                              <div class="paragraphe">
+                                <hr/>
+                              <p> Une Collection pour un automne toute en style</p>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </nav> 
+        </header>
+    </section>
+    @yield('content')
+
+   
+
+    
+    
+    
+    </div>
+  </div>
+    @include('layouts.front.footer')
+       <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127885993-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-775985184');
+
+
+        $('#currency').on('change', function(){
+
+            $.ajax({
+            url : 'https://www.benson-shoes.com/changeCurrency',
+            type : 'POST',
+            data : {"_token": "{{ csrf_token() }}","currency" : $(this).val()},
+            success : function(response){ // code_html contient le HTML renvoyé
+                location.reload();
+            }
+
+            });
+
+        })
+
+        setTimeout(function () {
+            $('.alertApp').hide(500);
+        },10000);
+        $('.filtre').hover(function(){
+
+            var indice = $(this).attr('id');
+            $('#sub'+indice).show();
+        }, function(){
+            // change to any color that was previously used.
+            var indice = $(this).attr('id');
+            $('#sub'+indice).hide();
+        })
+
+        $("#shop").click(function(event){
+            
+            $("#linkToShop").click(); //opens contact form
+        });
+        $('#s9').hover(function(){
+              $("#section9").show("300");
+            })
+            
+            $('#s9').mouseleave(function(){
+              if ($('#section9:hover').length == 0) {
+                $("#section9").hide("300");
+              }
+            })
+            $('#section9').mouseleave(function(){
+              $("#section9").hide("300");
+              
+            })
+        
+
+</script>
+
+
+    @yield('js')  
+
+      
+</body>
+</html>

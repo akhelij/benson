@@ -1,0 +1,45 @@
+ 
+ [27/12/19 00:20:23] - <<<<==== Start sendData() ====>>>>  
+ [27/12/19 00:20:23] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [27/12/19 00:20:23] - CUSTOMER_MESSAGE is not present  
+ [27/12/19 00:20:23] - ==> FPAY_MESSAGE_VERSION : 3  
+ [27/12/19 00:20:23] - ==> MERCHANT_ID : BenShoesTp+  
+ [27/12/19 00:20:23] - ==> AMOUNT : 270000  
+ [27/12/19 00:20:23] - ==> CURRENCY_CODE : 504  
+ [27/12/19 00:20:23] - ==> TRANSACTION_CAPTURE : true  
+ [27/12/19 00:20:23] - ==> TRANSACTION_TYPE : AUTH  
+ [27/12/19 00:20:23] - ==> TRANSACTION_MODE : MODE  
+ [27/12/19 00:20:23] - ==> CUSTOM_DATA : DATA  
+ [27/12/19 00:20:23] - ==> ORDER_ID : 5e054e3f10ec7  
+ [27/12/19 00:20:23] - ==> ORDER_DETAILS :   
+ [27/12/19 00:20:23] - ==> MERCHANT_URL : https://www.benson-shoes.com/payment/success  
+ [27/12/19 00:20:23] - ==> CUSTOMER_LASTNAME : moa  
+ [27/12/19 00:20:23] - ==> CUSTOMER_FIRSTNAME : moa  
+ [27/12/19 00:20:23] - ==> CUSTOMER_ADDRESS : 22, Rue Le Catelet Emile zola  
+ [27/12/19 00:20:23] - ==> CUSTOMER_ZIPCODE : 20000  
+ [27/12/19 00:20:23] - ==> CUSTOMER_CITY : Barbari  
+ [27/12/19 00:20:23] - ==> CUSTOMER_STATE : bora bora  
+ [27/12/19 00:20:23] - ==> CUSTOMER_COUNTRY : Maldives  
+ [27/12/19 00:20:23] - ==> CUSTOMER_PHONE :    
+ [27/12/19 00:20:23] - ==> CUSTOMER_EMAIL : gmoail101@gmail.com  
+ [27/12/19 00:20:23] - ==> LANGUAGE : fr  
+ [27/12/19 00:20:23] - ==> FPAY_URLREPAUTO : https://www.benson-shoes.com/fpayApi/response.php  
+ [27/12/19 00:20:23] - ==> AMOUNT_CONVERSION : false  
+ [27/12/19 00:20:23] - ==> CONVERTED_AMOUNT :   
+ [27/12/19 00:20:23] - ==> CONVERSION_CURRENCY :   
+ [27/12/19 00:20:23] - ==> CUSTOMER_MESSAGE :   
+ [27/12/19 00:20:23] - ==> MESSAGE_SIGNATURE : BAE8F73B786AE857A5BCF79689D5FAD2D5B325B2A5210486EF510981210FBE31  
+ [27/12/19 00:20:23] - == send  JSON Data to Front ... ==>  
+ [27/12/19 00:20:23] - <== RESPONSE_CODE : 0   
+ [27/12/19 00:20:23] - <== REASON_CODE : SUCCESS   
+ [27/12/19 00:20:23] - <== FPAY_MESSAGE_VERSION : 3   
+ [27/12/19 00:20:23] - <== MERCHANT_ID : BenShoesTp+   
+ [27/12/19 00:20:23] - <== RESPONSE_CODE : 0   
+ [27/12/19 00:20:23] - <== REASON_CODE : SUCCESS   
+ [27/12/19 00:20:23] - <== ORDER_ID : 5e054e3f10ec7   
+ [27/12/19 00:20:23] - <== REFERENCE_ID : 444988   
+ [27/12/19 00:20:23] - <== TRACK_ID : 373600017807   
+ [27/12/19 00:20:23] - <== FPAY_URL : https://pay.fpay-worldwide.com/fpay-frontend/home_card2   
+ [27/12/19 00:20:23] - <== MESSAGE_SIGNATURE : 2CB6725CA8CEEFF41CBC1B589A493D92B488DA4C8073B2DCC112CA378FBBF7F4   
+ [27/12/19 00:20:23] - ==> send Data to URL :==> http://localhostforward_Data.php?FPAY_URL=https://pay.fpay-worldwide.com/fpay-frontend/home_card2&ORDER_ID=5e054e3f10ec7&REFERENCE_ID=444988&TRACK_ID=373600017807  
+ [27/12/19 00:20:23] - <<<<==== Fin sendData() ====>>>> 

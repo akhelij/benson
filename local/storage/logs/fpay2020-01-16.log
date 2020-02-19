@@ -1,0 +1,614 @@
+ 
+ [16/01/20 18:48:58] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 18:48:58] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 18:48:58] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 18:48:58] - ==> FPAY_MESSAGE_VERSION : 3  
+ [16/01/20 18:48:58] - ==> MERCHANT_ID : BenShoesTp+  
+ [16/01/20 18:48:58] - ==> AMOUNT : 320000  
+ [16/01/20 18:48:58] - ==> CURRENCY_CODE : 504  
+ [16/01/20 18:48:58] - ==> TRANSACTION_CAPTURE : true  
+ [16/01/20 18:48:58] - ==> TRANSACTION_TYPE : AUTH  
+ [16/01/20 18:48:58] - ==> TRANSACTION_MODE : MODE  
+ [16/01/20 18:48:58] - ==> CUSTOM_DATA : DATA  
+ [16/01/20 18:48:58] - ==> ORDER_ID : 5e20b018cd474  
+ [16/01/20 18:48:58] - ==> ORDER_DETAILS :   
+ [16/01/20 18:48:58] - ==> MERCHANT_URL : https://www.benson-shoes.com/payment/success  
+ [16/01/20 18:48:58] - ==> CUSTOMER_LASTNAME : moa  
+ [16/01/20 18:48:58] - ==> CUSTOMER_FIRSTNAME : moa  
+ [16/01/20 18:48:58] - ==> CUSTOMER_ADDRESS : 59 rue Bachri Ibrahimi, Quartier Gironde Residence chaimaa B,  MERS SULTAN  
+ [16/01/20 18:48:58] - ==> CUSTOMER_ZIPCODE : 20000  
+ [16/01/20 18:48:58] - ==> CUSTOMER_CITY : Casablanca  
+ [16/01/20 18:48:58] - ==> CUSTOMER_STATE : Casablanca-Settat  
+ [16/01/20 18:48:58] - ==> CUSTOMER_COUNTRY : Morocco  
+ [16/01/20 18:48:58] - ==> CUSTOMER_PHONE :    
+ [16/01/20 18:48:58] - ==> CUSTOMER_EMAIL : gmoail101@gmail.com  
+ [16/01/20 18:48:58] - ==> LANGUAGE : fr  
+ [16/01/20 18:48:58] - ==> FPAY_URLREPAUTO : https://www.benson-shoes.com/fpayApi/response.php  
+ [16/01/20 18:48:58] - ==> AMOUNT_CONVERSION : false  
+ [16/01/20 18:48:58] - ==> CONVERTED_AMOUNT :   
+ [16/01/20 18:48:58] - ==> CONVERSION_CURRENCY :   
+ [16/01/20 18:48:58] - ==> CUSTOMER_MESSAGE :   
+ [16/01/20 18:48:58] - ==> MESSAGE_SIGNATURE : 3D2DB108EFDD645FE80A7BA89E36F1A6486318D77B31F6E4B06CC8F9283ECC71  
+ [16/01/20 18:48:59] - == send  JSON Data to Front ... ==>  
+ [16/01/20 18:48:59] - <== RESPONSE_CODE : 0   
+ [16/01/20 18:48:59] - <== REASON_CODE : SUCCESS   
+ [16/01/20 18:48:59] - <== FPAY_MESSAGE_VERSION : 3   
+ [16/01/20 18:48:59] - <== MERCHANT_ID : BenShoesTp+   
+ [16/01/20 18:48:59] - <== RESPONSE_CODE : 0   
+ [16/01/20 18:48:59] - <== REASON_CODE : SUCCESS   
+ [16/01/20 18:48:59] - <== ORDER_ID : 5e20b018cd474   
+ [16/01/20 18:48:59] - <== REFERENCE_ID : 483117   
+ [16/01/20 18:48:59] - <== TRACK_ID : 945385481893   
+ [16/01/20 18:48:59] - <== FPAY_URL : https://pay.fpay-worldwide.com/fpay-frontend/home_card2   
+ [16/01/20 18:48:59] - <== MESSAGE_SIGNATURE : 9A6BD6BFD8158DA9CE6AC8CD1BA32EDD5543FF1F648E7BDA8CA2F6105D409149   
+ [16/01/20 18:49:52] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 18:49:52] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 18:49:52] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 18:49:52] - ==> FPAY_MESSAGE_VERSION : 3  
+ [16/01/20 18:49:52] - ==> MERCHANT_ID : BenShoesTp+  
+ [16/01/20 18:49:52] - ==> AMOUNT : 320000  
+ [16/01/20 18:49:52] - ==> CURRENCY_CODE : 504  
+ [16/01/20 18:49:52] - ==> TRANSACTION_CAPTURE : true  
+ [16/01/20 18:49:52] - ==> TRANSACTION_TYPE : AUTH  
+ [16/01/20 18:49:52] - ==> TRANSACTION_MODE : MODE  
+ [16/01/20 18:49:52] - ==> CUSTOM_DATA : DATA  
+ [16/01/20 18:49:52] - ==> ORDER_ID : 5e20b04fa0b69  
+ [16/01/20 18:49:52] - ==> ORDER_DETAILS :   
+ [16/01/20 18:49:52] - ==> MERCHANT_URL : https://www.benson-shoes.com/payment/success  
+ [16/01/20 18:49:52] - ==> CUSTOMER_LASTNAME : moa  
+ [16/01/20 18:49:52] - ==> CUSTOMER_FIRSTNAME : moa  
+ [16/01/20 18:49:52] - ==> CUSTOMER_ADDRESS : 59 rue Bachri Ibrahimi, Quartier Gironde Residence chaimaa B,  MERS SULTAN  
+ [16/01/20 18:49:52] - ==> CUSTOMER_ZIPCODE : 20000  
+ [16/01/20 18:49:52] - ==> CUSTOMER_CITY : Casablanca  
+ [16/01/20 18:49:52] - ==> CUSTOMER_STATE : Casablanca-Settat  
+ [16/01/20 18:49:52] - ==> CUSTOMER_COUNTRY : Morocco  
+ [16/01/20 18:49:52] - ==> CUSTOMER_PHONE :    
+ [16/01/20 18:49:52] - ==> CUSTOMER_EMAIL : gmoail101@gmail.com  
+ [16/01/20 18:49:52] - ==> LANGUAGE : fr  
+ [16/01/20 18:49:52] - ==> FPAY_URLREPAUTO : https://www.benson-shoes.com/fpayApi/response.php  
+ [16/01/20 18:49:52] - ==> AMOUNT_CONVERSION : false  
+ [16/01/20 18:49:52] - ==> CONVERTED_AMOUNT :   
+ [16/01/20 18:49:52] - ==> CONVERSION_CURRENCY :   
+ [16/01/20 18:49:52] - ==> CUSTOMER_MESSAGE :   
+ [16/01/20 18:49:52] - ==> MESSAGE_SIGNATURE : C5356CEE375C37239BA00078CD650F0C7BF1920008EEC018BB3705CF455302C4  
+ [16/01/20 18:49:52] - == send  JSON Data to Front ... ==>  
+ [16/01/20 18:49:52] - <== RESPONSE_CODE : 0   
+ [16/01/20 18:49:52] - <== REASON_CODE : SUCCESS   
+ [16/01/20 18:49:52] - <== FPAY_MESSAGE_VERSION : 3   
+ [16/01/20 18:49:52] - <== MERCHANT_ID : BenShoesTp+   
+ [16/01/20 18:49:52] - <== RESPONSE_CODE : 0   
+ [16/01/20 18:49:52] - <== REASON_CODE : SUCCESS   
+ [16/01/20 18:49:52] - <== ORDER_ID : 5e20b04fa0b69   
+ [16/01/20 18:49:52] - <== REFERENCE_ID : 483120   
+ [16/01/20 18:49:52] - <== TRACK_ID : 278272571408   
+ [16/01/20 18:49:52] - <== FPAY_URL : https://pay.fpay-worldwide.com/fpay-frontend/home_card2   
+ [16/01/20 18:49:52] - <== MESSAGE_SIGNATURE : D8EC7BCF5101A1A7D0D689020B66E1CA488C4775426247BC024A89B31B079EEE   
+ [16/01/20 22:54:59] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 22:54:59] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 22:54:59] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 22:54:59] - ==> FPAY_MESSAGE_VERSION : 3  
+ [16/01/20 22:54:59] - ==> MERCHANT_ID : BenShoesTp+  
+ [16/01/20 22:54:59] - ==> AMOUNT : 220000  
+ [16/01/20 22:54:59] - ==> CURRENCY_CODE : 504  
+ [16/01/20 22:54:59] - ==> TRANSACTION_CAPTURE : true  
+ [16/01/20 22:54:59] - ==> TRANSACTION_TYPE : AUTH  
+ [16/01/20 22:54:59] - ==> TRANSACTION_MODE : MODE  
+ [16/01/20 22:54:59] - ==> CUSTOM_DATA : DATA  
+ [16/01/20 22:54:59] - ==> ORDER_ID : 5e20e9c2eda4a  
+ [16/01/20 22:54:59] - ==> ORDER_DETAILS :   
+ [16/01/20 22:54:59] - ==> MERCHANT_URL : https://www.benson-shoes.com/payment/success  
+ [16/01/20 22:54:59] - ==> CUSTOMER_LASTNAME : moa  
+ [16/01/20 22:54:59] - ==> CUSTOMER_FIRSTNAME : moa  
+ [16/01/20 22:54:59] - ==> CUSTOMER_ADDRESS : 59 rue Bachri Ibrahimi, Quartier Gironde Residence chaimaa B,  MERS SULTAN  
+ [16/01/20 22:54:59] - ==> CUSTOMER_ZIPCODE : 20000  
+ [16/01/20 22:54:59] - ==> CUSTOMER_CITY : Casablanca  
+ [16/01/20 22:54:59] - ==> CUSTOMER_STATE : Casablanca-Settat  
+ [16/01/20 22:54:59] - ==> CUSTOMER_COUNTRY : Morocco  
+ [16/01/20 22:54:59] - ==> CUSTOMER_PHONE :    
+ [16/01/20 22:54:59] - ==> CUSTOMER_EMAIL : gmoail101@gmail.com  
+ [16/01/20 22:54:59] - ==> LANGUAGE : fr  
+ [16/01/20 22:54:59] - ==> FPAY_URLREPAUTO : https://www.benson-shoes.com/fpayApi/response.php  
+ [16/01/20 22:54:59] - ==> AMOUNT_CONVERSION : false  
+ [16/01/20 22:54:59] - ==> CONVERTED_AMOUNT :   
+ [16/01/20 22:54:59] - ==> CONVERSION_CURRENCY :   
+ [16/01/20 22:54:59] - ==> CUSTOMER_MESSAGE :   
+ [16/01/20 22:54:59] - ==> MESSAGE_SIGNATURE : 5A64A6AB9215C901A6C1474FCA8F8C0C69AD78B1816AD8C41A03C2F532540441  
+ [16/01/20 22:55:00] - == send  JSON Data to Front ... ==>  
+ [16/01/20 22:55:00] - <== RESPONSE_CODE : 0   
+ [16/01/20 22:55:00] - <== REASON_CODE : SUCCESS   
+ [16/01/20 22:55:00] - <== FPAY_MESSAGE_VERSION : 3   
+ [16/01/20 22:55:00] - <== MERCHANT_ID : BenShoesTp+   
+ [16/01/20 22:55:00] - <== RESPONSE_CODE : 0   
+ [16/01/20 22:55:00] - <== REASON_CODE : SUCCESS   
+ [16/01/20 22:55:00] - <== ORDER_ID : 5e20e9c2eda4a   
+ [16/01/20 22:55:00] - <== REFERENCE_ID : 483617   
+ [16/01/20 22:55:00] - <== TRACK_ID : 043654121254   
+ [16/01/20 22:55:00] - <== FPAY_URL : https://pay.fpay-worldwide.com/fpay-frontend/home_card2   
+ [16/01/20 22:55:00] - <== MESSAGE_SIGNATURE : 66DBD9F0F208B13B0426450C2BEC37E8E3D8E4205ACF75A50850EE0B55CCB194   
+ [16/01/20 22:55:00] - ==> send Data to URL :==> http://localhost/benson/forward_Data.php?FPAY_URL=https://pay.fpay-worldwide.com/fpay-frontend/home_card2&ORDER_ID=5e20e9c2eda4a&REFERENCE_ID=483617&TRACK_ID=043654121254  
+ [16/01/20 22:55:00] - <<<<==== Fin sendData() ====>>>>  
+ [16/01/20 22:57:59] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 22:57:59] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 22:57:59] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 22:57:59] - AMOUNT is null or empty  
+ [16/01/20 22:58:40] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 22:58:40] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 22:58:40] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 22:58:40] - ==> FPAY_MESSAGE_VERSION : 3  
+ [16/01/20 22:58:40] - ==> MERCHANT_ID : BenShoesTp+  
+ [16/01/20 22:58:40] - ==> AMOUNT : 220000  
+ [16/01/20 22:58:40] - ==> CURRENCY_CODE : 504  
+ [16/01/20 22:58:40] - ==> TRANSACTION_CAPTURE : true  
+ [16/01/20 22:58:40] - ==> TRANSACTION_TYPE : AUTH  
+ [16/01/20 22:58:40] - ==> TRANSACTION_MODE : MODE  
+ [16/01/20 22:58:40] - ==> CUSTOM_DATA : DATA  
+ [16/01/20 22:58:40] - ==> ORDER_ID : 5e20ea9f59218  
+ [16/01/20 22:58:40] - ==> ORDER_DETAILS :   
+ [16/01/20 22:58:40] - ==> MERCHANT_URL : https://www.benson-shoes.com/payment/success  
+ [16/01/20 22:58:40] - ==> CUSTOMER_LASTNAME : moa  
+ [16/01/20 22:58:40] - ==> CUSTOMER_FIRSTNAME : moa  
+ [16/01/20 22:58:40] - ==> CUSTOMER_ADDRESS : 59 rue Bachri Ibrahimi, Quartier Gironde Residence chaimaa B,  MERS SULTAN  
+ [16/01/20 22:58:40] - ==> CUSTOMER_ZIPCODE : 20000  
+ [16/01/20 22:58:40] - ==> CUSTOMER_CITY : Casablanca  
+ [16/01/20 22:58:40] - ==> CUSTOMER_STATE : Casablanca-Settat  
+ [16/01/20 22:58:40] - ==> CUSTOMER_COUNTRY : Morocco  
+ [16/01/20 22:58:40] - ==> CUSTOMER_PHONE :    
+ [16/01/20 22:58:40] - ==> CUSTOMER_EMAIL : gmoail101@gmail.com  
+ [16/01/20 22:58:40] - ==> LANGUAGE : fr  
+ [16/01/20 22:58:40] - ==> FPAY_URLREPAUTO : https://www.benson-shoes.com/fpayApi/response.php  
+ [16/01/20 22:58:40] - ==> AMOUNT_CONVERSION : false  
+ [16/01/20 22:58:40] - ==> CONVERTED_AMOUNT :   
+ [16/01/20 22:58:40] - ==> CONVERSION_CURRENCY :   
+ [16/01/20 22:58:40] - ==> CUSTOMER_MESSAGE :   
+ [16/01/20 22:58:40] - ==> MESSAGE_SIGNATURE : CB30A722B2A3B3B38DD5CA02E7A1BDD147C0CB343C5804E0122E1AA16051B240  
+ [16/01/20 22:58:40] - == send  JSON Data to Front ... ==>  
+ [16/01/20 22:58:40] - <== RESPONSE_CODE : 0   
+ [16/01/20 22:58:40] - <== REASON_CODE : SUCCESS   
+ [16/01/20 22:58:40] - <== FPAY_MESSAGE_VERSION : 3   
+ [16/01/20 22:58:40] - <== MERCHANT_ID : BenShoesTp+   
+ [16/01/20 22:58:40] - <== RESPONSE_CODE : 0   
+ [16/01/20 22:58:40] - <== REASON_CODE : SUCCESS   
+ [16/01/20 22:58:40] - <== ORDER_ID : 5e20ea9f59218   
+ [16/01/20 22:58:40] - <== REFERENCE_ID : 483621   
+ [16/01/20 22:58:40] - <== TRACK_ID : 054704931440   
+ [16/01/20 22:58:40] - <== FPAY_URL : https://pay.fpay-worldwide.com/fpay-frontend/home_card2   
+ [16/01/20 22:58:40] - <== MESSAGE_SIGNATURE : 97026995F6EB94E712D51E56EAF51311FB2F10D9C981CDD39F36842FE53695E8   
+ [16/01/20 22:59:02] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 22:59:02] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 22:59:02] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 22:59:02] - AMOUNT is null or empty  
+ [16/01/20 22:59:23] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 22:59:23] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 22:59:23] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 22:59:23] - AMOUNT is null or empty  
+ [16/01/20 22:59:47] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 22:59:47] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 22:59:47] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 22:59:47] - AMOUNT is null or empty  
+ [16/01/20 23:01:19] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:01:19] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:01:19] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:01:19] - AMOUNT is null or empty  
+ [16/01/20 23:01:47] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:01:47] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:01:47] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:01:47] - AMOUNT is null or empty  
+ [16/01/20 23:02:00] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:02:00] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:02:00] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:02:00] - AMOUNT is null or empty  
+ [16/01/20 23:02:12] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:02:12] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:02:12] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:02:36] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:02:36] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:02:36] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:02:36] - AMOUNT is null or empty  
+ [16/01/20 23:02:52] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:02:52] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:02:52] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:06:55] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:06:55] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:06:55] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:07:14] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:07:14] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:07:14] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:07:31] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:07:31] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:07:31] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:07:46] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:07:46] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:07:46] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:07:46] - ==> FPAY_MESSAGE_VERSION : 3  
+ [16/01/20 23:07:46] - ==> MERCHANT_ID : BenShoesTp+  
+ [16/01/20 23:07:46] - ==> AMOUNT : 220000  
+ [16/01/20 23:07:46] - ==> CURRENCY_CODE : 504  
+ [16/01/20 23:07:46] - ==> TRANSACTION_CAPTURE : true  
+ [16/01/20 23:07:46] - ==> TRANSACTION_TYPE : AUTH  
+ [16/01/20 23:07:46] - ==> TRANSACTION_MODE : MODE  
+ [16/01/20 23:07:46] - ==> CUSTOM_DATA : DATA  
+ [16/01/20 23:07:46] - ==> ORDER_ID : 5e20ecc182fac  
+ [16/01/20 23:07:46] - ==> ORDER_DETAILS :   
+ [16/01/20 23:07:46] - ==> MERCHANT_URL : https://www.benson-shoes.com/payment/success  
+ [16/01/20 23:07:46] - ==> CUSTOMER_LASTNAME : moa  
+ [16/01/20 23:07:46] - ==> CUSTOMER_FIRSTNAME : moa  
+ [16/01/20 23:07:46] - ==> CUSTOMER_ADDRESS : 59 rue Bachri Ibrahimi, Quartier Gironde Residence chaimaa B,  MERS SULTAN  
+ [16/01/20 23:07:46] - ==> CUSTOMER_ZIPCODE : 20000  
+ [16/01/20 23:07:46] - ==> CUSTOMER_CITY : Casablanca  
+ [16/01/20 23:07:46] - ==> CUSTOMER_STATE : Casablanca-Settat  
+ [16/01/20 23:07:46] - ==> CUSTOMER_COUNTRY : Morocco  
+ [16/01/20 23:07:46] - ==> CUSTOMER_PHONE :    
+ [16/01/20 23:07:46] - ==> CUSTOMER_EMAIL : gmoail101@gmail.com  
+ [16/01/20 23:07:46] - ==> LANGUAGE : fr  
+ [16/01/20 23:07:46] - ==> FPAY_URLREPAUTO : https://www.benson-shoes.com/fpayApi/response.php  
+ [16/01/20 23:07:46] - ==> AMOUNT_CONVERSION : false  
+ [16/01/20 23:07:46] - ==> CONVERTED_AMOUNT :   
+ [16/01/20 23:07:46] - ==> CONVERSION_CURRENCY :   
+ [16/01/20 23:07:46] - ==> CUSTOMER_MESSAGE :   
+ [16/01/20 23:07:46] - ==> MESSAGE_SIGNATURE : 934B0C2386C4C07B70F4B90B67DDE2F14D13EB9EE1F52B3EC157824F1155E5A9  
+ [16/01/20 23:08:04] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:08:04] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:08:04] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:08:04] - ==> FPAY_MESSAGE_VERSION : 3  
+ [16/01/20 23:08:04] - ==> MERCHANT_ID : BenShoesTp+  
+ [16/01/20 23:08:04] - ==> AMOUNT : 220000  
+ [16/01/20 23:08:04] - ==> CURRENCY_CODE : 504  
+ [16/01/20 23:08:04] - ==> TRANSACTION_CAPTURE : true  
+ [16/01/20 23:08:04] - ==> TRANSACTION_TYPE : AUTH  
+ [16/01/20 23:08:04] - ==> TRANSACTION_MODE : MODE  
+ [16/01/20 23:08:04] - ==> CUSTOM_DATA : DATA  
+ [16/01/20 23:08:04] - ==> ORDER_ID : 5e20ecd2e4e15  
+ [16/01/20 23:08:04] - ==> ORDER_DETAILS :   
+ [16/01/20 23:08:04] - ==> MERCHANT_URL : https://www.benson-shoes.com/payment/success  
+ [16/01/20 23:08:04] - ==> CUSTOMER_LASTNAME : moa  
+ [16/01/20 23:08:04] - ==> CUSTOMER_FIRSTNAME : moa  
+ [16/01/20 23:08:04] - ==> CUSTOMER_ADDRESS : 59 rue Bachri Ibrahimi, Quartier Gironde Residence chaimaa B,  MERS SULTAN  
+ [16/01/20 23:08:04] - ==> CUSTOMER_ZIPCODE : 20000  
+ [16/01/20 23:08:04] - ==> CUSTOMER_CITY : Casablanca  
+ [16/01/20 23:08:04] - ==> CUSTOMER_STATE : Casablanca-Settat  
+ [16/01/20 23:08:04] - ==> CUSTOMER_COUNTRY : Morocco  
+ [16/01/20 23:08:04] - ==> CUSTOMER_PHONE :    
+ [16/01/20 23:08:04] - ==> CUSTOMER_EMAIL : gmoail101@gmail.com  
+ [16/01/20 23:08:04] - ==> LANGUAGE : fr  
+ [16/01/20 23:08:04] - ==> FPAY_URLREPAUTO : https://www.benson-shoes.com/fpayApi/response.php  
+ [16/01/20 23:08:04] - ==> AMOUNT_CONVERSION : false  
+ [16/01/20 23:08:04] - ==> CONVERTED_AMOUNT :   
+ [16/01/20 23:08:04] - ==> CONVERSION_CURRENCY :   
+ [16/01/20 23:08:04] - ==> CUSTOMER_MESSAGE :   
+ [16/01/20 23:08:04] - ==> MESSAGE_SIGNATURE : 4BB6E25F73860165753A101BC8736261BFE2C0F1FBF299BF238F2752E36BA877  
+ [16/01/20 23:08:19] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:08:19] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:08:19] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:08:19] - ==> FPAY_MESSAGE_VERSION : 3  
+ [16/01/20 23:08:19] - ==> MERCHANT_ID : BenShoesTp+  
+ [16/01/20 23:08:19] - ==> AMOUNT : 220000  
+ [16/01/20 23:08:19] - ==> CURRENCY_CODE : 504  
+ [16/01/20 23:08:19] - ==> TRANSACTION_CAPTURE : true  
+ [16/01/20 23:08:19] - ==> TRANSACTION_TYPE : AUTH  
+ [16/01/20 23:08:19] - ==> TRANSACTION_MODE : MODE  
+ [16/01/20 23:08:19] - ==> CUSTOM_DATA : DATA  
+ [16/01/20 23:08:19] - ==> ORDER_ID : 5e20ece254bf0  
+ [16/01/20 23:08:19] - ==> ORDER_DETAILS :   
+ [16/01/20 23:08:19] - ==> MERCHANT_URL : https://www.benson-shoes.com/payment/success  
+ [16/01/20 23:08:19] - ==> CUSTOMER_LASTNAME : moa  
+ [16/01/20 23:08:19] - ==> CUSTOMER_FIRSTNAME : moa  
+ [16/01/20 23:08:19] - ==> CUSTOMER_ADDRESS : 59 rue Bachri Ibrahimi, Quartier Gironde Residence chaimaa B,  MERS SULTAN  
+ [16/01/20 23:08:19] - ==> CUSTOMER_ZIPCODE : 20000  
+ [16/01/20 23:08:19] - ==> CUSTOMER_CITY : Casablanca  
+ [16/01/20 23:08:19] - ==> CUSTOMER_STATE : Casablanca-Settat  
+ [16/01/20 23:08:19] - ==> CUSTOMER_COUNTRY : Morocco  
+ [16/01/20 23:08:19] - ==> CUSTOMER_PHONE :    
+ [16/01/20 23:08:19] - ==> CUSTOMER_EMAIL : gmoail101@gmail.com  
+ [16/01/20 23:08:19] - ==> LANGUAGE : fr  
+ [16/01/20 23:08:19] - ==> FPAY_URLREPAUTO : https://www.benson-shoes.com/fpayApi/response.php  
+ [16/01/20 23:08:19] - ==> AMOUNT_CONVERSION : false  
+ [16/01/20 23:08:19] - ==> CONVERTED_AMOUNT :   
+ [16/01/20 23:08:19] - ==> CONVERSION_CURRENCY :   
+ [16/01/20 23:08:19] - ==> CUSTOMER_MESSAGE :   
+ [16/01/20 23:08:19] - ==> MESSAGE_SIGNATURE : B3CF6C3F51240AA488B2FDE1D4B8C866B27EBFEE1CBB6D107FE36D3ACC63E294  
+ [16/01/20 23:08:19] - == send  JSON Data to Front ... ==>  
+ [16/01/20 23:08:19] - <== RESPONSE_CODE : 0   
+ [16/01/20 23:08:19] - <== REASON_CODE : SUCCESS   
+ [16/01/20 23:08:19] - <== FPAY_MESSAGE_VERSION : 3   
+ [16/01/20 23:08:19] - <== MERCHANT_ID : BenShoesTp+   
+ [16/01/20 23:08:19] - <== RESPONSE_CODE : 0   
+ [16/01/20 23:08:19] - <== REASON_CODE : SUCCESS   
+ [16/01/20 23:08:19] - <== ORDER_ID : 5e20ece254bf0   
+ [16/01/20 23:08:19] - <== REFERENCE_ID : 483629   
+ [16/01/20 23:08:19] - <== TRACK_ID : 955207581961   
+ [16/01/20 23:08:19] - <== FPAY_URL : https://pay.fpay-worldwide.com/fpay-frontend/home_card2   
+ [16/01/20 23:08:19] - <== MESSAGE_SIGNATURE : 467FA724316CBA81F9F81973BA0C1117DD2ED883E365EE1C057F07C22078079F   
+ [16/01/20 23:09:10] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:09:10] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:09:10] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:09:10] - AMOUNT is null or empty  
+ [16/01/20 23:09:17] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:09:17] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:09:17] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:09:17] - AMOUNT is null or empty  
+ [16/01/20 23:09:59] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:09:59] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:09:59] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:09:59] - ==> FPAY_MESSAGE_VERSION : 3  
+ [16/01/20 23:09:59] - ==> MERCHANT_ID : BenShoesTp+  
+ [16/01/20 23:09:59] - ==> AMOUNT : 220000  
+ [16/01/20 23:09:59] - ==> CURRENCY_CODE : 504  
+ [16/01/20 23:09:59] - ==> TRANSACTION_CAPTURE : true  
+ [16/01/20 23:09:59] - ==> TRANSACTION_TYPE : AUTH  
+ [16/01/20 23:09:59] - ==> TRANSACTION_MODE : MODE  
+ [16/01/20 23:09:59] - ==> CUSTOM_DATA : DATA  
+ [16/01/20 23:09:59] - ==> ORDER_ID : 5e20ed4632247  
+ [16/01/20 23:09:59] - ==> ORDER_DETAILS :   
+ [16/01/20 23:09:59] - ==> MERCHANT_URL : https://www.benson-shoes.com/payment/success  
+ [16/01/20 23:09:59] - ==> CUSTOMER_LASTNAME : moa  
+ [16/01/20 23:09:59] - ==> CUSTOMER_FIRSTNAME : moa  
+ [16/01/20 23:09:59] - ==> CUSTOMER_ADDRESS : 59 rue Bachri Ibrahimi, Quartier Gironde Residence chaimaa B,  MERS SULTAN  
+ [16/01/20 23:09:59] - ==> CUSTOMER_ZIPCODE : 20000  
+ [16/01/20 23:09:59] - ==> CUSTOMER_CITY : Casablanca  
+ [16/01/20 23:09:59] - ==> CUSTOMER_STATE : Casablanca-Settat  
+ [16/01/20 23:09:59] - ==> CUSTOMER_COUNTRY : Morocco  
+ [16/01/20 23:09:59] - ==> CUSTOMER_PHONE :    
+ [16/01/20 23:09:59] - ==> CUSTOMER_EMAIL : gmoail101@gmail.com  
+ [16/01/20 23:09:59] - ==> LANGUAGE : fr  
+ [16/01/20 23:09:59] - ==> FPAY_URLREPAUTO : https://www.benson-shoes.com/fpayApi/response.php  
+ [16/01/20 23:09:59] - ==> AMOUNT_CONVERSION : false  
+ [16/01/20 23:09:59] - ==> CONVERTED_AMOUNT :   
+ [16/01/20 23:09:59] - ==> CONVERSION_CURRENCY :   
+ [16/01/20 23:09:59] - ==> CUSTOMER_MESSAGE :   
+ [16/01/20 23:09:59] - ==> MESSAGE_SIGNATURE : BEE3F27D50DA33E6FB0ED743F5211DD2E9DD0791ED7EA7AE051F593DF9892D7D  
+ [16/01/20 23:11:08] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:11:08] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:11:08] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:11:08] - AMOUNT is null or empty  
+ [16/01/20 23:11:37] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:11:37] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:11:37] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:11:37] - ==> FPAY_MESSAGE_VERSION : 3  
+ [16/01/20 23:11:37] - ==> MERCHANT_ID : BenShoesTp+  
+ [16/01/20 23:11:37] - ==> AMOUNT : 220000  
+ [16/01/20 23:11:37] - ==> CURRENCY_CODE : 504  
+ [16/01/20 23:11:37] - ==> TRANSACTION_CAPTURE : true  
+ [16/01/20 23:11:37] - ==> TRANSACTION_TYPE : AUTH  
+ [16/01/20 23:11:37] - ==> TRANSACTION_MODE : MODE  
+ [16/01/20 23:11:37] - ==> CUSTOM_DATA : DATA  
+ [16/01/20 23:11:37] - ==> ORDER_ID : 5e20eda8525e2  
+ [16/01/20 23:11:37] - ==> ORDER_DETAILS :   
+ [16/01/20 23:11:37] - ==> MERCHANT_URL : https://www.benson-shoes.com/payment/success  
+ [16/01/20 23:11:37] - ==> CUSTOMER_LASTNAME : moa  
+ [16/01/20 23:11:37] - ==> CUSTOMER_FIRSTNAME : moa  
+ [16/01/20 23:11:37] - ==> CUSTOMER_ADDRESS : 59 rue Bachri Ibrahimi, Quartier Gironde Residence chaimaa B,  MERS SULTAN  
+ [16/01/20 23:11:37] - ==> CUSTOMER_ZIPCODE : 20000  
+ [16/01/20 23:11:37] - ==> CUSTOMER_CITY : Casablanca  
+ [16/01/20 23:11:37] - ==> CUSTOMER_STATE : Casablanca-Settat  
+ [16/01/20 23:11:37] - ==> CUSTOMER_COUNTRY : Morocco  
+ [16/01/20 23:11:37] - ==> CUSTOMER_PHONE :    
+ [16/01/20 23:11:37] - ==> CUSTOMER_EMAIL : gmoail101@gmail.com  
+ [16/01/20 23:11:37] - ==> LANGUAGE : fr  
+ [16/01/20 23:11:37] - ==> FPAY_URLREPAUTO : https://www.benson-shoes.com/fpayApi/response.php  
+ [16/01/20 23:11:37] - ==> AMOUNT_CONVERSION : false  
+ [16/01/20 23:11:37] - ==> CONVERTED_AMOUNT :   
+ [16/01/20 23:11:37] - ==> CONVERSION_CURRENCY :   
+ [16/01/20 23:11:37] - ==> CUSTOMER_MESSAGE :   
+ [16/01/20 23:11:37] - ==> MESSAGE_SIGNATURE : 208B05618888222D6DD16EE644AD0FEAAEFD0A7047E886300CF2B7243E9428D2  
+ [16/01/20 23:12:07] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:12:07] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:12:07] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:12:07] - ==> FPAY_MESSAGE_VERSION : 3  
+ [16/01/20 23:12:07] - ==> MERCHANT_ID : BenShoesTp+  
+ [16/01/20 23:12:07] - ==> AMOUNT : 220000  
+ [16/01/20 23:12:07] - ==> CURRENCY_CODE : 504  
+ [16/01/20 23:12:07] - ==> TRANSACTION_CAPTURE : true  
+ [16/01/20 23:12:07] - ==> TRANSACTION_TYPE : AUTH  
+ [16/01/20 23:12:07] - ==> TRANSACTION_MODE : MODE  
+ [16/01/20 23:12:07] - ==> CUSTOM_DATA : DATA  
+ [16/01/20 23:12:07] - ==> ORDER_ID : 5e20edc708746  
+ [16/01/20 23:12:07] - ==> ORDER_DETAILS :   
+ [16/01/20 23:12:07] - ==> MERCHANT_URL : https://www.benson-shoes.com/payment/success  
+ [16/01/20 23:12:07] - ==> CUSTOMER_LASTNAME : moa  
+ [16/01/20 23:12:07] - ==> CUSTOMER_FIRSTNAME : moa  
+ [16/01/20 23:12:07] - ==> CUSTOMER_ADDRESS : 59 rue Bachri Ibrahimi, Quartier Gironde Residence chaimaa B,  MERS SULTAN  
+ [16/01/20 23:12:07] - ==> CUSTOMER_ZIPCODE : 20000  
+ [16/01/20 23:12:07] - ==> CUSTOMER_CITY : Casablanca  
+ [16/01/20 23:12:07] - ==> CUSTOMER_STATE : Casablanca-Settat  
+ [16/01/20 23:12:07] - ==> CUSTOMER_COUNTRY : Morocco  
+ [16/01/20 23:12:07] - ==> CUSTOMER_PHONE :    
+ [16/01/20 23:12:07] - ==> CUSTOMER_EMAIL : gmoail101@gmail.com  
+ [16/01/20 23:12:07] - ==> LANGUAGE : fr  
+ [16/01/20 23:12:07] - ==> FPAY_URLREPAUTO : https://www.benson-shoes.com/fpayApi/response.php  
+ [16/01/20 23:12:07] - ==> AMOUNT_CONVERSION : false  
+ [16/01/20 23:12:07] - ==> CONVERTED_AMOUNT :   
+ [16/01/20 23:12:07] - ==> CONVERSION_CURRENCY :   
+ [16/01/20 23:12:07] - ==> CUSTOMER_MESSAGE :   
+ [16/01/20 23:12:07] - ==> MESSAGE_SIGNATURE : B76835F971C29EB61CF8D91B57654ECA57C1123F94E30908128FB3BFDF45BC7E  
+ [16/01/20 23:12:57] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:12:57] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:12:57] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:12:57] - ==> FPAY_MESSAGE_VERSION : 3  
+ [16/01/20 23:12:57] - ==> MERCHANT_ID : BenShoesTp+  
+ [16/01/20 23:12:57] - ==> AMOUNT : 220000  
+ [16/01/20 23:12:57] - ==> CURRENCY_CODE : 504  
+ [16/01/20 23:12:57] - ==> TRANSACTION_CAPTURE : true  
+ [16/01/20 23:12:57] - ==> TRANSACTION_TYPE : AUTH  
+ [16/01/20 23:12:57] - ==> TRANSACTION_MODE : MODE  
+ [16/01/20 23:12:57] - ==> CUSTOM_DATA : DATA  
+ [16/01/20 23:12:57] - ==> ORDER_ID : 5e20edf8ed523  
+ [16/01/20 23:12:57] - ==> ORDER_DETAILS :   
+ [16/01/20 23:12:57] - ==> MERCHANT_URL : https://www.benson-shoes.com/payment/success  
+ [16/01/20 23:12:57] - ==> CUSTOMER_LASTNAME : moa  
+ [16/01/20 23:12:57] - ==> CUSTOMER_FIRSTNAME : moa  
+ [16/01/20 23:12:57] - ==> CUSTOMER_ADDRESS : 59 rue Bachri Ibrahimi, Quartier Gironde Residence chaimaa B,  MERS SULTAN  
+ [16/01/20 23:12:57] - ==> CUSTOMER_ZIPCODE : 20000  
+ [16/01/20 23:12:57] - ==> CUSTOMER_CITY : Casablanca  
+ [16/01/20 23:12:57] - ==> CUSTOMER_STATE : Casablanca-Settat  
+ [16/01/20 23:12:57] - ==> CUSTOMER_COUNTRY : Morocco  
+ [16/01/20 23:12:57] - ==> CUSTOMER_PHONE :    
+ [16/01/20 23:12:57] - ==> CUSTOMER_EMAIL : gmoail101@gmail.com  
+ [16/01/20 23:12:57] - ==> LANGUAGE : fr  
+ [16/01/20 23:12:57] - ==> FPAY_URLREPAUTO : https://www.benson-shoes.com/fpayApi/response.php  
+ [16/01/20 23:12:57] - ==> AMOUNT_CONVERSION : false  
+ [16/01/20 23:12:57] - ==> CONVERTED_AMOUNT :   
+ [16/01/20 23:12:57] - ==> CONVERSION_CURRENCY :   
+ [16/01/20 23:12:57] - ==> CUSTOMER_MESSAGE :   
+ [16/01/20 23:12:57] - ==> MESSAGE_SIGNATURE : 0B929ADEB1AA95BCBF15606F8FFB374099FEFFBB8FE7AA3B718BAC0E6E39D1E8  
+ [16/01/20 23:13:26] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:13:26] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:13:26] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:13:26] - AMOUNT is null or empty  
+ [16/01/20 23:14:18] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:14:18] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:14:18] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:14:18] - ==> FPAY_MESSAGE_VERSION : 3  
+ [16/01/20 23:14:18] - ==> MERCHANT_ID : BenShoesTp+  
+ [16/01/20 23:14:18] - ==> AMOUNT : 220000  
+ [16/01/20 23:14:18] - ==> CURRENCY_CODE : 504  
+ [16/01/20 23:14:18] - ==> TRANSACTION_CAPTURE : true  
+ [16/01/20 23:14:18] - ==> TRANSACTION_TYPE : AUTH  
+ [16/01/20 23:14:18] - ==> TRANSACTION_MODE : MODE  
+ [16/01/20 23:14:18] - ==> CUSTOM_DATA : DATA  
+ [16/01/20 23:14:18] - ==> ORDER_ID : 5e20ee4a18ad4  
+ [16/01/20 23:14:18] - ==> ORDER_DETAILS :   
+ [16/01/20 23:14:18] - ==> MERCHANT_URL : https://www.benson-shoes.com/payment/success  
+ [16/01/20 23:14:18] - ==> CUSTOMER_LASTNAME : moa  
+ [16/01/20 23:14:18] - ==> CUSTOMER_FIRSTNAME : moa  
+ [16/01/20 23:14:18] - ==> CUSTOMER_ADDRESS : 59 rue Bachri Ibrahimi, Quartier Gironde Residence chaimaa B,  MERS SULTAN  
+ [16/01/20 23:14:18] - ==> CUSTOMER_ZIPCODE : 20000  
+ [16/01/20 23:14:18] - ==> CUSTOMER_CITY : Casablanca  
+ [16/01/20 23:14:18] - ==> CUSTOMER_STATE : Casablanca-Settat  
+ [16/01/20 23:14:18] - ==> CUSTOMER_COUNTRY : Morocco  
+ [16/01/20 23:14:18] - ==> CUSTOMER_PHONE :    
+ [16/01/20 23:14:18] - ==> CUSTOMER_EMAIL : gmoail101@gmail.com  
+ [16/01/20 23:14:18] - ==> LANGUAGE : fr  
+ [16/01/20 23:14:18] - ==> FPAY_URLREPAUTO : https://www.benson-shoes.com/fpayApi/response.php  
+ [16/01/20 23:14:18] - ==> AMOUNT_CONVERSION : false  
+ [16/01/20 23:14:18] - ==> CONVERTED_AMOUNT :   
+ [16/01/20 23:14:18] - ==> CONVERSION_CURRENCY :   
+ [16/01/20 23:14:18] - ==> CUSTOMER_MESSAGE :   
+ [16/01/20 23:14:18] - ==> MESSAGE_SIGNATURE : 4BD1E99851BF48CE0E84B38472750CF3D3332FC7B7F3EF5669D9241E4BD6798B  
+ [16/01/20 23:14:25] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:14:25] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:14:25] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:14:25] - ==> FPAY_MESSAGE_VERSION : 3  
+ [16/01/20 23:14:25] - ==> MERCHANT_ID : BenShoesTp+  
+ [16/01/20 23:14:25] - ==> AMOUNT : 220000  
+ [16/01/20 23:14:25] - ==> CURRENCY_CODE : 504  
+ [16/01/20 23:14:25] - ==> TRANSACTION_CAPTURE : true  
+ [16/01/20 23:14:25] - ==> TRANSACTION_TYPE : AUTH  
+ [16/01/20 23:14:25] - ==> TRANSACTION_MODE : MODE  
+ [16/01/20 23:14:25] - ==> CUSTOM_DATA : DATA  
+ [16/01/20 23:14:25] - ==> ORDER_ID : 5e20ee50a578e  
+ [16/01/20 23:14:25] - ==> ORDER_DETAILS :   
+ [16/01/20 23:14:25] - ==> MERCHANT_URL : https://www.benson-shoes.com/payment/success  
+ [16/01/20 23:14:25] - ==> CUSTOMER_LASTNAME : moa  
+ [16/01/20 23:14:25] - ==> CUSTOMER_FIRSTNAME : moa  
+ [16/01/20 23:14:25] - ==> CUSTOMER_ADDRESS : 59 rue Bachri Ibrahimi, Quartier Gironde Residence chaimaa B,  MERS SULTAN  
+ [16/01/20 23:14:25] - ==> CUSTOMER_ZIPCODE : 20000  
+ [16/01/20 23:14:25] - ==> CUSTOMER_CITY : Casablanca  
+ [16/01/20 23:14:25] - ==> CUSTOMER_STATE : Casablanca-Settat  
+ [16/01/20 23:14:25] - ==> CUSTOMER_COUNTRY : Morocco  
+ [16/01/20 23:14:25] - ==> CUSTOMER_PHONE :    
+ [16/01/20 23:14:25] - ==> CUSTOMER_EMAIL : gmoail101@gmail.com  
+ [16/01/20 23:14:25] - ==> LANGUAGE : fr  
+ [16/01/20 23:14:25] - ==> FPAY_URLREPAUTO : https://www.benson-shoes.com/fpayApi/response.php  
+ [16/01/20 23:14:25] - ==> AMOUNT_CONVERSION : false  
+ [16/01/20 23:14:25] - ==> CONVERTED_AMOUNT :   
+ [16/01/20 23:14:25] - ==> CONVERSION_CURRENCY :   
+ [16/01/20 23:14:25] - ==> CUSTOMER_MESSAGE :   
+ [16/01/20 23:14:25] - ==> MESSAGE_SIGNATURE : A0B966A37604A132381FFB1E6250AF768C99D77230697D038AB745BC2F3FF18B  
+ [16/01/20 23:14:45] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:14:45] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:14:45] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:14:45] - ==> FPAY_MESSAGE_VERSION : 3  
+ [16/01/20 23:14:45] - ==> MERCHANT_ID : BenShoesTp+  
+ [16/01/20 23:14:45] - ==> AMOUNT : 220000  
+ [16/01/20 23:14:45] - ==> CURRENCY_CODE : 504  
+ [16/01/20 23:14:45] - ==> TRANSACTION_CAPTURE : true  
+ [16/01/20 23:14:45] - ==> TRANSACTION_TYPE : AUTH  
+ [16/01/20 23:14:45] - ==> TRANSACTION_MODE : MODE  
+ [16/01/20 23:14:45] - ==> CUSTOM_DATA : DATA  
+ [16/01/20 23:14:45] - ==> ORDER_ID : 5e20ee64d87d5  
+ [16/01/20 23:14:45] - ==> ORDER_DETAILS :   
+ [16/01/20 23:14:45] - ==> MERCHANT_URL : https://www.benson-shoes.com/payment/success  
+ [16/01/20 23:14:45] - ==> CUSTOMER_LASTNAME : moa  
+ [16/01/20 23:14:45] - ==> CUSTOMER_FIRSTNAME : moa  
+ [16/01/20 23:14:45] - ==> CUSTOMER_ADDRESS : 59 rue Bachri Ibrahimi, Quartier Gironde Residence chaimaa B,  MERS SULTAN  
+ [16/01/20 23:14:45] - ==> CUSTOMER_ZIPCODE : 20000  
+ [16/01/20 23:14:45] - ==> CUSTOMER_CITY : Casablanca  
+ [16/01/20 23:14:45] - ==> CUSTOMER_STATE : Casablanca-Settat  
+ [16/01/20 23:14:45] - ==> CUSTOMER_COUNTRY : Morocco  
+ [16/01/20 23:14:45] - ==> CUSTOMER_PHONE :    
+ [16/01/20 23:14:45] - ==> CUSTOMER_EMAIL : gmoail101@gmail.com  
+ [16/01/20 23:14:45] - ==> LANGUAGE : fr  
+ [16/01/20 23:14:45] - ==> FPAY_URLREPAUTO : https://www.benson-shoes.com/fpayApi/response.php  
+ [16/01/20 23:14:45] - ==> AMOUNT_CONVERSION : false  
+ [16/01/20 23:14:45] - ==> CONVERTED_AMOUNT :   
+ [16/01/20 23:14:45] - ==> CONVERSION_CURRENCY :   
+ [16/01/20 23:14:45] - ==> CUSTOMER_MESSAGE :   
+ [16/01/20 23:14:45] - ==> MESSAGE_SIGNATURE : 5A451E3AA42D861073852AE0F44933E39CB47607ADC5801E2FFD8AB1C9B728FE  
+ [16/01/20 23:15:46] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:15:46] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:15:46] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:15:46] - AMOUNT is null or empty  
+ [16/01/20 23:16:14] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:16:14] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:16:14] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:16:14] - ==> FPAY_MESSAGE_VERSION : 3  
+ [16/01/20 23:16:14] - ==> MERCHANT_ID : BenShoesTp+  
+ [16/01/20 23:16:14] - ==> AMOUNT : 220000  
+ [16/01/20 23:16:14] - ==> CURRENCY_CODE : 504  
+ [16/01/20 23:16:14] - ==> TRANSACTION_CAPTURE : true  
+ [16/01/20 23:16:14] - ==> TRANSACTION_TYPE : AUTH  
+ [16/01/20 23:16:14] - ==> TRANSACTION_MODE : MODE  
+ [16/01/20 23:16:14] - ==> CUSTOM_DATA : DATA  
+ [16/01/20 23:16:14] - ==> ORDER_ID : 5e20eebd5b189  
+ [16/01/20 23:16:14] - ==> ORDER_DETAILS :   
+ [16/01/20 23:16:14] - ==> MERCHANT_URL : https://www.benson-shoes.com/payment/success  
+ [16/01/20 23:16:14] - ==> CUSTOMER_LASTNAME : moa  
+ [16/01/20 23:16:14] - ==> CUSTOMER_FIRSTNAME : moa  
+ [16/01/20 23:16:14] - ==> CUSTOMER_ADDRESS : 59 rue Bachri Ibrahimi, Quartier Gironde Residence chaimaa B,  MERS SULTAN  
+ [16/01/20 23:16:14] - ==> CUSTOMER_ZIPCODE : 20000  
+ [16/01/20 23:16:14] - ==> CUSTOMER_CITY : Casablanca  
+ [16/01/20 23:16:14] - ==> CUSTOMER_STATE : Casablanca-Settat  
+ [16/01/20 23:16:14] - ==> CUSTOMER_COUNTRY : Morocco  
+ [16/01/20 23:16:14] - ==> CUSTOMER_PHONE :    
+ [16/01/20 23:16:14] - ==> CUSTOMER_EMAIL : gmoail101@gmail.com  
+ [16/01/20 23:16:14] - ==> LANGUAGE : fr  
+ [16/01/20 23:16:14] - ==> FPAY_URLREPAUTO : https://www.benson-shoes.com/fpayApi/response.php  
+ [16/01/20 23:16:14] - ==> AMOUNT_CONVERSION : false  
+ [16/01/20 23:16:14] - ==> CONVERTED_AMOUNT :   
+ [16/01/20 23:16:14] - ==> CONVERSION_CURRENCY :   
+ [16/01/20 23:16:14] - ==> CUSTOMER_MESSAGE :   
+ [16/01/20 23:16:14] - ==> MESSAGE_SIGNATURE : B62FAEE839CAF7C7FD849A136B4B822E7067A20B8E580E88C590F2F880B011D9  
+ [16/01/20 23:16:40] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:16:40] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:16:40] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:16:40] - AMOUNT is null or empty  
+ [16/01/20 23:17:10] - <<<<==== Start sendData() ====>>>>  
+ [16/01/20 23:17:10] - AMOUNT_CONVERSION is null. default value will be set to false  
+ [16/01/20 23:17:10] - CUSTOMER_MESSAGE is not present  
+ [16/01/20 23:17:10] - ==> FPAY_MESSAGE_VERSION : 3  
+ [16/01/20 23:17:10] - ==> MERCHANT_ID : BenShoesTp+  
+ [16/01/20 23:17:10] - ==> AMOUNT : 220000  
+ [16/01/20 23:17:10] - ==> CURRENCY_CODE : 504  
+ [16/01/20 23:17:10] - ==> TRANSACTION_CAPTURE : true  
+ [16/01/20 23:17:10] - ==> TRANSACTION_TYPE : AUTH  
+ [16/01/20 23:17:10] - ==> TRANSACTION_MODE : MODE  
+ [16/01/20 23:17:10] - ==> CUSTOM_DATA : DATA  
+ [16/01/20 23:17:10] - ==> ORDER_ID : 5e20eef607ce2  
+ [16/01/20 23:17:10] - ==> ORDER_DETAILS :   
+ [16/01/20 23:17:10] - ==> MERCHANT_URL : https://www.benson-shoes.com/payment/success  
+ [16/01/20 23:17:10] - ==> CUSTOMER_LASTNAME : moa  
+ [16/01/20 23:17:10] - ==> CUSTOMER_FIRSTNAME : moa  
+ [16/01/20 23:17:10] - ==> CUSTOMER_ADDRESS : 59 rue Bachri Ibrahimi, Quartier Gironde Residence chaimaa B,  MERS SULTAN  
+ [16/01/20 23:17:10] - ==> CUSTOMER_ZIPCODE : 20000  
+ [16/01/20 23:17:10] - ==> CUSTOMER_CITY : Casablanca  
+ [16/01/20 23:17:10] - ==> CUSTOMER_STATE : Casablanca-Settat  
+ [16/01/20 23:17:10] - ==> CUSTOMER_COUNTRY : Morocco  
+ [16/01/20 23:17:10] - ==> CUSTOMER_PHONE :    
+ [16/01/20 23:17:10] - ==> CUSTOMER_EMAIL : gmoail101@gmail.com  
+ [16/01/20 23:17:10] - ==> LANGUAGE : fr  
+ [16/01/20 23:17:10] - ==> FPAY_URLREPAUTO : https://www.benson-shoes.com/fpayApi/response.php  
+ [16/01/20 23:17:10] - ==> AMOUNT_CONVERSION : false  
+ [16/01/20 23:17:10] - ==> CONVERTED_AMOUNT :   
+ [16/01/20 23:17:10] - ==> CONVERSION_CURRENCY :   
+ [16/01/20 23:17:10] - ==> CUSTOMER_MESSAGE :   
+ [16/01/20 23:17:10] - ==> MESSAGE_SIGNATURE : 51CFA3D75ECE9AFC607D0CA6025EC35247810A4A8A45F7A778A5A05483BDAEAC 
