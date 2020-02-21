@@ -87,6 +87,7 @@ Route::namespace ('Front')->group(function () {
     Route::post('/contact', 'ContactController@mail');
     Route::post('/newsletter/store', 'NewsletterController@store')->name("store_newsletter");
     Route::get('terms-of-use', 'HomeController@terms')->name('terms');
+
     Route::group(['middleware' => ['auth']], function () {
         Route::get('accounts', 'AccountsController@index')->name('accounts');
         Route::post('set-courier', 'CheckoutController@setCourier')->name('set.courier');
@@ -100,9 +101,10 @@ Route::namespace ('Front')->group(function () {
     Route::post('checkout', 'CheckoutController@store')->name('checkout.store');
     Route::get('checkout/execute', 'CheckoutController@execute')->name('checkout.execute');
     Route::get('checkout/cancel', 'CheckoutController@cancel')->name('checkout.cancel');
-    Route::get('checkout/success', 'CheckoutController@success')->name('checkout.success');
+    Route::post('checkout/success', 'CheckoutController@success')->name('checkout.success');
+    Route::post('checkout/fail', 'CheckoutController@fail')->name('checkout.fail');
     Route::get('checkout/payment', 'CheckoutController@payment')->name('checkout.payment');       
-    Route::get('payment/success', 'CheckoutController@successfpay')->name('payment.success');
+    Route::get('payment/success', 'CheckoutController@successfpay')->name('payment.success'); 
     Route::get('sendata',"CheckoutController@successfpay");
     Route::resource('cart', 'CartController');
     Route::get("category/{slug}", 'CategoryController@getCategory')->name('front.category.slug');

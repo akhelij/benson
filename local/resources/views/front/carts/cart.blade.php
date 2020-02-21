@@ -147,7 +147,7 @@ width:100%
                                         </form>
                                         <b>{{ $product->name }}</b>
                                         <br/>
-                                            Taille : @if($product->size == 0 ) --- @else {{ $product->size }} @endif
+                                            Taille : @if($product->options['size'] == 0 ) --- @else {{ $product->options['size'] }} @endif
                                         <br/>
                                         <span class="pull-right">{{ $product->price }} {{$currency}}</span>
                                     <span> Qté : <input type="number" class="quantity" min="1" name="quantity" product="{{$product->rowId}}" value="{{ $product->qty }}" style="width:35px"/></span>
@@ -574,8 +574,6 @@ width:100%
                 data:{quantity:quantity, ajax:ajax,"_token": "{{ csrf_token() }}","_method": "put"},
 
                 success:function(data){
-
-                    console.log(data.total);
                     $('.total').text(data.total);
                 }
 
@@ -597,6 +595,7 @@ width:100%
          })
          $(this).find('.checkbox').prop('checked', true);
      })
+
      $('.choice').click(function(){
         $(".choice").each(function(){
              $(this).attr('class', 'choice');
@@ -604,7 +603,7 @@ width:100%
          $(this).attr('class','choice checked');
          if($(this).attr('choice') == "paiement-a-la-livraison")
          {
-             $('.paiement-a-la-livraison').show(500);
+            $('.paiement-a-la-livraison').show(500);
          }else{
             $('.paiement-a-la-livraison').hide(); 
          }

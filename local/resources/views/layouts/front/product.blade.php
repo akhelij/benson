@@ -333,11 +333,9 @@
              
          </script>
          @endif
-         <script type="text/javascript">
-          
+         <script type="text/javascript">          
 
-            $(".btn-submit").click(function(e){               
-                console.log('start');
+            $(".btn-submit").click(function(e){    
                 e.preventDefault();
                 var quantity = $("input[name=quantity]").val();
 
@@ -346,7 +344,6 @@
                 var size = $("input[name=size]").val();
 
                 var ajax = true;
-               
                 
                      $.ajax({
 
@@ -357,8 +354,7 @@
                         data:{quantity:quantity, product:product, size:size, ajax:ajax,"_token": "{{ csrf_token() }}"},
 
                         success:function(data){
-
-                            console.log(data.success);
+                            console.log(data);
                             $('.panier-success').show("500").delay("2000").hide("500");
                             $('.goToCart').show();
                         }

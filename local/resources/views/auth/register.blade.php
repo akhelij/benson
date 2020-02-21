@@ -92,23 +92,22 @@
         <!-- Register succeded -->  
         <div class="col-md-12" style="text-align:center">
             <h2>Inscription réussie ! 🎉</h2>
-                <p>Pour vous souhaiter la bienvenue un code de reduction vous à été envoyé par mail. </p>
-            <hr>
-                <h3>Une derniere étape pour finaliser votre inscription</h3>
-                <p>Veuillez vous rendre sur votre boite mail afin de confirmer votre inscription. </p>
-            
-                <div class="row">
-                    <hr>
-                    @if(!empty(session('panier')) && !collect(session('panier'))->isEmpty())
-                        <a href="{{route('cart.index')}}" class="pull-right">Se rendre au panier</a>
-                    @endif
-                        <a href="{{route('catalog')}}" class="pull-left">Continuer votre achat</a>
-                </div>
+            <p>Pour vous souhaiter la bienvenue un code de reduction vous à été envoyé par mail. </p>
+             <hr>
+            <h3>Une derniere étape pour finaliser votre inscription</h3>
+            <p>Veuillez vous rendre sur votre boite mail afin de confirmer votre inscription. </p>
+        
+            <div class="row">
+                <hr>
+                @if(!empty(session('panier')) && !collect(session('panier'))->isEmpty())
+                    <a href="{{route('cart.index')}}" class="pull-right">Se rendre au panier</a>
+                @endif
+                    <a href="{{route('catalog')}}" class="pull-left">Continuer votre achat</a>
             </div>
-
-        </div> 
-        @endif
+        </div>
         <!-- Register succeded -->
+        @endif
+        
         </div>
 @endsection
 

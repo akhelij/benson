@@ -25,9 +25,9 @@
 	
 		$orgClientId  =   "600001258";
   		$orgAmount = $DATA["AMOUNT"];
-  		$orgOkUrl =  "https://localhost/benson/cmi/Ok-Success.php";
-  		$orgFailUrl = "https://localhost/benson/cmi/Ok-Fail.php";
-  		$shopurl = "https://localhost/benson";
+  		$orgOkUrl =  route("checkout.success");
+  		$orgFailUrl = route("checkout.fail");
+  		$shopurl = route("checkout.cancel");
   		$orgTransactionType = "PreAuth";
   		$orgRnd =  microtime();
   		$orgCallbackUrl = "https://localhost/benson/cmi/callback.php";
@@ -46,7 +46,6 @@
 				</tr>
 
 			</table>
-
 				<input type="text" name="clientid" value="<?php echo $orgClientId ?>"> 
 				<input type="text" name="amount" value="<?php echo $orgAmount ?>">
 				<input type="text" name="okUrl" value="<?php echo $orgOkUrl ?>">

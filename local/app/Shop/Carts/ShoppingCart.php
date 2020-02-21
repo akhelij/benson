@@ -5,6 +5,7 @@ namespace App\Shop\Carts;
 use Gloudemans\Shoppingcart\Cart;
 use Gloudemans\Shoppingcart\CartItem;
 use Illuminate\Support\Facades\Session;
+
 class ShoppingCart extends Cart
 {
     public static $defaultCurrency;
@@ -22,8 +23,6 @@ class ShoppingCart extends Cart
             self::$defaultCurrency = Session::get('currency');
         else
             self::$defaultCurrency = config('cart.currency');
-
-
     }
 
     public function getSession()
@@ -54,7 +53,6 @@ class ShoppingCart extends Cart
             return $total + ($cartItem->qty * $cartItem->priceTax);
             
         }, 0);
-
         
         $grandTotal = $total + $shipping;
 
@@ -73,9 +71,9 @@ class ShoppingCart extends Cart
                     $currency_diff = explode("}",explode(":",$currency_diff)[2])[0];
                 }else{
                     Session::get('currency',"MAD");
-                }
-                
+                }                
             }
+            
             return number_format($grandTotal * floatval(str_replace(",",".",$currency_diff)), $decimals, $decimalPoint, $thousandSeparator) ;
            
         }

@@ -104,7 +104,6 @@ class CartController extends Controller
 
             $productRepo = new ProductRepository(new Product());
             $product = $productRepo->findProductById($item->id);
-
             $item->product = $this->transformProduct($product);
             $item->cover = $product->cover;
             return $item;
@@ -113,35 +112,36 @@ class CartController extends Controller
 
         $courier = $this->courierRepo->findCourierById(request()->session()->get('courierId', 1));
         $shippingFee = $this->cartRepo->getShippingFee($courier);
-       if(Auth::check()){
-        $customer = $this->customerRepo->findCustomerById(Auth::id());
-
-        $this->courierId = request()->session()->get('courierId', 1);
-        $courier = $this->courierRepo->findCourierById($this->courierId);
-
-        $shippingCost = $this->cartRepo->getShippingFee($courier);
-
-        $addressId = request()->session()->get('addressId', 1);
-        $paymentId = request()->session()->get('paymentId', 1);
         
-        return view('front.carts.cart', [
-            'customer' => $customer,
-            'addresses' => $customer->addresses()->get(),
-            'products' => $this->cartRepo->getCartItems(),
-            'subtotal' => $this->cartRepo->getSubTotal(),
-            'shipping' => $shippingCost,
-            'shippingFee' => $shippingFee,
-            'tax' => $this->cartRepo->getTax(),
-            'total' => $this->cartRepo->getTotal(0, $shippingCost, null, true),
-            'couriers' => $this->courierRepo->listCouriers(),
-            'selectedCourier' => $this->courierId,
-            'selectedAddress' => $addressId,
-            'selectedPayment' => $paymentId,
-            'payments' => $this->paymentRepo->listPaymentMethods(),
-            'currency' => $currency,
-            'currency_diff' => $this->currency_diff,
-        ]);
-       }else{
+        if(Auth::check()){
+            $customer = $this->customerRepo->findCustomerById(Auth::id());
+
+            $this->courierId = request()->session()->get('courierId', 1);
+            $courier = $this->courierRepo->findCourierById($this->courierId);
+
+            $shippingCost = $this->cartRepo->getShippingFee($courier);
+
+            $addressId = request()->session()->get('addressId', 1);
+            $paymentId = request()->session()->get('paymentId', 1);
+
+            return view('front.carts.cart', [
+                'customer' => $customer,
+                'addresses' => $customer->addresses()->get(),
+                'products' => $this->cartRepo->getCartItems(),
+                'subtotal' => $this->cartRepo->getSubTotal(),
+                'shipping' => $shippingCost,
+                'shippingFee' => $shippingFee,
+                'tax' => $this->cartRepo->getTax(),
+                'total' => $this->cartRepo->getTotal(0, $shippingCost, null, true),
+                'couriers' => $this->courierRepo->listCouriers(),
+                'selectedCourier' => $this->courierId,
+                'selectedAddress' => $addressId,
+                'selectedPayment' => $paymentId,
+                'payments' => $this->paymentRepo->listPaymentMethods(),
+                'currency' => $currency,
+                'currency_diff' => $this->currency_diff,
+            ]);
+        }else{
         return view('front.carts.cart', [
             'products' => $cartProducts,
             'subtotal' => $this->cartRepo->getSubTotal(),
@@ -163,14 +163,16 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(AddToCartRequest $request)
-    {
+    {        
+        
         $product = $this->productRepo->findProductById($request->input('product'));
-        $size = $request->input('size');
-        $this->cartRepo->addToCart($product, $size, $request->input('quantity'));
+        $size = $request->input('size');    
+        $quantity = $request->input('quantity');
+        $this->cartRepo->addToCart($product, $size, $quantity);
+        
         if($request->input('ajax')!==null){
             return response()->json(['success'=>'Article ajouté au panier']);
-        }else{
-            
+        }else{            
             $request->session()->flash('message', 'Article ajouté au panier avec succès');
             return redirect()->route('cart.index');
         }
@@ -197,13 +199,12 @@ class CartController extends Controller
             $this->cartRepo->updateQuantityInCart($id, $request->input('quantity'));
             $total = $this->cartRepo->getTotal(2, 0, null, true);
             return response()->json(["total"=> $total]);
-        }else{
-       
+        }else{       
             $this->cartRepo->updateQuantityInCart($id, $request->input('quantity'));
-
             request()->session()->flash('message', 'Update cart successful');
             return redirect()->route('cart.index');
         }
+        
     }
 
     /**

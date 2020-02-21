@@ -32,10 +32,10 @@ class CartRepository extends BaseRepository implements CartRepositoryInterface
      * @param array $options
      * @return CartItem
      */
-    public function addToCart(Product $product, float $size, int $int, $options = []) : CartItem
+    public function addToCart(Product $product, float $size, int $quantity, $options = []) : CartItem
     {
-        
-        return $this->model->add($product, $size,$int, $options);
+        return $this->model->add($product->id, $product->name, $quantity,$product->price, ["size"=>$size]);
+        dd("test");
     }
 
     /**

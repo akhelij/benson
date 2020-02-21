@@ -192,6 +192,16 @@ class CheckoutController extends Controller
     {
         return view('front.checkout-cancel', ['data' => $request->all()]);
     }
+    /**
+     * Fail page
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function fail(Request $request)
+    {
+        return view('front.checkout-fail', ['data' => $request->all()]);
+    }
 
     /**
      * Success page
@@ -283,7 +293,7 @@ class CheckoutController extends Controller
                 ->each(function ($item) use ($order) {
                     $product = $this->productRepo->find($item->id);
                     $orderDetailRepo = new OrderProductRepository(new OrderProduct);
-                    $orderDetailRepo->createOrderDetail($order, $product, $item->size, $item->qty);
+                    $orderDetailRepo->createOrderDetail($order, $product, $item->options["size"], $item->qty);
 
                     // $this->updateStock($order, $product, $item->size, $item->qty);
 
@@ -294,7 +304,7 @@ class CheckoutController extends Controller
                 ->each(function ($item) use ($order) {
                     $product = $this->productRepo->find($item->id);
                     $orderDetailRepo = new OrderProductRepository(new OrderProduct);
-                    $orderDetailRepo->createOrderDetail($order, $product, $item->size, $item->qty);
+                    $orderDetailRepo->createOrderDetail($order, $product, $item->options["size"], $item->qty);
                 });
         }
         $data = [
