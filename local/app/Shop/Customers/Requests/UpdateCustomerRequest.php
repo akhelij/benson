@@ -25,7 +25,7 @@ class UpdateCustomerRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required'],
+            'name' => ["required|string|regex:/^([a-zA-Z0-9' -])*$/u|max:255"],
             'email' => ['required', 'email', Rule::unique('customers')->ignore($this->segment(3))]
         ];
     }

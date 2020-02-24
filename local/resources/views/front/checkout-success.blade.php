@@ -45,8 +45,9 @@
     <div class="container product-in-cart-list">
         <div class="row">
             <div class="col-md-12">
-                @if($retrievedHash == $actualHash)	
                 <div class="col-md-3"></div>
+                @if($retrievedHash == $actualHash)	
+               
                 <!-- Order succeded -->  
                 <div class="col-md-6" >
                     <div class="text-center">

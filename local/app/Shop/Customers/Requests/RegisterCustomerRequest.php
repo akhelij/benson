@@ -14,7 +14,7 @@ class RegisterCustomerRequest extends BaseFormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
+            'name' => "required|string|regex:/^([a-zA-Z0-9' -])*$/u|max:255",
             'email' => 'required|string|email|max:255|unique:customers',
             'password' => 'required|string|min:6|confirmed',
         ];
