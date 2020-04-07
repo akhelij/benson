@@ -128,12 +128,12 @@ Le prix est exigible à la commande.
 </p>
 <p>
 Les paiements seront effectués par carte bancaire; ils seront réalisés par le biais du système
-sécurisé de Fast Payment qui utilise le protocole SSL (Secure Socket Layer) de telle sorte que
+sécurisé de CMI qui utilise le protocole SSL (Secure Socket Layer) de telle sorte que
 les informations transmises sont cryptées par un logiciel et qu’aucun tiers ne peut en
 prendre connaissance au cours du transport sur le réseau.
 </p>
 <p>
-Le système de sécurisation des paiements électroniques mis en place par Fast Payment
+Le système de sécurisation des paiements électroniques mis en place par CMI
 (Premier opérateur de paiement certifié PCI DSS de niveau 1 au Maroc, le plus haut niveau
 </p>
 <p>
@@ -228,28 +228,27 @@ comme preuve des communications, commandes, paiements et transactions intervenus
 entre les parties.
 </p>
 <h4>Paiement sécurisé par carte bancaire</h4>
-<p>Le paiement en ligne sur notre site est sécurisé par la plateforme de paiement en ligne FPAY de la
-société FAST PAYMENT SA.
+<p>Le paiement en ligne sur notre site est sécurisé par la plateforme de paiement en ligne CMI.
 </p>
 <p>
-Le système de sécurisation des paiements électroniques mis en place par FAST PAYMENT (1er
+Le système de sécurisation des paiements électroniques mis en place par CMI (1er
 opérateur de paiement certifié PCI DSS de niveau 1 au Maroc, le plus haut niveau de sécurité des
 transactions par carte bancaire) est certifié par le Centre Monétique Interbancaire (CMI), par les
 banques marocaines ainsi que par les organismes internationaux VISA / MASTERCARD.
 </p>
 <p>
-La plate-forme FPAY vous garantit le traitement, en toute confidentialité, de vos données bancaires
+La plate-forme CMI vous garantit le traitement, en toute confidentialité, de vos données bancaires
 et personnelles en conformité avec les standards de sécurité en vigueur, ainsi que la loi 09-08
 relative à la protection des données à caractère personnel.
 </p>
 <p>
-La connexion entre le site marchand et la plateforme FPAY est sécurisée par le protocole TLS 1.2, le
-plus haut niveau de sécurité de cryptage des données échangées sur Internet. FPAY utilise
+La connexion entre le site marchand et la plateforme CMI est sécurisée par le protocole TLS 1.2, le
+plus haut niveau de sécurité de cryptage des données échangées sur Internet. CMI utilise
 notamment un certificat de sécurité EV (Extended Value) que vous pouvez identifier à travers la
 barre verte dans le champ URL de votre navigateur.
 </p>
 <p>
-Dans le cas où votre banque fourni ce service, FPAY utilise la double authentification 3-D Secure
+Dans le cas où votre banque fourni ce service, CMI utilise la double authentification 3-D Secure
 (Verified By Visa ou MasterCard SecureCode) afin de sécuriser au maximum vos achats sur Internet. 
 </p>
 

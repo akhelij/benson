@@ -15,6 +15,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('jump', require('jump.js'));
 Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({

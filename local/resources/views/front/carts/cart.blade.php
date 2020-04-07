@@ -153,7 +153,8 @@ width:100%
                                     <span> Qté : <input type="number" class="quantity" min="1" name="quantity" product="{{$product->rowId}}" value="{{ $product->qty }}" style="width:35px"/></span>
                                     </div>
                                     
-                                    <!--  <form action="{{ route('cart.update', $product->rowId) }}" class="form-inline" method="post">
+                                    <!--  
+                                        <form action="{{ route('cart.update', $product->rowId) }}" class="form-inline" method="post">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="put">
                                             <div class="form-group">
@@ -162,17 +163,18 @@ width:100%
                                             <button class="btn btn-default btn-block">Update</button>
                                         </form>
                                     
-                                    @if(isset($shippingFee) && $shippingFee != 0)
-                                    <tr>
-                                        <td class="bg-warning">Shipping</td>
-                                        <td class="bg-warning"></td>
-                                        <td class="bg-warning"></td>
-                                        <td class="bg-warning"></td>
-                                        <td class="bg-warning"></td>
-                                        <td class="bg-warning">{{$currency}} {{ $shippingFee }}</td>
-                                    </tr>
-                                    @endif
-                                -->
+                                        @if(isset($shippingFee) && $shippingFee != 0)
+                                        <tr>
+                                            <td class="bg-warning">Shipping</td>
+                                            <td class="bg-warning"></td>
+                                            <td class="bg-warning"></td>
+                                            <td class="bg-warning"></td>
+                                            <td class="bg-warning"></td>
+                                            <td class="bg-warning">{{$currency}} {{ $shippingFee }}</td>
+                                        </tr>
+                                        @endif
+                                    -->
+
                                     </div>
                             @endforeach
                             <div class="col-md-12">
@@ -210,10 +212,9 @@ width:100%
                            <p><b>Confirmation de commande</b><br/>
                                 Passez votre commande et recevez un e-mail de confirmation.
                            </p>
-                        </div>
-                       
+                        </div>                       
                     </div>
-                -->
+                    -->
                     <div class="col-md-8" >
                         <div class="col-md-12" >
                                 <!--<h2><b> Commander </b></h2>                                
@@ -236,6 +237,7 @@ width:100%
                                         
                                         </div>
                                     </div>
+                                    <!--
                                     <div class="choice">
                                         <div class="col-md-12">
                                             
@@ -246,7 +248,7 @@ width:100%
                                             
                                         </div>
                                     </div>
-                                    
+                                    -->
                                     <div class="choice" choice = "paiement-a-la-livraison">
                                             <div class="col-md-12">
                                             

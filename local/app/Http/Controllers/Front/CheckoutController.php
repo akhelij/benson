@@ -399,14 +399,7 @@ class CheckoutController extends Controller
         $passiveOrder = false;
         //On passive order validation of the form sent
         if($request->input("passiveOrder") !== null && $request->input("passiveOrder") == 0){
-            $validatedData = $request->validate([
-                'passive_name'     => ['required',"regex:/^([a-zA-Z0-9' -])*$/u",'max:255'],
-                'passive_email'    => ['required', 'email'],
-                'passive_phone' => ['required'],
-                'passive_city' => ['required',"regex:/^([a-zA-Z0-9' -])*$/u",'max:255'],
-                'passive_country' => ['required',"regex:/^([a-zA-Z0-9' -])*$/u",'max:255'],
-                'passive_address' => ['required',"regex:/^([a-zA-Z0-9' -])*$/u"]
-            ]);
+           
             $passiveOrder = true;
             $passive_name = htmlspecialchars(trim(preg_replace('/\s\s+/', ' ',$request->input("passive_name"))));
             $passive_city=trim(preg_replace('/\s\s+/', ' ',$request->input("passive_city")));

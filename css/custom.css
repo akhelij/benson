@@ -1,0 +1,10 @@
+html {
+    font-family: "antic-didone", serif !important;
+    scroll-behavior: smooth;
+  }
+
+
+#section9 h1, #section9 h2, #section9 p{
+  color:#fefefe !important;
+}
+
