@@ -54,14 +54,8 @@ class CategoryController extends Controller
         $repo = new CategoryRepository($category);
         $currency = "MAD";
         $currency_diff = 1;
-        if (Session::get('currency') == "USD" || Session::get('currency') == "EUR") {
-            $currency_diff = file_get_contents('http://free.currencyconverterapi.com/api/v5/convert?q=MAD_' . Session::get('currency') . '&compact=y');
-            $currency_diff = explode("}", explode(":", $currency_diff)[2])[0];
-            $currency = Session::get('currency');
 
-        } else {
-            Session::get('currency', "MAD");
-        }
+        Session::get('currency', "MAD");        
 
         return view('front.categories.category', [
             'category' => $category,

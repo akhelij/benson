@@ -15,8 +15,7 @@
     <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css') }}">
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}" />
-    <!-- DataTable -->
-    <link rel="stylesheet" href="{{ asset('https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css') }}">
+   
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/AdminLTE.min.css') }}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -68,7 +67,6 @@
 
     <link  sizes="57x57" href="{{ asset('favicons/logo2.png')}}">
 
-    <link rel="manifest" href="{{ asset('favicons/manifest.json')}}">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{ asset('favicons/ms-icon-144x144.png')}}">
     <meta name="theme-color" content="#ffffff">

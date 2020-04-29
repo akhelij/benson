@@ -10,9 +10,9 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container" style="margin-top:17%">
             
-                @include('front.products.product-list', ['products' => $products,'currency' => $currency,'currency_diff' => $currency_diff])
+        @include('front.products.product-list', ['products' => $products,'currency' => $currency,'currency_diff' => $currency_diff])
            
     </div>
 @endsection

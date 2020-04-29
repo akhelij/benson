@@ -48,7 +48,7 @@
   #sectionEmpty {padding-top:50px;height:55em; }
   #section4 {color: #ffffff;}
   .paragraphe {left: 857.6px;  top: 111.225px; width: 70%; margin:auto}
-  .navbar{background:url('bgs/green banner.jpg') no-repeat center; background-size : 100%}
+  .navbar{background:url('/bgs/green banner.jpg') no-repeat center; background-size : 100% 100%}
   .Gcontainer iframe,
   .Gcontainer object,
   .Gcontainer embed { width: 100%; }
@@ -57,102 +57,103 @@
 </head>
 
 <body class="boxed"  style="background: #f8f8f8;overflow-x:hidden">
-    <div class="container" style="background: #f8f8f8">
-    
+    <div class="container" style="background: #f8f8f8">   
 
-    <section>
-        
-        <header >
-            
-             <nav class="navbar navbar-inverse navbar-fixed-top">
-                <div class=" container ">
-                  <div class="navbar-header">
-                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>                        
-                    </button>
-                    <a class="navbar-brand" href="#"><img src="{{asset('bgs/LOGO.png')}}" alt="" srcset="" style="z-index:100"></a>
-                  </div>
-                  <div style="float: right;">
-                    <div class="collapse navbar-collapse" id="myNavbar">
-                      <ul class="nav navbar-nav">
-                        <li data-menuanchor="second" id="s2"><a href="/benson/#second">L'Esprit</a></li>
-                        <li data-menuanchor="third" id="s3"><a href="/benson/#third">La Technique</a></li>
-                        <li data-menuanchor="fourth" id="s4"><a href="/benson/#fourth">Le Design</a></li>
-                        <li data-menuanchor="fifth" id="s5"><a href="/benson/#fifth">L'entretien</a></li>         
-                        <li data-menuanchor="sixth" id="s6"><a href="/benson/#sixth">Le Savoir-Faire</a></li>
-                        <li data-menuanchor="seventh" id="s7"><a href="/benson/#seventh">Contact</a></li>
-                        <li data-menuanchor="eighth" id="s8"><a href="/benson/#eighth">Magasins Benson</a></li>
-                        <li id="s9"><a href="category">Voir la Collection & Commander</a></li>
-                        
-                      </ul>
+      <section  style="background: url('/bgs/green banner.jpg') no-repeat center;
+      background-size: 100%;">
+          
+          <header>            
+              <nav class="navbar navbar-inverse navbar-fixed-top">
+                  <div class=" container ">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>                        
+                      </button>
+                      <a class="navbar-brand" href="#"><img src="{{asset('/bgs/LOGO.png')}}" alt="" srcset="" style="z-index:100"></a>
                     </div>
-                    <div  id="section9" style="display:none;color:#ffffff; z-index: -1;background: transparent url('bgs/green banner.jpg') no-repeat ;background-size:100% 100%;position:absolute;top:100%;left:0%;width:100%;height:372px">
-                      <div style="padding:5%">
-                      <div class="col-md-3">
-                          <div class="paragraphe paragraphe-color-white">
-                              <h2>Collection</h2>
-                              <br>
-                            <ul class="sub-menu">
-                                <li> > Richelieus</li>
-                                <li> > Boots & Bottines</li>
-                                <li> > Derbys</li>
-                                <li> > Boucles</li>
-                                <li> > Mocassins</li>
-                                <li> > Sneakers</li>
-                            </ul>
-                          </div>
+                    <div style="float: right;">
+                      <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav">
+                          <li data-menuanchor="second" id="s2"><a href="/#second">L'Esprit</a></li>
+                          <li data-menuanchor="third" id="s3"><a href="/#third">La Technique</a></li>
+                          <li data-menuanchor="fourth" id="s4"><a href="/#fourth">Le Design</a></li>
+                          <li data-menuanchor="fifth" id="s5"><a href="/#fifth">L'entretien</a></li>         
+                          <li data-menuanchor="sixth" id="s6"><a href="/#sixth">Le Savoir-Faire</a></li>
+                          <li data-menuanchor="seventh" id="s7"><a href="/#seventh">Contact</a></li>
+                          <li data-menuanchor="eighth" id="s8"><a href="/#eighth">Magasins Benson</a></li>
+                          <li id="s9"><a href="/category">Voir la Collection & Commander</a></li>
+                          
+                        </ul>
                       </div>
-                      <div class="col-md-3 text-center" >
-                        <div style="background-image:url('bgs/saphir-main-img-01-buttonu46248-fr.jpg')" >
-                          <div style="padding:  10%">
+                      <div  id="section9" style="display:none;color:#ffffff; z-index: -1;background: transparent url('/bgs/green banner.jpg') no-repeat ;background-size:100% 100%;position:absolute;top:100%;left:0%;width:100%;height:372px">
+                        <div style="padding:5%">
+                        <div class="col-md-3">
+                          <div class="paragraphe paragraphe-color-white">
+                            <h2>Collection</h2>
+                            <br>
+                          <ul class="sub-menu">
+                            <li><a href="{{route('front.category.slug','richelieus')}}"> > Richelieus      </a></li>
+                            <li><a href="{{route('front.category.slug','bottes-bottines')}}"> > Boots & Bottines</a></li>
+                            <li><a href="{{route('front.category.slug','derbys')}}"> > Derbys          </a></li>
+                            <li><a href="{{route('front.category.slug','boucles')}}"> > Boucles         </a></li>
+                            <li><a href="{{route('front.category.slug','mocassins')}}"> > Mocassins       </a></li>
+                            <li><a href="{{route('front.category.slug','sneakers')}}"> > Sneakers        </a></li>
+                          </ul>
+                          </div>
+                        </div>
+                        <div class="col-md-3 text-center" >
+                        <div style="background-image:url('/bgs/saphir-main-img-01-buttonu46248-fr.jpg')" >
+                          <a href="{{route('front.category.slug','accessoires')}}">
+                            <div style="padding:  10%">
                             <h1>Accessoires</h1>
                             <div class="paragraphe paragraphe-color-white" >
                               <hr>
                             <p> Retrouvez les accessoires et les produits d’entretien pour vos chaussures en magasin !</p>
                             </div>
+                            </div>
+                          </a>
+                        </div>
+                        </div>
+                        <div class="col-md-3  text-center">
+                          <div style="background-image:url('/bgs/60216643_2288738204733767_5510413414083592192_o-buttonu26889-fr.jpg')">
+                            <a href="#">
+                              <div style="padding:10%">
+                              <h1>Entretien</h1>
+                                <div class="paragraphe paragraphe-color-white">
+                                <hr/>
+                                <p> Retrouvez les accessoires et les produits d’entretien pour vos chaussures en magasin !</p>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                        <div class="col-md-3  text-center">
+                          <div style="background-image:url('/bgs/untitled-1.jpg')">
+                            <a href="{{route('front.category.slug','nouvelle-arrivage')}}">
+                              <div style="padding:9%">
+                              <h1>Nouvelle Collection</h1>
+                              <div class="paragraphe paragraphe-color-white">
+                              <hr/>
+                                <p> Une Collection pour un automne toute en style</p>
+                              </div>
+                              </div>
+                            </a>
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-3  text-center">
-                          <div style="background-image:url('bgs/60216643_2288738204733767_5510413414083592192_o-buttonu26889-fr.jpg')">
-                            <div style="padding:10%">
-                              <h1>Entretien</h1>
-                              <div class="paragraphe paragraphe-color-white">
-                                <hr/>
-                              <p> Retrouvez les accessoires et les produits d’entretien pour vos chaussures en magasin !</p>
-                              </div>
-                            </div>
-                          </div>
                       </div>
-                      <div class="col-md-3  text-center">
-                          <div style="background-image:url('bgs/untitled-1.jpg')">
-                            <div style="padding:9%">
-                              <h1>Nouvelle Collection</h1>
-                              <div class="paragraphe paragraphe-color-white">
-                                <hr/>
-                              <p> Une Collection pour un automne toute en style</p>
-                              </div>
-                            </div>
-                          </div>
-                      </div>
-                    </div>
                     </div>
                   </div>
-                </div>
-              </nav> 
-        </header>
-    </section>
-    @yield('content')
+                </nav> 
+          </header>
+      </section>
 
-   
-
-    
-    
+      @yield('content')
     
     </div>
-  </div>
+
     @include('layouts.front.footer')
        <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127885993-1"></script>

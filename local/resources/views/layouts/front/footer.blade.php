@@ -45,17 +45,17 @@
                     <h3 style="color:white"> SERVICE CLIENTS </h3>
                     <ul>
                             <li> 
-                                    +212 5229-49725
+                                <a href="tel:+212522949725">+212 5229-49725</a>
                             </li>
                             <li>
-                                    +212 6600-80505
+                                <a href="tel:+212660080505">  +212 6600-80505</a>
                             </li>
                             <li>
-                                    shop@benson-shoes.com
+                                <a href="mailto:+shop@benson-shoes.com"> shop@benson-shoes.com</a>
                             </li>
                     </ul>
            
-                    <h3 style="color:white;margin-top: 15%"> SERVICE CLIENTS </h3>
+                    <h3 style="color:white;margin-top: 15%"> HORAIRES </h3>
                     <ul>
                             <li> 
                                     LUN-SAM: du 09:00 à 20:00

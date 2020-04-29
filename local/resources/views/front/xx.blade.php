@@ -22,7 +22,7 @@
   #section7 {padding-top:50px;height:878px; }
   #section8 {padding-top:50px;height:878px; }
   .paragraphe {left: 857.6px;  top: 111.225px; width: 70%; margin:auto}
-  .navbar{background:url('bgs/green banner.jpg') no-repeat center; background-size : 100%}
+  .navbar{background:url('/bgs/green banner.jpg') no-repeat center; background-size : 100%}
   .Gcontainer iframe,
   .Gcontainer object,
   .Gcontainer embed {
@@ -43,7 +43,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#"><img src="bgs/LOGO.png" alt="" srcset="" style="z-index:100"></a>
+      <a class="navbar-brand" href="#"><img src="/bgs/LOGO.png" alt="" srcset="" style="z-index:100"></a>
     </div>
     <div style="float: right;">
       <div class="collapse navbar-collapse" id="myNavbar">
@@ -59,7 +59,7 @@
           
         </ul>
       </div>
-      <div  id="section9" style="display:none;color:#ffffff; z-index: -1;background: transparent url('bgs/green banner.jpg') no-repeat ;background-size:100% 100%;position:absolute;top:100%;left:0%;width:100%;height:372px">
+      <div  id="section9" style="display:none;color:#ffffff; z-index: -1;background: transparent url('/bgs/green banner.jpg') no-repeat ;background-size:100% 100%;position:absolute;top:100%;left:0%;width:100%;height:372px">
         <div style="padding:5%">
         <div class="col-md-3">
             <div class="paragraphe">
@@ -76,7 +76,7 @@
             </div>
         </div>
         <div class="col-md-3 text-center" >
-          <div style="background-image:url('bgs/saphir-main-img-01-buttonu46248-fr.jpg')" >
+          <div style="background-image:url('/bgs/saphir-main-img-01-buttonu46248-fr.jpg')" >
             <div style="padding:  10%">
               <h1>Accessoires</h1>
               <div class="paragraphe">
@@ -87,7 +87,7 @@
           </div>
         </div>
         <div class="col-md-3  text-center">
-            <div style="background-image:url('bgs/60216643_2288738204733767_5510413414083592192_o-buttonu26889-fr.jpg')">
+            <div style="background-image:url('/bgs/60216643_2288738204733767_5510413414083592192_o-buttonu26889-fr.jpg')">
               <div style="padding:10%">
                 <h1>Entretien</h1>
                 <div class="paragraphe">
@@ -98,7 +98,7 @@
             </div>
         </div>
         <div class="col-md-3  text-center">
-            <div style="background-image:url('bgs/untitled-1.jpg')">
+            <div style="background-image:url('/bgs/untitled-1.jpg')">
               <div style="padding:9%">
                 <h1>Nouvelle Collection</h1>
                 <div class="paragraphe">
@@ -116,9 +116,9 @@
 <div style="margin-top:8%">
   <div class="col-lg-6 col-sm-12 left " style="padding: 0;">
       <div id="section1" class="container-fluid">
-        <img class="position_content right" id="u1127_img" src="bgs/88c52c060264c2820e656aaea023afdc.png" alt="" width="1381" height="878" style="margin: -5% -0% 3% 15%">                
+        <img class="position_content right" id="u1127_img" src="/bgs/88c52c060264c2820e656aaea023afdc.png" alt="" width="1381" height="878" style="margin: -5% -0% 3% 15%">                
       </div>
-      <div id="section2" class="container-fluid text-center" style="background: transparent url('bgs/oxford-derby-e1394474071111-crop-u1149.png') no-repeat right center;">
+      <div id="section2" class="container-fluid text-center" style="background: transparent url('/bgs/oxford-derby-e1394474071111-crop-u1149.png') no-repeat right center;">
       <div class="paragraphe text-justify" style="margin-top:10%">
         <h1> Expérience d'un demi siècle</h1>
         <p>
@@ -134,7 +134,7 @@
         </p>
       </div>      
       </div>
-      <div id="section3" class="container-fluid" style="background: transparent url('bgs/index1,1-crop-u1417.jpg') no-repeat right center;">
+      <div id="section3" class="container-fluid" style="background: transparent url('/bgs/index1,1-crop-u1417.jpg') no-repeat right center;">
         <div class="paragraphe text-justify" style="margin-top:10%;padding:5%">
           <h1>La Technique</h1>
           <div  style="margin-top:5%;background-color: #ffffff96; ">
@@ -149,9 +149,9 @@
         
         </div>
       </div>
-      <div id="section4" class="container-fluid text-center" style="background: transparent url('bgs/green banner.jpg') no-repeat ;background-size:100% 100%">
+      <div id="section4" class="container-fluid text-center" style="background: transparent url('/bgs/green banner.jpg') no-repeat ;background-size:100% 100%">
         <h1 class="pull-right" style="margin-right: -1.5%;">Le De</h1>
-        <img class="position_content"  src="bgs/goodyear welted - blanc.png"  style="margin: 15% 0% 5% 0%"> 
+        <img class="position_content"  src="/bgs/goodyear welted - blanc.png"  style="margin: 15% 0% 5% 0%"> 
        
         <div class="paragraphe text-justify">
             <h1 style="margin:15%">BENSON SHOES</h1> 
@@ -164,7 +164,7 @@
 
        </div>
       </div>
-      <div id="section5" class="container-fluid"  style="background: transparent url('bgs/accessoire-entretenir-chaussure-homme-cuir copie-crop-u1674.jpg') no-repeat right bottom ;">
+      <div id="section5" class="container-fluid"  style="background: transparent url('/bgs/accessoire-entretenir-chaussure-homme-cuir copie-crop-u1674.jpg') no-repeat right bottom ;">
         
         <div class="paragraphe text-justify">
           <h1 style="margin-top:15% "> L'Entretien</h1>
@@ -197,13 +197,13 @@
           </div>
         </div>
 
-        <div id="section8"  class="container-fluid"  style="background: transparent url('bgs/left side map.jpg') no-repeat right center ;">
+        <div id="section8"  class="container-fluid"  style="background: transparent url('/bgs/left side map.jpg') no-repeat right center ;">
 
         </div>
   </div>
   
   <div class="col-lg-6 col-sm-12 right p-0 m-0 right-side" style="padding: 0;position: fixed; bottom: 0px; left:50%; overflow:auto;margin-top:-10%">
-    <div id="section8"  class="container-fluid"  style="background: transparent url('bgs/right side map.jpg') no-repeat left center ;">
+    <div id="section8"  class="container-fluid"  style="background: transparent url('/bgs/right side map.jpg') no-repeat left center ;">
 
     </div>
     <div id="section7">
@@ -251,7 +251,7 @@
            <iframe style="width:100%" height="878" src="https://www.youtube.com/embed/1RUInzHz544" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
           </div>
         </div>
-    <div id="section5" class="container-fluid"  style="background: transparent url('bgs/accessoire-entretenir-chaussure-homme-cuir copie-crop-u1696.jpg') no-repeat left bottom ;">
+    <div id="section5" class="container-fluid"  style="background: transparent url('/bgs/accessoire-entretenir-chaussure-homme-cuir copie-crop-u1696.jpg') no-repeat left bottom ;">
       <div class="paragraphe" style="background-color: #ffffff96;overflow:scroll;height:70%;padding:5%;margin-top:10%">
           <p>Certes, '' l'expérience instruit plus sagement que le conseil '', mais nous vous suggérons quand même quelques règles à suivre afin que vos chaussures gardent leur éclat tout en se maintenant en très bon état.
             </p>
@@ -309,17 +309,17 @@
     </div>
       <div id="section4" class="container-fluid">
           <h1 style="color:black;margin-left: -1.5%;">sign</h1>
-          <img src="bgs/d9664079799de868f1ee80260bac0159-crop-u1558.jpg" alt="" srcset="">
-          <img src="bgs/d9664079799de868f1ee80260bac0159-crop-u1568.jpg" alt="" srcset="">
-          <img src="bgs/d9664079799de868f1ee80260bac0159-crop-u1575.jpg" alt="" srcset="">
+          <img src="/bgs/d9664079799de868f1ee80260bac0159-crop-u1558.jpg" alt="" srcset="">
+          <img src="/bgs/d9664079799de868f1ee80260bac0159-crop-u1568.jpg" alt="" srcset="">
+          <img src="/bgs/d9664079799de868f1ee80260bac0159-crop-u1575.jpg" alt="" srcset="">
       </div>
-      <div id="section3" class="container-fluid" style="background: transparent url('bgs/index1,1-crop-u1427.jpg') no-repeat left center ;">
+      <div id="section3" class="container-fluid" style="background: transparent url('/bgs/index1,1-crop-u1427.jpg') no-repeat left center ;">
         
       </div>      
-      <div id="section2" class="container-fluid"  style="background: transparent url('bgs/oxford-derby-e1394474071111-crop-u1154.png') no-repeat left bottom ;">
+      <div id="section2" class="container-fluid"  style="background: transparent url('/bgs/oxford-derby-e1394474071111-crop-u1154.png') no-repeat left bottom ;">
         <h1 style="margin-top:35%"> L'Esprit</h1>
       </div>
-      <div id="section1" class="container-fluid text-center" style="background: transparent url('bgs/logo green.png') no-repeat center ;">
+      <div id="section1" class="container-fluid text-center" style="background: transparent url('/bgs/logo green.png') no-repeat center ;">
        <h1 style="margin-top:65%">Des souliers et des hommes...</h1>
       </div>      
   </div>

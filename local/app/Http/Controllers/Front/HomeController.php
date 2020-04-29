@@ -36,6 +36,10 @@ class HomeController extends Controller
         }
        
     }
+
+    public function isMobileDevice() {
+        return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+    }    
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -59,7 +63,9 @@ class HomeController extends Controller
         
         $features = $category3->products;
 
-        return view('front.index', compact('features', 'category2', 'category3','accessories', 'currency_diff' , 'currency'));
+        $isMobile = $this->isMobileDevice();    
+
+        return view('front.index', compact('features', 'category2', 'category3','accessories', 'currency_diff' , 'currency','isMobile'));
     }
 
     public function terms()
