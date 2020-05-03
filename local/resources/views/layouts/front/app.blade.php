@@ -44,6 +44,13 @@
       position: relative;
       font-family: antic-didone, serif; 
   }
+  .content{
+    margin-top:5%
+  }
+  
+  .space{
+    margin-top:25%
+  }
   #section1,#section2,#section3,#section4,#section5,#section6,#section7,#section8 {padding-top:50px;height:55em; }
   #sectionEmpty {padding-top:50px;height:55em; }
   #section4 {color: #ffffff;}
@@ -71,11 +78,11 @@
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>                        
                       </button>
-                      <a class="navbar-brand" href="#"><img src="{{asset('/bgs/LOGO.png')}}" alt="" srcset="" style="z-index:100"></a>
+                      <a class="navbar-brand" href="/"><img src="{{asset('/bgs/LOGO.png')}}" alt="" srcset="" style="z-index:100"></a>
                     </div>
-                    <div style="float: right;">
+                    <div >
                       <div class="collapse navbar-collapse" id="myNavbar">
-                        <ul class="nav navbar-nav">
+                        <ul class="nav navbar-nav hidden-xs hidden-sm pull-right">
                           <li data-menuanchor="second" id="s2"><a href="/#second">L'Esprit</a></li>
                           <li data-menuanchor="third" id="s3"><a href="/#third">La Technique</a></li>
                           <li data-menuanchor="fourth" id="s4"><a href="/#fourth">Le Design</a></li>
@@ -84,7 +91,17 @@
                           <li data-menuanchor="seventh" id="s7"><a href="/#seventh">Contact</a></li>
                           <li data-menuanchor="eighth" id="s8"><a href="/#eighth">Magasins Benson</a></li>
                           <li id="s9"><a href="/category">Voir la Collection & Commander</a></li>
-                          
+                        </ul>
+                        <ul class="nav navbar-nav hidden-lg hidden-md pull-left">
+                          <li><a href="/"> > Accueil      </a></li>
+                          <li><a href="{{route('front.category.slug','richelieus')}}"> > Richelieus      </a></li>
+                          <li><a href="{{route('front.category.slug','bottes-bottines')}}"> > Boots & Bottines</a></li>
+                          <li><a href="{{route('front.category.slug','derbys')}}"> > Derbys          </a></li>
+                          <li><a href="{{route('front.category.slug','boucles')}}"> > Boucles         </a></li>
+                          <li><a href="{{route('front.category.slug','mocassins')}}"> > Mocassins       </a></li>
+                          <li><a href="{{route('front.category.slug','sneakers')}}"> > Sneakers        </a></li>
+                          <li><a href="{{route('front.category.slug','belgha')}}"> > Belgha        </a></li>
+                          <li><a href="/category">Voir toute la Collection & Commander</a></li>
                         </ul>
                       </div>
                       <div  id="section9" style="display:none;color:#ffffff; z-index: -1;background: transparent url('/bgs/green banner.jpg') no-repeat ;background-size:100% 100%;position:absolute;top:100%;left:0%;width:100%;height:372px">
@@ -100,6 +117,7 @@
                             <li><a href="{{route('front.category.slug','boucles')}}"> > Boucles         </a></li>
                             <li><a href="{{route('front.category.slug','mocassins')}}"> > Mocassins       </a></li>
                             <li><a href="{{route('front.category.slug','sneakers')}}"> > Sneakers        </a></li>
+                            <li><a href="{{route('front.category.slug','belgha')}}"> > Belgha        </a></li>
                           </ul>
                           </div>
                         </div>
@@ -149,9 +167,10 @@
                 </nav> 
           </header>
       </section>
-
-      @yield('content')
-    
+      <div class="content">
+        <div class="hidden-lg hidden-md space"></div>
+        @yield('content')
+      </div>
     </div>
 
     @include('layouts.front.footer')

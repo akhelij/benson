@@ -19,8 +19,10 @@
                             <div class="product-text" >
                             
                                 
-                                    <h4 class="margin-bottom"><b>{{ $product->name }}</b></h3>
-                                    <h5 class="margin-bottom">Ref {{ $product->sku }}</h5>                                        
+                                    <h4 class="margin-bottom"><b>{{ $product->name }}</b></h4>
+                                        <div style="    max-height: 22px;  overflow: hidden;">{!! $product->description !!}  </div>  
+                                    <h5 class="margin-bottom">Ref {{ $product->sku }}</h5>  
+                                                                     
                                     <h5 class="margin-bottom">  <b> 
                                     @if($product->old_price !=null)
                                         {{ number_format($product->price * $currency_diff, 2) }}  {{$currency}}

@@ -96,98 +96,110 @@
 	<section>
 			
 	<header >
-		
-		<nav  class="navbar navbar-inverse navbar-fixed-top">
+	
+		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class=" container ">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			  <div class="navbar-header">
+				  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>                        
 				</button>
-				<a class="navbar-brand" href="#"><img src="{{asset('/bgs/LOGO.png')}}" alt="" srcset="" style="z-index:100"></a>
-				</div>
-				<div style="float: right;">
+				<a class="navbar-brand" href="/"><img src="{{asset('/bgs/LOGO.png')}}" alt="" srcset="" style="z-index:100"></a>
+			  </div>
+			  <div >
 				<div class="collapse navbar-collapse" id="myNavbar">
-					<ul  class="nav navbar-nav">
-					<li data-menuanchor="second" id="s2" ><a href="#second">L'Esprit</a></li>
-					<li data-menuanchor="third" id="s3"><a href="#third">La Technique</a></li>
-					<li data-menuanchor="fourth" id="s4"><a href="#fourth">Le Design</a></li>
-					<li data-menuanchor="fifth" id="s5"><a href="#fifth">L'entretien</a></li>         
-					<li data-menuanchor="sixth" id="s6"><a href="#sixth">Le Savoir-Faire</a></li>
-					<li data-menuanchor="seventh" id="s7"><a href="#seventh">Contact</a></li>
-					<li data-menuanchor="eighth" id="s8"><a href="#eighth">Magasins Benson</a></li>
+				  <ul class="nav navbar-nav hidden-xs hidden-sm pull-right">
+					<li data-menuanchor="second" id="s2"><a href="/#second">L'Esprit</a></li>
+					<li data-menuanchor="third" id="s3"><a href="/#third">La Technique</a></li>
+					<li data-menuanchor="fourth" id="s4"><a href="/#fourth">Le Design</a></li>
+					<li data-menuanchor="fifth" id="s5"><a href="/#fifth">L'entretien</a></li>         
+					<li data-menuanchor="sixth" id="s6"><a href="/#sixth">Le Savoir-Faire</a></li>
+					<li data-menuanchor="seventh" id="s7"><a href="/#seventh">Contact</a></li>
+					<li data-menuanchor="eighth" id="s8"><a href="/#eighth">Magasins Benson</a></li>
 					<li id="s9"><a href="/category">Voir la Collection & Commander</a></li>
-					
-					</ul>
+				  </ul>
+				  <ul class="nav navbar-nav hidden-lg hidden-md pull-left">
+					<li><a href="/"> > Accueil      </a></li>
+					<li><a href="{{route('front.category.slug','richelieus')}}"> > Richelieus      </a></li>
+					<li><a href="{{route('front.category.slug','bottes-bottines')}}"> > Boots & Bottines</a></li>
+					<li><a href="{{route('front.category.slug','derbys')}}"> > Derbys          </a></li>
+					<li><a href="{{route('front.category.slug','boucles')}}"> > Boucles         </a></li>
+					<li><a href="{{route('front.category.slug','mocassins')}}"> > Mocassins       </a></li>
+					<li><a href="{{route('front.category.slug','sneakers')}}"> > Sneakers        </a></li>
+					<li><a href="{{route('front.category.slug','belgha')}}"> > Belgha        </a></li>
+                    <li><a href="/category">Voir toute la Collection & Commander</a></li>
+				  </ul>
 				</div>
 				<div  id="section9" style="display:none;color:#ffffff; z-index: -1;background: transparent url('/bgs/green banner.jpg') no-repeat ;background-size:100% 100%;position:absolute;top:100%;left:0%;width:100%;height:372px">
-					<div style="padding:5%">
-					<div class="col-md-3">
+				  <div style="padding:5%">
+				  <div class="col-md-3">
+					<div class="paragraphe paragraphe-color-white">
+					  <h2>Collection</h2>
+					  <br>
+					<ul class="sub-menu">
+					  <li><a href="{{route('front.category.slug','richelieus')}}"> > Richelieus      </a></li>
+					  <li><a href="{{route('front.category.slug','bottes-bottines')}}"> > Boots & Bottines</a></li>
+					  <li><a href="{{route('front.category.slug','derbys')}}"> > Derbys          </a></li>
+					  <li><a href="{{route('front.category.slug','boucles')}}"> > Boucles         </a></li>
+					  <li><a href="{{route('front.category.slug','mocassins')}}"> > Mocassins       </a></li>
+					  <li><a href="{{route('front.category.slug','belgha')}}"> > Belgha        </a></li>
+                      <li><a href="{{route('front.category.slug','sneakers')}}"> > Sneakers        </a></li>
+					</ul>
+					</div>
+				  </div>
+				  <div class="col-md-3 text-center" >
+				  <div style="background-image:url('/bgs/saphir-main-img-01-buttonu46248-fr.jpg')" >
+					<a href="{{route('front.category.slug','accessoires')}}">
+					  <div style="padding:  10%">
+					  <h1>Accessoires</h1>
+					  <div class="paragraphe paragraphe-color-white" >
+						<hr>
+					  <p> Retrouvez les accessoires et les produits d’entretien pour vos chaussures en magasin !</p>
+					  </div>
+					  </div>
+					</a>
+				  </div>
+				  </div>
+				  <div class="col-md-3  text-center">
+					<div style="background-image:url('/bgs/60216643_2288738204733767_5510413414083592192_o-buttonu26889-fr.jpg')">
+					  <a href="#">
+						<div style="padding:10%">
+						<h1>Entretien</h1>
+						  <div class="paragraphe paragraphe-color-white">
+						  <hr/>
+						  <p> Retrouvez les accessoires et les produits d’entretien pour vos chaussures en magasin !</p>
+						  </div>
+						</div>
+					  </a>
+					</div>
+				  </div>
+				  <div class="col-md-3  text-center">
+					<div style="background-image:url('/bgs/untitled-1.jpg')">
+					  <a href="{{route('front.category.slug','nouvelle-arrivage')}}">
+						<div style="padding:9%">
+						<h1>Nouvelle Collection</h1>
 						<div class="paragraphe paragraphe-color-white">
-							<h2>Collection</h2>
-							<br>
-						<ul class="sub-menu">
-							<li><a href="{{route('front.category.slug','richlieus')}}"> > Richelieus      </a></li>
-							<li><a href="{{route('front.category.slug','bottes-bottines')}}"> > Boots & Bottines</a></li>
-							<li><a href="{{route('front.category.slug','derbys')}}"> > Derbys          </a></li>
-							<li><a href="{{route('front.category.slug','boucles')}}"> > Boucles         </a></li>
-							<li><a href="{{route('front.category.slug','mocassins')}}"> > Mocassins       </a></li>
-							<li><a href="{{route('front.category.slug','sneakers')}}"> > Sneakers        </a></li>
-						</ul>
+						<hr/>
+						  <p> Une Collection pour un automne toute en style</p>
 						</div>
-					</div>
-					<div class="col-md-3 text-center" >
-					<div style="background-image:url('/bgs/saphir-main-img-01-buttonu46248-fr.jpg')" >
-						<a href="{{route('front.category.slug','accessoires')}}">
-							<div style="padding:  10%">
-							<h1>Accessoires</h1>
-							<div class="paragraphe paragraphe-color-white" >
-								<hr>
-							<p> Retrouvez les accessoires et les produits d’entretien pour vos chaussures en magasin !</p>
-							</div>
-							</div>
-						</a>
-					</div>
-					</div>
-					<div class="col-md-3  text-center">
-						<div style="background-image:url('/bgs/60216643_2288738204733767_5510413414083592192_o-buttonu26889-fr.jpg')">
-							<a href="#">
-								<div style="padding:10%">
-								<h1>Entretien</h1>
-									<div class="paragraphe paragraphe-color-white">
-									<hr/>
-									<p> Retrouvez les accessoires et les produits d’entretien pour vos chaussures en magasin !</p>
-									</div>
-								</div>
-							</a>
 						</div>
+					  </a>
 					</div>
-					<div class="col-md-3  text-center">
-						<div style="background-image:url('/bgs/untitled-1.jpg')">
-							<a href="{{route('front.category.slug','nouvelle-arrivage')}}">
-								<div style="padding:9%">
-								<h1>Nouvelle Collection</h1>
-								<div class="paragraphe paragraphe-color-white">
-								<hr/>
-								<p> Une Collection pour un automne toute en style</p>
-								</div>
-								</div>
-							</a>
-						</div>
-					</div>
+				  </div>
 				</div>
 				</div>
-				</div>
+			  </div>
 			</div>
-			</nav> 
+		  </nav> 
+   
 	</header>
 	</section>
 	<div id="myContainer" class=" hidden-sm hidden-xs">
 
 		<div class="ms-left">
 			
-			<div class="ms-section" id="left1" style="background: transparent url('/bgs/shoot 9-1.jpg') no-repeat right ;">
+			<div class="ms-section" id="left1" style="background: transparent url('/bgs/Retro.png') no-repeat; background-size:contain">
 				
 			</div>
 
@@ -208,12 +220,12 @@
 				</div> 
 			</div>
 
-			<div class="ms-section" id="left3" style="background: transparent url('/bgs/index1,1-crop-u1417.jpg') no-repeat right center;">
+			<div class="ms-section" id="left3" style="background: transparent url('/bgs/Authenticite1.png') no-repeat right center;">
 				<div class="p p-padding">
 					<h1>La Technique</h1>
 					<div  style="background-color: #ffffff96; ">
 					<p style="padding:5%">
-						Grâce à des concepteurs dédiés à la marque, et à leurs efforts permanents pour concilier modernité du design et tradition du procédé, BENSON SHOES présente des modèles au style unique et aux lignes pures, offrant à ses clients un choix adapté à leurs exigences de distinction et de confort.
+						La vocation première de BENSON SHOES est artisanale, et elle a fait de la finesse du travail manuel son sacerdoce. La coupe des différentes parties de la chaussure (tige, doublure semelle, etc..) est intégralement effectuée à la main. Quant aux autres étapes d’assemblage et de couture, elles nécessitent elles aussi de nombreuses interventions manuelles. Par exemple, la trépointe est cousue à la tige et à la première de montage. Elle est ensuite retournée pour que l’ensemble soit cousu une deuxième fois à la semelle d’usure. Quant au remplissage de la cavité entre la semelle première et la semelle d’usure, il est assuré par un mélange à base de poudre de liège et de colle, ce qui permet aux porteurs de la marque d’apprécier une empreinte personnalisée au bout de quelques jours d’utilisation.
 					
 					</p>
 					</div>
@@ -221,7 +233,11 @@
 				</div>
 			</div>
 			<div class="ms-section" id="left4" style="background: transparent url('/bgs/green banner.jpg') no-repeat ;background-size:100% 100%">
-				<h1 class="p-white" style="float:right;font-size:42px;margin-top:7.5%">Le De</h1>
+				<h1 class="p-white" style="position: absolute;
+				top: 15.9%;
+				left: 86%;
+				float: right;
+				font-size: 42px;">Le De</h1>
 				<div class="p-padding" style="padding:10% 20% 10% 20%">
 					<div class="p-white p-center">
 					<img   src="/bgs/goodyear welted - blanc.png" width="100px"> 
@@ -230,8 +246,9 @@
 					<div class="p p-white">					
 						
 						<p class="p-white">
-							La vocation première de BENSON SHOES est artisanale, et elle a fait de la finesse du travail manuel son sacerdoce. La coupe des différentes parties de la chaussure (tige, doublure semelle, etc..) est intégralement effectuée à la main. Quant aux autres étapes d’assemblage et de couture, elles nécessitent elles aussi de nombreuses interventions manuelles. Par exemple, la trépointe est cousue à la tige et à la première de montage. Elle est ensuite retournée pour que l’ensemble soit cousu une deuxième fois à la semelle d’usure. Quant au remplissage de la cavité entre la semelle première et la semelle d’usure, il est assuré par un mélange à base de poudre de liège et de colle, ce qui permet aux porteurs de la marque d’apprécier une empreinte personnalisée au bout de quelques jours d’utilisation.
-						</p> 
+							Grâce à des concepteurs dédiés à la marque, et à leurs efforts permanents pour concilier modernité du design et tradition du procédé, BENSON SHOES présente des modèles au style unique et aux lignes pures, offrant à ses clients un choix adapté à leurs exigences de distinction et de confort.
+					
+								</p> 
 					</div>
 				</div>
 			</div>
@@ -269,16 +286,17 @@
 		</div>
 		
 		<div class="ms-right">
-			<div class="ms-section" id="right1"  style="background: transparent url('/bgs/shoot 9-2.jpg') no-repeat left ;">
-				<img class="position_content" id="u1127_img" src="/bgs/goodyear welted - blanc.png" alt=""  > 
-				<h1 style="margin-top : 5%;color:white">Des souliers et des hommes...</h1>
+			{{-- style="background: transparent url('/bgs/shoot 9-2.jpg') no-repeat left ;" --}}
+			<div class="ms-section" id="right1"  >
+				<img class="position_content" id="u1127_img" src="/images/logo.jpg" alt=""  width="250"> 
+				<h1 style="margin-top : 5%;">Des souliers et des hommes...</h1>
 			</div>
 
 			<div class="ms-section" id="right2"  style="background: transparent url('/bgs/oxford-derby-e1394474071111-crop-u1154.png') no-repeat left  bottom;">
 				<h1 style="margin-top:-35%"> L'Esprit</h1>
 			</div>
 
-			<div class="ms-section" id="right3" style="background: transparent url('/bgs/index1,1-crop-u1427.jpg') no-repeat left center ;">
+			<div class="ms-section" id="right3" style="background: transparent url('/bgs/Authenticite2.png') no-repeat left center ;">
 				<!--Block right3-->
 			</div>
 			<div class="ms-section" id="right4">
@@ -286,7 +304,7 @@
 				float: left;
 				color: black;
 				font-size: 42px;
-				top: 16.9%;">sign</h1>
+				top: 14.9%;">sign</h1>
 				<div class="p" >
 				<img style="float:left;width:80%" src="/bgs/d9664079799de868f1ee80260bac0159-crop-u1558.jpg" alt="" srcset="">
 				<img style="float:left;width:80%" src="/bgs/d9664079799de868f1ee80260bac0159-crop-u1568.jpg" alt="" srcset="">
@@ -353,7 +371,7 @@
 					Tél : +212 (05) 39 32 26 15
 					</p>
 					<br>
-					<button class="btn btn-lg btn-default">Contactez nous</button>
+					<a href="tel:+212660080505" class="btn btn-lg btn-default">Contactez nous</a>
 				</div>
 				</div>
 			</div>
@@ -368,7 +386,7 @@
 
 		<div class="row">
 
-			<div   style="background: transparent url('/bgs/shoot 9.jpg') no-repeat;
+			<div   style="background: transparent url('/bgs/Retro.png') no-repeat;
 			background-size: cover;
 			height: 300px;">
 
@@ -383,7 +401,7 @@
 
 		<div class="row">
 			<div  style="background: transparent url('/bgs/oxford-derby.png') no-repeat bottom;background-size: 100%;
-			height: 700px;padding:5%">
+			height: 600px;padding:5%">
 				<div class="p  p-padding" style="padding:0% 15% 10% 15%;text-align:center">
 					<h1 > Expérience d'un demi siècle</h1>
 					<p>
@@ -400,12 +418,14 @@
 		</div>
 
 		<div class="row">
-			<div   style="background: transparent url('/bgs/index1,1-crop-u141.jpg') no-repeat center;background-size: cover;padding:5%">
+			<div   style="background: transparent url('/bgs/Authenticite.png') no-repeat center;background-size: cover;padding:5%">
 				<div class="p p-padding" style="padding:0% 15% 10% 15%;text-align:center">
-					<h1>La Technique</h1>
+					
 					<div  style="background-color: #ffffff96; ">
 					<p style="padding:5%">
-						Grâce à des concepteurs dédiés à la marque, et à leurs efforts permanents pour concilier modernité du design et tradition du procédé, BENSON SHOES présente des modèles au style unique et aux lignes pures, offrant à ses clients un choix adapté à leurs exigences de distinction et de confort.
+						<h1>La Technique</h1>
+						La vocation première de BENSON SHOES est artisanale, et elle a fait de la finesse du travail manuel son sacerdoce. La coupe des différentes parties de la chaussure (tige, doublure semelle, etc..) est intégralement effectuée à la main. Quant aux autres étapes d’assemblage et de couture, elles nécessitent elles aussi de nombreuses interventions manuelles. 
+						{{-- Par exemple, la trépointe est cousue à la tige et à la première de montage. Elle est ensuite retournée pour que l’ensemble soit cousu une deuxième fois à la semelle d’usure. Quant au remplissage de la cavité entre la semelle première et la semelle d’usure, il est assuré par un mélange à base de poudre de liège et de colle, ce qui permet aux porteurs de la marque d’apprécier une empreinte personnalisée au bout de quelques jours d’utilisation. --}}
 						
 					</p>
 					</div>
@@ -425,7 +445,7 @@
 					
 					<div class="p p-white">		
 						<p class="p-white">
-							La vocation première de BENSON SHOES est artisanale, et elle a fait de la finesse du travail manuel son sacerdoce. La coupe des différentes parties de la chaussure (tige, doublure semelle, etc..) est intégralement effectuée à la main. Quant aux autres étapes d’assemblage et de couture, elles nécessitent elles aussi de nombreuses interventions manuelles. Par exemple, la trépointe est cousue à la tige et à la première de montage. Elle est ensuite retournée pour que l’ensemble soit cousu une deuxième fois à la semelle d’usure. Quant au remplissage de la cavité entre la semelle première et la semelle d’usure, il est assuré par un mélange à base de poudre de liège et de colle, ce qui permet aux porteurs de la marque d’apprécier une empreinte personnalisée au bout de quelques jours d’utilisation.
+							Grâce à des concepteurs dédiés à la marque, et à leurs efforts permanents pour concilier modernité du design et tradition du procédé, BENSON SHOES présente des modèles au style unique et aux lignes pures, offrant à ses clients un choix adapté à leurs exigences de distinction et de confort.
 						</p> 
 					</div>
 

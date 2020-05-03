@@ -53,6 +53,7 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
     {
         try {
             $collection = collect($params);
+            $cover = null;
             if (isset($params['name'])) {
                 $slug = str_slug($params['name']);
             }

@@ -65,7 +65,7 @@ class HomeController extends Controller
 
         $isMobile = $this->isMobileDevice();    
 
-        return view('front.index', compact('features', 'category2', 'category3','accessories', 'currency_diff' , 'currency','isMobile'));
+        return view('front.index', compact('features', 'category3','accessories', 'currency_diff' , 'currency','isMobile'));
     }
 
     public function terms()

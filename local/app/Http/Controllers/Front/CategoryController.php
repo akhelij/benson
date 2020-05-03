@@ -33,6 +33,7 @@ class CategoryController extends Controller
         $category = $this->categoryRepo->findCategoryBySlug(['slug' => "collection"]);
 
         $repo = new CategoryRepository($category);
+       
 
         return view('front.categories.category', [
             'category' => $category,
