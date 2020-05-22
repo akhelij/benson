@@ -1,5 +1,6 @@
 <?php
 
+
 return [
 
     /*
@@ -166,6 +167,8 @@ return [
         App\Providers\GlobalTemplateServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
         Laratrust\LaratrustServiceProvider::class,
+        //Share on social media
+        Jorenvh\Share\Providers\ShareServiceProvider::class,
     ],
 
     /*
@@ -216,7 +219,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
-
+        'Share' => Jorenvh\Share\ShareFacade::class,
     ],
 
 ];

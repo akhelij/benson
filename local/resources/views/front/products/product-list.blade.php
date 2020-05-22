@@ -45,13 +45,18 @@
             </a>
             @endif
         @endforeach
-        @if($products instanceof \Illuminate\Contracts\Pagination\LengthAwarePaginator)
+        
             <div class="row">
-                <div class="col-md-12">
+                @if($products instanceof \Illuminate\Contracts\Pagination\LengthAwarePaginator)
+                <div class="col-md-6">
                     <div class="pull-left">{{ $products->links() }}</div>
                 </div>
+                @endif
+                <div class="col-md-6 pull-right">
+                    <div class="pull-right"><a href="{{url('/category')}}" class="btn-lg btn  btn-default">Voir toute la collection</a></div>
+                </div>
             </div>
-        @endif
+       
     </ul>
 @else
     <p class="alert alert-warning">Aucun produit n'est disponible.</p>

@@ -21,7 +21,6 @@
                 
                 <div class="col-md-12" style="text-align:center">
                     <h2><i class="fa fa-dropbox"> </i> Stock</h2>
-                    <table>
                         @if(!$products->isEmpty())
                         <table class="table">
                             <thead>
@@ -54,7 +53,7 @@
                             @foreach ($products as $product)
                             
                                 
-                                @if(count($product->categories)>0 && $product->categories[0]->name == "Collection")
+                                @if(count($product->categories)>0 && isset($product->categories[0]->name) && $product->categories[0]->name == "Collection")
                                     @if($product->quantity==0)
                                          <tr style="background-color:crimson;color:white">
                                     @else
@@ -65,10 +64,10 @@
                                         <td>
                                             {{ $product->sku }} / 
                                             
-                                                @if(count($product->categories)>0 && $product->categories[3]->name !="Formes") 
-                                                    {{ $product->categories[3]->name }}
-                                                @elseif(count($product->categories)>0 && $product->categories[3]->name =="Formes") 
-                                                   {{ $product->categories[4]->name }}
+                                                @if(count($product->categories)>0 && isset($product->categories[3]->name) && $product->categories[3]->name !="Formes") 
+                                                    {{ $product->categories[3]->name ?? ""}}
+                                                @elseif(count($product->categories)>0  && isset($product->categories[3]->name) && $product->categories[3]->name =="Formes") 
+                                                   {{ $product->categories[4]->name ?? ""}}
                                                 @else {{""}}
                                                 @endif
                                            
@@ -94,7 +93,6 @@
                             </tbody>
                         </table>
                     @endif
-                    </table>
                 </div>
             </div>
             <!-- /.box-body -->

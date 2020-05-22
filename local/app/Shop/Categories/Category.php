@@ -29,7 +29,7 @@ class Category extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class)->orderBy("name");
+        return $this->belongsToMany(Product::class)->where('status',1)->orderBy("id","desc");
     }
 
     public function parent()

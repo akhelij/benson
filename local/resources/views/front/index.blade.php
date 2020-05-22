@@ -2,6 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+	<script>
+	!function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window,document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '180416476247234'); 
+      fbq('track', 'PageView');
+    </script>
+    <noscript>
+      <img height="1" width="1" 
+      src="https://www.facebook.com/tr?id=180416476247234&ev=PageView
+      &noscript=1"/>
+    </noscript>
 	 <!-- Global site tag (gtag.js) - Google Analytics -->
    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-9325492-23"></script>
    <script>
@@ -17,8 +34,7 @@
    <meta name="keywords" content="Chaussures haut de gamme, chaussures anglaises, richelieus, mocassin, derby, sneaker, espadrille, chassures classe, benson, bensonshoes, men's oxfords shoes, women's oxfords shoes, dress shoes, monk shoes, english shoes, benson shoes, luxury shoes">
    <title>{{ config('app.name') }}</title>
    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-   <link href="{{ asset('front/css/bootstrap.min.css') }}" rel="stylesheet">
-   
+   <link href="{{ asset('front/css/bootstrap.min.css') }}" rel="stylesheet">   
    <link href="{{ asset('front/style.css') }}" rel="stylesheet">
    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -127,7 +143,7 @@
 					<li><a href="{{route('front.category.slug','boucles')}}"> > Boucles         </a></li>
 					<li><a href="{{route('front.category.slug','mocassins')}}"> > Mocassins       </a></li>
 					<li><a href="{{route('front.category.slug','sneakers')}}"> > Sneakers        </a></li>
-					<li><a href="{{route('front.category.slug','belgha')}}"> > Belgha        </a></li>
+					<li><a href="{{route('front.category.slug','belgha')}}"> > Babouches tradition        </a></li>
                     <li><a href="/category">Voir toute la Collection & Commander</a></li>
 				  </ul>
 				</div>
@@ -143,8 +159,9 @@
 					  <li><a href="{{route('front.category.slug','derbys')}}"> > Derbys          </a></li>
 					  <li><a href="{{route('front.category.slug','boucles')}}"> > Boucles         </a></li>
 					  <li><a href="{{route('front.category.slug','mocassins')}}"> > Mocassins       </a></li>
-					  <li><a href="{{route('front.category.slug','belgha')}}"> > Belgha        </a></li>
-                      <li><a href="{{route('front.category.slug','sneakers')}}"> > Sneakers        </a></li>
+					  <li><a href="{{route('front.category.slug','sneakers')}}"> > Sneakers        </a></li>
+					  <li><a href="{{route('front.category.slug','belgha')}}"> > Babouches tradition   </a></li>
+					  
 					</ul>
 					</div>
 				  </div>
@@ -199,7 +216,7 @@
 
 		<div class="ms-left">
 			
-			<div class="ms-section" id="left1" style="background: transparent url('/bgs/Retro.png') no-repeat; background-size:contain">
+			<div class="ms-section" id="left1" style="background: transparent url('/bgs/shoot 9-1.jpg') no-repeat right; ">
 				
 			</div>
 
@@ -286,10 +303,15 @@
 		</div>
 		
 		<div class="ms-right">
-			{{-- style="background: transparent url('/bgs/shoot 9-2.jpg') no-repeat left ;" --}}
-			<div class="ms-section" id="right1"  >
-				<img class="position_content" id="u1127_img" src="/images/logo.jpg" alt=""  width="250"> 
-				<h1 style="margin-top : 5%;">Des souliers et des hommes...</h1>
+			{{--  --}}
+			<div class="ms-section" id="right1"  style="background: transparent url('/bgs/shoot 9-2.jpg') no-repeat left ;">
+				{{-- <img class="position_content" id="u1127_img" src="/images/logo.jpg" alt=""  width="250">  --}}
+				<div style="margin-top : 20%;margin-left : -20%;">
+					<h1 style="color:white; font-size:40px">Des souliers et des hommes...</h1>
+					<a href="{{url('/category')}}" class="btn btn-lg btn-default">
+						Voir la collection
+					</a>
+				</div>
 			</div>
 
 			<div class="ms-section" id="right2"  style="background: transparent url('/bgs/oxford-derby-e1394474071111-crop-u1154.png') no-repeat left  bottom;">
@@ -386,14 +408,20 @@
 
 		<div class="row">
 
-			<div   style="background: transparent url('/bgs/Retro.png') no-repeat;
+			<div   style="background: transparent url('/bgs/shoot 9.jpg') no-repeat;
 			background-size: cover;
-			height: 300px;">
-
-				<div class="text" style="padding-top:15%;text-align:center">
+			height: 300px;
+			text-align:center">
+				<div>
+					<h1 style="color:white;padding:5%;padding-top:30%;">Des souliers et des hommes...</h1>
+					<a href="{{url('/category')}}" class="btn btn-md btn-default" style="margin-top:7%">
+						Voir la collection
+					</a>
+				</div>
+				{{-- <div class="text" style="padding-top:15%;text-align:center">
 					<img class="position_content" id="u1127_img" src="/bgs/goodyear welted - blanc.png" alt=""  style="width:120px"> 
 					<h1 style="margin-top : 5%;color:white;font-size: 1em;">Des souliers et des hommes...</h1>
-				</div>
+				</div> --}}
 
 			</div>
 			

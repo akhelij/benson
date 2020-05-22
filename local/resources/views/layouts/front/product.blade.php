@@ -23,21 +23,23 @@
     </ol>
 </nav>
              <div class="row" >
-                 <div class="col-md-1">
-                     <img src="{{ asset("storage/$product->cover") }}" alt="" width="75" class="margin-bottom thumb" style="border:2px black solid">
-                     @if(isset($images) && !$images->isEmpty())
-                         @foreach($images as $key=>$image)
-                 <img src="{{ asset("storage/$image->src") }}" alt="" width="75" class="margin-bottom thumb" >
-                         @endforeach
-                     @endif                  
-                 </div>
+                <div class="col-md-1">
+                    <img src="{{ asset("storage/$product->cover") }}" alt="" width="75" class="margin-bottom thumb" style="border:2px black solid">
+                    @if(isset($images) && !$images->isEmpty())
+                        @foreach($images as $key=>$image)
+                              <img src="{{ asset("storage/$image->src") }}" alt="" width="75" class="margin-bottom thumb" >
+                        @endforeach
+                    @endif  
+                                    
+                </div>
                <div class="col-md-8 first-view" style="background-image : url('{{ asset("storage/$product->cover") }}');">
- 
+                
                </div>
+               
                 <div class="col-md-3 " >
                      <div class="col-md-12 ">
                           <h1>
-                             {{ $product->name }}
+                             {{ $product->name }}                             
                          </h1>
                          <div class="subtitle">
                             @if($product->categories[0]->slug == "accessoires")
@@ -99,6 +101,7 @@
                                 @endforeach
                            @endif 
                         </div>
+                        
                          <div style="margin-top: 5%">
                              
                             
@@ -159,13 +162,18 @@
                                     <input type="hidden" name="size" id="size" @if($product->categories[0]->slug=="accessoires" && $product->slug != "embauchoirs")
                                         value="0" @else value="39" @endif />
                                 </div>
-                                    <div class="alert alert-success alert-xs panier-success" style="display:none">
+                              
+                                    <div class="alert alert-success alert-xs panier-success" style="display:none" >
                                         <i class="fa fa-check-circle"></i> Article ajouté au panier
                                     </div>
-                                    <!--<button type="submit" class="btn  btn-primary btn-lg btn-submit" style="background-color: black; width : 100%">
-                                        <i class="fa fa-cart-plus"></i> 
-                                        Ajouter au panier
-                                    </button>-->
+                             @if($_SERVER['REMOTE_ADDR']=='196.127.233.63' || $_SERVER['REMOTE_ADDR']=="105.66.7.142")
+                              
+                                <button type="submit" class="btn  btn-primary btn-lg btn-submit" style="background-color: black; width : 100%" onclick="fbq('track', 'AddToCart');">
+                                    <i class="fa fa-cart-plus"></i> 
+                                    Ajouter au panier
+                                </button>
+                              
+                              @endif
                                     {{-- <button class="btn btn-inline-primary btn-lg" style="color:black;
                                     background-color: transparent;
                                     border: 1px dashed;"><a href="{{route('maintain')}}" style="color:black"> 
@@ -182,7 +190,16 @@
                             </div>
                          </div>
                          
-                    </div>
+                         <div class=" col-md-12 share-block">
+                             <p> <i class="fa fa-share-alt"></i> Partagez : </p>
+                            {!! Share::currentPage()
+                                ->facebook()
+                                ->twitter()
+                                ->telegram()
+                                ->whatsapp(); 
+                            !!}
+                         </div>
+                </div>
     
  
             </div>
@@ -255,6 +272,8 @@
      </style>
  @endsection
  @section('js')
+ 
+    
      <script type="text/javascript" src="{{ asset('front/js/Drift.min.js') }}"></script>
      @if($product->slug != "embauchoirs" && $product->categories[0]->slug=="accessoires")
  
@@ -393,4 +412,5 @@
              $('.first-view').attr('style',"background-image : url('"+$(this).attr('src')+"')");
          })
      </script>
+     <script src="{{ asset('front/js/share.js') }}"></script>
  @endsection

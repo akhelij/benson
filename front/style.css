@@ -963,3 +963,61 @@ a:hover img {
 .description{
   padding:5%;
 }
+
+#social-links{
+  margin-top:-5%;
+  font-size:24px;
+}
+
+#social-links ul{
+  list-style-type: none;
+}
+
+
+#social-links li {
+  float: left;
+}
+
+#social-links li a {
+  display: block;
+  text-align: center;
+  padding: 5px;
+  text-decoration: none;
+}
+
+#social-links li a .fa-whatsapp {
+  color: #4FCE5D;
+}
+
+#social-links li a .fa-facebook-official {
+  color: #3b5998;
+}
+
+#social-links li a .fa-telegram {
+  color: #0088cc;
+}
+
+#social-links li a .fa-twitter {
+  color: #1da1f2;
+}
+
+
+#social-links li a .fa-whatsapp:hover {
+  color: #4FCE5Dab;
+}
+
+#social-links li a .fa-facebook-official:hover {
+  color: #3b5998ab;
+}
+
+#social-links li a .fa-telegram:hover {
+  color: #0088ccab;
+}
+
+#social-links li a .fa-twitter:hover {
+  color: #1da1f2ab;
+}
+
+#section9 div div div{
+  min-height: 115px;
+}

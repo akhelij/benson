@@ -111,8 +111,6 @@ document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/tru
 <script src="{{ asset('js/app.min.js') }}"></script>
 <!-- Select2 -->
 <script src="{{ asset('js/select2.min.js') }}"></script>
-<!-- DataTable JS -->
-<script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/jquery.dataTables.min.js') }}"></script>
 <!-- Custom JS -->
 <script src="{{ asset('js/admin.js?v=0.1') }}"></script>
 @yield('js')

@@ -758,3 +758,7 @@ ul.list-pages li a {
 .modal-body > p:first-child {
   font-size: 18px;
 }
+
+.text-dark{
+  color: black;
+}

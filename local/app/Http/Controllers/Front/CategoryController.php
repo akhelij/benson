@@ -32,6 +32,7 @@ class CategoryController extends Controller
 
         $category = $this->categoryRepo->findCategoryBySlug(['slug' => "collection"]);
 
+        $products = $category->products()->paginate(12);
         $repo = new CategoryRepository($category);
        
 
@@ -39,7 +40,7 @@ class CategoryController extends Controller
             'category' => $category,
             'currency_diff' => $currency_diff,
             'currency' => $currency,
-            'products' => $repo->findProducts(),
+            'products' => $products,
         ]);
     }
     /**
