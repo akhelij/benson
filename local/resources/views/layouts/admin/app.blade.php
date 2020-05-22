@@ -28,21 +28,7 @@
     <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('//cdn.ckeditor.com/4.8.0/standard/ckeditor.js') }}"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.table').DataTable({
-                'info' : false,
-                'paging' : false,
-                'searching' : false,
-                'columnDefs' : [
-                    {
-                        'orderable': false, 'targets' : -1
-                    }
-                ],
-                'sorting' : []
-            });
-        });
-    </script>
+   
     <style type="text/css">
         #search-btn {
             border: 1px solid #d2d6de;
