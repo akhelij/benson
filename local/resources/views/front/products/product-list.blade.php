@@ -23,16 +23,16 @@
                                         <div style="    max-height: 22px;  overflow: hidden;">{!! $product->description !!}  </div>  
                                     <h5 class="margin-bottom">Ref {{ $product->sku }}</h5>  
                                                                      
-                                    <h5 class="margin-bottom">  <b> 
+                                    <h5 class="margin-bottom">   
                                     @if($product->old_price !=null)
-                                        {{ number_format($product->price * $currency_diff, 2) }}  {{$currency}}
-                                        {{ number_format($product->old_price * $currency_diff, 2) }}  {{$currency}}                                  
+                                    <b>{{ number_format($product->price * $currency_diff, 2) }}  {{$currency}}</b>
+                                       <span style="text-decoration:line-through"> {{ number_format($product->old_price * $currency_diff, 2) }}  {{$currency}}       </span>                           
                                     @else
                                     
-                                    {{ number_format($product->price * $currency_diff, 2) }}  {{$currency}}
+                                    <b>{{ number_format($product->price * $currency_diff, 2) }}  {{$currency}}</b>
                                    
                                     @endif
-                                    </b>
+                                    
                                     </h5>
                                         
                             </div>

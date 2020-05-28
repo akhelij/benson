@@ -25,9 +25,9 @@ class CartCheckoutRequest extends BaseFormRequest
             'passive_name'     => ['required',"regex:/^([a-zA-Z0-9' -])*$/u",'max:110'],
             'passive_email'    => ['required', 'email'],
             'passive_phone' => ['required'],
-            'passive_city' => ['required',"regex:/^([a-zA-Z0-9' -])*$/u",'max:255'],
-            'passive_country' => ['required',"regex:/^([a-zA-Z0-9' -])*$/u",'max:255'],
-            'passive_address' => ['required',"regex:/^([a-zA-Z0-9' -,°])*$/u"]
+            'passive_city' => ['required','max:255'],
+            'passive_country' => ['max:255'],
+            'passive_address' => ['required']
          
         ];
     }
@@ -38,8 +38,6 @@ class CartCheckoutRequest extends BaseFormRequest
             'passive_name.required' => 'Veuillez saisir votre nom complet',
             'passive_email.required' => 'Veuillez saisir votre email',
             'passive_phone.required' => 'Veuillez saisir le téléphone',
-            'passive_city.required' => 'Veuillez saisir la ville',
-            'passive_country.required' => 'Veuillez saisir le pays',
             'passive_address.required' => 'Veuillez saisir votre adresse',
             'billing_address.required' => 'Veuillez saisir votre adresse de livraison',
             'payment.required' => 'Veuillez choisir votre mode de paiement',
@@ -52,8 +50,7 @@ class CartCheckoutRequest extends BaseFormRequest
             'passive_name.max' => 'Votre nom est trop long',
             'passive_address.max' => 'Votre adresse est trop longue',
             'passive_city.max' => 'Votre ville est trop longue',
-            'passive_country.max' => 'Votre pays est trop long',
-            
+            'passive_country.max' => 'Votre pays est trop long',            
 
         ];
     }

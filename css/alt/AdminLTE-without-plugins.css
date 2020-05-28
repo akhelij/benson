@@ -1931,7 +1931,6 @@ a:focus {
   color: #999;
 }
 .todo-list > li.done .text {
-  text-decoration: line-through;
   font-weight: 500;
 }
 .todo-list > li.done .label {

@@ -85,6 +85,11 @@
 </head>
 
 <body class="boxed"  style="background: #f8f8f8;overflow-x:hidden">
+  <div class="trap ribbon-wrap left">
+    <div class="trap-ribbon">
+     <b>-20 % sur toute la collection</b>
+    </div>
+  </div>
     <div class="container" style="background: #f8f8f8">   
 
       <section  style="background: url('/bgs/green banner.jpg') no-repeat center;
@@ -119,25 +124,25 @@
                           <li data-menuanchor="eighth" id="s8"><a href="/#eighth">Magasins Benson</a></li>
                           <li id="s9"><a href="/category">Voir la Collection & Commander</a></li> --}}
                         </ul>
-                        <ul class="nav navbar-nav hidden-lg hidden-md pull-left">
-                          <li id="s9_min_open"><a href="#" onclick="document.getElementById('s9_min').style.display = 'block';document.getElementById('s9_min_open').style.display = 'none';document.getElementById('s9_min_close').style.display = 'block';">Voir la Collection et Commander  <i class="fa fa-angle-right"></i></a> </li>		
-                          <li id="s9_min_close" style="display:none"><a href="#" onclick="document.getElementById('s9_min').style.display = 'none';document.getElementById('s9_min_open').style.display = 'block';document.getElementById('s9_min_close').style.display = 'none';">Voir la Collection et Commander  <i class="fa fa-angle-left"></i></a> </li>		
-                          <li><a href="{{route('front.category.slug','accessoires')}}"> Accessoires      </a></li>
-                          <li><a href="{{route('front.category.slug','entretien')}}"> Entretien      </a></li>
-                          <li><a href="/">La Maison</a></li>					 
-                          <li data-menuanchor="seventh" id="s7"><a href="/#seventh">Contact</a></li>	
-                          <li data-menuanchor="eighth" id="s8"><a href="/#eighth">Magasins Benson</a></li>
+                        <ul class="nav navbar-nav hidden-lg hidden-md pull-left" >
+                          <li id="s9_min_open"><a href="#" onclick="document.getElementById('s9_min').style.display = 'block';document.getElementById('s9_min_open').style.display = 'none';document.getElementById('s9_min_close').style.display = 'block';" style="font-size:10px !important">Voir la Collection et Commander  <i class="fa fa-angle-right"></i></a> </li>		
+                          <li id="s9_min_close" style="display:none"><a href="#" onclick="document.getElementById('s9_min').style.display = 'none';document.getElementById('s9_min_open').style.display = 'block';document.getElementById('s9_min_close').style.display = 'none';" style="font-size:10px !important">Voir la Collection et Commander  <i class="fa fa-angle-left"></i></a> </li>		
+                          <li><a href="{{route('front.category.slug','accessoires')}}" style="font-size:10px !important"> Accessoires      </a></li>
+                          <li><a href="{{route('front.category.slug','entretien')}}" style="font-size:10px !important"> Entretien      </a></li>
+                          <li><a href="/" style="font-size:10px !important">La Maison</a></li>					 
+                          <li data-menuanchor="seventh" id="s7"><a href="/#seventh" style="font-size:10px !important">Contact</a></li>	
+                          <li data-menuanchor="eighth" id="s8"><a href="/#eighth" style="font-size:10px !important">Magasins Benson</a></li>
                           
                           </ul>
-                          <ul class="nav navbar-nav hidden-lg hidden-md pull-right " id="s9_min" style="display:none">
-                            <li><a href="{{route('front.category.slug','richelieus')}}"> Richelieus      </a></li>
-                          <li><a href="{{route('front.category.slug','bottes-bottines')}}"> Boots & Bottines</a></li>
-                          <li><a href="{{route('front.category.slug','derbys')}}">  Derbys          </a></li>
-                          <li><a href="{{route('front.category.slug','boucles')}}">  Boucles         </a></li>
-                          <li><a href="{{route('front.category.slug','mocassins')}}">  Mocassins       </a></li>
-                          <li><a href="{{route('front.category.slug','sneakers')}}"> Sneakers        </a></li>
-                          <li><a href="{{route('front.category.slug','belgha')}}">  Babouches tradition  </a></li>
-                                    <li><a href="/category">Voir toute la Collection & Commander</a></li>
+                          <ul class="nav navbar-nav hidden-lg hidden-md pull-right " id="s9_min" style="display:none;"">
+                            <li><a href="{{route('front.category.slug','richelieus')}}" style="font-size:10px !important"> Richelieus      </a></li>
+                          <li><a href="{{route('front.category.slug','bottes-bottines')}}" style="font-size:10px !important"> Boots & Bottines</a></li>
+                          <li><a href="{{route('front.category.slug','derbys')}}" style="font-size:10px !important">  Derbys          </a></li>
+                          <li><a href="{{route('front.category.slug','boucles')}}" style="font-size:10px !important">  Boucles         </a></li>
+                          <li><a href="{{route('front.category.slug','mocassins')}}" style="font-size:10px !important">  Mocassins       </a></li>
+                          <li><a href="{{route('front.category.slug','sneakers')}}" style="font-size:10px !important"> Sneakers        </a></li>
+                          <li><a href="{{route('front.category.slug','belgha')}}" style="font-size:10px !important">  Babouches tradition  </a></li>
+                                    <li><a href="/category" style="font-size:10px !important">Voir toute la Collection & Commander</a></li>
                           </ul>
                       </div>
                       <div  id="section9" style="display:none;color:#ffffff; z-index: -1;background: transparent url('/bgs/green banner.jpg') no-repeat ;background-size:100% 100%;position:absolute;top:100%;left:0%;width:100%;height:372px">

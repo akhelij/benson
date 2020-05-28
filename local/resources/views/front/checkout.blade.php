@@ -185,7 +185,7 @@
                                 <hr>
                                 <div class="pull-right">
                                     <div class="btn-group">
-                                        <a href="{{ route('cart.index') }}" class="btn btn-default"> <i class="fa fa-shopping-basket"></i> Reverfier le panier</a>
+                                        <a href="{{ route('cart.index') }}" class="btn btn-default"> <i class="fa fa-shopping-basket"></i> Reverifier le panier</a>
 
                                         <button class="btn btn-primary" id="card" onclick="fbq('track', 'AddPaymentInfo');fbq('track', 'InitiateCheckout');"> <i class="fa fa-check"></i> Valider la commande</button>
                                         <a href="{{ route('checkout.success') }}" class="btn btn-primary hidden" id="livraison" onclick="fbq('track', 'AddPaymentInfo');fbq('track', 'InitiateCheckout');"> <i class="fa fa-check"></i> Valider la commande</a>

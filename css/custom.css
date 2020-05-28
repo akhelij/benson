@@ -8,3 +8,109 @@ html {
   color:#fefefe !important;
 }
 
+.pin{
+  position : absolute;
+}
+
+.pin1{
+  top: 35%;
+  left: -21%;
+}
+
+.pin2{
+  top: 34%;
+  left: -16%;
+}
+
+.pin3{
+  top: 25%;
+  left: -14%;
+}
+
+.pin4{
+  top: 41%;
+  left: -23%;
+}
+
+.pin5{
+  top: 31%;
+  left: 51%;
+}
+
+.pin1:hover{
+  top: 34%;
+  left: -21%;
+}
+
+.pin2:hover{
+  top: 33%;
+  left: -16%;
+}
+
+.pin3:hover{
+  top: 24%;
+  left: -14%;
+}
+
+.pin4:hover{
+  top: 40%;
+  left: -23%;
+}
+
+.pin5:hover{
+  top: 30%;
+  left: 51%;
+}
+
+
+
+.right { float: right; }
+.ribbon-wrap {
+  z-index:99999 !important;
+  position: fixed;
+  left: -41px;
+  top: 47px;
+  width: 209px;
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  border-color: #a00;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 30px solid #a00;
+  box-shadow: 0px 6px 5px -5px rgba(0, 0, 0, 0.5);
+  font-size : 12px;
+}
+.ribbon-wrap.right {
+  left: inherit;
+  right: -41px;
+  top: 19px;
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.ribbon-wrap .trap-ribbon {
+  position: fixed;
+  left: -15px;
+  top: 2px;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.7);
+  width: 180px;
+  text-align: center;
+}
+.ribbon-wrap .trap-ribbon b {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #d8d8d8;
+  text-decoration: none;
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  line-height: 22px;
+  display: inline-block;
+  border-top: 1px dotted rgba(255, 255, 255, 0.7);
+  transition: color 500ms ease;
+}
+.ribbon-wrap .trap-ribbon b:hover {
+  color: #fff;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.85);
+}

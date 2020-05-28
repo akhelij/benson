@@ -373,11 +373,12 @@ width:100%
                                                 </div>
                                             </div>
                                     
-                                            
-                                            <button class="btn btn-primary pull-right btn-lg" id="card"  style="background-color:black"> Passer la commande</button>
-                                                
-                                            <a href="{{ route('checkout.success') }}" class="btn btn-primary" style="background-color:black;display:none">Passer la commande</a>
-                                                
+                                            @guest
+                                                 <button class="btn btn-primary pull-right btn-lg" id="card"  style="background-color:black"> Passer la commande</button>
+                                            @endguest
+                                            @auth   
+                                                <a href="{{ route('checkout.success') }}" class="btn btn-primary" style="background-color:black">Passer la commande</a>
+                                            @endauth
                                         </form>
                                     </div>
                                     <!-- guest mode -->

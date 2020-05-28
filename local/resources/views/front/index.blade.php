@@ -54,6 +54,7 @@
 	<script type="text/javascript" src="{{asset('js/jquery.multiscroll.js')}}"></script>	
 	@endif	
 	<link rel="stylesheet" type="text/css" href="{{asset('css/examples.css')}}" />		
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 	<script type="text/javascript" src="{{asset('js/jquery.easings.min.js')}}"></script>
 
 	<script type="text/javascript">
@@ -106,8 +107,13 @@
 	}
    </style>
 </head>
-<body class="container">
 
+<body class="container">
+	<div class="trap ribbon-wrap left">
+		<div class="trap-ribbon">
+		 <b>-20 % sur toute la collection</b>
+		</div>
+	  </div>
 
 	<section>
 			
@@ -141,25 +147,25 @@
 					<li data-menuanchor="seventh" id="s7"><a href="/#seventh">Contact</a></li>
 					<li data-menuanchor="eighth" id="s8"><a href="/#eighth">Magasins Benson</a></li> --}}
 				  </ul>
-				  <ul class="nav navbar-nav hidden-lg hidden-md pull-left">
-					<li id="s9_min_open"><a href="#" onclick="document.getElementById('s9_min').style.display = 'block';document.getElementById('s9_min_open').style.display = 'none';document.getElementById('s9_min_close').style.display = 'block';">Voir la Collection et Commander  <i class="fa fa-angle-right"></i></a> </li>		
-					<li id="s9_min_close" style="display:none"><a href="#" onclick="document.getElementById('s9_min').style.display = 'none';document.getElementById('s9_min_open').style.display = 'block';document.getElementById('s9_min_close').style.display = 'none';">Voir la Collection et Commander  <i class="fa fa-angle-left"></i></a> </li>		
-					<li><a href="{{route('front.category.slug','accessoires')}}"> Accessoires      </a></li>
-					<li><a href="{{route('front.category.slug','entretien')}}"> Entretien      </a></li>
-					<li><a href="/">La Maison</a></li>					 
-					<li data-menuanchor="seventh" id="s7"><a href="/#seventh">Contact</a></li>	
-					<li data-menuanchor="eighth" id="s8"><a href="/#eighth">Magasins Benson</a></li>
+				  <ul class="nav navbar-nav hidden-lg hidden-md pull-left" >
+					<li id="s9_min_open"><a href="#" onclick="document.getElementById('s9_min').style.display = 'block';document.getElementById('s9_min_open').style.display = 'none';document.getElementById('s9_min_close').style.display = 'block';" style="font-size:10px !important">Voir la Collection et Commander  <i class="fa fa-angle-right"></i></a> </li>		
+					<li id="s9_min_close" style="display:none"><a href="#" onclick="document.getElementById('s9_min').style.display = 'none';document.getElementById('s9_min_open').style.display = 'block';document.getElementById('s9_min_close').style.display = 'none';" style="font-size:10px !important">Voir la Collection et Commander  <i class="fa fa-angle-left"></i></a> </li>		
+					<li><a href="{{route('front.category.slug','accessoires')}}" style="font-size:10px !important"> Accessoires      </a></li>
+					<li><a href="{{route('front.category.slug','entretien')}}" style="font-size:10px !important"> Entretien      </a></li>
+					<li><a href="/" style="font-size:10px !important">La Maison</a></li>					 
+					<li data-menuanchor="seventh" id="s7"><a href="/#seventh" style="font-size:10px !important">Contact</a></li>	
+					<li data-menuanchor="eighth" id="s8"><a href="/#eighth" style="font-size:10px !important">Magasins Benson</a></li>
 					
 				  </ul>
-				  <ul class="nav navbar-nav hidden-lg hidden-md pull-right " id="s9_min" style="display:none">
-				    <li><a href="{{route('front.category.slug','richelieus')}}"> Richelieus      </a></li>
-					<li><a href="{{route('front.category.slug','bottes-bottines')}}"> Boots & Bottines</a></li>
-					<li><a href="{{route('front.category.slug','derbys')}}">  Derbys          </a></li>
-					<li><a href="{{route('front.category.slug','boucles')}}">  Boucles         </a></li>
-					<li><a href="{{route('front.category.slug','mocassins')}}">  Mocassins       </a></li>
-					<li><a href="{{route('front.category.slug','sneakers')}}"> Sneakers        </a></li>
-					<li><a href="{{route('front.category.slug','belgha')}}">  Babouches tradition  </a></li>
-                    <li><a href="/category">Voir toute la Collection & Commander</a></li>
+				  <ul class="nav navbar-nav hidden-lg hidden-md pull-right " id="s9_min" style="display:none;"">
+				    <li><a href="{{route('front.category.slug','richelieus')}}" style="font-size:10px !important"> Richelieus      </a></li>
+					<li><a href="{{route('front.category.slug','bottes-bottines')}}" style="font-size:10px !important"> Boots & Bottines</a></li>
+					<li><a href="{{route('front.category.slug','derbys')}}" style="font-size:10px !important">  Derbys          </a></li>
+					<li><a href="{{route('front.category.slug','boucles')}}" style="font-size:10px !important">  Boucles         </a></li>
+					<li><a href="{{route('front.category.slug','mocassins')}}" style="font-size:10px !important">  Mocassins       </a></li>
+					<li><a href="{{route('front.category.slug','sneakers')}}" style="font-size:10px !important"> Sneakers        </a></li>
+					<li><a href="{{route('front.category.slug','belgha')}}" style="font-size:10px !important">  Babouches tradition  </a></li>
+                    <li><a href="/category" style="font-size:10px !important">Voir toute la Collection & Commander</a></li>
 				  </ul>
 				</div>
 				<div  id="section9" style="display:none;color:#ffffff; z-index: -1;background: transparent url('/bgs/green banner.jpg') no-repeat ;background-size:100% 100%;position:absolute;top:100%;left:0%;width:100%;height:372px">
@@ -227,6 +233,8 @@
    
 	</header>
 	</section>
+	
+	
 	<div id="myContainer" class=" hidden-sm hidden-xs">
 
 		<div class="ms-left">
@@ -321,9 +329,15 @@
 			{{--  --}}
 			<div class="ms-section" id="right1"  style="background: transparent url('/bgs/shoot 9-2.jpg') no-repeat left ;">
 				{{-- <img class="position_content" id="u1127_img" src="/images/logo.jpg" alt=""  width="250">  --}}
-				<div style="margin-top : 20%;margin-left : -20%;">
-					<h1 style="color:white; font-size:40px">Des souliers et des hommes...</h1>
-					<a href="{{url('/category')}}" class="btn btn-lg btn-default">
+				<div style="margin-top : 18%;margin-left:5%;  font-size:24px;text-align:justify;text-shadow: 1px 1px rgba(43, 39, 39, 0.712);">
+					<p style="color:white;font-family: 'Dancing Script', cursive;"> Cela fait 24 ans que vous accompagnez cette marque Marocaine.</p><br/>
+					<p style="color:white;font-family: 'Dancing Script', cursive;">	Nous ne permettrons pas qu'un virus vienne mettre en péril ce que <br/>nous avons bâti ensemble.</p><br/>
+					<p style="color:white;font-family: 'Dancing Script', cursive;">	Heureux de vous retrouver:</p><br/>
+					<p style="color:white;font-family: 'Dancing Script', cursive;">	M. Benamour</p>
+					<p style="color:white;font-family: 'Dancing Script', cursive;">	Benson Shoes.</p>
+					<br/>
+					<br/>
+					<a href="{{url('/category')}}" class="btn btn-lg btn-default" style="font-family: 'Dancing Script', cursive;text-shadow:none">
 						Voir la collection
 					</a>
 				</div>
@@ -413,7 +427,11 @@
 				</div>
 			</div>
 			<div class="ms-section" id="right8" style="background: transparent url('/bgs/right side map.jpg') no-repeat left ;">
-				
+				<img src="{{ asset('bgs/LOGO.png')}}" width="35" class="pin pin1">	
+				<img src="{{ asset('bgs/LOGO.png')}}" width="35" class="pin pin2">	
+				<img src="{{ asset('bgs/LOGO.png')}}" width="35" class="pin pin3">	
+				<img src="{{ asset('bgs/LOGO.png')}}" width="35" class="pin pin4">	
+				<img src="{{ asset('bgs/LOGO.png')}}" width="35" class="pin pin5">	
 			</div>
 		</div>	
 	</div>
@@ -428,11 +446,19 @@
 			height: 300px;
 			text-align:center">
 				<div>
-					<h1 style="color:white;padding:5%;padding-top:30%;">Des souliers et des hommes...</h1>
-					<a href="{{url('/category')}}" class="btn btn-md btn-default" style="margin-top:7%">
-						Voir la collection
-					</a>
+					<div style=" padding:15%;font-size:16px;text-align:justify;text-shadow: 1px 1px rgba(43, 39, 39, 0.712);margin-top:-5%">
+						<p style="color:white;font-family: 'Dancing Script', cursive;"> Cela fait 24 ans que vous accompagnez cette marque Marocaine.</p>
+						<p style="color:white;font-family: 'Dancing Script', cursive;">	Nous ne permettrons pas qu'un virus vienne mettre en péril ce que nous avons bâti ensemble.</p><br/>
+						<p style="color:white;font-family: 'Dancing Script', cursive;">	Heureux de vous retrouver:</p>
+						<p style="color:white;font-family: 'Dancing Script', cursive;">	M. Benamour</p>
+						<p style="color:white;font-family: 'Dancing Script', cursive;">	Benson Shoes.</p>
+						<a href="{{url('/category')}}" class="btn btn-sm btn-default pull-right" style="text-shadow:none;margin-top:-10%">
+							Voir la collection
+						</a>
+						
+					</div>
 				</div>
+					
 				{{-- <div class="text" style="padding-top:15%;text-align:center">
 					<img class="position_content" id="u1127_img" src="/bgs/goodyear welted - blanc.png" alt=""  style="width:120px"> 
 					<h1 style="margin-top : 5%;color:white;font-size: 1em;">Des souliers et des hommes...</h1>
@@ -469,8 +495,7 @@
 						<h1>La Technique</h1>
 						La vocation première de BENSON SHOES est artisanale, et elle a fait de la finesse du travail manuel son sacerdoce. La coupe des différentes parties de la chaussure (tige, doublure semelle, etc..) est intégralement effectuée à la main. Quant aux autres étapes d’assemblage et de couture, elles nécessitent elles aussi de nombreuses interventions manuelles. 
 						{{-- Par exemple, la trépointe est cousue à la tige et à la première de montage. Elle est ensuite retournée pour que l’ensemble soit cousu une deuxième fois à la semelle d’usure. Quant au remplissage de la cavité entre la semelle première et la semelle d’usure, il est assuré par un mélange à base de poudre de liège et de colle, ce qui permet aux porteurs de la marque d’apprécier une empreinte personnalisée au bout de quelques jours d’utilisation. --}}
-						
-					</p>
+				 	</p>
 					</div>
 				
 				</div>
@@ -563,12 +588,14 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div   style="background: transparent url('/bgs/left side map.jpg') no-repeat right ;">
-				
+		<div class="row p-5">
+			<div  style="background: transparent url('/bgs/left side map.jpg') no-repeat right;">
+				<img src="{{ asset('favicons/logo2.png')}}" width="50">	
+				<img src="{{ asset('favicons/logo2.png')}}" width="50">	
 			</div>
-			<div   style="background: transparent url('/bgs/right side map.jpg') no-repeat left ;">
-				
+			<div  style="background: transparent url('/bgs/right side map.jpg') no-repeat left;">	
+				<img src="{{ asset('favicons/logo2.png')}}" width="50">				
+				<img src="{{ asset('favicons/logo2.png')}}" width="50">	
 			</div>
 		</div>
 	</div>
@@ -588,10 +615,16 @@
               }
             })
             $('#section9').mouseleave(function(){
-              $("#section9").hide("300");
-              
+              $("#section9").hide("300");              
             })
-        
+			
+			$('.pin').hover(function(){
+				
+				var pin = $(this).attr('pin');
+				$(".img-pin").hide();
+				$(".img-pin".pin).show();
+				
+			})
             
 </script>
 </body>
