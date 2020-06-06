@@ -33,7 +33,7 @@
             }
         }
 
-        $storeKey = "Benson2020";
+        $storeKey = "5J~uBJw,";
         $escapedStoreKey = str_replace("|", "\\|", str_replace("\\", "\\\\", $storeKey));	
         $hashval = $hashval . $escapedStoreKey;
 

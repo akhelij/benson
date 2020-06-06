@@ -127,10 +127,11 @@ width:100%
                                 <li><a href="{{ route('catalog') }}"> Collection</a></li>
                                 <li class="active">Panier</li>
                             </ol>
-                       
+                           
                             @foreach($products as $product)
                                 <div class="row" style="margin-top:3%">
                                     <div class="col-xs-5">
+                                       
                                         <a href="{{ route('front.get.product', [$product->product->slug]) }}" class="hover-border">
                                             @if(isset($product->cover))
                                                 <img src="{{ asset("storage/$product->cover") }}" alt="{{ $product->name }}" class="img-responsive img-thumbnail">
@@ -227,11 +228,11 @@ width:100%
                                     <h2><b> Renseignements sur le paiement </b></h2>
                                     <p>Choisissez un mode de paiement pour votre commande :</p>
                                 
-                                    <div class="choice checked">
+                                    <div class="choice " hidden>
                                         <div class="col-md-12">
                                         
                                             <label class="container radiobtn">CMI
-                                                <input type="checkbox" class="checkbox inputCheck"  id="cmdCmi" checked="checked">
+                                                <input type="checkbox" class="checkbox inputCheck"  id="cmdCmi">
                                                 <span class="checkmark"></span>
                                             </label>
                                         
@@ -249,11 +250,11 @@ width:100%
                                         </div>
                                     </div>
                                     -->
-                                    <div class="choice" choice = "paiement-a-la-livraison">
+                                    <div class="choice checked" choice = "paiement-a-la-livraison">
                                             <div class="col-md-12">
                                             
                                                 <label class="container radiobtn">Paiement à la livraison
-                                                    <input type="checkbox" class="checkbox inputCheck"   id="cmdLiv">
+                                                    <input type="checkbox" class="checkbox inputCheck"   id="cmdLiv"  checked="checked">
                                                     <span class="checkmark"></span>
                                                 </label>
                                             
@@ -263,9 +264,8 @@ width:100%
                                 </div>
                                 <!-- Choix du mode de paiement -->
                                 <!--instruction du paiement à la livraison -->
-                                <div class="col-md-12 paiement-a-la-livraison"  style="margin-top:5%" hidden>
-                                    <h3 ><b>    Instructions de paiement à la livraison</b></h3>
-
+                                <div class="col-md-12 paiement-a-la-livraison"  style="margin-top:5%" >
+                                    <h3 ><b> Instructions de paiement à la livraison</b></h3>
                                     
                                     <p><b>Payez en espèces dès que vous receverez votre commande.</b><br/>
                                     
@@ -318,7 +318,7 @@ width:100%
                                         <form action="{{ route('checkout.store') }}" method="post" class="form-horizontal">
                                             {{ csrf_field() }}
                                             <input type="text" name="courier" id="" value="1" hidden>
-                                            <input type="text" name="payment" id="" value="3" hidden>
+                                            <input type="text" name="payment" id="" value="2" hidden>
                                             <input type="text" name="billing_address" id="" value="0" hidden>
                                             <input type="text" name="passiveOrder" id="" value="0" hidden>
                                             
@@ -329,7 +329,7 @@ width:100%
                                             <div class="col-md-12">
                                                 <div class="form-group ">
                                                     <label >Pays</label>
-                                                    <input type="text" class="form-control" name="passive_country" placeholder="Maroc">
+                                                    <input type="text" class="form-control" name="passive_country" placeholder="Maroc" value="Maroc">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -373,12 +373,10 @@ width:100%
                                                 </div>
                                             </div>
                                     
-                                            @guest
-                                                 <button class="btn btn-primary pull-right btn-lg" id="card"  style="background-color:black"> Passer la commande</button>
-                                            @endguest
-                                            @auth   
-                                                <a href="{{ route('checkout.success') }}" class="btn btn-primary" style="background-color:black">Passer la commande</a>
-                                            @endauth
+                                                <button type="submit" class="btn btn-primary pull-right btn-md   onCMIBtn" id="card"  style="background-color:black"> Passer la commande</button>
+                                             
+                                                {{-- <a href="{{ route('checkout.get.success') }}" class="btn btn-primary pull-right btn-md  onDeliveryBtn" style="background-color:black;display:none">Passer la commande</a> --}}
+                                            
                                         </form>
                                     </div>
                                     <!-- guest mode -->
@@ -391,10 +389,17 @@ width:100%
                                                 <div class="col-md-12">
                                                     <form action="{{ route('checkout.store') }}" method="post" class="form-horizontal">
                                                         {{ csrf_field() }}
-                                                        <input type="text" name="courier" id="" value="1" hidden>
-                                                        <input type="text" name="payment" id="" value="3" hidden>
-                                                        <input type="text" name="billing_address" id="" value="{{$address->id}}" hidden>
-                                                        
+                                                        <input type="text"  name="courier"          value="1"                        hidden>
+                                                        <input type="text"  name="payment"          value="2"                        hidden>
+                                                        <input type="text"  name="billing_address"  value="{{ $address->id}}"         hidden>
+                                                        <input type="email" name="passive_email"    value="{{ $customer->email }}"   hidden>
+                                                        <input type="text"  name="passive_name"     value="{{ $customer->name }}"    hidden>
+                                                        <input type="text"  name="passive_phone"    value="{{ $address->phone }}"    hidden>
+                                                        <input type="text"  name="passive_address"  value="{{ $address->address_1 }} {{ $address->address_2 }}"  hidden>
+                                                        <input type="text"  name="passive_city"     value="{{ $address->city }}"     hidden>
+                                                        <input type="text"  name="passive_country"  value="Maroc"     hidden>
+                                                        <input type="text"  name="passive_zip"      value="{{ $address->zip }}"      hidden>
+                                                        <input type="text"  name="passive_province" value="{{ $address->province }}" hidden>
 
                                                         <h3 style="margin-top:5%"> <a class="dropdown-item pull-right" href="{{ route('logout') }}" style="font-size:12px">Déconnexion</a>
                                                             <b> Informations de livraison</b></h3>
@@ -421,9 +426,9 @@ width:100%
                                                             </p>
                                                         </div>
                                                         
-                                                        <button class="btn btn-primary pull-right btn-lg" id="card"  style="background-color:black"> Passer la commande</button>
+                                                        <button type="submit"  class="btn btn-primary btn-md pull-right onCMIBtn" id="card"  style="background-color:black"> Passer la commande</button>
                                                             
-                                                        <a href="{{ route('checkout.success') }}" class="btn btn-primary" style="background-color:black;display:none">Passer la commande</a>
+                                                        {{-- <a href="{{ route('checkout.get.success') }}" class="btn btn-primary btn-md pull-right onDeliveryBtn" style="background-color:black;display:none">Passer la commande</a> --}}
                                                     </form>
                                                 </div>
                                                 <!-- payment informations --> 
@@ -473,10 +478,7 @@ width:100%
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <!-- Edit address -->
-                                                
-                                            
-                                        
+                                                <!-- Edit address -->     
 
                                     @else
                                         <!-- Add new address -->
@@ -540,6 +542,16 @@ width:100%
                         </div>
                     </div>
             @else
+            @if(session()->has('message'))
+                <div class="box no-border">
+                    <div class="box-tools">
+                        <p class="alert alert-info alert-dismissible">
+                            {{ session()->get('message') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </p>
+                    </div>
+                </div>
+            @endif
                 <div class="row">
                     <div class="col-md-12">
                         <p class="alert alert-warning">Votre panier est vide. <a href="{{ route('catalog') }}">Acheter maintenant!</a></p>
@@ -551,7 +563,7 @@ width:100%
 
 @section('js')
 
-
+    </div>
 
 <!-- Event snippet for Panier / Achat conversion page -->
 <script>

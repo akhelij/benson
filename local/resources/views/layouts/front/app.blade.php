@@ -114,14 +114,14 @@
                           <li><a href="{{route('front.category.slug','entretien')}}"> Entretien      </a></li>
                           <li><a href="/">La Maison</a></li>					 
                           <li data-menuanchor="seventh" id="s7"><a href="/#seventh">Contact</a></li>	
-                          <li data-menuanchor="eighth" id="s8"><a href="/#eighth">Magasins Benson</a></li>
+                          <li id="s8"><a href="/shop">Magasins Benson</a></li>
                           {{-- <li data-menuanchor="second" id="s2"><a href="/#second">L'Esprit</a></li>
                           <li data-menuanchor="third" id="s3"><a href="/#third">La Technique</a></li>
                           <li data-menuanchor="fourth" id="s4"><a href="/#fourth">Le Design</a></li>
                           <li data-menuanchor="fifth" id="s5"><a href="/#fifth">L'entretien</a></li>         
                           <li data-menuanchor="sixth" id="s6"><a href="/#sixth">Le Savoir-Faire</a></li>
                           <li data-menuanchor="seventh" id="s7"><a href="/#seventh">Contact</a></li>
-                          <li data-menuanchor="eighth" id="s8"><a href="/#eighth">Magasins Benson</a></li>
+                          <li><a href="/shop">Magasins Benson</a></li>
                           <li id="s9"><a href="/category">Voir la Collection & Commander</a></li> --}}
                         </ul>
                         <ul class="nav navbar-nav hidden-lg hidden-md pull-left" >
@@ -131,7 +131,7 @@
                           <li><a href="{{route('front.category.slug','entretien')}}" style="font-size:10px !important"> Entretien      </a></li>
                           <li><a href="/" style="font-size:10px !important">La Maison</a></li>					 
                           <li data-menuanchor="seventh" id="s7"><a href="/#seventh" style="font-size:10px !important">Contact</a></li>	
-                          <li data-menuanchor="eighth" id="s8"><a href="/#eighth" style="font-size:10px !important">Magasins Benson</a></li>
+                          <li><a href="/shop" style="font-size:10px !important">Magasins Benson</a></li>
                           
                           </ul>
                           <ul class="nav navbar-nav hidden-lg hidden-md pull-right " id="s9_min" style="display:none;"">

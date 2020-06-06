@@ -112,7 +112,7 @@
                                                     @elseif($payment->slug === 'paiement-a-la-livraison')
                                                     <td style="padding:2%" ><img class ="hidden-xs" src="{{url('/img/pod.png')}}" > Paiement à la livraison</td>
                                                     @else
-                                                        <td><img class ="hidden-xs" src="{{url('/img/cmi_1.png')}}"><img class ="visible-xs" src="{{url('/img/cmi_3.png')}}" width="100px"></td>
+                                                        <td hidden><img class ="hidden-xs" src="{{url('/img/cmi_1.png')}}"><img class ="visible-xs" src="{{url('/img/cmi_3.png')}}" width="100px"></td>
                                                     @endif
                                                     <td align="center">
                                                         <label class="col-md-2 col-md-offset-3">

@@ -1,6 +1,6 @@
 <?php
 
-	$storeKey = "Benson2020";
+	$storeKey = "5J~uBJw,";
 	
 	
 	$postParams = array();
@@ -49,7 +49,7 @@
 */
 	if($retrievedHash == $actualHash)	{
 		if($_POST["ProcReturnCode"] == "00")	{
-			echo "ACTION=POSTAUTH";	
+			echo "ACTION=APPROVED";	
 		} else {
 			echo "APPROVED";
 		}

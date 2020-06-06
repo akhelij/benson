@@ -25,8 +25,8 @@ class CartCheckoutRequest extends BaseFormRequest
             'passive_name'     => ['required',"regex:/^([a-zA-Z0-9' -])*$/u",'max:110'],
             'passive_email'    => ['required', 'email'],
             'passive_phone' => ['required'],
-            'passive_city' => ['required','max:255'],
-            'passive_country' => ['max:255'],
+            'passive_city' => ['max:255'],
+            'passive_country' => ['required','max:255'],
             'passive_address' => ['required']
          
         ];

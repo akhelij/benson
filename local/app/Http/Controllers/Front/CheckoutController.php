@@ -35,6 +35,9 @@ use PayPal\Exception\PayPalConnectionException;
 use Ramsey\Uuid\Uuid;
 use App\Shop\Customers\Customer;
 use App\Shop\Addresses\Address;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 
 class CheckoutController extends Controller
 {
@@ -315,12 +318,12 @@ class CheckoutController extends Controller
 
 
          
-            $result = Mail::send('invoices.orders', ['customer' => $order->customer, 'order' => $order, 'address' => $order->address, 'products' => $products], function ($message) use ($data) {
-                $message->from("contact@benson-shoes.com", "BensonShoes");
-                $message->to($data['email']);
-                $message->subject($data['subject']);
+            // $result = Mail::send('invoices.orders', ['customer' => $order->customer, 'order' => $order, 'address' => $order->address, 'products' => $products], function ($message) use ($data) {
+            //     $message->from("contact@benson-shoes.com", "BensonShoes");
+            //     $message->to($data['email']);
+            //     $message->subject($data['subject']);
                
-            });
+            // });
             
        
         return $this->clearCart();
@@ -391,6 +394,7 @@ class CheckoutController extends Controller
      */
     public function store(CartCheckoutRequest $request)
     {
+       
         
         // Si c'est vers le Maroc livraison gratuite
         $courierId = $request->session()->get('courierId', $request->input('courier'));
@@ -416,9 +420,7 @@ class CheckoutController extends Controller
             $customer = $this->customerRepo->findCustomerById(Auth::id());
             $billingAddress = $this->addressRepo->findAddressById($request->input('billing_address'));
             
-            if ($billingAddress->country_id != "Maroc" || $billingAddress->country_id != "Morocco") {
-                $courier->cost = 500;
-            }
+           
         }else
         {
             //Add new passive customer
@@ -437,9 +439,12 @@ class CheckoutController extends Controller
             $billingAddress->phone = $request->input("passive_phone");
             $billingAddress->save();
         }
+
+        
+        
         //Discount 
         $discount = 0;
-
+       
         if ($request->input("code") != null) {
             if($request->input("code") == "ohman15"){
                 $discount=0;
@@ -456,6 +461,9 @@ class CheckoutController extends Controller
             } 
         }
 
+         
+        
+
         //Definition of the currency USED
         $this->currency_diff = 1;
         $currency = config('cart.currency');
@@ -471,7 +479,18 @@ class CheckoutController extends Controller
         }
 
         $method = $this->paymentRepo->findPaymentMethodById($request->input('payment'));
-        
+        //Courrier cost
+        if (strpos(strtolower($billingAddress->country_id), 'maroc') !== false || strpos(strtolower($billingAddress->address_1), 'maroc') !== false) {
+            $courier->cost = 0;
+        }else{
+            if($method->slug != 'paiement-a-la-livraison')
+                $courier->cost = 500;
+            else  {
+
+                Session::flash('message', 'Le service de paiement à la livraison est valable juste au Maroc. Veuillez vous assurer de la présence du pays dans votre adresse.');
+                return view('front.carts.cart'); // return to cart
+            } 
+        }
         
         switch ($method->slug) {
 
@@ -627,7 +646,7 @@ class CheckoutController extends Controller
                     'reference' => $ORDER_ID,
                     'courier_id' => $courierId,
                     'customer_id' => $customer->id,
-                    'address_id' => $request->input('billing_address'),
+                    'address_id' => $billingAddress->id,
                     'order_status_id' => 6,
                     'payment_method_id' => 2,
                     'payment' => null,
@@ -643,7 +662,7 @@ class CheckoutController extends Controller
                 $order = $order->create($params);
 
                 $orderComplete = $this->buildOrderDetails($order, true);
-
+                $this->forETL();
                 return redirect()->route('checkout.success');
 
                 break;
@@ -1341,6 +1360,32 @@ class CheckoutController extends Controller
     public function payment()
     {
         return view("cmix.PaymentRequest");
+    }
+
+    public function forETL(){
+        
+        try {
+            $orders = (array) DB::select( DB::raw("select o.reference as 'Numero de commande',o.id as 'Numero_de_la_ligne',o.created_at as 'Date de saisie',a.address_1 as 'Address de livraison',c.name as 'Nom Complet',a.zip as 'CP',a.city_id as 'VIL',a.country_id as 'PAY', a.phone as 'TEL', c.email as 'MAIL' FROM orders as o, customers as c, addresses as a where o.customer_id = c.id and o.address_id = a.id order by o.created_at desc limit 1") );
+            foreach($orders as $order){
+                $products= Order::find($order->Numero_de_la_ligne)->products;
+                foreach($products as $key => $product){
+                    $sku = $product->sku;
+                    $name = $product->name;
+                    $color = $product->color;
+                    $size = $product->pivot->size;
+                    $quantity = $product->pivot->quantity;
+                    $order->products[$key] = compact('sku','name','color','size','quantity');
+                }
+                
+            }
+            Storage::put('orders/orders'.$order->Numero_de_la_ligne.'.txt', print_r($orders, true));
+            $content = file_get_contents(storage_path('app').'\attempt1.txt');
+        
+        
+        } catch (\Exception $e) {
+            Log::notice('Error on txt creation.', ['Error' => $e]);
+        }
+
     }
    /* public function successfpay()
     {

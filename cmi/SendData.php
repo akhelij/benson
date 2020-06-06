@@ -11,7 +11,7 @@
 	<form name="pay_form" method="post" action="https://testpayment.cmi.co.ma/fim/est3Dgate">
 		<?php
 		
-			$storeKey = "Benson2020";			
+			$storeKey = "5J~uBJw,";			
 			
 			$postParams = array();
 			foreach ($_POST as $key => $value){

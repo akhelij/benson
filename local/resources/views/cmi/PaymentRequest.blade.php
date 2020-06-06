@@ -23,7 +23,7 @@
 
 	<?php
 	
-		$orgClientId  =   "600001258";
+		$orgClientId  =   "600001364";
   		$orgAmount = $DATA["AMOUNT"];
   		$orgOkUrl =  route("checkout.success");
   		$orgFailUrl = route("checkout.fail");

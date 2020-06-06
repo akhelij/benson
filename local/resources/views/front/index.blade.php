@@ -138,7 +138,7 @@
 					 <li><a href="{{route('front.category.slug','entretien')}}"> Entretien      </a></li>
 					 <li><a href="/">La Maison</a></li>					 
 					 <li data-menuanchor="seventh" id="s7"><a href="/#seventh">Contact</a></li>	
-					 <li data-menuanchor="eighth" id="s8"><a href="/#eighth">Magasins Benson</a></li>
+					 <li ><a href="/shop">Magasins Benson</a></li>
 					{{--<li data-menuanchor="second" id="s2"><a href="/#second">L'Esprit</a></li>
 					<li data-menuanchor="third" id="s3"><a href="/#third">La Technique</a></li>
 					<li data-menuanchor="fourth" id="s4"><a href="/#fourth">Le Design</a></li>
@@ -154,7 +154,7 @@
 					<li><a href="{{route('front.category.slug','entretien')}}" style="font-size:10px !important"> Entretien      </a></li>
 					<li><a href="/" style="font-size:10px !important">La Maison</a></li>					 
 					<li data-menuanchor="seventh" id="s7"><a href="/#seventh" style="font-size:10px !important">Contact</a></li>	
-					<li data-menuanchor="eighth" id="s8"><a href="/#eighth" style="font-size:10px !important">Magasins Benson</a></li>
+					<li id="s8"><a href="/shop" style="font-size:10px !important">Magasins Benson</a></li>
 					
 				  </ul>
 				  <ul class="nav navbar-nav hidden-lg hidden-md pull-right " id="s9_min" style="display:none;"">
@@ -320,9 +320,9 @@
 				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3323.657958926348!2d-7.643856000000001!3d33.588229!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3aa00134623231fe!2sBenson%20Shoes!5e0!3m2!1sfr!2sus!4v1576147456797!5m2!1sfr!2sus"  height="878" frameborder="0" style="border:0;" allowfullscreen="" style="width:100%"></iframe>
 				</div>
 			</div>
-			<div class="ms-section" id="left8" style="background: transparent url('/bgs/left side map.jpg') no-repeat right ;">
+			{{-- <div class="ms-section" id="left8" style="background: transparent url('/bgs/left side map.jpg') no-repeat right ;">
 				
-			</div>
+			</div> --}}
 		</div>
 		
 		<div class="ms-right">
@@ -426,13 +426,13 @@
 				</div>
 				</div>
 			</div>
-			<div class="ms-section" id="right8" style="background: transparent url('/bgs/right side map.jpg') no-repeat left ;">
+			{{-- <div class="ms-section" id="right8" style="background: transparent url('/bgs/right side map.jpg') no-repeat left ;">
 				<img src="{{ asset('bgs/LOGO.png')}}" width="35" class="pin pin1">	
 				<img src="{{ asset('bgs/LOGO.png')}}" width="35" class="pin pin2">	
 				<img src="{{ asset('bgs/LOGO.png')}}" width="35" class="pin pin3">	
 				<img src="{{ asset('bgs/LOGO.png')}}" width="35" class="pin pin4">	
 				<img src="{{ asset('bgs/LOGO.png')}}" width="35" class="pin pin5">	
-			</div>
+			</div> --}}
 		</div>	
 	</div>
 
@@ -588,7 +588,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row p-5">
+		{{-- <div class="row p-5">
 			<div  style="background: transparent url('/bgs/left side map.jpg') no-repeat right;">
 				<img src="{{ asset('favicons/logo2.png')}}" width="50">	
 				<img src="{{ asset('favicons/logo2.png')}}" width="50">	
@@ -597,7 +597,7 @@
 				<img src="{{ asset('favicons/logo2.png')}}" width="50">				
 				<img src="{{ asset('favicons/logo2.png')}}" width="50">	
 			</div>
-		</div>
+		</div> --}}
 	</div>
 	
 		

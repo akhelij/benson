@@ -166,14 +166,12 @@
                                     <div class="alert alert-success alert-xs panier-success" style="display:none" >
                                         <i class="fa fa-check-circle"></i> Article ajouté au panier
                                     </div>
-                             @if($_SERVER['REMOTE_ADDR']=='196.127.233.63' || $_SERVER['REMOTE_ADDR']=="105.66.7.142")
+                            
+                                    <button type="submit" class="btn  btn-primary btn-lg btn-submit" style="background-color: black; width : 100%" onclick="fbq('track', 'AddToCart');">
+                                        <i class="fa fa-cart-plus"></i> 
+                                        Ajouter au panier
+                                    </button>
                               
-                                <button type="submit" class="btn  btn-primary btn-lg btn-submit" style="background-color: black; width : 100%" onclick="fbq('track', 'AddToCart');">
-                                    <i class="fa fa-cart-plus"></i> 
-                                    Ajouter au panier
-                                </button>
-                              
-                              @endif
                                     {{-- <button class="btn btn-inline-primary btn-lg" style="color:black;
                                     background-color: transparent;
                                     border: 1px dashed;"><a href="{{route('maintain')}}" style="color:black"> 
