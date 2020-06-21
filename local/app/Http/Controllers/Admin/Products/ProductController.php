@@ -88,6 +88,7 @@ class ProductController extends Controller
         return view('admin.products.list', [
             'products' => $this->productRepo->paginateArrayResults($products, 20),
         ]);
+        
     }
 
     /**

@@ -11,9 +11,7 @@
     }
  </style>
  
- <div class="alert alert-warning text-center">
-    <p>Pour notre sécurité à tous, les boutiques sont momentanément fermées. Pour tout renseignement concernant les livraisons merci de contacter le: +212 6 60 08 05 05</p>
-</div>
+
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">

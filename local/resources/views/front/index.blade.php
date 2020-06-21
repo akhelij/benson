@@ -117,121 +117,184 @@
 
 	<section>
 			
-	<header >
-	
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class=" container ">
-			  <div class="navbar-header">
-				  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>                        
-				</button>
-				<a class="navbar-brand" href="/"><img src="{{asset('/bgs/LOGO.png')}}" alt="" srcset="" style="z-index:100"></a>
-			  </div>
-			  <div >
-				<div class="collapse navbar-collapse" id="myNavbar">
-				  <ul class="nav navbar-nav hidden-xs hidden-sm pull-right">
-					
-					 <li id="s9"><a href="/category">Voir la Collection et Commander</a></li>		
-					 <li><a href="{{route('front.category.slug','accessoires')}}"> Accessoires      </a></li>
-					 <li><a href="{{route('front.category.slug','entretien')}}"> Entretien      </a></li>
-					 <li><a href="/">La Maison</a></li>					 
-					 <li data-menuanchor="seventh" id="s7"><a href="/#seventh">Contact</a></li>	
-					 <li ><a href="/shop">Magasins Benson</a></li>
-					{{--<li data-menuanchor="second" id="s2"><a href="/#second">L'Esprit</a></li>
-					<li data-menuanchor="third" id="s3"><a href="/#third">La Technique</a></li>
-					<li data-menuanchor="fourth" id="s4"><a href="/#fourth">Le Design</a></li>
-					<li data-menuanchor="fifth" id="s5"><a href="/#fifth">L'entretien</a></li>         
-					<li data-menuanchor="sixth" id="s6"><a href="/#sixth">Le Savoir-Faire</a></li>
-					<li data-menuanchor="seventh" id="s7"><a href="/#seventh">Contact</a></li>
-					<li data-menuanchor="eighth" id="s8"><a href="/#eighth">Magasins Benson</a></li> --}}
-				  </ul>
-				  <ul class="nav navbar-nav hidden-lg hidden-md pull-left" >
-					<li id="s9_min_open"><a href="#" onclick="document.getElementById('s9_min').style.display = 'block';document.getElementById('s9_min_open').style.display = 'none';document.getElementById('s9_min_close').style.display = 'block';" style="font-size:10px !important">Voir la Collection et Commander  <i class="fa fa-angle-right"></i></a> </li>		
-					<li id="s9_min_close" style="display:none"><a href="#" onclick="document.getElementById('s9_min').style.display = 'none';document.getElementById('s9_min_open').style.display = 'block';document.getElementById('s9_min_close').style.display = 'none';" style="font-size:10px !important">Voir la Collection et Commander  <i class="fa fa-angle-left"></i></a> </li>		
-					<li><a href="{{route('front.category.slug','accessoires')}}" style="font-size:10px !important"> Accessoires      </a></li>
-					<li><a href="{{route('front.category.slug','entretien')}}" style="font-size:10px !important"> Entretien      </a></li>
-					<li><a href="/" style="font-size:10px !important">La Maison</a></li>					 
-					<li data-menuanchor="seventh" id="s7"><a href="/#seventh" style="font-size:10px !important">Contact</a></li>	
-					<li id="s8"><a href="/shop" style="font-size:10px !important">Magasins Benson</a></li>
-					
-				  </ul>
-				  <ul class="nav navbar-nav hidden-lg hidden-md pull-right " id="s9_min" style="display:none;"">
-				    <li><a href="{{route('front.category.slug','richelieus')}}" style="font-size:10px !important"> Richelieus      </a></li>
-					<li><a href="{{route('front.category.slug','bottes-bottines')}}" style="font-size:10px !important"> Boots & Bottines</a></li>
-					<li><a href="{{route('front.category.slug','derbys')}}" style="font-size:10px !important">  Derbys          </a></li>
-					<li><a href="{{route('front.category.slug','boucles')}}" style="font-size:10px !important">  Boucles         </a></li>
-					<li><a href="{{route('front.category.slug','mocassins')}}" style="font-size:10px !important">  Mocassins       </a></li>
-					<li><a href="{{route('front.category.slug','sneakers')}}" style="font-size:10px !important"> Sneakers        </a></li>
-					<li><a href="{{route('front.category.slug','belgha')}}" style="font-size:10px !important">  Babouches tradition  </a></li>
-                    <li><a href="/category" style="font-size:10px !important">Voir toute la Collection & Commander</a></li>
-				  </ul>
-				</div>
-				<div  id="section9" style="display:none;color:#ffffff; z-index: -1;background: transparent url('/bgs/green banner.jpg') no-repeat ;background-size:100% 100%;position:absolute;top:100%;left:0%;width:100%;height:372px">
-				  <div style="padding:5%">
-				  <div class="col-md-3">
-					<div class="paragraphe paragraphe-color-white">
-					  <h2>Collection</h2>
-					  <br>
-					<ul class="sub-menu">
-					  <li><a href="{{route('front.category.slug','richelieus')}}"> > Richelieus      </a></li>
-					  <li><a href="{{route('front.category.slug','bottes-bottines')}}"> > Boots & Bottines</a></li>
-					  <li><a href="{{route('front.category.slug','derbys')}}"> > Derbys          </a></li>
-					  <li><a href="{{route('front.category.slug','boucles')}}"> > Boucles         </a></li>
-					  <li><a href="{{route('front.category.slug','mocassins')}}"> > Mocassins       </a></li>
-					  <li><a href="{{route('front.category.slug','sneakers')}}"> > Sneakers        </a></li>
-					  <li><a href="{{route('front.category.slug','belgha')}}"> > Babouches tradition   </a></li>
-					  
-					</ul>
+		<header>            
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class=" container ">
+				  <div class="navbar-header">
+					  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>                        
+					</button>
+					<a class="navbar-brand" href="/"><img src="{{asset('/bgs/LOGO.png')}}" alt="" srcset="" style="z-index:100"></a>
+				  </div>
+				  <div >
+					<div class="collapse navbar-collapse" id="myNavbar">
+					  <ul class="nav navbar-nav hidden-xs hidden-sm pull-right">
+						<li id="s9"><a href="{{route('catalog')}}">Voir la Collection et Commander</a></li>		
+						<li id="s10"><a href="#"> Accessoires      </a></li>
+						<li><a href="{{route('maintain')}}"> Conseils d'entretien      </a></li>
+						<li><a href="/">La Maison</a></li>					 
+						<li data-menuanchor="seventh" id="s7"><a href="/#seventh">Contact</a></li>	
+						<li id="s8"><a href="{{route('shop')}}">Boutiques Benson</a></li>
+						{{-- <li data-menuanchor="second" id="s2"><a href="/#second">L'Esprit</a></li>
+						<li data-menuanchor="third" id="s3"><a href="/#third">La Technique</a></li>
+						<li data-menuanchor="fourth" id="s4"><a href="/#fourth">Le Design</a></li>
+						<li data-menuanchor="fifth" id="s5"><a href="/#fifth">L'entretien</a></li>         
+						<li data-menuanchor="sixth" id="s6"><a href="/#sixth">Le Savoir-Faire</a></li>
+						<li data-menuanchor="seventh" id="s7"><a href="/#seventh">Contact</a></li>
+						<li><a href="/shop">Boutiques Benson</a></li>
+						<li id="s9"><a href="/category">Voir la Collection & Commander</a></li> --}}
+					  </ul>
+					  <ul class="nav navbar-nav hidden-lg hidden-md pull-left" >
+							<li id="s9_min_open">
+								<a 
+									href="#" 
+									onclick="
+											document.getElementById('s10_min').style.display = 'none';
+											document.getElementById('s10_min_open').style.display = 'block';
+											document.getElementById('s10_min_close').style.display = 'none';
+											document.getElementById('s9_min').style.display = 'block';
+											document.getElementById('s9_min_open').style.display = 'none';
+											document.getElementById('s9_min_close').style.display = 'block';" 
+									style="font-size:10px !important"
+								>
+									Voir la Collection et Commander  <i class="fa fa-angle-right"></i>
+								</a> 
+							</li>		
+							<li id="s9_min_close"  style="display:none">
+								<a 
+									href="#" 
+									onclick="
+									document.getElementById('s9_min').style.display = 'none';
+									document.getElementById('s9_min_open').style.display = 'block';
+									document.getElementById('s9_min_close').style.display = 'none';" 
+									style="font-size:10px !important"
+								>
+									Voir la Collection et Commander  <i class="fa fa-angle-left"></i>
+								</a> 
+							</li>		
+							<li id="s10_min_open">
+								<a 
+									href="#" 
+									onclick="
+									document.getElementById('s9_min').style.display = 'none';
+									document.getElementById('s9_min_open').style.display = 'block';
+									document.getElementById('s9_min_close').style.display = 'none';
+									document.getElementById('s10_min').style.display = 'block';
+									document.getElementById('s10_min_open').style.display = 'none';
+									document.getElementById('s10_min_close').style.display = 'block';"  
+									style="font-size:10px !important"
+								> 
+									Accessoires    <i class="fa fa-angle-right"></i>
+								</a>
+							</li>
+							<li id="s10_min_close" style="display:none">
+								<a 
+									href="#" 
+									onclick="
+									document.getElementById('s10_min').style.display = 'none';
+									document.getElementById('s10_min_open').style.display = 'block';
+									document.getElementById('s10_min_close').style.display = 'none';" 
+									style="font-size:10px !important">
+									Accessoires  <i class="fa fa-angle-left"></i>
+								</a> 
+							</li>		
+							<li><a href="{{route('maintain')}}" style="font-size:10px !important"> Conseils d'entretien      </a></li>
+							<li><a href="/" style="font-size:10px !important">La Maison</a></li>					 
+							<li data-menuanchor="seventh" id="s7"><a href="tel:+212660080505"" style="font-size:10px !important">Contactez nous</a></li>	
+							<li><a href="/shop" style="font-size:10px !important">Boutiques Benson</a></li>						
+					  </ul>
+					  <ul class="nav navbar-nav hidden-lg hidden-md pull-right " id="s9_min" style="display:none;">
+							<li><a href="{{route('front.category.slug','richelieus')}}" style="font-size:10px !important"> Richelieus      </a></li>
+							<li><a href="{{route('front.category.slug','bottes-bottines')}}" style="font-size:10px !important"> Boots & Bottines</a></li>
+							<li><a href="{{route('front.category.slug','derbys')}}" style="font-size:10px !important">  Derbys          </a></li>
+							<li><a href="{{route('front.category.slug','boucles')}}" style="font-size:10px !important">  Boucles         </a></li>
+							<li><a href="{{route('front.category.slug','mocassins')}}" style="font-size:10px !important">  Mocassins       </a></li>
+							<li><a href="{{route('front.category.slug','sneakers')}}" style="font-size:10px !important"> Sneakers        </a></li>
+							<li><a href="{{route('front.category.slug','belgha')}}" style="font-size:10px !important">  Babouches tradition  </a></li>
+							<li><a href="/category" style="font-size:10px !important">Voir toute la Collection & Commander</a></li>
+					  </ul>
+					  <ul class="nav navbar-nav hidden-lg hidden-md pull-right " id="s10_min" style="display:none; margin-top: 13%; margin-right: 10%;">
+						<li><a href="{{route('front.category.slug','accessoires')}}" style="font-size:10px !important"> Accessoires      </a></li>
+						<li><a href="{{route('front.category.slug','entretien')}}" style="font-size:10px !important">  Produits d'entretien</a></li>
+					  </ul>
 					</div>
-				  </div>
-				  <div class="col-md-3 text-center" >
-				  <div style="background-image:url('/bgs/saphir-main-img-01-buttonu46248-fr.jpg')" >
-					<a href="{{route('front.category.slug','accessoires')}}">
-					  <div style="padding:  10%">
-					  <h1>Accessoires</h1>
-					  <div class="paragraphe paragraphe-color-white" >
-						<hr>
-					  <p> Retrouvez les accessoires et les produits d’entretien pour vos chaussures en magasin !</p>
+
+					<div  id="section9" style="display:none;color:#ffffff; z-index: -1;background: transparent url('/bgs/green banner.jpg') no-repeat ;background-size:100% 100%;position:absolute;top:100%;left:0%;width:100%;height:372px">
+					  <div style="padding:5%">
+					  <div class="col-md-3">
+						<div class="paragraphe paragraphe-color-white">
+						  <h2>Collection</h2>
+						  <br>
+						<ul class="sub-menu">
+						  <li><a href="{{route('front.category.slug','richelieus')}}"> > Richelieus      </a></li>
+						  <li><a href="{{route('front.category.slug','bottes-bottines')}}"> > Boots & Bottines</a></li>
+						  <li><a href="{{route('front.category.slug','derbys')}}"> > Derbys          </a></li>
+						  <li><a href="{{route('front.category.slug','boucles')}}"> > Boucles         </a></li>
+						  <li><a href="{{route('front.category.slug','mocassins')}}"> > Mocassins       </a></li>
+						  <li><a href="{{route('front.category.slug','sneakers')}}"> > Sneakers        </a></li>
+						  <li><a href="{{route('front.category.slug','belgha')}}"> > Babouches tradition   </a></li>
+						</ul>
+						</div>
 					  </div>
-					  </div>
-					</a>
-				  </div>
-				  </div>
-				  <div class="col-md-3  text-center">
-					<div style="background-image:url('/bgs/60216643_2288738204733767_5510413414083592192_o-buttonu26889-fr.jpg')">
-					  <a href="#">
-						<div style="padding:10%">
-						<h1>Entretien</h1>
-						  <div class="paragraphe paragraphe-color-white">
-						  <hr/>
+					  <div class="col-md-3 text-center" >
+					  <div style="background-image:url('/bgs/saphir-main-img-01-buttonu46248-fr.jpg')" >
+						<a href="{{route('front.category.slug','accessoires')}}">
+						  <div style="padding:  10%">
+						  <h1>Accessoires</h1>
+						  <div class="paragraphe paragraphe-color-white" >
+							<hr>
 						  <p> Retrouvez les accessoires et les produits d’entretien pour vos chaussures en magasin !</p>
 						  </div>
+						  </div>
+						</a>
+					  </div>
+					  </div>
+					  <div class="col-md-3  text-center">
+						<div style="background-image:url('/bgs/60216643_2288738204733767_5510413414083592192_o-buttonu26889-fr.jpg')">
+						  <a href="{{route('front.category.slug','entretien')}}">
+							<div style="padding:10%">
+							<h1>produits d'entretien</h1>
+							  <div class="paragraphe paragraphe-color-white">
+							  <hr/>
+							  <p> Retrouvez les accessoires et les produits d’entretien pour vos chaussures en magasin !</p>
+							  </div>
+							</div>
+						  </a>
 						</div>
-					  </a>
+					  </div>
+					  <div class="col-md-3  text-center">
+						<div style="background-image:url('/bgs/untitled-1.jpg')">
+						  <a href="{{route('front.category.slug','nouvelle-arrivage')}}">
+							<div style="padding:9%">
+							<h1>Nouvelle Collection</h1>
+							<div class="paragraphe paragraphe-color-white">
+							<hr/>
+							  <p> Une Collection pour un automne toute en style</p>
+							</div>
+							</div>
+						  </a>
+						</div>
+					  </div>
+					 </div>
+				   
 					</div>
-				  </div>
-				  <div class="col-md-3  text-center">
-					<div style="background-image:url('/bgs/untitled-1.jpg')">
-					  <a href="{{route('front.category.slug','nouvelle-arrivage')}}">
-						<div style="padding:9%">
-						<h1>Nouvelle Collection</h1>
-						<div class="paragraphe paragraphe-color-white">
-						<hr/>
-						  <p> Une Collection pour un automne toute en style</p>
-						</div>
-						</div>
-					  </a>
+
+					<div  id="section10" style="display:none;color:#ffffff; z-index: -1;background: transparent url('/bgs/green banner.jpg') no-repeat ;background-size:100% 100%;position:absolute;top:100%;left:59%;width:180px;height:90px">
+					  <div style="padding:2%">
+					  <div class="col-md-12">
+						 <ul class="sub-menu" style="padding-left: 5px;line-height:40px">
+							<li><a href="{{route('front.category.slug','accessoires')}}" style="color:white">- Accessoires      </a></li>
+							<li><a href="{{route('front.category.slug','entretien')}}" style="color:white">- Produits d'entretien</a></li>
+						  </ul>
+					  </div>
+					  
 					</div>
 				  </div>
 				</div>
-				</div>
-			  </div>
-			</div>
-		  </nav> 
-   
-	</header>
+			  </nav> 
+		</header>
 	</section>
 	
 	
@@ -331,7 +394,7 @@
 				{{-- <img class="position_content" id="u1127_img" src="/images/logo.jpg" alt=""  width="250">  --}}
 				<div style="margin-top : 18%;margin-left:5%;  font-size:24px;text-align:justify;text-shadow: 1px 1px rgba(43, 39, 39, 0.712);">
 					<p style="color:white;font-family: 'Dancing Script', cursive;"> Cela fait 24 ans que vous accompagnez cette marque Marocaine.</p><br/>
-					<p style="color:white;font-family: 'Dancing Script', cursive;">	Nous ne permettrons pas qu'un virus vienne mettre en péril ce que <br/>nous avons bâti ensemble.</p><br/>
+					<p style="color:white;font-family: 'Dancing Script', cursive;">	Nous ne permettrons pas qu'un virus mette en péril	 ce que <br/>nous avons bâti ensemble.</p><br/>
 					<p style="color:white;font-family: 'Dancing Script', cursive;">	Heureux de vous retrouver:</p><br/>
 					<p style="color:white;font-family: 'Dancing Script', cursive;">	M. Benamour</p>
 					<p style="color:white;font-family: 'Dancing Script', cursive;">	Benson Shoes.</p>
@@ -395,19 +458,19 @@
 					<div  class="p-padding">
 					<p >
 					196 Bd d’Anfa (Rond Point Porte d’Anfa) - Casablanca
-			
-					Tél : +212 (05) 22 94 97 25
-			
+						<br/>
+					Tél : +212 (05) 22 94 97 25 / (06) 60 08 05 05
+					<br/>
 					Centre Commercial Marina LotB1. Bd Almohades - Casablanca
-			
-					Tél : ‎+212 80-8538477
+					<br/>
+					Tél : ‎+212 (08) 08 53 84 77
 			
 					</p>
 					*****
 				</br>
 					<p >
 					3 RDC Avenue Imam Malik el youssoufia, Soussi Label Vie - Rabat
-			
+					<br/>
 					Tél : +212 (05) 37 65 92 53
 			
 					
@@ -418,11 +481,11 @@
 					
 					<p >
 					Résidence Al Tajmil place des nations - Tanger
-			
+					<br/>
 					Tél : +212 (05) 39 32 26 15
 					</p>
 					<br>
-					<a href="tel:+212660080505" class="btn btn-lg btn-default">Contactez nous</a>
+					<a href="tel:+212660080505" class="btn btn-lg btn-default">Contactez nous <br/> +212 6 60 08 05 05</a>
 				</div>
 				</div>
 			</div>
@@ -583,7 +646,7 @@
 					Tél : +212 (05) 39 32 26 15
 					</p>
 					<br>
-					<a href="tel:+212660080505" class="btn btn-lg btn-default">Contactez nous</a>
+					<a href="tel:+212660080505" class="btn btn-lg btn-default">Contactez nous <br/> +212 6 60 08 05 05</a>
 				</div>
 				</div>
 			</div>
@@ -617,14 +680,20 @@
             $('#section9').mouseleave(function(){
               $("#section9").hide("300");              
             })
+			$('#s10').hover(function(){
+              $("#section10").show("300");
+            })
+            
+            $('#s10').mouseleave(function(){
+              if ($('#section10:hover').length == 0) {
+                $("#section10").hide("300");
+              }
+            })
+            $('#section10').mouseleave(function(){
+              $("#section10").hide("300");
+              
+            })
 			
-			$('.pin').hover(function(){
-				
-				var pin = $(this).attr('pin');
-				$(".img-pin").hide();
-				$(".img-pin".pin).show();
-				
-			})
             
 </script>
 </body>

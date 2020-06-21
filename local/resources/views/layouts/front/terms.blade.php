@@ -530,33 +530,31 @@ concernés par la perte du transporteur.
 
 
 <h4>  Article 9 : Droit de rétractation, retour et échange</h4>
+<h5>Pour les livraisons au Maroc :</h5>
 <p>
-    ***Les frais de transport du premier échange seront à la charge de Benson Shoes
-    Le Client dispose d’un délai de sept (7) Jours pour exercer son droit de rétractation à
-    compter de la réception de la commande.
-    Le Client peut demander un échange de tout ou partie des produits de sa
-    commande, sous réserve de l’envoi d’un email au service client de la Société, le jour
-    même de la livraison ou au plus tard le premier jour ouvré suivant la livraison.
-    Au-delà de ce délai, la Société ne pourra en aucun cas traiter la demande
+    ***Les frais de transport du premier échange seront à la charge de Benson Shoes Le
+    Client dispose d’un délai de sept (7) Jours pour exercer son droit de rétractation à compter
+    de la réception de la commande. Le Client peut demander un échange de tout ou partie
+    des produits de sa commande, sous réserve de l’envoi d’un email au service client de la
+    Société, le jour même de la livraison ou au plus tard le premier jour ouvré suivant la
+    livraison. Au-delà de ce délai, la Société ne pourra en aucun cas traiter la demande
     d’échange.
 </p>
 
 <p>   
-    Le colis devra être retourné dans les 4 jours suivant la réception.
-    Toute réclamation formulée après ce délai sera rejetée et la Société sera dégagée
-    de toute responsabilité. Si les conditions susmentionnées sont remplies, la Société
-    procédera alors à l&#39;échange, dans un délai de quinze (15) jours à compter de la date
-    de réception par la Société du colis en fonction des disponibilités. Cet échange
-    pourra consister I) en un échange de taille, sous réserve de la disponibilité des
-    produits à la date de la demande du Client , II) en un échange de couleur ou d’article,
-    sous réserve de la disponibilité des produits à la date de la demande du Client , III)
-    en l’émission d’un avoir qui pourra être consommé dans un délai de trois (3) mois à
-    compter de la date d’achat en dehors de la période des soldes et avant la saison
-    suivante, IV) en un remboursement de l’article retourné.
-    Les articles  faisant l’objet d’un échange devront être retournés dans leur
-    conditionnement et leur emballage d’origine en parfait état à l’adresse communiquée
-    par le service client de la Société. Les articles devront être retournés dans un état
-    neuf et propre à la revente, soit :
+    Le colis devra être retourné dans les 4 jours suivant la réception. Toute réclamation
+    formulée après ce délai sera rejetée et la Société sera dégagée de toute responsabilité. Si
+    les conditions susmentionnées sont remplies, la Société procédera alors à l&#39;échange, dans
+    un délai de quinze (15) jours à compter de la date de réception par la Société du colis en
+    fonction des disponibilités. Cet échange pourra consister I) en un échange de taille, sous
+    réserve de la disponibilité des produits à la date de la demande du Client , II) en un
+    échange de couleur ou d’article, sous réserve de la disponibilité des produits à la date de
+    la demande du Client , III) en l’émission d’un avoir qui pourra être consommé dans un
+    délai de trois (3) mois à compter de la date d’achat en dehors de la période des soldes et
+    avant la saison suivante, IV) en un remboursement de l’article retourné. Les articles 
+    faisant l’objet d’un échange devront être retournés dans leur conditionnement et leur
+    emballage d’origine en parfait état à l’adresse communiquée par le service client de la
+    Société. Les articles devront être retournés dans un état neuf et propre à la revente, soit :
 </p>
 
 <p>
@@ -586,36 +584,35 @@ concernés par la perte du transporteur.
 
 <p>
     Les articles devront être accompagnés de tous leurs accessoires et accompagnés du
-    numéro de retour fourni par la Société. Les frais et risques liés au retour du produit
-    sont à la charge du Client. Si le produit est perdu par le transporteur lors de cet
-    envoi, le Client en sera seul responsable et ne pourra être remboursé par la Société.
-    Par conséquent, il lui appartient de conserver toutes les preuves de ce retour.
-    La Société suggère au Client d&#39;effectuer le retour de ses produits par envoi
-    recommandé ou muni d&#39;une assurance complémentaire, lui garantissant, le cas
-    échéant, l&#39;indemnisation des produits à hauteur de leur valeur marchande réelle en
-    cas de spoliation ou de perte de cette marchandise. Dans tous les cas, le retour
-    s&#39;effectue aux risques du Client. Il appartiendra au client de conserver toute preuve
-    de retour. Les frais de retour sont à la charge du client, qui est libre de choisir le
-    mode d&#39;expédition.
+    numéro de retour fourni par la Société. Les frais et risques liés au retour du produit sont à
+    la charge du Client. Si le produit est perdu par le transporteur lors de cet envoi, le Client
+    en sera seul responsable et ne pourra être remboursé par la Société. Par conséquent, il lui
+    appartient de conserver toutes les preuves de ce retour. La Société suggère au Client
+    d&#39;effectuer le retour de ses produits par envoi recommandé ou muni d&#39;une assurance
+    complémentaire, lui garantissant, le cas échéant, l&#39;indemnisation des produits à hauteur de
+    leur valeur marchande réelle en cas de spoliation ou de perte de cette marchandise. Dans
+    tous les cas, le retour s&#39;effectue aux risques du Client. Il appartiendra au client de
+    conserver toute preuve de retour. Les frais de retour sont à la charge du client, qui est libre
+    de choisir le mode d&#39;expédition.
 </p>
 
 <p>
     Dans le cadre de ce droit d’échange et pour les articles retournés qui s’avèreront
-    incomplets, abîmés, salis ou impropres à la revente, la Société se permettra de
-    refuser d’échanger les produits retournés.
+incomplets, abîmés, salis ou impropres à la revente, la Société se permettra de refuser
+d’échanger les produits retournés.
 </p>
 
 <p>
     Tout colis retourné à l’adresse communiquée par le service client de la Société et ne
-    comprenant aucun élément permettant d’identifier le Client, en particulier le numéro
-    de retour, ne pourra en aucun cas être accepté. Aucune réclamation de la part du
-    Client ne pourra être acceptée.
+comprenant aucun élément permettant d’identifier le Client, en particulier le numéro de
+retour, ne pourra en aucun cas être accepté. Aucune réclamation de la part du Client ne
+pourra être acceptée.
 </p>
 
 <p>
-    Si les conditions susmentionnées sont remplies, la Société procédera à un échange
-    ou à l’émission d’un avoir, dans les quinze (15) jours maximum à compter de la date
-    de réception par la Société du colis.
+    Si les conditions susmentionnées sont remplies, la Société procédera à un échange ou à
+l’émission d’un avoir, dans les quinze (15) jours maximum à compter de la date de
+réception par la Société du colis.
 </p>
 
 <p>
@@ -662,8 +659,8 @@ concernés par la perte du transporteur.
     application des mêmes conditions ci-avant.
 </p>
 
-
-
+<h5>Pour les livraisons à l’extérieur du Maroc :</h5>
+<p>Les retours et réexpéditions ne sont ni traités ni pris en charge</p>
 
 <h4> Article 10 : Garanties</h4>
 <p>

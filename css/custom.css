@@ -4,10 +4,12 @@ html {
   }
 
 
-#section9 h1, #section9 h2, #section9 p{
+  #section9 h1, #section9 h2, #section9 p, #section10 h1, #section10 h2, #section10 p{
   color:#fefefe !important;
 }
-
+#section9 div div div{
+  min-height: 115px;
+}
 .pin{
   position : absolute;
 }

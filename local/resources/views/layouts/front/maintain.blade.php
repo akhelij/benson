@@ -56,8 +56,5 @@
 
   
     
-     
-
-       @include('mailchimp::mailchimp')
 @endsection
 
