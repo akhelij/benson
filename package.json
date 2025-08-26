@@ -106,5 +106,8 @@
     },
     "keywords": [],
     "author": "",
-    "license": "ISC"
+    "license": "ISC",
+    "overrides": {
+        "lightningcss-linux-x64-gnu": "npm:lightningcss-linux-arm64-gnu@1.30.1"
+    }
 }
