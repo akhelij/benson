@@ -1,7 +1,8 @@
 name: benson-shoe-management
 build:
   - composer install --no-dev --optimize-autoloader
-  - npm ci
+  - rm -rf node_modules package-lock.json
+  - npm install
   - npm run build
   - php artisan config:cache
   - php artisan route:cache
@@ -15,7 +16,8 @@ environments:
   production:
     build:
       - composer install --no-dev --optimize-autoloader
-      - npm ci
+      - rm -rf node_modules package-lock.json
+      - npm install
       - npm run build
       - php artisan config:cache
       - php artisan route:cache
