@@ -12,7 +12,7 @@ use App\Livewire\CuirsSupplements;
 use App\Livewire\SemellesConstructions;
 use App\Http\Controllers\PrintController;
 
-Route::view('/', 'welcome');
+Route::redirect('/', '/login');
 
 Route::get('/dashboard', Dashboard::class)
     ->middleware(['auth', 'verified'])

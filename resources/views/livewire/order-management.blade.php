@@ -1,140 +1,153 @@
-<div class="py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="min-h-screen bg-gradient-to-br from-stone-50 via-amber-50/30 to-stone-100 p-6">
+    <!-- Page Header with Vintage Styling -->
+    <div class="mb-8">
+        <h1 class="text-4xl font-serif text-amber-900 tracking-wide" style="font-family: 'Playfair Display', serif;">
+            📋 Gestion des Commandes
+        </h1>
+        <div class="mt-2 h-1 w-32 bg-gradient-to-r from-amber-700 to-amber-500 rounded"></div>
+        <p class="mt-3 text-stone-600 italic">Tableau de bord et gestion complète des commandes de chaussures</p>
+    </div>
+
+    {{-- KPI Cards --}}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-8">
+        {{-- Total Orders --}}
+        <div class="bg-white rounded-lg shadow-lg border border-amber-100 p-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-stone-600">Total Commandes</p>
+                    <p class="text-2xl font-bold text-amber-900 mt-1">{{ $this->totalOrders }}</p>
+                </div>
+                <div class="bg-amber-100 p-3 rounded-full">
+                    <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        {{-- Total Revenue --}}
+        <div class="bg-white rounded-lg shadow-lg border border-amber-100 p-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-stone-600">Chiffre d'Affaires</p>
+                    <p class="text-2xl font-bold text-emerald-700 mt-1">€{{ number_format($this->totalRevenue, 2, ',', ' ') }}</p>
+                </div>
+                <div class="bg-emerald-100 p-3 rounded-full">
+                    <svg class="w-6 h-6 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        {{-- Pending Deliveries --}}
+        <div class="bg-white rounded-lg shadow-lg border border-amber-100 p-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-stone-600">En Attente</p>
+                    <p class="text-2xl font-bold text-orange-700 mt-1">{{ $this->pendingDeliveries }}</p>
+                </div>
+                <div class="bg-orange-100 p-3 rounded-full">
+                    <svg class="w-6 h-6 text-orange-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        {{-- Weekly Orders --}}
+        <div class="bg-white rounded-lg shadow-lg border border-amber-100 p-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-stone-600">Cette Semaine</p>
+                    <p class="text-2xl font-bold text-purple-700 mt-1">{{ $this->weeklyOrders }}</p>
+                </div>
+                <div class="bg-purple-100 p-3 rounded-full">
+                    <svg class="w-6 h-6 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        {{-- Urgent Orders --}}
+        <div class="bg-white rounded-lg shadow-lg border border-amber-100 p-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-stone-600">Urgentes</p>
+                    <p class="text-2xl font-bold text-red-700 mt-1">{{ $this->urgentOrders }}</p>
+                </div>
+                <div class="bg-red-100 p-3 rounded-full">
+                    <svg class="w-6 h-6 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        {{-- Delivery Rate --}}
+        <div class="bg-white rounded-lg shadow-lg border border-amber-100 p-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-stone-600">Taux Livraison</p>
+                    <p class="text-2xl font-bold text-teal-700 mt-1">{{ $this->deliveryRate }}%</p>
+                </div>
+                <div class="bg-teal-100 p-3 rounded-full">
+                    <svg class="w-6 h-6 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Flash Messages -->
+    @if (session()->has('message'))
+        <div class="mb-4 bg-emerald-50 border border-emerald-400 text-emerald-800 px-4 py-3 rounded-lg shadow-sm">
+            {{ session('message') }}
+        </div>
+    @endif
+
+    @if (session()->has('error'))
+        <div class="mb-4 bg-red-50 border border-red-400 text-red-700 px-4 py-3 rounded-lg shadow-sm">
+            {{ session('error') }}
+        </div>
+    @endif
+
+    <!-- Orders Table -->
+    <div class="bg-white rounded-lg shadow-lg border border-amber-100 overflow-hidden">
+        <div class="bg-gradient-to-r from-amber-600 to-amber-700 px-6 py-4">
+            <h2 class="text-xl font-bold text-white" style="font-family: 'Playfair Display', serif;">Commandes</h2>
+        </div>
         
-        {{-- Header --}}
-        <div class="mb-8 flex justify-between items-center">
-            <div>
-                <h1 class="text-3xl font-bold text-gray-900">Gestion des Commandes</h1>
-                <p class="mt-2 text-sm text-gray-600">Tableau de bord et gestion complète des commandes de chaussures</p>
-            </div>
-            <button wire:click="createOrder" class="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                </svg>
-                Nouvelle Commande
-            </button>
-        </div>
-
-        {{-- KPI Cards --}}
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-8">
-            {{-- Total Orders --}}
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm font-medium text-gray-600">Total Commandes</p>
-                        <p class="text-2xl font-bold text-gray-900 mt-1">{{ $this->totalOrders }}</p>
-                    </div>
-                    <div class="bg-blue-100 p-3 rounded-full">
-                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Total Revenue --}}
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm font-medium text-gray-600">Chiffre d'Affaires</p>
-                        <p class="text-2xl font-bold text-green-600 mt-1">€{{ number_format($this->totalRevenue, 2, ',', ' ') }}</p>
-                    </div>
-                    <div class="bg-green-100 p-3 rounded-full">
-                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Pending Deliveries --}}
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm font-medium text-gray-600">En Attente</p>
-                        <p class="text-2xl font-bold text-orange-600 mt-1">{{ $this->pendingDeliveries }}</p>
-                    </div>
-                    <div class="bg-orange-100 p-3 rounded-full">
-                        <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Weekly Orders --}}
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm font-medium text-gray-600">Cette Semaine</p>
-                        <p class="text-2xl font-bold text-purple-600 mt-1">{{ $this->weeklyOrders }}</p>
-                    </div>
-                    <div class="bg-purple-100 p-3 rounded-full">
-                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Urgent Orders --}}
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm font-medium text-gray-600">Urgentes</p>
-                        <p class="text-2xl font-bold text-red-600 mt-1">{{ $this->urgentOrders }}</p>
-                    </div>
-                    <div class="bg-red-100 p-3 rounded-full">
-                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Delivery Rate --}}
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm font-medium text-gray-600">Taux Livraison</p>
-                        <p class="text-2xl font-bold text-teal-600 mt-1">{{ $this->deliveryRate }}%</p>
-                    </div>
-                    <div class="bg-teal-100 p-3 rounded-full">
-                        <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {{-- Header with Search and Actions --}}
-        <div class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div class="flex items-center gap-4 w-full sm:w-auto">
-                <div class="relative flex-1 sm:flex-initial">
+        <!-- Search Bar and Add Button -->
+        <div class="px-6 py-3 bg-amber-50 border-b border-amber-100 flex justify-between items-center">
+            <div class="flex items-center gap-4 flex-1">
+                <div class="relative flex-1 max-w-md">
                     <input wire:model.live="search" 
                            type="text" 
                            placeholder="Rechercher une commande..."
-                           class="w-full sm:w-80 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    <svg class="absolute left-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           class="w-full pl-10 pr-4 py-2 border border-amber-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm">
+                    <svg class="absolute left-3 top-2.5 h-5 w-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
                 </div>
                 <select wire:model.live="statusFilter" 
-                        class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        class="px-3 py-2 border border-amber-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm">
                     <option value="">Tous les statuts</option>
-                    <option value="pending">En attente</option>
-                    <option value="processing">En cours</option>
-                    <option value="delivered">Livré</option>
-                    <option value="cancelled">Annulé</option>
+                    <option value="draft">Brouillon</option>
+                    <option value="confirmed">Confirmée</option>
+                    <option value="in_production">En Production</option>
+                    <option value="delivered">Livrée</option>
+                    <option value="cancelled">Annulée</option>
                 </select>
             </div>
             <div class="flex items-center gap-2">
                 @if(count($selectedOrders) > 0)
                     <div class="flex items-center gap-2">
-                        <span class="text-sm text-gray-600">{{ count($selectedOrders) }} sélectionné(s)</span>
+                        <span class="text-sm text-stone-600">{{ count($selectedOrders) }} sélectionné(s)</span>
                         <button wire:click="exportSelected" 
-                                class="px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2 text-sm">
+                                class="px-3 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors flex items-center gap-2 text-sm">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                             </svg>
@@ -151,8 +164,8 @@
                     </div>
                 @endif
                 <button wire:click="createOrder" 
-                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition-colors duration-200 flex items-center text-sm">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                     </svg>
                     Nouvelle Commande
@@ -160,198 +173,186 @@
             </div>
         </div>
 
-        <!-- Flash Messages -->
-        @if (session()->has('message'))
-            <div class="mx-6 mt-4 bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-3 rounded-lg shadow-sm">
-                {{ session('message') }}
-            </div>
-        @endif
-
-        {{-- Orders Table --}}
-        <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-            <div class="overflow-x-auto">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                <input type="checkbox" wire:model.live="selectAll" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                            </th>
-                            <th wire:click="sortBy('code')" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100">
-                                <div class="flex items-center gap-1">
-                                    Code
-                                    @if($this->sortField === 'code')
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            @if($this->sortDirection === 'asc')
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-                                            @else
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                            @endif
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead class="bg-stone-100 border-b border-amber-100">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-amber-900 uppercase tracking-wider">
+                            <input type="checkbox" wire:model.live="selectAll" class="rounded border-amber-300 text-amber-600 focus:ring-amber-500">
+                        </th>
+                        <th wire:click="sortBy('code')" class="px-6 py-3 text-left text-xs font-semibold text-amber-900 uppercase tracking-wider cursor-pointer hover:bg-amber-50">
+                            <div class="flex items-center gap-1">
+                                Code
+                                @if($this->sortField === 'code')
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        @if($this->sortDirection === 'asc')
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                                        @else
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        @endif
+                                    </svg>
+                                @endif
+                            </div>
+                        </th>
+                        <th wire:click="sortBy('firm')" class="px-6 py-3 text-left text-xs font-semibold text-amber-900 uppercase tracking-wider cursor-pointer hover:bg-amber-50">
+                            <div class="flex items-center gap-1">
+                                Client
+                                @if($this->sortField === 'firm')
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        @if($this->sortDirection === 'asc')
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                                        @else
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        @endif
+                                    </svg>
+                                @endif
+                            </div>
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-amber-900 uppercase tracking-wider">Ville</th>
+                        <th wire:click="sortBy('total_quantity')" class="px-6 py-3 text-left text-xs font-semibold text-amber-900 uppercase tracking-wider cursor-pointer hover:bg-amber-50">
+                            <div class="flex items-center gap-1">
+                                Quantité
+                                @if($this->sortField === 'total_quantity')
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        @if($this->sortDirection === 'asc')
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                                        @else
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        @endif
+                                    </svg>
+                                @endif
+                            </div>
+                        </th>
+                        <th wire:click="sortBy('total_amount')" class="px-6 py-3 text-left text-xs font-semibold text-amber-900 uppercase tracking-wider cursor-pointer hover:bg-amber-50">
+                            <div class="flex items-center gap-1">
+                                Montant
+                                @if($this->sortField === 'total_amount')
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        @if($this->sortDirection === 'asc')
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                                        @else
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        @endif
+                                    </svg>
+                                @endif
+                            </div>
+                        </th>
+                        <th wire:click="sortBy('livraison')" class="px-6 py-3 text-left text-xs font-semibold text-amber-900 uppercase tracking-wider cursor-pointer hover:bg-amber-50">
+                            <div class="flex items-center gap-1">
+                                Livraison
+                                @if($this->sortField === 'livraison')
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        @if($this->sortDirection === 'asc')
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                                        @else
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        @endif
+                                    </svg>
+                                @endif
+                            </div>
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-amber-900 uppercase tracking-wider">Statut</th>
+                        <th class="px-6 py-3 text-center text-xs font-semibold text-amber-900 uppercase tracking-wider">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-amber-50">
+                    @forelse ($orders as $order)
+                        <tr class="hover:bg-amber-50/30 transition-colors duration-150">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <input type="checkbox" wire:model.live="selectedOrders" value="{{ $order->id }}" class="rounded border-amber-300 text-amber-600 focus:ring-amber-500">
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-stone-900">
+                                {{ $order->code }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-stone-900">{{ $order->firm }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-stone-600">{{ $order->ville }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-stone-900">{{ $order->total_quantity ?: 0 }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-stone-900">€{{ number_format($order->total_amount ?: 0, 2, ',', ' ') }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="text-sm text-stone-900">
+                                    {{ $order->livraison ? $order->livraison->format('d/m/Y') : '-' }}
+                                </span>
+                                @if($order->livraison && $order->livraison->isPast() && $order->status !== 'delivered')
+                                    <span class="ml-1 text-xs text-red-600">(En retard)</span>
+                                @endif
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                @php
+                                    $statusColors = [
+                                        'draft' => 'bg-stone-100 text-stone-800',
+                                        'confirmed' => 'bg-blue-100 text-blue-800',
+                                        'in_production' => 'bg-amber-100 text-amber-800',
+                                        'delivered' => 'bg-emerald-100 text-emerald-800',
+                                        'cancelled' => 'bg-red-100 text-red-800',
+                                    ];
+                                    $statusLabels = [
+                                        'draft' => 'Brouillon',
+                                        'confirmed' => 'Confirmée',
+                                        'in_production' => 'En Production',
+                                        'delivered' => 'Livrée',
+                                        'cancelled' => 'Annulée',
+                                    ];
+                                @endphp
+                                <span class="px-2 py-1 text-xs font-medium rounded-full {{ $statusColors[$order->status] ?? 'bg-stone-100 text-stone-800' }}">
+                                    {{ $statusLabels[$order->status] ?? $order->status }}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                <div class="flex items-center justify-center gap-2">
+                                    <button wire:click="viewOrder({{ $order->id }})" class="text-blue-600 hover:text-blue-800" title="Voir">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                                         </svg>
-                                    @endif
-                                </div>
-                            </th>
-                            <th wire:click="sortBy('firm')" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100">
-                                <div class="flex items-center gap-1">
-                                    Client
-                                    @if($this->sortField === 'firm')
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            @if($this->sortDirection === 'asc')
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-                                            @else
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                            @endif
+                                    </button>
+                                    <button wire:click="openDeliveryModal({{ $order->id }})" class="text-emerald-600 hover:text-emerald-800" title="Suivi livraison">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                                         </svg>
-                                    @endif
-                                </div>
-                            </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ville</th>
-                            <th wire:click="sortBy('total_quantity')" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100">
-                                <div class="flex items-center gap-1">
-                                    Quantité
-                                    @if($this->sortField === 'total_quantity')
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            @if($this->sortDirection === 'asc')
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-                                            @else
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                            @endif
+                                    </button>
+                                    <button wire:click="editOrder({{ $order->id }})" class="text-amber-600 hover:text-amber-800" title="Modifier">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                                         </svg>
-                                    @endif
-                                </div>
-                            </th>
-                            <th wire:click="sortBy('total_amount')" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100">
-                                <div class="flex items-center gap-1">
-                                    Montant
-                                    @if($this->sortField === 'total_amount')
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            @if($this->sortDirection === 'asc')
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-                                            @else
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                            @endif
+                                    </button>
+                                    <a href="{{ route('print.order', $order->id) }}" target="_blank" class="text-purple-600 hover:text-purple-800" title="Imprimer commande">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
                                         </svg>
-                                    @endif
-                                </div>
-                            </th>
-                            <th wire:click="sortBy('livraison')" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100">
-                                <div class="flex items-center gap-1">
-                                    Livraison
-                                    @if($this->sortField === 'livraison')
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            @if($this->sortDirection === 'asc')
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-                                            @else
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                            @endif
+                                    </a>
+                                    <button wire:click="deleteOrder({{ $order->id }})" 
+                                            wire:confirm="Êtes-vous sûr de vouloir supprimer cette commande ?"
+                                            class="text-red-600 hover:text-red-800" title="Supprimer">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                                         </svg>
-                                    @endif
+                                    </button>
                                 </div>
-                            </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Statut</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        @forelse ($orders as $order)
-                            <tr class="hover:bg-gray-50 transition-colors">
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <input type="checkbox" wire:model.live="selectedOrders" value="{{ $order->id }}" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                    {{ $order->code }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $order->firm }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $order->ville }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $order->total_quantity ?: 0 }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">€{{ number_format($order->total_amount ?: 0, 2, ',', ' ') }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span class="text-sm text-gray-900">
-                                        {{ $order->livraison ? $order->livraison->format('d/m/Y') : '-' }}
-                                    </span>
-                                    @if($order->livraison && $order->livraison->isPast() && $order->status !== 'delivered')
-                                        <span class="ml-1 text-xs text-red-600">(En retard)</span>
-                                    @endif
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    @php
-                                        $statusColors = [
-                                            'draft' => 'bg-gray-100 text-gray-800',
-                                            'confirmed' => 'bg-blue-100 text-blue-800',
-                                            'in_production' => 'bg-yellow-100 text-yellow-800',
-                                            'delivered' => 'bg-green-100 text-green-800',
-                                            'cancelled' => 'bg-red-100 text-red-800',
-                                        ];
-                                        $statusLabels = [
-                                            'draft' => 'Brouillon',
-                                            'confirmed' => 'Confirmée',
-                                            'in_production' => 'En Production',
-                                            'delivered' => 'Livrée',
-                                            'cancelled' => 'Annulée',
-                                        ];
-                                    @endphp
-                                    <span class="px-2 py-1 text-xs font-medium rounded-full {{ $statusColors[$order->status] ?? 'bg-gray-100 text-gray-800' }}">
-                                        {{ $statusLabels[$order->status] ?? $order->status }}
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <div class="flex items-center justify-end gap-2">
-                                        <button wire:click="viewOrder({{ $order->id }})" class="text-blue-600 hover:text-blue-900" title="Voir">
-                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                            </svg>
-                                        </button>
-                                        <button wire:click="openDeliveryModal({{ $order->id }})" class="text-green-600 hover:text-green-900" title="Suivi livraison">
-                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
-                                            </svg>
-                                        </button>
-                                        <button wire:click="editOrder({{ $order->id }})" class="text-blue-600 hover:text-blue-900" title="Modifier">
-                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                                            </svg>
-                                        </button>
-                                        <a href="{{ route('print.order', $order->id) }}" target="_blank" class="text-purple-600 hover:text-purple-900" title="Imprimer commande">
-                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
-                                            </svg>
-                                        </a>
-                                        <button wire:click="deleteOrder({{ $order->id }})" 
-                                                wire:confirm="Êtes-vous sûr de vouloir supprimer cette commande ?"
-                                                class="text-red-600 hover:text-red-900" title="Supprimer">
-                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="9" class="px-6 py-12 text-center">
-                                    <div class="flex flex-col items-center">
-                                        <svg class="w-12 h-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                                        </svg>
-                                        <p class="text-gray-500">Aucune commande trouvée</p>
-                                        <button wire:click="createOrder" class="mt-4 text-blue-600 hover:text-blue-800 font-medium">
-                                            Créer votre première commande
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforelse
-                    </tbody>
+                    @empty
+                        <tr>
+                            <td colspan="9" class="px-6 py-8 text-center text-stone-500 italic">
+                                <div class="flex flex-col items-center">
+                                    <svg class="w-12 h-12 text-stone-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                    </svg>
+                                    <p class="text-stone-500">Aucune commande trouvée</p>
+                                    <button wire:click="createOrder" class="mt-4 text-amber-600 hover:text-amber-800 font-medium">
+                                        Créer votre première commande
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforelse
+                </tbody>
                 </table>
             </div>
 
-            {{-- Pagination --}}
-            @if($orders->hasPages())
-                <div class="px-6 py-4 border-t border-gray-200">
-                    {{ $orders->links() }}
-                </div>
-            @endif
+        <div class="px-6 py-3 bg-stone-50 border-t border-amber-100">
+            {{ $orders->links() }}
         </div>
+    </div>
 
         {{-- Order Creation Modal --}}
 @if($showModal)
