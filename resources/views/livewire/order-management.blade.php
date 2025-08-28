@@ -428,7 +428,7 @@
                                 
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">
-                                        Nom du Client / Firme <span class="text-red-500">*</span>
+                                        Nom du Client / Firme
                                     </label>
                                     <input wire:model="firm" type="text" 
                                         class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('firm') border-red-500 @enderror"
@@ -450,7 +450,7 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">
-                                        Ville <span class="text-red-500">*</span>
+                                        Ville
                                     </label>
                                     <input wire:model="ville" type="text" 
                                         class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('ville') border-red-500 @enderror"
@@ -460,7 +460,7 @@
                                 
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">
-                                        Téléphone <span class="text-red-500">*</span>
+                                        Téléphone
                                     </label>
                                     <input wire:model="telephone" type="text" 
                                         class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('telephone') border-red-500 @enderror"

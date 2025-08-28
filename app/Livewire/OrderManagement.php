@@ -121,9 +121,9 @@ class OrderManagement extends Component
 
     protected $rules = [
         'code' => 'required|string|max:100',
-        'firm' => 'required|string|max:100',
-        'ville' => 'required|string|max:100',
-        'telephone' => 'required|string|max:20',
+        'firm' => 'nullable|string|max:100',
+        'ville' => 'nullable|string|max:100',
+        'telephone' => 'nullable|string|max:20',
         'livraison' => 'required|date',
     ];
 
@@ -354,9 +354,9 @@ class OrderManagement extends Component
         if ($this->currentStep === 1) {
             $this->validate([
                 'code' => 'required|string|max:255',
-                'firm' => 'required|string|max:255',
-                'ville' => 'required|string|max:255',
-                'telephone' => 'required|string|max:255',
+                'firm' => 'nullable|string|max:255',
+                'ville' => 'nullable|string|max:255',
+                'telephone' => 'nullable|string|max:255',
                 'livraison' => 'required|date',
             ]);
         }
