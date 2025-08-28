@@ -59,6 +59,7 @@ class OrderManagement extends Component
     public $selectedForme = '';
     public $selectedSemelle = '';
     public $selectedCuir = '';
+    public $selectedSupplement = '';
     public $selectedDoublure = '';
     public $selectedConstruction = '';
     public $productPrice = 0;
@@ -397,6 +398,7 @@ class OrderManagement extends Component
             'forme' => $this->selectedForme,
             'semelle' => $this->selectedSemelle,
             'cuir' => $this->selectedCuir,
+            'supplement' => $this->selectedSupplement,
             'doublure' => $this->selectedDoublure,
             'construction' => $this->selectedConstruction,
             'talon' => $this->currentTalon,
@@ -435,23 +437,6 @@ class OrderManagement extends Component
     
     public function removeOrderLine($index)
     {
-        unset($this->orderLines[$index]);
-        $this->orderLines = array_values($this->orderLines);
-    }
-    
-    private function resetProductSelection()
-    {
-        $this->selectedArticle = '';
-        $this->selectedForme = '';
-        $this->selectedSemelle = '';
-        $this->selectedCuir = '';
-        $this->selectedDoublure = '';
-        $this->selectedConstruction = '';
-        $this->currentTalon = '';
-        $this->currentFinition = '';
-        $this->currentLacet = '';
-        $this->currentPerforation = '';
-        $this->currentTrepointe = '';
         $this->currentFleur = false;
         $this->productPrice = 0;
         $this->currentLine = [
@@ -538,6 +523,7 @@ class OrderManagement extends Component
                 'semelle' => !empty($line['semelle']) ? $line['semelle'] : null,
                 'cuir' => !empty($line['cuir']) ? $line['cuir'] : null,
                 'doublure' => !empty($line['doublure']) ? $line['doublure'] : null,
+                'supplement' => !empty($line['supplement']) ? $line['supplement'] : null,
                 'construction' => !empty($line['construction']) ? $line['construction'] : null,
                 'talon' => !empty($line['talon']) ? $line['talon'] : null,
                 'finition' => !empty($line['finition']) ? $line['finition'] : null,
@@ -709,6 +695,7 @@ class OrderManagement extends Component
             'semelle' => $this->selectedSemelle,
             'cuir' => $this->selectedCuir,
             'doublure' => $this->selectedDoublure,
+            'supplement' => $this->selectedSupplement,
             'construction' => $this->selectedConstruction,
             'talon' => $this->currentTalon,
             'finition' => $this->currentFinition,
@@ -975,6 +962,48 @@ class OrderManagement extends Component
             'devise' => '€',
             'genre' => 'homme',
             'langue' => 'français'
+        ];
+    }
+    
+    private function resetProductSelection()
+    {
+        $this->selectedArticle = '';
+        $this->selectedForme = '';
+        $this->selectedSemelle = '';
+        $this->selectedCuir = '';
+        $this->selectedSupplement = '';
+        $this->selectedDoublure = '';
+        $this->selectedConstruction = '';
+        $this->currentTalon = '';
+        $this->currentFinition = '';
+        $this->currentLacet = '';
+        $this->currentPerforation = '';
+        $this->currentTrepointe = '';
+        $this->currentFleur = false;
+        $this->productPrice = 0;
+        $this->currentLine = [
+            'article' => '',
+            'forme' => '',
+            'client' => '',
+            'semelle' => '',
+            'construction' => '',
+            'cuir' => '',
+            'doublure' => '',
+            'supplement' => '',
+            'p5' => 0, 'p5x' => 0, 'p6' => 0, 'p6x' => 0,
+            'p7' => 0, 'p7x' => 0, 'p8' => 0, 'p8x' => 0,
+            'p9' => 0, 'p9x' => 0, 'p10' => 0, 'p10x' => 0,
+            'p11' => 0, 'p11x' => 0, 'p12' => 0, 'p13' => 0,
+            'prix' => 0,
+            'devise' => 'EUR',
+            'genre' => $this->currentGenre,
+            'langue' => 'français',
+            'talon' => '',
+            'finition' => '',
+            'lacet' => '',
+            'lacetx' => 0,
+            'perforation' => '',
+            'fleur' => false
         ];
     }
 }

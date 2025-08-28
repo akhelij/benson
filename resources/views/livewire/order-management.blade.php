@@ -658,6 +658,17 @@
                                             @endforeach
                                         </select>
                                     </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Supplement <span class="text-red-500">*</span></label>
+                                        <select wire:model="selectedSupplement" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                            <option value="">Sélectionner un supplement</option>
+                                            @foreach($supplements as $supplement)
+                                                <option value="{{ $supplement->id }}">{{ $supplement->nom }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('selectedSupplement') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                                    </div>
                                     
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 mb-1">Doublure</label>
@@ -1013,6 +1024,7 @@
                                                     @if($line->forme)<span class="text-xs">Forme: {{ $line->forme }}</span><br>@endif
                                                     @if($line->semelle)<span class="text-xs">Semelle: {{ $line->semelle }}</span><br>@endif
                                                     @if($line->cuir)<span class="text-xs">Cuir: {{ $line->cuir }}</span><br>@endif
+                                                    @if($line->supplement)<span class="text-xs">Supplément: {{ $line->supplement }}</span><br>@endif
                                                     @if($line->doublure)<span class="text-xs">Doublure: {{ $line->doublure }}</span><br>@endif
                                                     @if($line->construction)<span class="text-xs">Construction: {{ $line->construction }}</span>@endif
                                                 </div>
@@ -1412,6 +1424,17 @@
                                 <option value="{{ $cuir->nom }}">{{ $cuir->nom }}</option>
                             @endforeach
                         </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Supplement <span class="text-red-500">*</span></label>
+                        <select wire:model="selectedSupplement" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            <option value="">Sélectionner un supplement</option>
+                            @foreach($supplements as $supplement)
+                                <option value="{{ $supplement->id }}">{{ $supplement->nom }}</option>
+                            @endforeach
+                        </select>
+                        @error('selectedSupplement') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
                     </div>
                     
                     <div>
