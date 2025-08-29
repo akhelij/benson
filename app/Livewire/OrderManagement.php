@@ -88,8 +88,9 @@ class OrderManagement extends Component
         'finition' => '',
         'lacet' => '',
         'lacetx' => 0,
-        'perforation' => '',
-        'fleur' => false
+        'perforation' => false,
+        'fleur' => false,
+        'dentlage' => false
     ];
     
     // Additional form fields
@@ -97,20 +98,23 @@ class OrderManagement extends Component
     public $currentTalon = '';
     public $currentFinition = '';
     public $currentLacet = '';
+    public $currentLacetLength = '';
     public $currentPerforation = '';
     public $currentTrepointe = '';
     public $currentFleur = false;
+    public $currentDentlage = false;
     
     // Order line editing
     public $editingLineIndex = null;
     public $showLineEditModal = false;
     
-    // Hardcoded options
-    public $talonOptions = ['Soudé/Plat', 'Soudé/Incliné', 'Brut', 'Plat Marron', 'Plat marron+', 'TS', 'TS Platin'];
-    public $finitionOptions = ['Antique', 'Brillant', 'Mat'];
-    public $lacetOptions = ['Plat', 'Rond', 'Ciré', 'Déclaration', 'Fleur'];
-    public $perforationOptions = ['Sans', 'Simple', 'Double', 'Triple'];
-    public $trepointeOptions = ['Blake', 'Goodyear', 'Norvégien', 'Cousu Main'];
+    // Hardcoded options - matching legacy form exactly
+    public $talonOptions = ['Synderme', 'Cuir', 'autre', 'vide'];
+    public $finitionOptions = ['Antique', 'Brut', 'Fumé', 'Patiné', 'Standard', 'autre'];
+    public $lacetOptions = ['Plat Marron', 'Plat Noir', 'Plat Bleu', 'Rond Marron', 'Rond Noir', 'Rond Bleu', 'autre', 'Sans'];
+    public $lacetLengthOptions = ['75', '85', '115', 'autre', 'Sans'];
+    public $perforationOptions = ['Sans', 'Avec perforation'];
+    public $trepointeOptions = ['Plat marron', 'Plat naturelle', 'Stormwelt marron', 'Stormwelt naturelle', 'autre', 'vide'];
 
     // Item collections for dropdowns
     public $articles = [];
@@ -404,9 +408,11 @@ class OrderManagement extends Component
             'talon' => $this->currentTalon,
             'finition' => $this->currentFinition,
             'lacet' => $this->currentLacet,
+            'lacetx' => $this->currentLacetLength,
             'perforation' => $this->currentPerforation,
             'trepointe' => $this->currentTrepointe,
             'fleur' => $this->currentFleur,
+            'dentlage' => $this->currentDentlage,
             'genre' => $this->currentGenre,
             'price' => $this->productPrice,
             'p5' => $this->currentLine['p5'],
@@ -980,6 +986,8 @@ class OrderManagement extends Component
         $this->currentPerforation = '';
         $this->currentTrepointe = '';
         $this->currentFleur = false;
+        $this->currentLacetLength = '';
+        $this->currentDentlage = false;
         $this->productPrice = 0;
         $this->currentLine = [
             'article' => '',
@@ -1002,8 +1010,9 @@ class OrderManagement extends Component
             'finition' => '',
             'lacet' => '',
             'lacetx' => 0,
-            'perforation' => '',
-            'fleur' => false
+            'perforation' => false,
+            'fleur' => false,
+            'dentlage' => false
         ];
     }
 }

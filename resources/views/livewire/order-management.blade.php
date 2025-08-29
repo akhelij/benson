@@ -702,10 +702,20 @@
                                     
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 mb-1">Lacet</label>
-                                        <select wire:model="currentLacet" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                        <select wire:model="currentLacet" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                                             <option value="">Sélectionner un lacet</option>
                                             @foreach($lacetOptions as $lacet)
                                                 <option value="{{ $lacet }}">{{ $lacet }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Longueur Lacet (cm)</label>
+                                        <select wire:model="currentLacetLength" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                            <option value="">Sélectionner une longueur</option>
+                                            @foreach($lacetLengthOptions as $length)
+                                                <option value="{{ $length }}">{{ $length }}{{ $length !== 'autre' && $length !== 'Sans' ? ' cm' : '' }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -720,14 +730,26 @@
                                         </select>
                                     </div>
                                     
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-1">Perforation</label>
-                                        <select wire:model="currentPerforation" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                                            <option value="">Sélectionner une perforation</option>
-                                            @foreach($perforationOptions as $perforation)
-                                                <option value="{{ $perforation }}">{{ $perforation }}</option>
-                                            @endforeach
-                                        </select>
+                                    {{-- Checkboxes section matching legacy form --}}
+                                    <div class="col-span-3">
+                                        <label class="block text-sm font-medium text-gray-700 mb-3">Options Spéciales</label>
+                                        <div class="flex gap-6">
+                                            <div class="flex items-center">
+                                                <input type="checkbox" wire:model="currentPerforation" id="perforation" 
+                                                       class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                                <label for="perforation" class="ml-2 text-sm text-gray-700">Perforation</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="checkbox" wire:model="currentFleur" id="fleur" 
+                                                       class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                                <label for="fleur" class="ml-2 text-sm text-gray-700">Fleur</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="checkbox" wire:model="currentDentlage" id="dentlage" 
+                                                       class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                                <label for="dentlage" class="ml-2 text-sm text-gray-700">Dentlage</label>
+                                            </div>
+                                        </div>
                                     </div>
                                     
                                     <div>
