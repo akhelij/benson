@@ -541,7 +541,7 @@ class OrderManagement extends Component
                 'talon' => !empty($line['talon']) ? $line['talon'] : null,
                 'finition' => !empty($line['finition']) ? $line['finition'] : null,
                 'lacet' => !empty($line['lacet']) ? $line['lacet'] : null,
-                'perforation' => !empty($line['perforation']) ? $line['perforation'] : null,
+                'perforation' => $line['perforation'] ?? false,
                 'trepointe' => !empty($line['trepointe']) ? $line['trepointe'] : null,
                 'fleur' => $line['fleur'] ?? false,
                 'genre' => $line['genre'] ?? 'homme',
@@ -563,6 +563,8 @@ class OrderManagement extends Component
                 'p11x' => $line['p11x'] ?? 0,
                 'p12' => $line['p12'] ?? 0,
                 'p13' => $line['p13'] ?? 0,
+                'lacetx' => $line['lacetx'] ?? null,
+                'dentlage' => $line['dentlage'] ?? false,
             ]);
         }
 
