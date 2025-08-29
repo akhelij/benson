@@ -522,15 +522,14 @@ class OrderManagement extends Component
         if ($this->editingOrder) {
             $this->editingOrder->update($orderData);
             $order = $this->editingOrder;
-            // Delete existing lines when editing
-            $order->orderLines()->delete();
-        } else {
-            $order = Order::create($orderData);
-        }
-
-        // Save order lines
-        foreach ($this->orderLines as $line) {
-            $order->orderLines()->create([
+            
+            // Get existing order lines to compare
+            $existingLines = $order->orderLines()->get()->keyBy('id');
+            $processedLineIds = [];
+            
+            // Update or create lines from the form
+            foreach ($this->orderLines as $index => $line) {
+                $lineData = [
                 'article' => $line['article'],
                 'forme' => !empty($line['forme']) ? $line['forme'] : null,
                 'semelle' => !empty($line['semelle']) ? $line['semelle'] : null,
@@ -565,7 +564,64 @@ class OrderManagement extends Component
                 'p13' => $line['p13'] ?? 0,
                 'lacetx' => $line['lacetx'] ?? null,
                 'dentlage' => $line['dentlage'] ?? false,
-            ]);
+                ];
+                
+                // Check if this line has an ID (existing line) or is new
+                if (isset($line['id']) && $existingLines->has($line['id'])) {
+                    // Update existing line
+                    $existingLines[$line['id']]->update($lineData);
+                    $processedLineIds[] = $line['id'];
+                } else {
+                    // Create new line
+                    $newLine = $order->orderLines()->create($lineData);
+                    $processedLineIds[] = $newLine->id;
+                }
+            }
+            
+            // Don't delete unprocessed lines - they remain in the database
+            // This preserves order lines that weren't loaded into the editing interface
+            
+        } else {
+            $order = Order::create($orderData);
+            
+            // Save order lines for new orders
+            foreach ($this->orderLines as $line) {
+                $order->orderLines()->create([
+                    'article' => $line['article'],
+                    'forme' => !empty($line['forme']) ? $line['forme'] : null,
+                    'semelle' => !empty($line['semelle']) ? $line['semelle'] : null,
+                    'cuir' => !empty($line['cuir']) ? $line['cuir'] : null,
+                    'doublure' => !empty($line['doublure']) ? $line['doublure'] : null,
+                    'supplement' => !empty($line['supplement']) ? $line['supplement'] : null,
+                    'construction' => !empty($line['construction']) ? $line['construction'] : null,
+                    'talon' => !empty($line['talon']) ? $line['talon'] : null,
+                    'finition' => !empty($line['finition']) ? $line['finition'] : null,
+                    'lacet' => !empty($line['lacet']) ? $line['lacet'] : null,
+                    'perforation' => $line['perforation'] ?? false,
+                    'trepointe' => !empty($line['trepointe']) ? $line['trepointe'] : null,
+                    'fleur' => $line['fleur'] ?? false,
+                    'genre' => $line['genre'] ?? 'homme',
+                    'prix' => $line['price'],
+                    'p5' => $line['p5'] ?? 0,
+                    'p5x' => $line['p5x'] ?? 0,
+                    'p6' => $line['p6'] ?? 0,
+                    'p6x' => $line['p6x'] ?? 0,
+                    'p7' => $line['p7'] ?? 0,
+                    'p7x' => $line['p7x'] ?? 0,
+                    'p8' => $line['p8'] ?? 0,
+                    'p8x' => $line['p8x'] ?? 0,
+                    'p9' => $line['p9'] ?? 0,
+                    'p9x' => $line['p9x'] ?? 0,
+                    'p10' => $line['p10'] ?? 0,
+                    'p10x' => $line['p10x'] ?? 0,
+                    'p11' => $line['p11'] ?? 0,
+                    'p11x' => $line['p11x'] ?? 0,
+                    'p12' => $line['p12'] ?? 0,
+                    'p13' => $line['p13'] ?? 0,
+                    'lacetx' => $line['lacetx'] ?? null,
+                    'dentlage' => $line['dentlage'] ?? false,
+                ]);
+            }
         }
 
         $this->closeModal();
