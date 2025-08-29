@@ -692,42 +692,66 @@
                                     
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 mb-1">Talon</label>
-                                        <select wire:model="currentTalon" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                        <select wire:model.live="currentTalon" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                                             <option value="">Sélectionner un talon</option>
                                             @foreach($talonOptions as $talon)
                                                 <option value="{{ $talon }}">{{ $talon }}</option>
                                             @endforeach
                                         </select>
+                                        @if($currentTalon === 'autre')
+                                            <input wire:model.live="customTalon" type="text" 
+                                                class="w-full px-3 py-2 mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                                                placeholder="Spécifier le talon"
+                                                wire:key="custom-talon-{{ $currentTalon }}">
+                                        @endif
                                     </div>
                                     
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 mb-1">Lacet</label>
-                                        <select wire:model="currentLacet" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                        <select wire:model.live="currentLacet" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                                             <option value="">Sélectionner un lacet</option>
                                             @foreach($lacetOptions as $lacet)
                                                 <option value="{{ $lacet }}">{{ $lacet }}</option>
                                             @endforeach
                                         </select>
+                                        @if($currentLacet === 'autre')
+                                            <input wire:model.live="customLacet" type="text" 
+                                                class="w-full px-3 py-2 mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                                                placeholder="Spécifier le lacet"
+                                                wire:key="custom-lacet-{{ $currentLacet }}">
+                                        @endif
                                     </div>
                                     
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 mb-1">Longueur Lacet (cm)</label>
-                                        <select wire:model="currentLacetLength" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                        <select wire:model.live="currentLacetLength" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                                             <option value="">Sélectionner une longueur</option>
                                             @foreach($lacetLengthOptions as $length)
                                                 <option value="{{ $length }}">{{ $length }}{{ $length !== 'autre' && $length !== 'Sans' ? ' cm' : '' }}</option>
                                             @endforeach
                                         </select>
+                                        @if($currentLacetLength === 'autre')
+                                            <input wire:model.live="customLacetLength" type="text" 
+                                                class="w-full px-3 py-2 mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                                                placeholder="Spécifier la longueur (cm)"
+                                                wire:key="custom-lacet-length-{{ $currentLacetLength }}">
+                                        @endif
                                     </div>
                                     
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 mb-1">Finition</label>
-                                        <select wire:model="currentFinition" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                        <select wire:model.live="currentFinition" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                                             <option value="">Sélectionner une finition</option>
                                             @foreach($finitionOptions as $finition)
                                                 <option value="{{ $finition }}">{{ $finition }}</option>
                                             @endforeach
                                         </select>
+                                        @if($currentFinition === 'autre')
+                                            <input wire:model.live="customFinition" type="text" 
+                                                class="w-full px-3 py-2 mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                                                placeholder="Spécifier la finition"
+                                                wire:key="custom-finition-{{ $currentFinition }}">
+                                        @endif
                                     </div>
                                     
                                     {{-- Checkboxes section matching legacy form --}}
@@ -754,12 +778,18 @@
                                     
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 mb-1">Trépointe</label>
-                                        <select wire:model="currentTrepointe" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                        <select wire:model.live="currentTrepointe" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                                             <option value="">Sélectionner une trépointe</option>
                                             @foreach($trepointeOptions as $trepointe)
                                                 <option value="{{ $trepointe }}">{{ $trepointe }}</option>
                                             @endforeach
                                         </select>
+                                        @if($currentTrepointe === 'autre')
+                                            <input wire:model.live="customTrepointe" type="text" 
+                                                class="w-full px-3 py-2 mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                                                placeholder="Spécifier la trépointe"
+                                                wire:key="custom-trepointe-{{ $currentTrepointe }}">
+                                        @endif
                                     </div>
                                     
                                     <div>
@@ -1484,49 +1514,82 @@
                 <div class="grid grid-cols-3 gap-4 mb-6">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Talon</label>
-                        <select wire:model="currentTalon" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        <select wire:model.live="currentTalon" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                             <option value="">Sélectionner un talon</option>
                             @foreach($talonOptions as $talon)
                                 <option value="{{ $talon }}">{{ $talon }}</option>
                             @endforeach
                         </select>
+                        @if($currentTalon === 'autre')
+                            <input wire:model.live="customTalon" type="text" 
+                                class="w-full px-3 py-2 mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                                placeholder="Spécifier le talon"
+                                wire:key="edit-custom-talon-{{ $currentTalon }}">
+                        @endif
                     </div>
                     
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Lacet</label>
-                        <select wire:model="currentLacet" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        <select wire:model.live="currentLacet" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                             <option value="">Sélectionner un lacet</option>
                             @foreach($lacetOptions as $lacet)
                                 <option value="{{ $lacet }}">{{ $lacet }}</option>
                             @endforeach
                         </select>
+                        @if($currentLacet === 'autre')
+                            <input wire:model.live="customLacet" type="text" 
+                                class="w-full px-3 py-2 mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                                placeholder="Spécifier le lacet"
+                                wire:key="edit-custom-lacet-{{ $currentLacet }}">
+                        @endif
                     </div>
                     
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Finition</label>
-                        <select wire:model="currentFinition" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        <select wire:model.live="currentFinition" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                             <option value="">Sélectionner une finition</option>
                             @foreach($finitionOptions as $finition)
                                 <option value="{{ $finition }}">{{ $finition }}</option>
                             @endforeach
                         </select>
+                        @if($currentFinition === 'autre')
+                            <input wire:model.live="customFinition" type="text" 
+                                class="w-full px-3 py-2 mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                                placeholder="Spécifier la finition"
+                                wire:key="edit-custom-finition-{{ $currentFinition }}">
+                        @endif
                     </div>
                     
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Lacet Longueur</label>
-                        <input wire:model="currentLacetLength" type="text"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                            placeholder="Longueur du lacet">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Longueur Lacet (cm)</label>
+                        <select wire:model.live="currentLacetLength" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            <option value="">Sélectionner une longueur</option>
+                            @foreach($lacetLengthOptions as $length)
+                                <option value="{{ $length }}">{{ $length }}{{ $length !== 'autre' && $length !== 'Sans' ? ' cm' : '' }}</option>
+                            @endforeach
+                        </select>
+                        @if($currentLacetLength === 'autre')
+                            <input wire:model.live="customLacetLength" type="text" 
+                                class="w-full px-3 py-2 mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                                placeholder="Spécifier la longueur (cm)"
+                                wire:key="edit-custom-lacet-length-{{ $currentLacetLength }}">
+                        @endif
                     </div>
                     
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Trépointe</label>
-                        <select wire:model="currentTrepointe" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        <select wire:model.live="currentTrepointe" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                             <option value="">Sélectionner une trépointe</option>
                             @foreach($trepointeOptions as $trepointe)
                                 <option value="{{ $trepointe }}">{{ $trepointe }}</option>
                             @endforeach
                         </select>
+                        @if($currentTrepointe === 'autre')
+                            <input wire:model.live="customTrepointe" type="text" 
+                                class="w-full px-3 py-2 mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                                placeholder="Spécifier la trépointe"
+                                wire:key="edit-custom-trepointe-{{ $currentTrepointe }}">
+                        @endif
                     </div>
                     
                     <div>

@@ -104,6 +104,13 @@ class OrderManagement extends Component
     public $currentFleur = false;
     public $currentDentlage = false;
     
+    // Custom "autre" values
+    public $customTalon = '';
+    public $customFinition = '';
+    public $customLacet = '';
+    public $customLacetLength = '';
+    public $customTrepointe = '';
+    
     // Order line editing
     public $editingLineIndex = null;
     public $showLineEditModal = false;
@@ -405,12 +412,12 @@ class OrderManagement extends Component
             'supplement' => $this->selectedSupplement,
             'doublure' => $this->selectedDoublure,
             'construction' => $this->selectedConstruction,
-            'talon' => $this->currentTalon,
-            'finition' => $this->currentFinition,
-            'lacet' => $this->currentLacet,
-            'lacetx' => $this->currentLacetLength,
+            'talon' => $this->currentTalon === 'autre' ? $this->customTalon : $this->currentTalon,
+            'finition' => $this->currentFinition === 'autre' ? $this->customFinition : $this->currentFinition,
+            'lacet' => $this->currentLacet === 'autre' ? $this->customLacet : $this->currentLacet,
+            'lacetx' => $this->currentLacetLength === 'autre' ? $this->customLacetLength : $this->currentLacetLength,
             'perforation' => $this->currentPerforation,
-            'trepointe' => $this->currentTrepointe,
+            'trepointe' => $this->currentTrepointe === 'autre' ? $this->customTrepointe : $this->currentTrepointe,
             'fleur' => $this->currentFleur,
             'dentlage' => $this->currentDentlage,
             'genre' => $this->currentGenre,
@@ -612,12 +619,25 @@ class OrderManagement extends Component
         $this->selectedCuir = $this->getItemNameById($line['cuir'], 'cuir');
         $this->selectedDoublure = $this->getItemNameById($line['doublure'], 'doublure');
         $this->selectedConstruction = $this->getItemNameById($line['construction'], 'construction');
-        $this->currentTalon = $line['talon'] ?? '';
-        $this->currentFinition = $line['finition'] ?? '';
-        $this->currentLacet = $line['lacet'] ?? '';
+        // Handle 'autre' values - check if stored value is a custom one
+        $this->currentTalon = $this->isCustomValue($line['talon'] ?? '', $this->talonOptions) ? 'autre' : ($line['talon'] ?? '');
+        $this->customTalon = $this->isCustomValue($line['talon'] ?? '', $this->talonOptions) ? ($line['talon'] ?? '') : '';
+        
+        $this->currentFinition = $this->isCustomValue($line['finition'] ?? '', $this->finitionOptions) ? 'autre' : ($line['finition'] ?? '');
+        $this->customFinition = $this->isCustomValue($line['finition'] ?? '', $this->finitionOptions) ? ($line['finition'] ?? '') : '';
+        
+        $this->currentLacet = $this->isCustomValue($line['lacet'] ?? '', $this->lacetOptions) ? 'autre' : ($line['lacet'] ?? '');
+        $this->customLacet = $this->isCustomValue($line['lacet'] ?? '', $this->lacetOptions) ? ($line['lacet'] ?? '') : '';
+        
+        $this->currentLacetLength = $this->isCustomValue($line['lacetx'] ?? '', $this->lacetLengthOptions) ? 'autre' : ($line['lacetx'] ?? '');
+        $this->customLacetLength = $this->isCustomValue($line['lacetx'] ?? '', $this->lacetLengthOptions) ? ($line['lacetx'] ?? '') : '';
+        
+        $this->currentTrepointe = $this->isCustomValue($line['trepointe'] ?? '', $this->trepointeOptions) ? 'autre' : ($line['trepointe'] ?? '');
+        $this->customTrepointe = $this->isCustomValue($line['trepointe'] ?? '', $this->trepointeOptions) ? ($line['trepointe'] ?? '') : '';
+        
         $this->currentPerforation = $line['perforation'] ?? '';
-        $this->currentTrepointe = $line['trepointe'] ?? '';
         $this->currentFleur = $line['fleur'] ?? false;
+        $this->currentDentlage = $line['dentlage'] ?? false;
         $this->currentGenre = $line['genre'] ?? 'homme';
         $this->productPrice = $line['price'];
         
@@ -667,6 +687,11 @@ class OrderManagement extends Component
         
         $this->showLineEditModal = true;
     }
+    
+    private function isCustomValue($value, $options)
+    {
+        return !empty($value) && !in_array($value, $options);
+    }
 
     public function updateOrderLine()
     {
@@ -703,12 +728,14 @@ class OrderManagement extends Component
             'doublure' => $this->selectedDoublure,
             'supplement' => $this->selectedSupplement,
             'construction' => $this->selectedConstruction,
-            'talon' => $this->currentTalon,
-            'finition' => $this->currentFinition,
-            'lacet' => $this->currentLacet,
+            'talon' => $this->currentTalon === 'autre' ? $this->customTalon : $this->currentTalon,
+            'finition' => $this->currentFinition === 'autre' ? $this->customFinition : $this->currentFinition,
+            'lacet' => $this->currentLacet === 'autre' ? $this->customLacet : $this->currentLacet,
+            'lacetx' => $this->currentLacetLength === 'autre' ? $this->customLacetLength : $this->currentLacetLength,
             'perforation' => $this->currentPerforation,
-            'trepointe' => $this->currentTrepointe,
+            'trepointe' => $this->currentTrepointe === 'autre' ? $this->customTrepointe : $this->currentTrepointe,
             'fleur' => $this->currentFleur,
+            'dentlage' => $this->currentDentlage,
             'genre' => $this->currentGenre,
             'price' => $this->productPrice,
             'p5' => $this->currentLine['p5'],
@@ -988,6 +1015,11 @@ class OrderManagement extends Component
         $this->currentFleur = false;
         $this->currentLacetLength = '';
         $this->currentDentlage = false;
+        $this->customTalon = '';
+        $this->customFinition = '';
+        $this->customLacet = '';
+        $this->customLacetLength = '';
+        $this->customTrepointe = '';
         $this->productPrice = 0;
         $this->currentLine = [
             'article' => '',
