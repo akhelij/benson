@@ -88,7 +88,7 @@ class OrderManagement extends Component
         'finition' => '',
         'lacet' => '',
         'lacetx' => 0,
-        'perforation' => false,
+        'perforation' => 0,
         'fleur' => false,
         'dentlage' => false
     ];
@@ -99,7 +99,7 @@ class OrderManagement extends Component
     public $currentFinition = '';
     public $currentLacet = '';
     public $currentLacetLength = '';
-    public $currentPerforation = '';
+    public $currentPerforation = 0;
     public $currentTrepointe = '';
     public $currentFleur = false;
     public $currentDentlage = false;
@@ -438,7 +438,7 @@ class OrderManagement extends Component
             'finition' => $this->currentFinition === 'autre' ? $this->customFinition : $this->currentFinition,
             'lacet' => $this->currentLacet === 'autre' ? $this->customLacet : $this->currentLacet,
             'lacetx' => $this->currentLacetLength === 'autre' ? $this->customLacetLength : $this->currentLacetLength,
-            'perforation' => $this->currentPerforation,
+            'perforation' => $this->convertPerforationToInt($this->currentPerforation),
             'trepointe' => $this->currentTrepointe === 'autre' ? $this->customTrepointe : $this->currentTrepointe,
             'fleur' => $this->currentFleur,
             'dentlage' => $this->currentDentlage,
@@ -562,7 +562,7 @@ class OrderManagement extends Component
                 'talon' => !empty($line['talon']) ? $line['talon'] : null,
                 'finition' => !empty($line['finition']) ? $line['finition'] : null,
                 'lacet' => !empty($line['lacet']) ? $line['lacet'] : null,
-                'perforation' => $line['perforation'] ?? false,
+                'perforation' => $this->convertPerforationToInt($line['perforation'] ?? 0),
                 'trepointe' => !empty($line['trepointe']) ? $line['trepointe'] : null,
                 'fleur' => $line['fleur'] ?? false,
                 'genre' => $line['genre'] ?? 'homme',
@@ -619,7 +619,7 @@ class OrderManagement extends Component
                     'talon' => !empty($line['talon']) ? $line['talon'] : null,
                     'finition' => !empty($line['finition']) ? $line['finition'] : null,
                     'lacet' => !empty($line['lacet']) ? $line['lacet'] : null,
-                    'perforation' => $line['perforation'] ?? false,
+                    'perforation' => $this->convertPerforationToInt($line['perforation'] ?? 0),
                     'trepointe' => !empty($line['trepointe']) ? $line['trepointe'] : null,
                     'fleur' => $line['fleur'] ?? false,
                     'genre' => $line['genre'] ?? 'homme',
@@ -715,7 +715,7 @@ class OrderManagement extends Component
         $this->currentTrepointe = $this->isCustomValue($line['trepointe'] ?? '', $this->trepointeOptions) ? 'autre' : ($line['trepointe'] ?? '');
         $this->customTrepointe = $this->isCustomValue($line['trepointe'] ?? '', $this->trepointeOptions) ? ($line['trepointe'] ?? '') : '';
         
-        $this->currentPerforation = $line['perforation'] ?? '';
+        $this->currentPerforation = $line['perforation'] ?? 0;
         $this->currentFleur = $line['fleur'] ?? false;
         $this->currentDentlage = $line['dentlage'] ?? false;
         $this->currentGenre = $line['genre'] ?? 'homme';
@@ -761,7 +761,7 @@ class OrderManagement extends Component
             'finition' => $line['finition'] ?? '',
             'lacet' => $line['lacet'] ?? '',
             'lacetx' => 0,
-            'perforation' => $line['perforation'] ?? '',
+            'perforation' => $line['perforation'] ?? 0,
             'fleur' => $line['fleur'] ?? false
         ];
         
@@ -771,6 +771,22 @@ class OrderManagement extends Component
     private function isCustomValue($value, $options)
     {
         return !empty($value) && !in_array($value, $options);
+    }
+
+    private function convertPerforationToInt($value)
+    {
+        if (is_bool($value)) {
+            return $value ? 1 : 0;
+        }
+        if (is_string($value)) {
+            if ($value === 'Avec perforation' || $value === '1') {
+                return 1;
+            }
+            if ($value === 'Sans' || $value === '0' || $value === '') {
+                return 0;
+            }
+        }
+        return (int) $value;
     }
 
     public function updateOrderLine()
@@ -812,7 +828,7 @@ class OrderManagement extends Component
             'finition' => $this->currentFinition === 'autre' ? $this->customFinition : $this->currentFinition,
             'lacet' => $this->currentLacet === 'autre' ? $this->customLacet : $this->currentLacet,
             'lacetx' => $this->currentLacetLength === 'autre' ? $this->customLacetLength : $this->currentLacetLength,
-            'perforation' => $this->currentPerforation,
+            'perforation' => $this->convertPerforationToInt($this->currentPerforation),
             'trepointe' => $this->currentTrepointe === 'autre' ? $this->customTrepointe : $this->currentTrepointe,
             'fleur' => $this->currentFleur,
             'dentlage' => $this->currentDentlage,
@@ -860,7 +876,7 @@ class OrderManagement extends Component
                     'talon' => $this->currentTalon,
                     'finition' => $this->currentFinition,
                     'lacet' => $this->currentLacet,
-                    'perforation' => $this->currentPerforation,
+                    'perforation' => $this->convertPerforationToInt($this->currentPerforation),
                     'trepointe' => $this->currentTrepointe,
                     'fleur' => $this->currentFleur,
                     'genre' => $this->currentGenre,
@@ -1090,7 +1106,7 @@ class OrderManagement extends Component
         $this->currentTalon = '';
         $this->currentFinition = '';
         $this->currentLacet = '';
-        $this->currentPerforation = '';
+        $this->currentPerforation = 0;
         $this->currentTrepointe = '';
         $this->currentFleur = false;
         $this->currentLacetLength = '';
@@ -1122,7 +1138,7 @@ class OrderManagement extends Component
             'finition' => '',
             'lacet' => '',
             'lacetx' => 0,
-            'perforation' => false,
+            'perforation' => 0,
             'fleur' => false,
             'dentlage' => false
         ];
