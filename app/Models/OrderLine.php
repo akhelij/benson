@@ -44,10 +44,27 @@ class OrderLine extends Model
     protected $casts = [
         'prix' => 'decimal:2',
         'lacetx' => 'decimal:2',
-        'fleur' => 'boolean',
-        'livre' => 'boolean',
-        'perforation' => 'boolean',
-        'dentlage' => 'boolean',
+        'fleur' => 'integer',
+        'livre' => 'integer',
+        'perforation' => 'integer',
+        'dentlage' => 'integer',
+        // Size fields should be integers
+        'p5' => 'integer',
+        'p5x' => 'integer',
+        'p6' => 'integer',
+        'p6x' => 'integer',
+        'p7' => 'integer',
+        'p7x' => 'integer',
+        'p8' => 'integer',
+        'p8x' => 'integer',
+        'p9' => 'integer',
+        'p9x' => 'integer',
+        'p10' => 'integer',
+        'p10x' => 'integer',
+        'p11' => 'integer',
+        'p11x' => 'integer',
+        'p12' => 'integer',
+        'p13' => 'integer',
     ];
 
     /**

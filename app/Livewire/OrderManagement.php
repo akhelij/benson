@@ -410,40 +410,42 @@ class OrderManagement extends Component
             'selectedArticle' => 'required',
             'productPrice' => 'required|numeric|min:0',
         ]);
-        
-        // Calculate total quantity from currentLine sizes
+
+        // Calculate total quantity from currentLine sizes including new columns
         $totalQuantity = $this->currentLine['p5'] + $this->currentLine['p5x'] + 
-                        $this->currentLine['p6'] + $this->currentLine['p6x'] +
-                        $this->currentLine['p7'] + $this->currentLine['p7x'] +
-                        $this->currentLine['p8'] + $this->currentLine['p8x'] +
-                        $this->currentLine['p9'] + $this->currentLine['p9x'] +
-                        $this->currentLine['p10'] + $this->currentLine['p10x'] +
-                        $this->currentLine['p11'] + $this->currentLine['p11x'] +
+                        $this->currentLine['p6'] + $this->currentLine['p6x'] + 
+                        $this->currentLine['p7'] + $this->currentLine['p7x'] + 
+                        $this->currentLine['p8'] + $this->currentLine['p8x'] + 
+                        $this->currentLine['p9'] + $this->currentLine['p9x'] + 
+                        $this->currentLine['p10'] + $this->currentLine['p10x'] + 
+                        $this->currentLine['p11'] + $this->currentLine['p11x'] + 
                         $this->currentLine['p12'] + $this->currentLine['p13'];
-        
+
         if ($totalQuantity == 0) {
-            session()->flash('error', 'Veuillez sélectionner au moins une taille');
+            $this->addError('sizes', 'Veuillez saisir au moins une quantité.');
             return;
         }
-        
-        $this->orderLines[] = [
+
+        // Prepare line data
+        $lineData = [
             'article' => $this->selectedArticle,
-            'forme' => $this->selectedForme,
-            'semelle' => $this->selectedSemelle,
-            'cuir' => $this->selectedCuir,
-            'supplement' => $this->selectedSupplement,
-            'doublure' => $this->selectedDoublure,
-            'construction' => $this->selectedConstruction,
-            'talon' => $this->currentTalon === 'autre' ? $this->customTalon : $this->currentTalon,
-            'finition' => $this->currentFinition === 'autre' ? $this->customFinition : $this->currentFinition,
-            'lacet' => $this->currentLacet === 'autre' ? $this->customLacet : $this->currentLacet,
-            'lacetx' => $this->currentLacetLength === 'autre' ? $this->customLacetLength : $this->currentLacetLength,
-            'perforation' => $this->convertPerforationToInt($this->currentPerforation),
-            'trepointe' => $this->currentTrepointe === 'autre' ? $this->customTrepointe : $this->currentTrepointe,
+            'forme' => $this->currentForme,
+            'semelle' => $this->currentSemelle,
+            'cuir' => $this->currentCuir,
+            'doublure' => $this->currentDoublure,
+            'supplement' => $this->currentSupplement,
+            'construction' => $this->currentConstruction,
+            'talon' => $this->currentTalon,
+            'finition' => $this->currentFinition,
+            'lacet' => $this->currentLacet,
+            'perforation' => $this->currentPerforation,
+            'trepointe' => $this->currentTrepointe,
             'fleur' => $this->currentFleur,
             'dentlage' => $this->currentDentlage,
             'genre' => $this->currentGenre,
             'price' => $this->productPrice,
+            'lacetx' => $this->currentLacetLength === 'autre' ? $this->customLacetLength : $this->currentLacetLength,
+            // Include all size fields
             'p5' => $this->currentLine['p5'],
             'p5x' => $this->currentLine['p5x'],
             'p6' => $this->currentLine['p6'],
@@ -460,14 +462,16 @@ class OrderManagement extends Component
             'p11x' => $this->currentLine['p11x'],
             'p12' => $this->currentLine['p12'],
             'p13' => $this->currentLine['p13'],
-            'total_quantity' => $totalQuantity,
-            'total_amount' => $totalQuantity * $this->productPrice,
         ];
+
+        // Add the new line with sanitized data
+        $this->orderLines[] = $this->sanitizeOrderLineData($lineData);
         
-        // Reset product selection
-        $this->resetProductSelection();
+        // Reset form
+        $this->resetLineForm();
         
-        session()->flash('success', 'Article ajouté avec succès');
+        // Show success message
+        session()->flash('message', 'Ligne ajoutée avec succès.');
     }
     
     public function removeOrderLine($index)
@@ -584,7 +588,7 @@ class OrderManagement extends Component
                 'p11x' => $line['p11x'] ?? 0,
                 'p12' => $line['p12'] ?? 0,
                 'p13' => $line['p13'] ?? 0,
-                'lacetx' => $line['lacetx'] ?? null,
+                'lacetx' => $this->convertLacetxToDecimal($line['lacetx'] ?? null),
                 'dentlage' => $line['dentlage'] ?? false,
                 ];
                 
@@ -608,41 +612,9 @@ class OrderManagement extends Component
             
             // Save order lines for new orders
             foreach ($this->orderLines as $line) {
-                $order->orderLines()->create([
-                    'article' => $line['article'],
-                    'forme' => !empty($line['forme']) ? $line['forme'] : null,
-                    'semelle' => !empty($line['semelle']) ? $line['semelle'] : null,
-                    'cuir' => !empty($line['cuir']) ? $line['cuir'] : null,
-                    'doublure' => !empty($line['doublure']) ? $line['doublure'] : null,
-                    'supplement' => !empty($line['supplement']) ? $line['supplement'] : null,
-                    'construction' => !empty($line['construction']) ? $line['construction'] : null,
-                    'talon' => !empty($line['talon']) ? $line['talon'] : null,
-                    'finition' => !empty($line['finition']) ? $line['finition'] : null,
-                    'lacet' => !empty($line['lacet']) ? $line['lacet'] : null,
-                    'perforation' => $this->convertPerforationToInt($line['perforation'] ?? 0),
-                    'trepointe' => !empty($line['trepointe']) ? $line['trepointe'] : null,
-                    'fleur' => $line['fleur'] ?? false,
-                    'genre' => $line['genre'] ?? 'homme',
-                    'prix' => $line['price'],
-                    'p5' => $line['p5'] ?? 0,
-                    'p5x' => $line['p5x'] ?? 0,
-                    'p6' => $line['p6'] ?? 0,
-                    'p6x' => $line['p6x'] ?? 0,
-                    'p7' => $line['p7'] ?? 0,
-                    'p7x' => $line['p7x'] ?? 0,
-                    'p8' => $line['p8'] ?? 0,
-                    'p8x' => $line['p8x'] ?? 0,
-                    'p9' => $line['p9'] ?? 0,
-                    'p9x' => $line['p9x'] ?? 0,
-                    'p10' => $line['p10'] ?? 0,
-                    'p10x' => $line['p10x'] ?? 0,
-                    'p11' => $line['p11'] ?? 0,
-                    'p11x' => $line['p11x'] ?? 0,
-                    'p12' => $line['p12'] ?? 0,
-                    'p13' => $line['p13'] ?? 0,
-                    'lacetx' => $line['lacetx'] ?? null,
-                    'dentlage' => $line['dentlage'] ?? false,
-                ]);
+                // Use sanitizeOrderLineData to ensure all data types are correct
+                $sanitizedData = $this->sanitizeOrderLineData($line);
+                $order->orderLines()->create($sanitizedData);
             }
         }
 
@@ -789,6 +761,92 @@ class OrderManagement extends Component
         return (int) $value;
     }
 
+    private function convertLacetxToDecimal($value)
+    {
+        if (is_string($value) && ($value === '' || $value === 'Sans')) {
+            return null;
+        }
+        if (is_numeric($value)) {
+            return (float) $value;
+        }
+        return null;
+    }
+
+    private function convertToDecimal($value)
+    {
+        if (is_string($value) && $value === '') {
+            return 0;
+        }
+        if (is_numeric($value)) {
+            return (float) $value;
+        }
+        return 0;
+    }
+
+    private function convertToInt($value)
+    {
+        if (is_string($value) && $value === '') {
+            return 0;
+        }
+        if (is_numeric($value)) {
+            return (int) $value;
+        }
+        return 0;
+    }
+
+    private function convertToBoolean($value)
+    {
+        if (is_bool($value)) {
+            return $value ? 1 : 0;
+        }
+        if (is_string($value)) {
+            if ($value === '1' || $value === 'true' || $value === 'on') {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    private function sanitizeOrderLineData($line)
+    {
+        return [
+            'article' => $line['article'] ?? '',
+            'forme' => !empty($line['forme']) ? $line['forme'] : null,
+            'semelle' => !empty($line['semelle']) ? $line['semelle'] : null,
+            'cuir' => !empty($line['cuir']) ? $line['cuir'] : null,
+            'doublure' => !empty($line['doublure']) ? $line['doublure'] : null,
+            'supplement' => !empty($line['supplement']) ? $line['supplement'] : null,
+            'construction' => !empty($line['construction']) ? $line['construction'] : null,
+            'talon' => !empty($line['talon']) ? $line['talon'] : null,
+            'finition' => !empty($line['finition']) ? $line['finition'] : null,
+            'lacet' => !empty($line['lacet']) ? $line['lacet'] : null,
+            'perforation' => $this->convertPerforationToInt($line['perforation'] ?? 0),
+            'trepointe' => !empty($line['trepointe']) ? $line['trepointe'] : null,
+            'fleur' => $this->convertToBoolean($line['fleur'] ?? false),
+            'dentlage' => $this->convertToBoolean($line['dentlage'] ?? false),
+            'genre' => $line['genre'] ?? 'homme',
+            'prix' => $this->convertToDecimal($line['price'] ?? $line['prix'] ?? 0),
+            'lacetx' => $this->convertLacetxToDecimal($line['lacetx'] ?? null),
+            // Size fields - ensure they are integers
+            'p5' => $this->convertToInt($line['p5'] ?? 0),
+            'p5x' => $this->convertToInt($line['p5x'] ?? 0),
+            'p6' => $this->convertToInt($line['p6'] ?? 0),
+            'p6x' => $this->convertToInt($line['p6x'] ?? 0),
+            'p7' => $this->convertToInt($line['p7'] ?? 0),
+            'p7x' => $this->convertToInt($line['p7x'] ?? 0),
+            'p8' => $this->convertToInt($line['p8'] ?? 0),
+            'p8x' => $this->convertToInt($line['p8x'] ?? 0),
+            'p9' => $this->convertToInt($line['p9'] ?? 0),
+            'p9x' => $this->convertToInt($line['p9x'] ?? 0),
+            'p10' => $this->convertToInt($line['p10'] ?? 0),
+            'p10x' => $this->convertToInt($line['p10x'] ?? 0),
+            'p11' => $this->convertToInt($line['p11'] ?? 0),
+            'p11x' => $this->convertToInt($line['p11x'] ?? 0),
+            'p12' => $this->convertToInt($line['p12'] ?? 0),
+            'p13' => $this->convertToInt($line['p13'] ?? 0),
+        ];
+    }
+
     public function updateOrderLine()
     {
         // Validate required fields
@@ -815,8 +873,8 @@ class OrderManagement extends Component
             return;
         }
         
-        // Update the order line in memory
-        $this->orderLines[$this->editingLineIndex] = [
+        // Prepare line data
+        $lineData = [
             'article' => $this->selectedArticle,
             'forme' => $this->selectedForme,
             'semelle' => $this->selectedSemelle,
@@ -828,7 +886,7 @@ class OrderManagement extends Component
             'finition' => $this->currentFinition === 'autre' ? $this->customFinition : $this->currentFinition,
             'lacet' => $this->currentLacet === 'autre' ? $this->customLacet : $this->currentLacet,
             'lacetx' => $this->currentLacetLength === 'autre' ? $this->customLacetLength : $this->currentLacetLength,
-            'perforation' => $this->convertPerforationToInt($this->currentPerforation),
+            'perforation' => $this->currentPerforation,
             'trepointe' => $this->currentTrepointe === 'autre' ? $this->customTrepointe : $this->currentTrepointe,
             'fleur' => $this->currentFleur,
             'dentlage' => $this->currentDentlage,
@@ -849,16 +907,22 @@ class OrderManagement extends Component
             'p11' => $this->currentLine['p11'],
             'p11x' => $this->currentLine['p11x'],
             'p12' => $this->currentLine['p12'],
-            'p12x' => $this->currentLine['p12x'] ?? 0,
             'p13' => $this->currentLine['p13'],
-            'p13x' => $this->currentLine['p13x'] ?? 0,
-            'p14' => $this->currentLine['p14'] ?? 0,
-            'p14x' => $this->currentLine['p14x'] ?? 0,
-            'p15' => $this->currentLine['p15'] ?? 0,
-            'p16' => $this->currentLine['p16'] ?? 0,
-            'total_quantity' => $totalQuantity,
-            'total_amount' => $totalQuantity * $this->productPrice,
         ];
+
+        // Update the order line in memory with sanitized data
+        $sanitizedData = $this->sanitizeOrderLineData($lineData);
+        
+        // Preserve the ID if it exists
+        if (isset($this->orderLines[$this->editingLineIndex]['id'])) {
+            $sanitizedData['id'] = $this->orderLines[$this->editingLineIndex]['id'];
+        }
+        
+        // Add computed fields
+        $sanitizedData['total_quantity'] = $totalQuantity;
+        $sanitizedData['total_amount'] = $totalQuantity * $this->productPrice;
+        
+        $this->orderLines[$this->editingLineIndex] = $sanitizedData;
         
         // Update the database if this is an existing order line
         if (isset($this->orderLines[$this->editingLineIndex]['id'])) {
