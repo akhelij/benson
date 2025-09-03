@@ -113,9 +113,6 @@
                         <td class="px-4 py-3 text-sm text-right font-bold text-gray-900">
                             €{{ number_format($order->total_amount ?: 0, 2, ',', ' ') }}
                         </td>
-                        <td class="px-4 py-3 text-center">
-                           
-                        </td>
                     </tr>
                 </tfoot>
             </table>
