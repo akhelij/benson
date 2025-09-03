@@ -10,6 +10,13 @@ class OrderLine extends Model
 {
     use HasFactory, SoftDeletes;
 
+    // Define all size columns consistently
+    const SIZE_COLUMNS = [
+        'p5', 'p5x', 'p6', 'p6x', 'p7', 'p7x', 'p8', 'p8x',
+        'p9', 'p9x', 'p10', 'p10x', 'p11', 'p11x', 'p12', 'p12x',
+        'p13', 'p13x', 'p14', 'p14x', 'p15', 'p16', 'p17'
+    ];
+
     protected $fillable = [
         'order_id',
         'article',
@@ -19,9 +26,11 @@ class OrderLine extends Model
         'construction',
         'cuir',
         'doublure',
-        'supplement',
+        'supplements',
+        // Include all size columns
         'p5', 'p5x', 'p6', 'p6x', 'p7', 'p7x', 'p8', 'p8x',
-        'p9', 'p9x', 'p10', 'p10x', 'p11', 'p11x', 'p12', 'p13',
+        'p9', 'p9x', 'p10', 'p10x', 'p11', 'p11x', 'p12', 'p12x',
+        'p13', 'p13x', 'p14', 'p14x', 'p15', 'p16', 'p17',
         'prix',
         'devise',
         'talon',
@@ -48,23 +57,18 @@ class OrderLine extends Model
         'livre' => 'integer',
         'perforation' => 'integer',
         'dentlage' => 'integer',
-        // Size fields should be integers
-        'p5' => 'integer',
-        'p5x' => 'integer',
-        'p6' => 'integer',
-        'p6x' => 'integer',
-        'p7' => 'integer',
-        'p7x' => 'integer',
-        'p8' => 'integer',
-        'p8x' => 'integer',
-        'p9' => 'integer',
-        'p9x' => 'integer',
-        'p10' => 'integer',
-        'p10x' => 'integer',
-        'p11' => 'integer',
-        'p11x' => 'integer',
-        'p12' => 'integer',
-        'p13' => 'integer',
+        // Cast all size fields as integers
+        'p5' => 'integer', 'p5x' => 'integer',
+        'p6' => 'integer', 'p6x' => 'integer',
+        'p7' => 'integer', 'p7x' => 'integer',
+        'p8' => 'integer', 'p8x' => 'integer',
+        'p9' => 'integer', 'p9x' => 'integer',
+        'p10' => 'integer', 'p10x' => 'integer',
+        'p11' => 'integer', 'p11x' => 'integer',
+        'p12' => 'integer', 'p12x' => 'integer',
+        'p13' => 'integer', 'p13x' => 'integer',
+        'p14' => 'integer', 'p14x' => 'integer',
+        'p15' => 'integer', 'p16' => 'integer', 'p17' => 'integer',
     ];
 
     /**
@@ -80,10 +84,19 @@ class OrderLine extends Model
      */
     public function getTotalQuantityAttribute()
     {
-        return $this->p5 + $this->p5x + $this->p6 + $this->p6x + 
-               $this->p7 + $this->p7x + $this->p8 + $this->p8x + 
-               $this->p9 + $this->p9x + $this->p10 + $this->p10x + 
-               $this->p11 + $this->p11x + $this->p12 + $this->p13;
+        $total = 0;
+        foreach (self::SIZE_COLUMNS as $column) {
+            $total += $this->{$column} ?? 0;
+        }
+        return $total;
+    }
+
+    /**
+     * Get total amount for this line
+     */
+    public function getTotalAmountAttribute()
+    {
+        return $this->total_quantity * ($this->prix ?? 0);
     }
 
     /**
@@ -91,23 +104,34 @@ class OrderLine extends Model
      */
     public function getSizesAttribute()
     {
-        return [
-            'p5' => $this->p5,
-            'p5x' => $this->p5x,
-            'p6' => $this->p6,
-            'p6x' => $this->p6x,
-            'p7' => $this->p7,
-            'p7x' => $this->p7x,
-            'p8' => $this->p8,
-            'p8x' => $this->p8x,
-            'p9' => $this->p9,
-            'p9x' => $this->p9x,
-            'p10' => $this->p10,
-            'p10x' => $this->p10x,
-            'p11' => $this->p11,
-            'p11x' => $this->p11x,
-            'p12' => $this->p12,
-            'p13' => $this->p13,
-        ];
+        $sizes = [];
+        foreach (self::SIZE_COLUMNS as $column) {
+            $sizes[$column] = $this->{$column} ?? 0;
+        }
+        return $sizes;
+    }
+
+    /**
+     * Get sizes with quantities greater than zero
+     */
+    public function getActiveSizesAttribute()
+    {
+        $activeSizes = [];
+        foreach (self::SIZE_COLUMNS as $column) {
+            if ($this->{$column} > 0) {
+                $activeSizes[$column] = $this->{$column};
+            }
+        }
+        return $activeSizes;
+    }
+
+    /**
+     * Set all size quantities from array
+     */
+    public function setSizesFromArray(array $sizes)
+    {
+        foreach (self::SIZE_COLUMNS as $column) {
+            $this->{$column} = $sizes[$column] ?? 0;
+        }
     }
 }

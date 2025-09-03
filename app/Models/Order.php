@@ -27,12 +27,16 @@ class Order extends Model
         'currency',
         'total_quantity',
         'is_urgent',
+        'delivery_notes',
+        'actual_delivery_date'
     ];
 
     protected $casts = [
         'livraison' => 'date',
+        'actual_delivery_date' => 'date',
         'is_urgent' => 'boolean',
         'total_amount' => 'decimal:2',
+        'total_quantity' => 'integer',
     ];
 
     /**
@@ -44,32 +48,54 @@ class Order extends Model
     }
 
     /**
-     * Calculate total price of the order
+     * Calculate and update total amount and quantity
+     */
+    public function recalculateTotals()
+    {
+        $totalAmount = 0;
+        $totalQuantity = 0;
+
+        foreach ($this->orderLines as $line) {
+            $lineQuantity = 0;
+            foreach (OrderLine::SIZE_COLUMNS as $column) {
+                $lineQuantity += $line->{$column} ?? 0;
+            }
+            $totalQuantity += $lineQuantity;
+            $totalAmount += $lineQuantity * ($line->prix ?? 0);
+        }
+
+        $this->total_amount = $totalAmount;
+        $this->total_quantity = $totalQuantity;
+        
+        return $this;
+    }
+
+    /**
+     * Calculate total price of the order (without updating)
      */
     public function calculateTotalAmount()
     {
         return $this->orderLines->sum(function($line) {
-            $quantity = $line->p5 + $line->p5x + $line->p6 + $line->p6x + 
-                       $line->p7 + $line->p7x + $line->p8 + $line->p8x + 
-                       $line->p9 + $line->p9x + $line->p10 + $line->p10x + 
-                       $line->p11 + $line->p11x + $line->p12 + $line->p13;
-            return $quantity * $line->prix;
+            $quantity = 0;
+            foreach (OrderLine::SIZE_COLUMNS as $column) {
+                $quantity += $line->{$column} ?? 0;
+            }
+            return $quantity * ($line->prix ?? 0);
         });
     }
 
     /**
-     * Calculate total quantity of the order
+     * Calculate total quantity of the order (without updating)
      */
     public function calculateTotalQuantity()
     {
-        $total = 0;
-        foreach ($this->orderLines as $line) {
-            $total += $line->p5 + $line->p5x + $line->p6 + $line->p6x + 
-                     $line->p7 + $line->p7x + $line->p8 + $line->p8x + 
-                     $line->p9 + $line->p9x + $line->p10 + $line->p10x + 
-                     $line->p11 + $line->p11x + $line->p12 + $line->p13;
-        }
-        return $total;
+        return $this->orderLines->sum(function($line) {
+            $total = 0;
+            foreach (OrderLine::SIZE_COLUMNS as $column) {
+                $total += $line->{$column} ?? 0;
+            }
+            return $total;
+        });
     }
 
     /**
@@ -89,15 +115,66 @@ class Order extends Model
     }
 
     /**
+     * Scope for urgent orders
+     */
+    public function scopeUrgent($query)
+    {
+        return $query->where('is_urgent', true);
+    }
+
+    /**
      * Get delivered quantity
      */
     public function getDeliveredQuantityAttribute()
     {
         return $this->orderLines->where('livre', true)->sum(function($line) {
-            return $line->p5 + $line->p5x + $line->p6 + $line->p6x + 
-                   $line->p7 + $line->p7x + $line->p8 + $line->p8x + 
-                   $line->p9 + $line->p9x + $line->p10 + $line->p10x + 
-                   $line->p11 + $line->p11x + $line->p12 + $line->p13;
+            $total = 0;
+            foreach (OrderLine::SIZE_COLUMNS as $column) {
+                $total += $line->{$column} ?? 0;
+            }
+            return $total;
         });
+    }
+
+    /**
+     * Check if order is overdue
+     */
+    public function getIsOverdueAttribute()
+    {
+        return $this->livraison && 
+               $this->livraison->isPast() && 
+               !in_array($this->status, ['delivered', 'cancelled']);
+    }
+
+    /**
+     * Get status label
+     */
+    public function getStatusLabelAttribute()
+    {
+        $labels = [
+            'draft' => 'Brouillon',
+            'confirmed' => 'Confirmée',
+            'in_production' => 'En Production',
+            'delivered' => 'Livrée',
+            'cancelled' => 'Annulée',
+        ];
+        
+        return $labels[$this->status] ?? $this->status;
+    }
+
+    /**
+     * Get status color class
+     */
+    public function getStatusColorAttribute()
+    {
+        $colors = [
+            'draft' => 'bg-stone-100 text-stone-800',
+            'confirmed' => 'bg-blue-100 text-blue-800',
+            'in_production' => 'bg-amber-100 text-amber-800',
+            'delivered' => 'bg-emerald-100 text-emerald-800',
+            'cancelled' => 'bg-red-100 text-red-800',
+        ];
+        
+        return $colors[$this->status] ?? 'bg-gray-100 text-gray-800';
     }
 }

@@ -15,23 +15,29 @@ class OrderManagement extends Component
 {
     use WithPagination, WithFileUploads;
 
+    // Modal states
     public $showModal = false;
     public $showViewModal = false;
-    public $viewingOrder = null;
-    public $editingOrder = null;
     public $showDeliveryModal = false;
+    public $showLineEditModal = false;
+    
+    // Current objects
+    public $editingOrder = null;
+    public $viewingOrder = null;
     public $deliveryOrder = null;
-    public $deliveryStatus = '';
-    public $deliveryNotes = '';
-    public $actualDeliveryDate = '';
+    public $editingLineIndex = null;
+    
+    // Search and filters
     public $search = '';
     public $sortField = 'created_at';
     public $sortDirection = 'desc';
     public $statusFilter = '';
     public $perPage = 10;
-    public $currentStep = 1; // Track current step in multi-step modal
     public $selectedOrders = [];
     public $selectAll = false;
+    
+    // Multi-step form
+    public $currentStep = 1;
     
     // KPI data
     public $totalOrders = 0;
@@ -42,6 +48,7 @@ class OrderManagement extends Component
     public $deliveryRate = 0;
 
     // Order form fields
+    public $orderId = null;
     public $code = '';
     public $firm = '';
     public $ville = '';
@@ -54,44 +61,21 @@ class OrderManagement extends Component
     public $notes = '';
     public $transort = '';
 
+    // Order lines array
+    public $orderLines = [];
+    
+    // Current line being edited/added
+    public $currentLine = [];
+    
     // Product selection fields
     public $selectedArticle = '';
     public $selectedForme = '';
     public $selectedSemelle = '';
     public $selectedCuir = '';
-    public $selectedSupplement = '';
+    public $selectedSupplements = '';
     public $selectedDoublure = '';
     public $selectedConstruction = '';
     public $productPrice = 0;
-    public $sizesQuantity = [];
-
-    // Order line fields
-    public $orderLines = [];
-    public $currentLine = [
-        'article' => '',
-        'forme' => '',
-        'client' => '',
-        'semelle' => '',
-        'construction' => '',
-        'cuir' => '',
-        'doublure' => '',
-        'supplement' => '',
-        'p5' => 0, 'p5x' => 0, 'p6' => 0, 'p6x' => 0,
-        'p7' => 0, 'p7x' => 0, 'p8' => 0, 'p8x' => 0,
-        'p9' => 0, 'p9x' => 0, 'p10' => 0, 'p10x' => 0,
-        'p11' => 0, 'p11x' => 0, 'p12' => 0, 'p13' => 0,
-        'prix' => 0,
-        'devise' => 'EUR',
-        'genre' => 'homme',
-        'langue' => 'français',
-        'talon' => '',
-        'finition' => '',
-        'lacet' => '',
-        'lacetx' => 0,
-        'perforation' => 0,
-        'fleur' => false,
-        'dentlage' => false
-    ];
     
     // Additional form fields
     public $currentGenre = 'homme';
@@ -111,11 +95,12 @@ class OrderManagement extends Component
     public $customLacetLength = '';
     public $customTrepointe = '';
     
-    // Order line editing
-    public $editingLineIndex = null;
-    public $showLineEditModal = false;
+    // Delivery modal fields
+    public $deliveryStatus = '';
+    public $deliveryNotes = '';
+    public $actualDeliveryDate = '';
     
-    // Hardcoded options - matching legacy form exactly
+    // Hardcoded options
     public $talonOptions = ['Synderme', 'Cuir', 'autre', 'vide'];
     public $finitionOptions = ['Antique', 'Brut', 'Fumé', 'Patiné', 'Standard', 'autre'];
     public $lacetOptions = ['Plat Marron', 'Plat Noir', 'Plat Bleu', 'Rond Marron', 'Rond Noir', 'Rond Bleu', 'autre', 'Sans'];
@@ -123,13 +108,14 @@ class OrderManagement extends Component
     public $perforationOptions = ['Sans', 'Avec perforation'];
     public $trepointeOptions = ['Plat marron', 'Plat naturelle', 'Stormwelt marron', 'Stormwelt naturelle', 'autre', 'vide'];
 
-    // Item collections for dropdowns
+    // Item collections
     public $articles = [];
     public $formes = [];
     public $semelles = [];
     public $cuirs = [];
     public $doublures = [];
     public $constructions = [];
+    public $supplements = [];
 
     protected $rules = [
         'code' => 'required|string|max:100',
@@ -141,9 +127,44 @@ class OrderManagement extends Component
 
     public function mount()
     {
+        $this->initializeComponent();
+    }
+    
+    private function initializeComponent()
+    {
         $this->livraison = now()->addDays(30)->format('Y-m-d');
         $this->calculateKPIs();
         $this->loadItemCollections();
+        $this->initializeCurrentLine();
+    }
+    
+    private function initializeCurrentLine()
+    {
+        $this->currentLine = [];
+        foreach (OrderLine::SIZE_COLUMNS as $column) {
+            $this->currentLine[$column] = 0;
+        }
+        
+        $this->currentLine['article'] = '';
+        $this->currentLine['forme'] = '';
+        $this->currentLine['client'] = '';
+        $this->currentLine['semelle'] = '';
+        $this->currentLine['construction'] = '';
+        $this->currentLine['cuir'] = '';
+        $this->currentLine['doublure'] = '';
+        $this->currentLine['supplements'] = '';
+        $this->currentLine['prix'] = 0;
+        $this->currentLine['devise'] = 'EUR';
+        $this->currentLine['genre'] = 'homme';
+        $this->currentLine['langue'] = 'français';
+        $this->currentLine['talon'] = '';
+        $this->currentLine['finition'] = '';
+        $this->currentLine['lacet'] = '';
+        $this->currentLine['lacetx'] = 0;
+        $this->currentLine['perforation'] = 0;
+        $this->currentLine['fleur'] = false;
+        $this->currentLine['dentlage'] = false;
+        $this->currentLine['trepointe'] = '';
     }
 
     private function loadItemCollections()
@@ -154,107 +175,14 @@ class OrderManagement extends Component
         $this->cuirs = Item::where('type', 'cuir')->get();
         $this->doublures = Item::where('type', 'doublure')->get();
         $this->constructions = Item::where('type', 'construction')->get();
-    }
-
-    private function getItemNameById($id, $type)
-    {
-        if (empty($id)) return '';
-        
-        $item = Item::where('type', $type)->where('id', $id)->first();
-        return $item ? $item->nom : $id; // Return original value if not found
-    }
-    
-    public function getSizeMapping()
-    {
-        // Returns size mappings based on gender
-        if ($this->currentGenre === 'femme') {
-            // Women's sizes: 35-43 (EU/FR) with US equivalents starting from 5
-            return [
-                '35' => ['eu' => '35', 'us' => '5', 'fr' => '35'],
-                '35.5' => ['eu' => '35.5', 'us' => '5.5', 'fr' => '35.5'],
-                '36' => ['eu' => '36', 'us' => '6', 'fr' => '36'],
-                '36.5' => ['eu' => '36.5', 'us' => '6.5', 'fr' => '36.5'],
-                '37' => ['eu' => '37', 'us' => '7', 'fr' => '37'],
-                '37.5' => ['eu' => '37.5', 'us' => '7.5', 'fr' => '37.5'],
-                '38' => ['eu' => '38', 'us' => '8', 'fr' => '38'],
-                '38.5' => ['eu' => '38.5', 'us' => '8.5', 'fr' => '38.5'],
-                '39' => ['eu' => '39', 'us' => '9', 'fr' => '39'],
-                '39.5' => ['eu' => '39.5', 'us' => '9.5', 'fr' => '39.5'],
-                '40' => ['eu' => '40', 'us' => '10', 'fr' => '40'],
-                '40.5' => ['eu' => '40.5', 'us' => '10.5', 'fr' => '40.5'],
-                '41' => ['eu' => '41', 'us' => '11', 'fr' => '41'],
-                '41.5' => ['eu' => '41.5', 'us' => '11.5', 'fr' => '41.5'],
-                '42' => ['eu' => '42', 'us' => '12', 'fr' => '42'],
-                '42.5' => ['eu' => '42.5', 'us' => '12.5', 'fr' => '42.5'],
-                '43' => ['eu' => '43', 'us' => '13', 'fr' => '43'],
-            ];
-        } else {
-            // Men's sizes: 38-47 (EU/FR) with US equivalents starting from 4
-            return [
-                '38' => ['eu' => '38', 'us' => '4', 'fr' => '38'],
-                '38.5' => ['eu' => '38.5', 'us' => '4.5', 'fr' => '38.5'],
-                '39' => ['eu' => '39', 'us' => '5', 'fr' => '39'],
-                '39.5' => ['eu' => '39.5', 'us' => '5.5', 'fr' => '39.5'],
-                '40' => ['eu' => '40', 'us' => '6', 'fr' => '40'],
-                '40.5' => ['eu' => '40.5', 'us' => '6.5', 'fr' => '40.5'],
-                '41' => ['eu' => '41', 'us' => '7', 'fr' => '41'],
-                '41.5' => ['eu' => '41.5', 'us' => '7.5', 'fr' => '41.5'],
-                '42' => ['eu' => '42', 'us' => '8', 'fr' => '42'],
-                '42.5' => ['eu' => '42.5', 'us' => '8.5', 'fr' => '42.5'],
-                '43' => ['eu' => '43', 'us' => '9', 'fr' => '43'],
-                '43.5' => ['eu' => '43.5', 'us' => '9.5', 'fr' => '43.5'],
-                '44' => ['eu' => '44', 'us' => '10', 'fr' => '44'],
-                '44.5' => ['eu' => '44.5', 'us' => '10.5', 'fr' => '44.5'],
-                '45' => ['eu' => '45', 'us' => '11', 'fr' => '45'],
-                '45.5' => ['eu' => '45.5', 'us' => '11.5', 'fr' => '45.5'],
-                '46' => ['eu' => '46', 'us' => '12', 'fr' => '46'],
-                '47' => ['eu' => '47', 'us' => '13', 'fr' => '47'],
-            ];
-        }
-    }
-    
-    public function mapSizeToDb($euSize)
-    {
-        // Maps EU size to database column name based on gender
-        // Database columns: p5, p5x, p6, p6x, p7, p7x, p8, p8x, p9, p9x, p10, p10x, p11, p11x, p12, p12x, p13, p13x, p14, p14x, p15, p16, p17
-        
-        if ($this->currentGenre === 'femme') {
-            // Women's sizes: 35-43 mapped to p5-p13
-            $sizeMap = [
-                '35' => 'p5', '35.5' => 'p5x',
-                '36' => 'p6', '36.5' => 'p6x',
-                '37' => 'p7', '37.5' => 'p7x',
-                '38' => 'p8', '38.5' => 'p8x',
-                '39' => 'p9', '39.5' => 'p9x',
-                '40' => 'p10', '40.5' => 'p10x',
-                '41' => 'p11', '41.5' => 'p11x',
-                '42' => 'p12', '42.5' => 'p12x',
-                '43' => 'p13',
-            ];
-        } else {
-            // Men's sizes: 38-47 mapped to p7-p17
-            $sizeMap = [
-                '38' => 'p7', '38.5' => 'p7x',
-                '39' => 'p8', '39.5' => 'p8x',
-                '40' => 'p9', '40.5' => 'p9x',
-                '41' => 'p10', '41.5' => 'p10x',
-                '42' => 'p11', '42.5' => 'p11x',
-                '43' => 'p12', '43.5' => 'p12x',
-                '44' => 'p13', '44.5' => 'p13x',
-                '45' => 'p14', '45.5' => 'p14x',
-                '46' => 'p15',
-                '47' => 'p16',
-            ];
-        }
-        
-        return $sizeMap[$euSize] ?? null;
+        $this->supplements = Item::where('type', 'supplement')->get();
     }
 
     private function calculateKPIs()
     {
         $this->totalOrders = Order::count();
         $this->totalRevenue = Order::sum('total_amount') ?: 0;
-        $this->pendingDeliveries = Order::whereIn('status', ['confirmed', 'in_production'])
+        $this->pendingDeliveries = Order::pending()
             ->where('livraison', '>=', now())
             ->count();
         
@@ -263,11 +191,11 @@ class OrderManagement extends Component
             now()
         ])->count();
         
-        $this->urgentOrders = Order::where('is_urgent', true)
-            ->whereIn('status', ['draft', 'confirmed', 'in_production'])
+        $this->urgentOrders = Order::urgent()
+            ->pending()
             ->count();
         
-        $deliveredCount = Order::where('status', 'delivered')->count();
+        $deliveredCount = Order::delivered()->count();
         $this->deliveryRate = $this->totalOrders > 0 
             ? round(($deliveredCount / $this->totalOrders) * 100, 1) 
             : 0;
@@ -277,7 +205,6 @@ class OrderManagement extends Component
     {
         $query = Order::with('orderLines');
         
-        // Search
         if ($this->search) {
             $query->where(function($q) {
                 $q->where('code', 'like', '%' . $this->search . '%')
@@ -286,568 +213,181 @@ class OrderManagement extends Component
             });
         }
         
-        // Status filter
         if ($this->statusFilter) {
             $query->where('status', $this->statusFilter);
         }
         
-        // Sorting
         $query->orderBy($this->sortField, $this->sortDirection);
         
         $orders = $query->paginate($this->perPage);
 
         return view('livewire.order-management', [
             'orders' => $orders,
-            'cuirs' => Item::where('type', 'cuir')->get(),
-            'semelles' => Item::where('type', 'semelle')->get(),
-            'constructions' => Item::where('type', 'construction')->get(),
-            'supplements' => Item::where('type', 'supplement')->get(),
-            'doublures' => Item::where('type', 'doublure')->get(),
         ])->layout('layouts.app');
     }
 
-    public function createOrder()
+    /**
+     * Open modal for creating or editing an order
+     */
+    public function openOrderModal($orderId = null)
     {
         $this->resetOrderForm();
         $this->loadItemCollections();
+        
+        if ($orderId) {
+            $this->loadOrder($orderId);
+        } else {
+            $this->livraison = now()->addDays(30)->format('Y-m-d');
+        }
+        
         $this->currentStep = 1;
         $this->showModal = true;
     }
-
-    public function editOrder($orderId)
-    {
-        $this->editingOrder = Order::with('orderLines')->find($orderId);
-        if ($this->editingOrder) {
-            $this->code = $this->editingOrder->code;
-            $this->firm = $this->editingOrder->firm;
-            $this->ville = $this->editingOrder->ville;
-            $this->telephone = $this->editingOrder->telephone;
-            $this->livraison = $this->editingOrder->livraison ? $this->editingOrder->livraison->format('Y-m-d') : '';
-            $this->notes = $this->editingOrder->notes;
-            $this->logo = $this->editingOrder->logo;
-            $this->logo1 = $this->editingOrder->logo1;
-            $this->loadItemCollections();
-            
-            // Load existing order lines
-            $this->orderLines = [];
-            foreach ($this->editingOrder->orderLines as $line) {
-                // Calculate total quantity from all size columns
-                $totalQuantity = $line->p5 + $line->p5x + $line->p6 + $line->p6x +
-                                $line->p7 + $line->p7x + $line->p8 + $line->p8x +
-                                $line->p9 + $line->p9x + $line->p10 + $line->p10x +
-                                $line->p11 + $line->p11x + $line->p12 + $line->p13;
-                
-                $totalAmount = $line->prix * $totalQuantity;
-                
-                $this->orderLines[] = [
-                    'article' => $line->article,
-                    'forme' => $line->forme,
-                    'semelle' => $line->semelle,
-                    'cuir' => $line->cuir,
-                    'doublure' => $line->doublure,
-                    'construction' => $line->construction,
-                    'talon' => $line->talon,
-                    'finition' => $line->finition,
-                    'lacet' => $line->lacet,
-                    'perforation' => $line->perforation,
-                    'trepointe' => $line->trepointe,
-                    'fleur' => $line->fleur,
-                    'genre' => $line->genre,
-                    'price' => $line->prix,
-                    'p5' => $line->p5,
-                    'p5x' => $line->p5x,
-                    'p6' => $line->p6,
-                    'p6x' => $line->p6x,
-                    'p7' => $line->p7,
-                    'p7x' => $line->p7x,
-                    'p8' => $line->p8,
-                    'p8x' => $line->p8x,
-                    'p9' => $line->p9,
-                    'p9x' => $line->p9x,
-                    'p10' => $line->p10,
-                    'p10x' => $line->p10x,
-                    'p11' => $line->p11,
-                    'p11x' => $line->p11x,
-                    'p12' => $line->p12,
-                    'p13' => $line->p13,
-                    'total_quantity' => $totalQuantity,
-                    'total_amount' => $totalAmount,
-                    // Store original line ID for reference
-                    'line_id' => $line->id,
-                ];
-            }
-            
-            $this->currentStep = 1;
-            $this->showModal = true;
-        }
-    }
     
-    public function nextStep()
+    /**
+     * Load order data for editing
+     */
+    private function loadOrder($orderId)
     {
-        // Validate current step before proceeding
-        if ($this->currentStep === 1) {
-            $this->validate([
-                'code' => 'required|string|max:255',
-                'firm' => 'nullable|string|max:255',
-                'ville' => 'nullable|string|max:255',
-                'telephone' => 'nullable|string|max:255',
-                'livraison' => 'required|date',
-            ]);
-        }
+        $order = Order::with('orderLines')->find($orderId);
         
-        $this->currentStep++;
-    }
-    
-    public function previousStep()
-    {
-        $this->currentStep--;
-    }
-    
-    public function addOrderLine()
-    {
-        // Validate required fields
-        $this->validate([
-            'selectedArticle' => 'required',
-            'productPrice' => 'required|numeric|min:0',
-        ]);
-
-        // Calculate total quantity from currentLine sizes including new columns
-        $totalQuantity = $this->currentLine['p5'] + $this->currentLine['p5x'] + 
-                        $this->currentLine['p6'] + $this->currentLine['p6x'] + 
-                        $this->currentLine['p7'] + $this->currentLine['p7x'] + 
-                        $this->currentLine['p8'] + $this->currentLine['p8x'] + 
-                        $this->currentLine['p9'] + $this->currentLine['p9x'] + 
-                        $this->currentLine['p10'] + $this->currentLine['p10x'] + 
-                        $this->currentLine['p11'] + $this->currentLine['p11x'] + 
-                        $this->currentLine['p12'] + $this->currentLine['p13'];
-
-        if ($totalQuantity == 0) {
-            $this->addError('sizes', 'Veuillez saisir au moins une quantité.');
+        if (!$order) {
+            session()->flash('error', 'Commande introuvable');
             return;
         }
-
-        // Prepare line data
-        $lineData = [
-            'article' => $this->selectedArticle,
-            'forme' => $this->currentForme,
-            'semelle' => $this->currentSemelle,
-            'cuir' => $this->currentCuir,
-            'doublure' => $this->currentDoublure,
-            'supplement' => $this->currentSupplement,
-            'construction' => $this->currentConstruction,
-            'talon' => $this->currentTalon,
-            'finition' => $this->currentFinition,
-            'lacet' => $this->currentLacet,
-            'perforation' => $this->currentPerforation,
-            'trepointe' => $this->currentTrepointe,
-            'fleur' => $this->currentFleur,
-            'dentlage' => $this->currentDentlage,
-            'genre' => $this->currentGenre,
-            'price' => $this->productPrice,
-            'lacetx' => $this->currentLacetLength === 'autre' ? $this->customLacetLength : $this->currentLacetLength,
-            // Include all size fields
-            'p5' => $this->currentLine['p5'],
-            'p5x' => $this->currentLine['p5x'],
-            'p6' => $this->currentLine['p6'],
-            'p6x' => $this->currentLine['p6x'],
-            'p7' => $this->currentLine['p7'],
-            'p7x' => $this->currentLine['p7x'],
-            'p8' => $this->currentLine['p8'],
-            'p8x' => $this->currentLine['p8x'],
-            'p9' => $this->currentLine['p9'],
-            'p9x' => $this->currentLine['p9x'],
-            'p10' => $this->currentLine['p10'],
-            'p10x' => $this->currentLine['p10x'],
-            'p11' => $this->currentLine['p11'],
-            'p11x' => $this->currentLine['p11x'],
-            'p12' => $this->currentLine['p12'],
-            'p13' => $this->currentLine['p13'],
-        ];
-
-        // Add the new line with sanitized data
-        $this->orderLines[] = $this->sanitizeOrderLineData($lineData);
         
-        // Reset form
-        $this->resetLineForm();
+        $this->editingOrder = $order;
+        $this->orderId = $order->id;
+        $this->code = $order->code;
+        $this->firm = $order->firm;
+        $this->ville = $order->ville;
+        $this->telephone = $order->telephone;
+        $this->livraison = $order->livraison ? $order->livraison->format('Y-m-d') : '';
+        $this->notes = $order->notes;
+        $this->logo = $order->logo;
+        $this->logo1 = $order->logo1;
+        $this->transporteur = $order->transporteur;
+        $this->boite = $order->boite;
+        $this->transort = $order->transort;
         
-        // Show success message
-        session()->flash('message', 'Ligne ajoutée avec succès.');
-    }
-    
-    public function removeOrderLine($index)
-    {
-        $this->currentFleur = false;
-        $this->productPrice = 0;
-        $this->currentLine = [
-            'article' => '',
-            'forme' => '',
-            'client' => '',
-            'semelle' => '',
-            'construction' => '',
-            'cuir' => '',
-            'doublure' => '',
-            'supplement' => '',
-            'p5' => 0, 'p5x' => 0, 'p6' => 0, 'p6x' => 0,
-            'p7' => 0, 'p7x' => 0, 'p8' => 0, 'p8x' => 0,
-            'p9' => 0, 'p9x' => 0, 'p10' => 0, 'p10x' => 0,
-            'p11' => 0, 'p11x' => 0, 'p12' => 0, 'p13' => 0,
-            'prix' => 0,
-            'devise' => 'EUR',
-            'genre' => $this->currentGenre,
-            'langue' => 'français',
-            'talon' => '',
-            'finition' => '',
-            'lacet' => '',
-            'lacetx' => 0,
-            'perforation' => '',
-            'fleur' => false
-        ];
+        // Load order lines
+        $this->orderLines = [];
+        foreach ($order->orderLines as $line) {
+            $lineData = $line->toArray();
+            $lineData['price'] = $line->prix;
+            $lineData['total_quantity'] = $line->total_quantity;
+            $lineData['total_amount'] = $line->total_amount;
+            $lineData['line_id'] = $line->id;
+            
+            $this->orderLines[] = $lineData;
+        }
     }
 
+    /**
+     * Save or update order (unified method)
+     */
     public function saveOrder()
     {
         $this->validate();
 
-        // Handle logo uploads
-        $logoPath = null;
-        if ($this->logo && !is_string($this->logo)) {
-            $logoPath = $this->logo->store('logos', 'public');
-        } elseif ($this->editingOrder && !$this->logo) {
-            // Keep existing logo if no new upload
-            $logoPath = $this->editingOrder->logo;
-        } elseif (is_string($this->logo)) {
-            // Keep existing logo path if it's a string
-            $logoPath = $this->logo;
-        }
+        DB::beginTransaction();
+        
+        try {
+            // Handle logo uploads
+            $logoPath = $this->processLogoUpload('logo', $this->logo);
+            $logo1Path = $this->processLogoUpload('logo1', $this->logo1);
 
-        $logo1Path = null;
-        if ($this->logo1 && !is_string($this->logo1)) {
-            $logo1Path = $this->logo1->store('logos', 'public');
-        } elseif ($this->editingOrder && !$this->logo1) {
-            // Keep existing logo1 if no new upload
-            $logo1Path = $this->editingOrder->logo1;
-        } elseif (is_string($this->logo1)) {
-            // Keep existing logo1 path if it's a string
-            $logo1Path = $this->logo1;
-        }
+            // Prepare order data
+            $orderData = [
+                'code' => $this->code,
+                'firm' => $this->firm,
+                'ville' => $this->ville,
+                'telephone' => $this->telephone,
+                'livraison' => $this->livraison,
+                'logo' => $logoPath,
+                'logo1' => $logo1Path,
+                'notes' => $this->notes,
+                'transporteur' => $this->transporteur,
+                'boite' => $this->boite,
+                'transort' => $this->transort,
+                'status' => $this->editingOrder->status ?? 'draft',
+            ];
 
-        $orderData = [
-            'code' => $this->code,
-            'firm' => $this->firm,
-            'ville' => $this->ville,
-            'telephone' => $this->telephone,
-            'livraison' => $this->livraison,
-            'logo' => $logoPath,
-            'logo1' => $logo1Path,
-            'notes' => $this->notes,
-            'status' => 'draft',
-            'total_quantity' => array_sum(array_column($this->orderLines, 'total_quantity')),
-            'total_amount' => array_sum(array_column($this->orderLines, 'total_amount')),
-        ];
-
-        if ($this->editingOrder) {
-            $this->editingOrder->update($orderData);
-            $order = $this->editingOrder;
-            
-            // Get existing order lines to compare
-            $existingLines = $order->orderLines()->get()->keyBy('id');
-            $processedLineIds = [];
-            
-            // Update or create lines from the form
-            foreach ($this->orderLines as $index => $line) {
-                $lineData = [
-                'article' => $line['article'],
-                'forme' => !empty($line['forme']) ? $line['forme'] : null,
-                'semelle' => !empty($line['semelle']) ? $line['semelle'] : null,
-                'cuir' => !empty($line['cuir']) ? $line['cuir'] : null,
-                'doublure' => !empty($line['doublure']) ? $line['doublure'] : null,
-                'supplement' => !empty($line['supplement']) ? $line['supplement'] : null,
-                'construction' => !empty($line['construction']) ? $line['construction'] : null,
-                'talon' => !empty($line['talon']) ? $line['talon'] : null,
-                'finition' => !empty($line['finition']) ? $line['finition'] : null,
-                'lacet' => !empty($line['lacet']) ? $line['lacet'] : null,
-                'perforation' => $this->convertPerforationToInt($line['perforation'] ?? 0),
-                'trepointe' => !empty($line['trepointe']) ? $line['trepointe'] : null,
-                'fleur' => $line['fleur'] ?? false,
-                'genre' => $line['genre'] ?? 'homme',
-                'prix' => $line['price'],
-                // Store size quantities directly in their columns
-                'p5' => $line['p5'] ?? 0,
-                'p5x' => $line['p5x'] ?? 0,
-                'p6' => $line['p6'] ?? 0,
-                'p6x' => $line['p6x'] ?? 0,
-                'p7' => $line['p7'] ?? 0,
-                'p7x' => $line['p7x'] ?? 0,
-                'p8' => $line['p8'] ?? 0,
-                'p8x' => $line['p8x'] ?? 0,
-                'p9' => $line['p9'] ?? 0,
-                'p9x' => $line['p9x'] ?? 0,
-                'p10' => $line['p10'] ?? 0,
-                'p10x' => $line['p10x'] ?? 0,
-                'p11' => $line['p11'] ?? 0,
-                'p11x' => $line['p11x'] ?? 0,
-                'p12' => $line['p12'] ?? 0,
-                'p13' => $line['p13'] ?? 0,
-                'lacetx' => $this->convertLacetxToDecimal($line['lacetx'] ?? null),
-                'dentlage' => $line['dentlage'] ?? false,
-                ];
-                
-                // Check if this line has an ID (existing line) or is new
-                if (isset($line['id']) && $existingLines->has($line['id'])) {
-                    // Update existing line
-                    $existingLines[$line['id']]->update($lineData);
-                    $processedLineIds[] = $line['id'];
-                } else {
-                    // Create new line
-                    $newLine = $order->orderLines()->create($lineData);
-                    $processedLineIds[] = $newLine->id;
-                }
+            // Create or update order
+            if ($this->orderId) {
+                $order = Order::find($this->orderId);
+                $order->update($orderData);
+            } else {
+                $order = Order::create($orderData);
             }
+
+            // Sync order lines
+            $this->syncOrderLines($order);
             
-            // Don't delete unprocessed lines - they remain in the database
-            // This preserves order lines that weren't loaded into the editing interface
+            // Recalculate totals
+            $order->recalculateTotals()->save();
             
-        } else {
-            $order = Order::create($orderData);
+            DB::commit();
             
-            // Save order lines for new orders
-            foreach ($this->orderLines as $line) {
-                // Use sanitizeOrderLineData to ensure all data types are correct
-                $sanitizedData = $this->sanitizeOrderLineData($line);
-                $order->orderLines()->create($sanitizedData);
-            }
+            $this->closeModal();
+            $this->calculateKPIs();
+            
+            $message = $this->orderId ? 'Commande mise à jour avec succès!' : 'Commande créée avec succès!';
+            session()->flash('message', $message);
+            
+        } catch (\Exception $e) {
+            DB::rollBack();
+            session()->flash('error', 'Erreur lors de la sauvegarde: ' . $e->getMessage());
         }
-
-        $this->closeModal();
-        $this->calculateKPIs();
-        session()->flash('message', 'Commande sauvegardée avec succès!');
-    }
-
-    public function deleteOrder($orderId)
-    {
-        $order = Order::findOrFail($orderId);
-        $order->orderLines()->delete();
-        $order->delete();
-        $this->calculateKPIs();
-        session()->flash('message', 'Commande supprimée avec succès!');
-    }
-
-    public function resetOrderForm()
-    {
-        $this->code = '';
-        $this->firm = '';
-        $this->ville = '';
-        $this->telephone = '';
-        $this->livraison = '';
-        $this->notes = '';
-        $this->editingOrder = null;
-        $this->currentStep = 1;
-        $this->orderLines = [];
-        $this->resetProductSelection();
-    }
-
-    public function removeLogo()
-    {
-        $this->logo = null;
-    }
-
-    public function removeLogo1()
-    {
-        $this->logo1 = null;
-    }
-
-    public function editOrderLine($index)
-    {
-        $this->editingLineIndex = $index;
-        $line = $this->orderLines[$index];
-        
-        // Load item collections first
-        $this->loadItemCollections();
-        
-        // Convert IDs back to names for dropdowns
-        $this->selectedArticle = $line['article'];
-        $this->selectedForme = $this->getItemNameById($line['forme'], 'forme');
-        $this->selectedSemelle = $this->getItemNameById($line['semelle'], 'semelle');
-        $this->selectedCuir = $this->getItemNameById($line['cuir'], 'cuir');
-        $this->selectedDoublure = $this->getItemNameById($line['doublure'], 'doublure');
-        $this->selectedConstruction = $this->getItemNameById($line['construction'], 'construction');
-        // Handle 'autre' values - check if stored value is a custom one
-        $this->currentTalon = $this->isCustomValue($line['talon'] ?? '', $this->talonOptions) ? 'autre' : ($line['talon'] ?? '');
-        $this->customTalon = $this->isCustomValue($line['talon'] ?? '', $this->talonOptions) ? ($line['talon'] ?? '') : '';
-        
-        $this->currentFinition = $this->isCustomValue($line['finition'] ?? '', $this->finitionOptions) ? 'autre' : ($line['finition'] ?? '');
-        $this->customFinition = $this->isCustomValue($line['finition'] ?? '', $this->finitionOptions) ? ($line['finition'] ?? '') : '';
-        
-        $this->currentLacet = $this->isCustomValue($line['lacet'] ?? '', $this->lacetOptions) ? 'autre' : ($line['lacet'] ?? '');
-        $this->customLacet = $this->isCustomValue($line['lacet'] ?? '', $this->lacetOptions) ? ($line['lacet'] ?? '') : '';
-        
-        $this->currentLacetLength = $this->isCustomValue($line['lacetx'] ?? '', $this->lacetLengthOptions) ? 'autre' : ($line['lacetx'] ?? '');
-        $this->customLacetLength = $this->isCustomValue($line['lacetx'] ?? '', $this->lacetLengthOptions) ? ($line['lacetx'] ?? '') : '';
-        
-        $this->currentTrepointe = $this->isCustomValue($line['trepointe'] ?? '', $this->trepointeOptions) ? 'autre' : ($line['trepointe'] ?? '');
-        $this->customTrepointe = $this->isCustomValue($line['trepointe'] ?? '', $this->trepointeOptions) ? ($line['trepointe'] ?? '') : '';
-        
-        $this->currentPerforation = $line['perforation'] ?? 0;
-        $this->currentFleur = $line['fleur'] ?? false;
-        $this->currentDentlage = $line['dentlage'] ?? false;
-        $this->currentGenre = $line['genre'] ?? 'homme';
-        $this->productPrice = $line['price'];
-        
-        // Load size quantities into currentLine
-        $this->currentLine = [
-            'article' => $line['article'],
-            'forme' => $line['forme'] ?? '',
-            'client' => '',
-            'semelle' => $line['semelle'] ?? '',
-            'construction' => $line['construction'] ?? '',
-            'cuir' => $line['cuir'] ?? '',
-            'doublure' => $line['doublure'] ?? '',
-            'supplement' => '',
-            'p5' => $line['p5'] ?? 0,
-            'p5x' => $line['p5x'] ?? 0,
-            'p6' => $line['p6'] ?? 0,
-            'p6x' => $line['p6x'] ?? 0,
-            'p7' => $line['p7'] ?? 0,
-            'p7x' => $line['p7x'] ?? 0,
-            'p8' => $line['p8'] ?? 0,
-            'p8x' => $line['p8x'] ?? 0,
-            'p9' => $line['p9'] ?? 0,
-            'p9x' => $line['p9x'] ?? 0,
-            'p10' => $line['p10'] ?? 0,
-            'p10x' => $line['p10x'] ?? 0,
-            'p11' => $line['p11'] ?? 0,
-            'p11x' => $line['p11x'] ?? 0,
-            'p12' => $line['p12'] ?? 0,
-            'p12x' => $line['p12x'] ?? 0,
-            'p13' => $line['p13'] ?? 0,
-            'p13x' => $line['p13x'] ?? 0,
-            'p14' => $line['p14'] ?? 0,
-            'p14x' => $line['p14x'] ?? 0,
-            'p15' => $line['p15'] ?? 0,
-            'p16' => $line['p16'] ?? 0,
-            'prix' => $line['price'],
-            'devise' => 'EUR',
-            'genre' => $line['genre'] ?? 'homme',
-            'langue' => 'français',
-            'talon' => $line['talon'] ?? '',
-            'finition' => $line['finition'] ?? '',
-            'lacet' => $line['lacet'] ?? '',
-            'lacetx' => 0,
-            'perforation' => $line['perforation'] ?? 0,
-            'fleur' => $line['fleur'] ?? false
-        ];
-        
-        $this->showLineEditModal = true;
     }
     
-    private function isCustomValue($value, $options)
+    /**
+     * Process logo upload
+     */
+    private function processLogoUpload($field, $value)
     {
-        return !empty($value) && !in_array($value, $options);
-    }
-
-    private function convertPerforationToInt($value)
-    {
-        if (is_bool($value)) {
-            return $value ? 1 : 0;
-        }
-        if (is_string($value)) {
-            if ($value === 'Avec perforation' || $value === '1') {
-                return 1;
-            }
-            if ($value === 'Sans' || $value === '0' || $value === '') {
-                return 0;
-            }
-        }
-        return (int) $value;
-    }
-
-    private function convertLacetxToDecimal($value)
-    {
-        if (is_string($value) && ($value === '' || $value === 'Sans')) {
-            return null;
-        }
-        if (is_numeric($value)) {
-            return (float) $value;
+        if ($value && !is_string($value)) {
+            return $value->store('logos', 'public');
+        } elseif ($this->editingOrder && !$value) {
+            return $this->editingOrder->{$field};
+        } elseif (is_string($value)) {
+            return $value;
         }
         return null;
     }
-
-    private function convertToDecimal($value)
+    
+    /**
+     * Sync order lines with database
+     */
+    private function syncOrderLines($order)
     {
-        if (is_string($value) && $value === '') {
-            return 0;
-        }
-        if (is_numeric($value)) {
-            return (float) $value;
-        }
-        return 0;
-    }
-
-    private function convertToInt($value)
-    {
-        if (is_string($value) && $value === '') {
-            return 0;
-        }
-        if (is_numeric($value)) {
-            return (int) $value;
-        }
-        return 0;
-    }
-
-    private function convertToBoolean($value)
-    {
-        if (is_bool($value)) {
-            return $value ? 1 : 0;
-        }
-        if (is_string($value)) {
-            if ($value === '1' || $value === 'true' || $value === 'on') {
-                return 1;
+        $existingLineIds = [];
+        
+        foreach ($this->orderLines as $lineData) {
+            $sanitizedData = $this->sanitizeOrderLineData($lineData);
+            
+            if (isset($lineData['line_id'])) {
+                // Update existing line
+                $line = OrderLine::find($lineData['line_id']);
+                if ($line) {
+                    $line->update($sanitizedData);
+                    $existingLineIds[] = $line->id;
+                }
+            } else {
+                // Create new line
+                $line = $order->orderLines()->create($sanitizedData);
+                $existingLineIds[] = $line->id;
             }
         }
-        return 0;
+        
+        // Delete removed lines
+        $order->orderLines()->whereNotIn('id', $existingLineIds)->delete();
     }
 
-    private function sanitizeOrderLineData($line)
-    {
-        return [
-            'article' => $line['article'] ?? '',
-            'forme' => !empty($line['forme']) ? $line['forme'] : null,
-            'semelle' => !empty($line['semelle']) ? $line['semelle'] : null,
-            'cuir' => !empty($line['cuir']) ? $line['cuir'] : null,
-            'doublure' => !empty($line['doublure']) ? $line['doublure'] : null,
-            'supplement' => !empty($line['supplement']) ? $line['supplement'] : null,
-            'construction' => !empty($line['construction']) ? $line['construction'] : null,
-            'talon' => !empty($line['talon']) ? $line['talon'] : null,
-            'finition' => !empty($line['finition']) ? $line['finition'] : null,
-            'lacet' => !empty($line['lacet']) ? $line['lacet'] : null,
-            'perforation' => $this->convertPerforationToInt($line['perforation'] ?? 0),
-            'trepointe' => !empty($line['trepointe']) ? $line['trepointe'] : null,
-            'fleur' => $this->convertToBoolean($line['fleur'] ?? false),
-            'dentlage' => $this->convertToBoolean($line['dentlage'] ?? false),
-            'genre' => $line['genre'] ?? 'homme',
-            'prix' => $this->convertToDecimal($line['price'] ?? $line['prix'] ?? 0),
-            'lacetx' => $this->convertLacetxToDecimal($line['lacetx'] ?? null),
-            // Size fields - ensure they are integers
-            'p5' => $this->convertToInt($line['p5'] ?? 0),
-            'p5x' => $this->convertToInt($line['p5x'] ?? 0),
-            'p6' => $this->convertToInt($line['p6'] ?? 0),
-            'p6x' => $this->convertToInt($line['p6x'] ?? 0),
-            'p7' => $this->convertToInt($line['p7'] ?? 0),
-            'p7x' => $this->convertToInt($line['p7x'] ?? 0),
-            'p8' => $this->convertToInt($line['p8'] ?? 0),
-            'p8x' => $this->convertToInt($line['p8x'] ?? 0),
-            'p9' => $this->convertToInt($line['p9'] ?? 0),
-            'p9x' => $this->convertToInt($line['p9x'] ?? 0),
-            'p10' => $this->convertToInt($line['p10'] ?? 0),
-            'p10x' => $this->convertToInt($line['p10x'] ?? 0),
-            'p11' => $this->convertToInt($line['p11'] ?? 0),
-            'p11x' => $this->convertToInt($line['p11x'] ?? 0),
-            'p12' => $this->convertToInt($line['p12'] ?? 0),
-            'p13' => $this->convertToInt($line['p13'] ?? 0),
-        ];
-    }
-
-    public function updateOrderLine()
+    /**
+     * Add or update order line in memory
+     */
+    public function saveOrderLine()
     {
         // Validate required fields
         $this->validate([
@@ -855,18 +395,11 @@ class OrderManagement extends Component
             'productPrice' => 'required|numeric|min:0',
         ]);
         
-        // Calculate total quantity from currentLine sizes including new columns
-        $totalQuantity = $this->currentLine['p5'] + $this->currentLine['p5x'] + 
-                        $this->currentLine['p6'] + $this->currentLine['p6x'] +
-                        $this->currentLine['p7'] + $this->currentLine['p7x'] +
-                        $this->currentLine['p8'] + $this->currentLine['p8x'] +
-                        $this->currentLine['p9'] + $this->currentLine['p9x'] +
-                        $this->currentLine['p10'] + $this->currentLine['p10x'] +
-                        $this->currentLine['p11'] + $this->currentLine['p11x'] +
-                        $this->currentLine['p12'] + ($this->currentLine['p12x'] ?? 0) +
-                        $this->currentLine['p13'] + ($this->currentLine['p13x'] ?? 0) +
-                        ($this->currentLine['p14'] ?? 0) + ($this->currentLine['p14x'] ?? 0) +
-                        ($this->currentLine['p15'] ?? 0) + ($this->currentLine['p16'] ?? 0);
+        // Calculate total quantity
+        $totalQuantity = 0;
+        foreach (OrderLine::SIZE_COLUMNS as $column) {
+            $totalQuantity += $this->currentLine[$column] ?? 0;
+        }
         
         if ($totalQuantity == 0) {
             session()->flash('error', 'Veuillez sélectionner au moins une taille');
@@ -874,13 +407,40 @@ class OrderManagement extends Component
         }
         
         // Prepare line data
+        $lineData = $this->prepareOrderLineData();
+        $lineData['total_quantity'] = $totalQuantity;
+        $lineData['total_amount'] = $totalQuantity * $this->productPrice;
+        
+        if ($this->editingLineIndex !== null) {
+            // Update existing line
+            if (isset($this->orderLines[$this->editingLineIndex]['line_id'])) {
+                $lineData['line_id'] = $this->orderLines[$this->editingLineIndex]['line_id'];
+            }
+            $this->orderLines[$this->editingLineIndex] = $lineData;
+            $message = 'Ligne mise à jour avec succès';
+        } else {
+            // Add new line
+            $this->orderLines[] = $lineData;
+            $message = 'Ligne ajoutée avec succès';
+        }
+        
+        $this->resetLineForm();
+        $this->showLineEditModal = false;
+        session()->flash('message', $message);
+    }
+    
+    /**
+     * Prepare order line data from form inputs
+     */
+    private function prepareOrderLineData()
+    {
         $lineData = [
             'article' => $this->selectedArticle,
             'forme' => $this->selectedForme,
             'semelle' => $this->selectedSemelle,
             'cuir' => $this->selectedCuir,
             'doublure' => $this->selectedDoublure,
-            'supplement' => $this->selectedSupplement,
+            'supplements' => $this->currentLine['supplements'] ?? null,
             'construction' => $this->selectedConstruction,
             'talon' => $this->currentTalon === 'autre' ? $this->customTalon : $this->currentTalon,
             'finition' => $this->currentFinition === 'autre' ? $this->customFinition : $this->currentFinition,
@@ -892,137 +452,137 @@ class OrderManagement extends Component
             'dentlage' => $this->currentDentlage,
             'genre' => $this->currentGenre,
             'price' => $this->productPrice,
-            'p5' => $this->currentLine['p5'],
-            'p5x' => $this->currentLine['p5x'],
-            'p6' => $this->currentLine['p6'],
-            'p6x' => $this->currentLine['p6x'],
-            'p7' => $this->currentLine['p7'],
-            'p7x' => $this->currentLine['p7x'],
-            'p8' => $this->currentLine['p8'],
-            'p8x' => $this->currentLine['p8x'],
-            'p9' => $this->currentLine['p9'],
-            'p9x' => $this->currentLine['p9x'],
-            'p10' => $this->currentLine['p10'],
-            'p10x' => $this->currentLine['p10x'],
-            'p11' => $this->currentLine['p11'],
-            'p11x' => $this->currentLine['p11x'],
-            'p12' => $this->currentLine['p12'],
-            'p13' => $this->currentLine['p13'],
         ];
-
-        // Update the order line in memory with sanitized data
-        $sanitizedData = $this->sanitizeOrderLineData($lineData);
         
-        // Preserve the ID if it exists
-        if (isset($this->orderLines[$this->editingLineIndex]['id'])) {
-            $sanitizedData['id'] = $this->orderLines[$this->editingLineIndex]['id'];
+        // Add all size columns
+        foreach (OrderLine::SIZE_COLUMNS as $column) {
+            $lineData[$column] = $this->currentLine[$column] ?? 0;
         }
         
-        // Add computed fields
-        $sanitizedData['total_quantity'] = $totalQuantity;
-        $sanitizedData['total_amount'] = $totalQuantity * $this->productPrice;
+        return $lineData;
+    }
+
+    /**
+     * Edit order line
+     */
+    public function editOrderLine($index)
+    {
+        $this->editingLineIndex = $index;
+        $line = $this->orderLines[$index];
         
-        $this->orderLines[$this->editingLineIndex] = $sanitizedData;
+        $this->loadItemCollections();
+        $this->loadLineDataIntoForm($line);
         
-        // Update the database if this is an existing order line
-        if (isset($this->orderLines[$this->editingLineIndex]['id'])) {
-            $orderLineId = $this->orderLines[$this->editingLineIndex]['id'];
-            $orderLine = OrderLine::find($orderLineId);
-            
-            if ($orderLine) {
-                $orderLine->update([
-                    'article' => $this->selectedArticle,
-                    'forme' => $this->selectedForme,
-                    'semelle' => $this->selectedSemelle,
-                    'cuir' => $this->selectedCuir,
-                    'doublure' => $this->selectedDoublure,
-                    'construction' => $this->selectedConstruction,
-                    'talon' => $this->currentTalon,
-                    'finition' => $this->currentFinition,
-                    'lacet' => $this->currentLacet,
-                    'perforation' => $this->convertPerforationToInt($this->currentPerforation),
-                    'trepointe' => $this->currentTrepointe,
-                    'fleur' => $this->currentFleur,
-                    'genre' => $this->currentGenre,
-                    'price' => $this->productPrice,
-                    'p5' => $this->currentLine['p5'],
-                    'p5x' => $this->currentLine['p5x'],
-                    'p6' => $this->currentLine['p6'],
-                    'p6x' => $this->currentLine['p6x'],
-                    'p7' => $this->currentLine['p7'],
-                    'p7x' => $this->currentLine['p7x'],
-                    'p8' => $this->currentLine['p8'],
-                    'p8x' => $this->currentLine['p8x'],
-                    'p9' => $this->currentLine['p9'],
-                    'p9x' => $this->currentLine['p9x'],
-                    'p10' => $this->currentLine['p10'],
-                    'p10x' => $this->currentLine['p10x'],
-                    'p11' => $this->currentLine['p11'],
-                    'p11x' => $this->currentLine['p11x'],
-                    'p12' => $this->currentLine['p12'],
-                    'p12x' => $this->currentLine['p12x'] ?? 0,
-                    'p13' => $this->currentLine['p13'],
-                    'p13x' => $this->currentLine['p13x'] ?? 0,
-                    'p14' => $this->currentLine['p14'] ?? 0,
-                    'p14x' => $this->currentLine['p14x'] ?? 0,
-                    'p15' => $this->currentLine['p15'] ?? 0,
-                    'p16' => $this->currentLine['p16'] ?? 0,
-                    'total_quantity' => $totalQuantity,
-                    'total_amount' => $totalQuantity * $this->productPrice,
-                ]);
-                
-                // Update the order line ID in memory
-                $this->orderLines[$this->editingLineIndex]['id'] = $orderLineId;
-            }
+        $this->showLineEditModal = true;
+    }
+    
+    /**
+     * Load line data into form fields
+     */
+    private function loadLineDataIntoForm($line)
+    {
+        $this->selectedArticle = $line['article'] ?? '';
+        $this->selectedForme = $line['forme'] ?? '';
+        $this->selectedSemelle = $line['semelle'] ?? '';
+        $this->selectedCuir = $line['cuir'] ?? '';
+        $this->selectedDoublure = $line['doublure'] ?? '';
+        $this->selectedSupplements = $line['supplements'] ?? '';
+        $this->selectedConstruction = $line['construction'] ?? '';
+        
+        // Handle custom values
+        $this->loadCustomValue('talon', $line['talon'] ?? '', $this->talonOptions);
+        $this->loadCustomValue('finition', $line['finition'] ?? '', $this->finitionOptions);
+        $this->loadCustomValue('lacet', $line['lacet'] ?? '', $this->lacetOptions);
+        $this->loadCustomValue('lacetLength', $line['lacetx'] ?? '', $this->lacetLengthOptions);
+        $this->loadCustomValue('trepointe', $line['trepointe'] ?? '', $this->trepointeOptions);
+        
+        $this->currentPerforation = $line['perforation'] ?? 0;
+        $this->currentFleur = $line['fleur'] ?? false;
+        $this->currentDentlage = $line['dentlage'] ?? false;
+        $this->currentGenre = $line['genre'] ?? 'homme';
+        $this->productPrice = $line['price'] ?? $line['prix'] ?? 0;
+        
+        // Load size quantities
+        foreach (OrderLine::SIZE_COLUMNS as $column) {
+            $this->currentLine[$column] = $line[$column] ?? 0;
         }
+    }
+    
+    /**
+     * Load custom value and set appropriate field
+     */
+    private function loadCustomValue($fieldPrefix, $value, $options)
+    {
+        $currentField = 'current' . ucfirst($fieldPrefix);
+        $customField = 'custom' . ucfirst($fieldPrefix);
         
-        $this->closeLineEditModal();
-        session()->flash('success', 'Ligne de commande mise à jour avec succès');
+        if ($this->isCustomValue($value, $options)) {
+            $this->{$currentField} = 'autre';
+            $this->{$customField} = $value;
+        } else {
+            $this->{$currentField} = $value;
+            $this->{$customField} = '';
+        }
     }
-
-    public function closeLineEditModal()
+    
+    /**
+     * Check if value is custom (not in options)
+     */
+    private function isCustomValue($value, $options)
     {
-        $this->showLineEditModal = false;
-        $this->editingLineIndex = null;
-        $this->resetProductSelection();
+        return !empty($value) && !in_array($value, $options);
     }
 
-    public function closeModal()
+    /**
+     * Remove order line
+     */
+    public function removeOrderLine($index)
     {
-        $this->showModal = false;
-        $this->resetOrderForm();
+        unset($this->orderLines[$index]);
+        $this->orderLines = array_values($this->orderLines);
+        session()->flash('message', 'Ligne supprimée');
     }
 
+    /**
+     * Delete order
+     */
+    public function deleteOrder($orderId)
+    {
+        $order = Order::findOrFail($orderId);
+        $order->orderLines()->delete();
+        $order->delete();
+        $this->calculateKPIs();
+        session()->flash('message', 'Commande supprimée avec succès!');
+    }
+
+    /**
+     * View order details
+     */
     public function viewOrder($orderId)
     {
         $this->viewingOrder = Order::with('orderLines')->find($orderId);
         $this->showViewModal = true;
     }
 
-    public function closeViewModal()
-    {
-        $this->showViewModal = false;
-        $this->viewingOrder = null;
-    }
-
-    public function printOrder($orderId)
-    {
-        $this->viewingOrder = Order::with('orderLines')->find($orderId);
-        
-        $this->dispatch('print-order');
-    }
-
+    /**
+     * Open delivery modal
+     */
     public function openDeliveryModal($orderId)
     {
         $this->deliveryOrder = Order::find($orderId);
         if ($this->deliveryOrder) {
             $this->deliveryStatus = $this->deliveryOrder->status;
             $this->deliveryNotes = $this->deliveryOrder->delivery_notes ?? '';
-            $this->actualDeliveryDate = $this->deliveryOrder->actual_delivery_date ?? '';
+            $this->actualDeliveryDate = $this->deliveryOrder->actual_delivery_date 
+                ? $this->deliveryOrder->actual_delivery_date->format('Y-m-d') 
+                : '';
             $this->showDeliveryModal = true;
         }
     }
 
+    /**
+     * Update delivery status
+     */
     public function updateDeliveryStatus()
     {
         $this->validate([
@@ -1031,25 +591,151 @@ class OrderManagement extends Component
         ]);
 
         if ($this->deliveryOrder) {
-            $this->deliveryOrder->update([
+            $updateData = [
                 'status' => $this->deliveryStatus,
                 'delivery_notes' => $this->deliveryNotes
-            ]);
-
+            ];
+            
+            if ($this->deliveryStatus === 'delivered' && $this->actualDeliveryDate) {
+                $updateData['actual_delivery_date'] = $this->actualDeliveryDate;
+            }
+            
+            $this->deliveryOrder->update($updateData);
+            
             session()->flash('message', 'Statut de livraison mis à jour avec succès');
             $this->closeDeliveryModal();
+            $this->calculateKPIs();
         }
     }
 
-    public function closeDeliveryModal()
+    /**
+     * Sanitize order line data for database
+     */
+    private function sanitizeOrderLineData($line)
     {
-        $this->showDeliveryModal = false;
-        $this->deliveryOrder = null;
-        $this->deliveryStatus = '';
-        $this->deliveryNotes = '';
-        $this->actualDeliveryDate = '';
+        $sanitized = [
+            'article' => $line['article'] ?? '',
+            'forme' => !empty($line['forme']) ? $line['forme'] : null,
+            'semelle' => !empty($line['semelle']) ? $line['semelle'] : null,
+            'cuir' => !empty($line['cuir']) ? $line['cuir'] : null,
+            'doublure' => !empty($line['doublure']) ? $line['doublure'] : null,
+            'supplements' => !empty($line['supplements']) ? $line['supplements'] : null,
+            'construction' => !empty($line['construction']) ? $line['construction'] : null,
+            'talon' => !empty($line['talon']) ? $line['talon'] : null,
+            'finition' => !empty($line['finition']) ? $line['finition'] : null,
+            'lacet' => !empty($line['lacet']) ? $line['lacet'] : null,
+            'perforation' => $this->convertToInt($line['perforation'] ?? 0),
+            'trepointe' => !empty($line['trepointe']) ? $line['trepointe'] : null,
+            'fleur' => $this->convertToBoolean($line['fleur'] ?? false),
+            'dentlage' => $this->convertToBoolean($line['dentlage'] ?? false),
+            'genre' => $line['genre'] ?? 'homme',
+            'prix' => $this->convertToDecimal($line['price'] ?? $line['prix'] ?? 0),
+            'lacetx' => $this->convertLacetxToDecimal($line['lacetx'] ?? null),
+        ];
+        
+        // Add all size columns
+        foreach (OrderLine::SIZE_COLUMNS as $column) {
+            $sanitized[$column] = $this->convertToInt($line[$column] ?? 0);
+        }
+        
+        return $sanitized;
     }
 
+    /**
+     * Type conversion helpers
+     */
+    private function convertToInt($value)
+    {
+        return is_numeric($value) ? (int) $value : 0;
+    }
+    
+    private function convertToDecimal($value)
+    {
+        return is_numeric($value) ? (float) $value : 0;
+    }
+    
+    private function convertToBoolean($value)
+    {
+        if (is_bool($value)) return $value ? 1 : 0;
+        if (is_string($value)) return in_array($value, ['1', 'true', 'on']) ? 1 : 0;
+        return 0;
+    }
+    
+    private function convertLacetxToDecimal($value)
+    {
+        if (is_string($value) && ($value === '' || $value === 'Sans')) {
+            return null;
+        }
+        return is_numeric($value) ? (float) $value : null;
+    }
+
+    /**
+     * Get size mapping based on gender
+     */
+    public function getSizeMapping()
+    {
+        if ($this->currentGenre === 'femme') {
+            // Women's sizes: 35-43 (EU/FR)
+            return [
+                '35' => ['eu' => '35', 'us' => '5', 'fr' => '35', 'db' => 'p5'],
+                '35.5' => ['eu' => '35.5', 'us' => '5.5', 'fr' => '35.5', 'db' => 'p5x'],
+                '36' => ['eu' => '36', 'us' => '6', 'fr' => '36', 'db' => 'p6'],
+                '36.5' => ['eu' => '36.5', 'us' => '6.5', 'fr' => '36.5', 'db' => 'p6x'],
+                '37' => ['eu' => '37', 'us' => '7', 'fr' => '37', 'db' => 'p7'],
+                '37.5' => ['eu' => '37.5', 'us' => '7.5', 'fr' => '37.5', 'db' => 'p7x'],
+                '38' => ['eu' => '38', 'us' => '8', 'fr' => '38', 'db' => 'p8'],
+                '38.5' => ['eu' => '38.5', 'us' => '8.5', 'fr' => '38.5', 'db' => 'p8x'],
+                '39' => ['eu' => '39', 'us' => '9', 'fr' => '39', 'db' => 'p9'],
+                '39.5' => ['eu' => '39.5', 'us' => '9.5', 'fr' => '39.5', 'db' => 'p9x'],
+                '40' => ['eu' => '40', 'us' => '10', 'fr' => '40', 'db' => 'p10'],
+                '40.5' => ['eu' => '40.5', 'us' => '10.5', 'fr' => '40.5', 'db' => 'p10x'],
+                '41' => ['eu' => '41', 'us' => '11', 'fr' => '41', 'db' => 'p11'],
+                '41.5' => ['eu' => '41.5', 'us' => '11.5', 'fr' => '41.5', 'db' => 'p11x'],
+                '42' => ['eu' => '42', 'us' => '12', 'fr' => '42', 'db' => 'p12'],
+                '42.5' => ['eu' => '42.5', 'us' => '12.5', 'fr' => '42.5', 'db' => 'p12x'],
+                '43' => ['eu' => '43', 'us' => '13', 'fr' => '43', 'db' => 'p13'],
+            ];
+        } else {
+            // Men's sizes: 38-47 (EU/FR)
+            return [
+                '38' => ['eu' => '38', 'us' => '5', 'fr' => '38', 'db' => 'p7'],
+                '38.5' => ['eu' => '38.5', 'us' => '5.5', 'fr' => '38.5', 'db' => 'p7x'],
+                '39' => ['eu' => '39', 'us' => '6', 'fr' => '39', 'db' => 'p8'],
+                '39.5' => ['eu' => '39.5', 'us' => '6.5', 'fr' => '39.5', 'db' => 'p8x'],
+                '40' => ['eu' => '40', 'us' => '7', 'fr' => '40', 'db' => 'p9'],
+                '40.5' => ['eu' => '40.5', 'us' => '7.5', 'fr' => '40.5', 'db' => 'p9x'],
+                '41' => ['eu' => '41', 'us' => '8', 'fr' => '41', 'db' => 'p10'],
+                '41.5' => ['eu' => '41.5', 'us' => '8.5', 'fr' => '41.5', 'db' => 'p10x'],
+                '42' => ['eu' => '42', 'us' => '9', 'fr' => '42', 'db' => 'p11'],
+                '42.5' => ['eu' => '42.5', 'us' => '9.5', 'fr' => '42.5', 'db' => 'p11x'],
+                '43' => ['eu' => '43', 'us' => '10', 'fr' => '43', 'db' => 'p12'],
+                '43.5' => ['eu' => '43.5', 'us' => '10.5', 'fr' => '43.5', 'db' => 'p12x'],
+                '44' => ['eu' => '44', 'us' => '11', 'fr' => '44', 'db' => 'p13'],
+                '44.5' => ['eu' => '44.5', 'us' => '11.5', 'fr' => '44.5', 'db' => 'p13x'],
+                '45' => ['eu' => '45', 'us' => '12', 'fr' => '45', 'db' => 'p14'],
+                '45.5' => ['eu' => '45.5', 'us' => '12.5', 'fr' => '45.5', 'db' => 'p14x'],
+                '46' => ['eu' => '46', 'us' => '13', 'fr' => '46', 'db' => 'p15'],
+                '47' => ['eu' => '47', 'us' => '14', 'fr' => '47', 'db' => 'p16'],
+            ];
+        }
+    }
+
+    /**
+     * Sort table by field
+     */
+    public function sortBy($field)
+    {
+        if ($this->sortField === $field) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortField = $field;
+            $this->sortDirection = 'asc';
+        }
+    }
+
+    /**
+     * Handle bulk selection
+     */
     public function updatedSelectAll($value)
     {
         if ($value) {
@@ -1059,6 +745,9 @@ class OrderManagement extends Component
         }
     }
 
+    /**
+     * Bulk delete selected orders
+     */
     public function bulkDelete()
     {
         if (empty($this->selectedOrders)) {
@@ -1069,16 +758,18 @@ class OrderManagement extends Component
         Order::whereIn('id', $this->selectedOrders)->delete();
         $this->selectedOrders = [];
         $this->selectAll = false;
+        $this->calculateKPIs();
         session()->flash('message', $count . ' commande(s) supprimée(s) avec succès');
     }
 
+    /**
+     * Export selected orders
+     */
     public function exportSelected()
     {
-        if (empty($this->selectedOrders)) {
-            $orders = $this->getFilteredOrders()->get();
-        } else {
-            $orders = Order::whereIn('id', $this->selectedOrders)->get();
-        }
+        $orders = empty($this->selectedOrders) 
+            ? $this->getFilteredOrders()->get()
+            : Order::whereIn('id', $this->selectedOrders)->get();
 
         $csv = "Code,Entreprise,Ville,Téléphone,Date Livraison,Statut,Total\n";
         foreach ($orders as $order) {
@@ -1092,6 +783,9 @@ class OrderManagement extends Component
         ]);
     }
 
+    /**
+     * Get filtered orders query
+     */
     private function getFilteredOrders()
     {
         return Order::query()
@@ -1108,18 +802,59 @@ class OrderManagement extends Component
             ->orderBy($this->sortField, $this->sortDirection);
     }
 
-    public function sortBy($field)
+    /**
+     * Modal control methods
+     */
+    public function nextStep()
     {
-        if ($this->sortField === $field) {
-            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
-        } else {
-            $this->sortField = $field;
-            $this->sortDirection = 'asc';
+        if ($this->currentStep === 1) {
+            $this->validate([
+                'code' => 'required|string|max:255',
+                'livraison' => 'required|date',
+            ]);
         }
+        $this->currentStep++;
+    }
+    
+    public function previousStep()
+    {
+        $this->currentStep--;
+    }
+    
+    public function closeModal()
+    {
+        $this->showModal = false;
+        $this->resetOrderForm();
+    }
+    
+    public function closeViewModal()
+    {
+        $this->showViewModal = false;
+        $this->viewingOrder = null;
+    }
+    
+    public function closeDeliveryModal()
+    {
+        $this->showDeliveryModal = false;
+        $this->deliveryOrder = null;
+        $this->deliveryStatus = '';
+        $this->deliveryNotes = '';
+        $this->actualDeliveryDate = '';
+    }
+    
+    public function closeLineEditModal()
+    {
+        $this->showLineEditModal = false;
+        $this->editingLineIndex = null;
+        $this->resetLineForm();
     }
 
-    private function resetForm()
+    /**
+     * Reset form methods
+     */
+    private function resetOrderForm()
     {
+        $this->orderId = null;
         $this->editingOrder = null;
         $this->code = '';
         $this->firm = '';
@@ -1133,47 +868,26 @@ class OrderManagement extends Component
         $this->notes = '';
         $this->transort = '';
         $this->orderLines = [];
-        $this->resetCurrentLine();
-    }
-
-    private function resetCurrentLine()
-    {
-        $this->currentLine = [
-            'article' => '',
-            'forme' => '',
-            'client' => '',
-            'semelle' => '',
-            'construction' => '',
-            'cuir' => '',
-            'doublure' => '',
-            'supplement' => '',
-            'p5' => 0, 'p5x' => 0, 'p6' => 0, 'p6x' => 0,
-            'p7' => 0, 'p7x' => 0, 'p8' => 0, 'p8x' => 0,
-            'p9' => 0, 'p9x' => 0, 'p10' => 0, 'p10x' => 0,
-            'p11' => 0, 'p11x' => 0, 'p12' => 0, 'p13' => 0,
-            'prix' => 0,
-            'devise' => '€',
-            'genre' => 'homme',
-            'langue' => 'français'
-        ];
+        $this->currentStep = 1;
+        $this->resetLineForm();
     }
     
-    private function resetProductSelection()
+    private function resetLineForm()
     {
         $this->selectedArticle = '';
         $this->selectedForme = '';
         $this->selectedSemelle = '';
         $this->selectedCuir = '';
-        $this->selectedSupplement = '';
+        $this->selectedSupplements = '';
         $this->selectedDoublure = '';
         $this->selectedConstruction = '';
         $this->currentTalon = '';
         $this->currentFinition = '';
         $this->currentLacet = '';
+        $this->currentLacetLength = '';
         $this->currentPerforation = 0;
         $this->currentTrepointe = '';
         $this->currentFleur = false;
-        $this->currentLacetLength = '';
         $this->currentDentlage = false;
         $this->customTalon = '';
         $this->customFinition = '';
@@ -1181,30 +895,20 @@ class OrderManagement extends Component
         $this->customLacetLength = '';
         $this->customTrepointe = '';
         $this->productPrice = 0;
-        $this->currentLine = [
-            'article' => '',
-            'forme' => '',
-            'client' => '',
-            'semelle' => '',
-            'construction' => '',
-            'cuir' => '',
-            'doublure' => '',
-            'supplement' => '',
-            'p5' => 0, 'p5x' => 0, 'p6' => 0, 'p6x' => 0,
-            'p7' => 0, 'p7x' => 0, 'p8' => 0, 'p8x' => 0,
-            'p9' => 0, 'p9x' => 0, 'p10' => 0, 'p10x' => 0,
-            'p11' => 0, 'p11x' => 0, 'p12' => 0, 'p13' => 0,
-            'prix' => 0,
-            'devise' => 'EUR',
-            'genre' => $this->currentGenre,
-            'langue' => 'français',
-            'talon' => '',
-            'finition' => '',
-            'lacet' => '',
-            'lacetx' => 0,
-            'perforation' => 0,
-            'fleur' => false,
-            'dentlage' => false
-        ];
+        $this->editingLineIndex = null;
+        $this->initializeCurrentLine();
+    }
+    
+    /**
+     * Logo removal methods
+     */
+    public function removeLogo()
+    {
+        $this->logo = null;
+    }
+    
+    public function removeLogo1()
+    {
+        $this->logo1 = null;
     }
 }
