@@ -26,7 +26,7 @@ class OrderLine extends Model
         'construction',
         'cuir',
         'doublure',
-        'supplements',
+        'supplement',
         // Include all size columns
         'p5', 'p5x', 'p6', 'p6x', 'p7', 'p7x', 'p8', 'p8x',
         'p9', 'p9x', 'p10', 'p10x', 'p11', 'p11x', 'p12', 'p12x',

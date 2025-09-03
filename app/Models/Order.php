@@ -27,7 +27,6 @@ class Order extends Model
         'currency',
         'total_quantity',
         'is_urgent',
-        'delivery_notes',
         'actual_delivery_date'
     ];
 

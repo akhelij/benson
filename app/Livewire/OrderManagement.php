@@ -72,7 +72,7 @@ class OrderManagement extends Component
     public $selectedForme = '';
     public $selectedSemelle = '';
     public $selectedCuir = '';
-    public $selectedSupplements = '';
+    public $selectedSupplement = '';
     public $selectedDoublure = '';
     public $selectedConstruction = '';
     public $productPrice = 0;
@@ -97,8 +97,6 @@ class OrderManagement extends Component
     
     // Delivery modal fields
     public $deliveryStatus = '';
-    public $deliveryNotes = '';
-    public $actualDeliveryDate = '';
     
     // Hardcoded options
     public $talonOptions = ['Synderme', 'Cuir', 'autre', 'vide'];
@@ -152,7 +150,7 @@ class OrderManagement extends Component
         $this->currentLine['construction'] = '';
         $this->currentLine['cuir'] = '';
         $this->currentLine['doublure'] = '';
-        $this->currentLine['supplements'] = '';
+        $this->currentLine['supplement'] = '';
         $this->currentLine['prix'] = 0;
         $this->currentLine['devise'] = 'EUR';
         $this->currentLine['genre'] = 'homme';
@@ -440,7 +438,7 @@ class OrderManagement extends Component
             'semelle' => $this->selectedSemelle,
             'cuir' => $this->selectedCuir,
             'doublure' => $this->selectedDoublure,
-            'supplements' => $this->currentLine['supplements'] ?? null,
+            'supplement' => $this->selectedSupplement,
             'construction' => $this->selectedConstruction,
             'talon' => $this->currentTalon === 'autre' ? $this->customTalon : $this->currentTalon,
             'finition' => $this->currentFinition === 'autre' ? $this->customFinition : $this->currentFinition,
@@ -486,7 +484,7 @@ class OrderManagement extends Component
         $this->selectedSemelle = $line['semelle'] ?? '';
         $this->selectedCuir = $line['cuir'] ?? '';
         $this->selectedDoublure = $line['doublure'] ?? '';
-        $this->selectedSupplements = $line['supplements'] ?? '';
+        $this->selectedSupplement = $line['supplement'] ?? '';
         $this->selectedConstruction = $line['construction'] ?? '';
         
         // Handle custom values
@@ -572,10 +570,6 @@ class OrderManagement extends Component
         $this->deliveryOrder = Order::find($orderId);
         if ($this->deliveryOrder) {
             $this->deliveryStatus = $this->deliveryOrder->status;
-            $this->deliveryNotes = $this->deliveryOrder->delivery_notes ?? '';
-            $this->actualDeliveryDate = $this->deliveryOrder->actual_delivery_date 
-                ? $this->deliveryOrder->actual_delivery_date->format('Y-m-d') 
-                : '';
             $this->showDeliveryModal = true;
         }
     }
@@ -587,18 +581,12 @@ class OrderManagement extends Component
     {
         $this->validate([
             'deliveryStatus' => 'required|in:draft,confirmed,in_production,delivered,cancelled',
-            'deliveryNotes' => 'nullable|string|max:1000'
         ]);
 
         if ($this->deliveryOrder) {
             $updateData = [
                 'status' => $this->deliveryStatus,
-                'delivery_notes' => $this->deliveryNotes
             ];
-            
-            if ($this->deliveryStatus === 'delivered' && $this->actualDeliveryDate) {
-                $updateData['actual_delivery_date'] = $this->actualDeliveryDate;
-            }
             
             $this->deliveryOrder->update($updateData);
             
@@ -619,7 +607,7 @@ class OrderManagement extends Component
             'semelle' => !empty($line['semelle']) ? $line['semelle'] : null,
             'cuir' => !empty($line['cuir']) ? $line['cuir'] : null,
             'doublure' => !empty($line['doublure']) ? $line['doublure'] : null,
-            'supplements' => !empty($line['supplements']) ? $line['supplements'] : null,
+            'supplement' => !empty($line['supplement']) ? $line['supplement'] : null,
             'construction' => !empty($line['construction']) ? $line['construction'] : null,
             'talon' => !empty($line['talon']) ? $line['talon'] : null,
             'finition' => !empty($line['finition']) ? $line['finition'] : null,
@@ -838,8 +826,6 @@ class OrderManagement extends Component
         $this->showDeliveryModal = false;
         $this->deliveryOrder = null;
         $this->deliveryStatus = '';
-        $this->deliveryNotes = '';
-        $this->actualDeliveryDate = '';
     }
     
     public function closeLineEditModal()
@@ -878,7 +864,7 @@ class OrderManagement extends Component
         $this->selectedForme = '';
         $this->selectedSemelle = '';
         $this->selectedCuir = '';
-        $this->selectedSupplements = '';
+        $this->selectedSupplement = '';
         $this->selectedDoublure = '';
         $this->selectedConstruction = '';
         $this->currentTalon = '';

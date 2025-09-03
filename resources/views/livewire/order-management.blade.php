@@ -164,7 +164,6 @@
         <x-delivery-tracking 
             :order="$deliveryOrder"
             wire:model.status="deliveryStatus"
-            wire:model.notes="deliveryNotes"
             wire:model.date="actualDeliveryDate" />
         
         <x-slot name="footer">
