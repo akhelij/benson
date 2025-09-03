@@ -66,8 +66,7 @@
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Article</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Spécifications</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pointures</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Prix Unit.</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Imprimer</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
@@ -95,11 +94,13 @@
                                     Total: {{ $line->total_quantity }} paires
                                 </div>
                             </td>
-                            <td class="px-4 py-3 text-sm text-right text-gray-900">
-                                €{{ number_format($line->prix, 2, ',', ' ') }}
-                            </td>
-                            <td class="px-4 py-3 text-sm text-right font-medium text-gray-900">
-                                €{{ number_format($line->total_amount, 2, ',', ' ') }}
+                            <td class="px-4 py-3 text-sm text-right text-gray-900">                                
+                                <a href="{{ route('print.order-line', ['orderId' => $order->id, 'lineId' => $line->id]) }}" target="_blank" 
+                                    class="text-purple-600 hover:text-purple-900" title="Imprimer ligne détaillée">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                                    </svg>
+                                </a>
                             </td>
                         </tr>
                     @endforeach
@@ -113,12 +114,7 @@
                             €{{ number_format($order->total_amount ?: 0, 2, ',', ' ') }}
                         </td>
                         <td class="px-4 py-3 text-center">
-                            <a href="{{ route('print.order-line', ['orderId' => $order->id, 'lineId' => $line->id]) }}" target="_blank" 
-                               class="text-purple-600 hover:text-purple-900" title="Imprimer ligne détaillée">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
-                                </svg>
-                            </a>
+                           
                         </td>
                     </tr>
                 </tfoot>
