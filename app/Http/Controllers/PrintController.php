@@ -25,7 +25,15 @@ class PrintController extends Controller
     public function printOrderLine($orderId, $lineId)
     {
         $order = Order::findOrFail($orderId);
-        $orderLine = OrderLine::where('order_id', $orderId)->findOrFail($lineId);
+        $orderLine = OrderLine::with([
+            'formeItem', 
+            'articleItem', 
+            'semelleItem', 
+            'constructionItem', 
+            'cuirItem', 
+            'doublureItem',
+            'supplementItem'
+        ])->where('order_id', $orderId)->findOrFail($lineId);
         
         return view('print.order-line-detail', compact('order', 'orderLine'));
     }

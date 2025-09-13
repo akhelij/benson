@@ -80,6 +80,59 @@ class OrderLine extends Model
     }
 
     /**
+     * Get the forme item
+     */
+    public function formeItem()
+    {
+        return $this->belongsTo(Item::class, 'forme')->where('type', 'forme');
+    }
+
+    /**
+     * Get the article item
+     */
+    public function articleItem()
+    {
+        return $this->belongsTo(Item::class, 'article')->where('type', 'article');
+    }
+
+    /**
+     * Get the semelle item
+     */
+    public function semelleItem()
+    {
+        return $this->belongsTo(Item::class, 'semelle')->where('type', 'semelle');
+    }
+
+    /**
+     * Get the construction item
+     */
+    public function constructionItem()
+    {
+        return $this->belongsTo(Item::class, 'construction')->where('type', 'construction');
+    }
+
+    /**
+     * Get the cuir item
+     */
+    public function cuirItem()
+    {
+        return $this->belongsTo(Item::class, 'cuir')->where('type', 'cuir');
+    }
+
+    /**
+     * Get the doublure item
+     */
+    public function doublureItem()
+    {
+        return $this->belongsTo(Item::class, 'doublure')->where('type', 'doublure');
+    }
+
+    public function supplementItem()
+    {
+        return $this->belongsTo(Item::class, 'supplement')->where('type', 'supplement');
+    }
+
+    /**
      * Calculate total quantity for this line
      */
     public function getTotalQuantityAttribute()

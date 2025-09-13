@@ -38,13 +38,29 @@
         .table-striped tbody tr:nth-of-type(odd) {
             background-color: #f9f9f9;
         }
+        .size-header {
+            font-size: 10px;
+            text-align: center;
+        }
+        .material-img {
+            max-height: 150px;
+            max-width: 150px;
+        }
+        .product-img {
+            max-width: 200px;
+            max-height: 150px;
+        }
+        .logo-img {
+            max-width: 100px;
+            max-height: 50px;
+        }
     </style>
 </head>
 
 <body>
     <div class="">
         <div class="row">
-            <p align="center">{{ $order->firm }} cde {{ str_replace("(n)", "&", $orderLine->order_id) }}</p>
+            <p align="center">{{ $order->firm }} cde {{ str_replace("(n)", "&", $order->code) }}</p>
             
             <div class="col-md-12">
                 <div class="panel panel-default">
@@ -53,11 +69,11 @@
                             <tbody>
                                 <tr style="background-color: #fff !important">
                                     <td>Code N°</td>
-                                    <td>{{ str_replace("(n)", "&", $orderLine->order_id) }}</td>
-                                    <td colspan="4">{{ $orderLine->forme }}/{{ $orderLine->article }}{{ isset($orderLine->client) ? " - " . $orderLine->client : '' }}</td>
-                                    <td colspan="5">{{ $orderLine->semelle }}/{{ $orderLine->construction }}</td>
-                                    <td colspan="4">{{ $orderLine->cuir }}/{{ $orderLine->doublure }}</td>
-                                    <td colspan="5">{{ $orderLine->supplement }}</td>
+                                    <td>{{ str_replace("(n)", "&", $order->code) }}</td>
+                                    <td colspan="4">{{ $orderLine->formeItem->nom ?? $orderLine->forme }}/{{ $orderLine->articleItem->nom ?? $orderLine->article }}{{ isset($orderLine->client) ? " - " . $orderLine->client : '' }}</td>
+                                    <td colspan="5">{{ $orderLine->semelleItem->nom ?? $orderLine->semelle }}/{{ $orderLine->constructionItem->nom ?? $orderLine->construction }}</td>
+                                    <td colspan="4">{{ $orderLine->cuirItem->nom ?? $orderLine->cuir }}/{{ $orderLine->doublureItem->nom ?? $orderLine->doublure }}</td>
+                                    <td colspan="5">{{ $orderLine->supplementItem->nom ?? $orderLine->supplement }}</td>
                                 </tr>
                                 
                                 <tr style="background-color: #fff !important">
@@ -65,87 +81,87 @@
                                     <th>{{ $order->livraison ? $order->livraison->format('Y-m-d') : '' }}</th>
                                     <th>{{ $orderLine->pointure ?? 'Pointure' }}</th>
                                     @php
-                                        $langue = $orderLine->langue;
-                                        $genre = $orderLine->genre;
+                                        $langue = $orderLine->langue ?? 'français';
+                                        $genre = $orderLine->genre ?? 'homme';
                                     @endphp
-                                    <th>
+                                    <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>5,0</span>
                                         <hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
                                             {{ $genre == 'femme' ? 35 : 39 }}
                                         </span>
                                     </th>
-                                    <th>
+                                    <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>5,5</span><hr>
                                         <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
                                     </th>
-                                    <th>
+                                    <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>6,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
                                             {{ $genre == 'femme' ? 36 : 40 }}
                                         </span>
                                     </th>
-                                    <th>
+                                    <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>6,5</span><hr>
                                         <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
                                     </th>
-                                    <th>
+                                    <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>7,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
                                             {{ $genre == 'femme' ? 37 : 41 }}
                                         </span>
                                     </th>
-                                    <th>
+                                    <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>7,5</span><hr>
                                         <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
                                     </th>
-                                    <th>
+                                    <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>8,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
                                             {{ $genre == 'femme' ? 38 : 42 }}
                                         </span>
                                     </th>
-                                    <th>
+                                    <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>8,5</span><hr>
                                         <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
                                     </th>
-                                    <th>
+                                    <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>9,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
                                             {{ $genre == 'femme' ? 39 : 43 }}
                                         </span>
                                     </th>
-                                    <th>
+                                    <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>9,5</span><hr>
                                         <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
                                     </th>
-                                    <th>
+                                    <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>10,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
                                             {{ $genre == 'femme' ? 40 : 44 }}
                                         </span>
                                     </th>
-                                    <th>
+                                    <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>10,5</span><hr>
                                         <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
                                     </th>
-                                    <th>
+                                    <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>11,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
                                             {{ $genre == 'femme' ? 41 : 45 }}
                                         </span>
                                     </th>
-                                    <th>
+                                    <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>11,5</span><hr>
                                         <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
                                     </th>
-                                    <th>
+                                    <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>12,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
                                             {{ $genre == 'femme' ? 42 : 46 }}
                                         </span>
                                     </th>
-                                    <th>
+                                    <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>13,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
                                             {{ $genre == 'femme' ? 43 : 47 }}
@@ -192,13 +208,17 @@
                                     </td>
                                     <td colspan="12" rowspan="6" align="center">
                                         @if($orderLine->image)
-                                            <img src="{{ asset('storage/images/' . $orderLine->image) }}" style="max-width: 200px;max-height: 150px;">
+                                            <img src="{{ asset('storage/images/' . $orderLine->image) }}" class="product-img" alt="Product Image">
+                                        @else
+                                            <div style="width: 200px; height: 150px; border: 1px dashed #ccc; display: flex; align-items: center; justify-content: center; font-size: 12px;">Image Produit</div>
                                         @endif
                                     </td>
                                     <td colspan="6" rowspan="3" align="center" style="background-color: #ccc">
-                                        <label>Logo</label><br>
+                                        <label>Logo 1ere</label><br>
                                         @if($order->logo1)
-                                            <img src="{{ asset('storage/' . $order->logo1) }}" style="max-width: 100px;max-height: 50px;">
+                                            <img src="{{ asset('storage/' . $order->logo1) }}" class="logo-img" alt="Logo 1">
+                                        @else
+                                            <div style="width: 100px; height: 50px; border: 1px dashed #999; display: flex; align-items: center; justify-content: center; font-size: 8px;">Logo</div>
                                         @endif
                                     </td>
                                 </tr>
@@ -216,7 +236,9 @@
                                     <td colspan="6" rowspan="3" align="center" style="background-color: #ccc">
                                         <label>Logo Semelle</label><br>
                                         @if($order->logo)
-                                            <img src="{{ asset('storage/' . $order->logo) }}" style="max-width: 100px;max-height: 50px;">
+                                            <img src="{{ asset('storage/' . $order->logo) }}" class="logo-img" alt="Logo Semelle">
+                                        @else
+                                            <div style="width: 100px; height: 50px; border: 1px dashed #999; display: flex; align-items: center; justify-content: center; font-size: 8px;">Logo</div>
                                         @endif
                                     </td>
                                 </tr>
@@ -252,23 +274,31 @@
                                 </tr>
                                 <tr style="background-color: #fff !important;" align="center">
                                     <td>
-                                        @if($orderLine->semelle)
-                                            <img src="{{ asset('storage/semelles/' . trim($orderLine->semelle) . '.jpg') }}" style="max-height: 150px;max-width: 150px">
+                                        @if($orderLine->semelleItem && $orderLine->semelleItem->getFirstMediaUrl('images'))
+                                            <img src="{{ $orderLine->semelleItem->getFirstMediaUrl('images') }}" class="material-img" alt="{{ $orderLine->semelleItem->nom }}">
+                                        @else
+                                            <div style="width: 150px; height: 150px; border: 1px dashed #ccc; display: flex; align-items: center; justify-content: center; font-size: 10px;">Semelle</div>
                                         @endif
                                     </td>
                                     <td>
-                                        @if($orderLine->cuir)
-                                            <img src="{{ asset('storage/cuirs/' . trim($orderLine->cuir) . '.jpg') }}" style="max-height: 150px;max-width: 150px">
+                                        @if($orderLine->cuirItem && $orderLine->cuirItem->getFirstMediaUrl('images'))
+                                            <img src="{{ $orderLine->cuirItem->getFirstMediaUrl('images') }}" class="material-img" alt="{{ $orderLine->cuirItem->nom }}">
+                                        @else
+                                            <div style="width: 150px; height: 150px; border: 1px dashed #ccc; display: flex; align-items: center; justify-content: center; font-size: 10px;">Cuir</div>
                                         @endif
                                     </td>
                                     <td>
-                                        @if($orderLine->doublure)
-                                            <img src="{{ asset('storage/doublures/' . trim($orderLine->doublure) . '.jpg') }}" style="max-height: 150px;max-width: 150px">
+                                        @if($orderLine->doublureItem && $orderLine->doublureItem->getFirstMediaUrl('images'))
+                                            <img src="{{ $orderLine->doublureItem->getFirstMediaUrl('images') }}" class="material-img" alt="{{ $orderLine->doublureItem->nom }}">
+                                        @else
+                                            <div style="width: 150px; height: 150px; border: 1px dashed #ccc; display: flex; align-items: center; justify-content: center; font-size: 10px;">Doublure</div>
                                         @endif
                                     </td>
                                     <td>
                                         @if($orderLine->trepointe_img ?? false)
-                                            <img src="{{ asset('storage/trepointe/' . trim($orderLine->trepointe_img) . '.png') }}" style="max-height: 150px;max-width: 150px">
+                                            <img src="{{ asset('storage/trepointe/' . trim($orderLine->trepointe_img) . '.png') }}" class="material-img" alt="Trépointe">
+                                        @else
+                                            <div style="width: 150px; height: 150px; border: 1px dashed #ccc; display: flex; align-items: center; justify-content: center; font-size: 10px;">Trépointe</div>
                                         @endif
                                     </td>
                                 </tr>
@@ -281,25 +311,99 @@
                             <tbody>
                                 <tr style="background-color: #fff !important">
                                     <td colspan="2">Fiche de piquage</td>
-                                    <td colspan="4">{{ $orderLine->forme }}/{{ $orderLine->article }}</td>
-                                    <td colspan="5">{{ $orderLine->semelle }}/{{ $orderLine->construction }}</td>
-                                    <td colspan="4">{{ $orderLine->cuir }}/{{ $orderLine->doublure }}</td>
-                                    <td colspan="5">{{ $orderLine->supplement }}</td>
+                                    <td colspan="4">{{ $orderLine->formeItem->nom ?? $orderLine->forme }}/{{ $orderLine->articleItem->nom ?? $orderLine->article }}</td>
+                                    <td colspan="5">{{ $orderLine->semelleItem->nom ?? $orderLine->semelle }}/{{ $orderLine->constructionItem->nom ?? $orderLine->construction }}</td>
+                                    <td colspan="4">{{ $orderLine->cuirItem->nom ?? $orderLine->cuir }}/{{ $orderLine->doublureItem->nom ?? $orderLine->doublure }}</td>
+                                    <td colspan="5">{{ $orderLine->supplementItem->nom ?? $orderLine->supplement }}</td>
                                 </tr>
                                 
                                 <tr style="background-color: #fff !important">
                                     <th>Code N°</th>
                                     <th>{{ str_replace("(n)", "&", $order->code) }}</th>
                                     <th>{{ $orderLine->pointure ?? 'Pointure' }}</th>
-                                    <!-- Size headers repeated -->
-                                    <th>
+                                    <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>5,0</span>
                                         <hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
                                             {{ $genre == 'femme' ? 35 : 39 }}
                                         </span>
                                     </th>
-                                    <!-- ... repeat all size headers ... -->
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>5,5</span><hr>
+                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>6,0</span><hr>
+                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                            {{ $genre == 'femme' ? 36 : 40 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>6,5</span><hr>
+                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>7,0</span><hr>
+                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                            {{ $genre == 'femme' ? 37 : 41 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>7,5</span><hr>
+                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>8,0</span><hr>
+                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                            {{ $genre == 'femme' ? 38 : 42 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>8,5</span><hr>
+                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>9,0</span><hr>
+                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                            {{ $genre == 'femme' ? 39 : 43 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>9,5</span><hr>
+                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>10,0</span><hr>
+                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                            {{ $genre == 'femme' ? 40 : 44 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>10,5</span><hr>
+                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>11,0</span><hr>
+                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                            {{ $genre == 'femme' ? 41 : 45 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>11,5</span><hr>
+                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>12,0</span><hr>
+                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                            {{ $genre == 'femme' ? 42 : 46 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>13,0</span><hr>
+                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                            {{ $genre == 'femme' ? 43 : 47 }}
+                                        </span>
+                                    </th>
                                     <th>Total</th>
                                 </tr>
                                
@@ -342,18 +446,152 @@
                             <tbody>
                                 <tr style="background-color: #fff !important">
                                     <td colspan="2">Fiche de coupe</td>
-                                    <td colspan="4">{{ $orderLine->forme }}/{{ $orderLine->article }}</td>
-                                    <td colspan="5">{{ $orderLine->semelle }}/{{ $orderLine->construction }}</td>
-                                    <td colspan="4">{{ $orderLine->cuir }}/{{ $orderLine->doublure }}</td>
-                                    <td colspan="5">{{ $orderLine->supplement }}</td>
+                                    <td colspan="4">{{ $orderLine->formeItem->nom ?? $orderLine->forme }}/{{ $orderLine->articleItem->nom ?? $orderLine->article }}</td>
+                                    <td colspan="5">{{ $orderLine->semelleItem->nom ?? $orderLine->semelle }}/{{ $orderLine->constructionItem->nom ?? $orderLine->construction }}</td>
+                                    <td colspan="4">{{ $orderLine->cuirItem->nom ?? $orderLine->cuir }}/{{ $orderLine->doublureItem->nom ?? $orderLine->doublure }}</td>
+                                    <td colspan="5">{{ $orderLine->supplementItem->nom ?? $orderLine->supplement }}</td>
                                 </tr>
                                 
                                 <tr style="background-color: #fff !important">
                                     <th>Code N°</th>
                                     <th>{{ str_replace("(n)", "&", $order->code) }}</th>
                                     <th>{{ $orderLine->pointure ?? 'Pointure' }}</th>
-                                    <!-- Size headers repeated -->
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>5,0</span>
+                                        <hr>
+                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                            {{ $genre == 'femme' ? 35 : 39 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>5,5</span><hr>
+                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>6,0</span><hr>
+                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                            {{ $genre == 'femme' ? 36 : 40 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>6,5</span><hr>
+                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>7,0</span><hr>
+                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                            {{ $genre == 'femme' ? 37 : 41 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>7,5</span><hr>
+                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>8,0</span><hr>
+                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                            {{ $genre == 'femme' ? 38 : 42 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>8,5</span><hr>
+                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>9,0</span><hr>
+                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                            {{ $genre == 'femme' ? 39 : 43 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>9,5</span><hr>
+                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>10,0</span><hr>
+                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                            {{ $genre == 'femme' ? 40 : 44 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>10,5</span><hr>
+                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>11,0</span><hr>
+                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                            {{ $genre == 'femme' ? 41 : 45 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>11,5</span><hr>
+                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>12,0</span><hr>
+                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                            {{ $genre == 'femme' ? 42 : 46 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>13,0</span><hr>
+                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                            {{ $genre == 'femme' ? 43 : 47 }}
+                                        </span>
+                                    </th>
                                     <th>Total</th>
+                                </tr>
+                                <tr>
+                                    <td>Date de livraison</td>
+                                    <td>{{ $order->livraison ? $order->livraison->format('Y-m-d') : '' }}</td>
+                                    <td>{{ $orderLine->vpointure == 0 ? '' : $orderLine->vpointure }}</td>
+                                    <td>{{ $orderLine->p5 == 0 ? '' : $orderLine->p5 }}</td>
+                                    <td>{{ $orderLine->p5x == 0 ? '' : $orderLine->p5x }}</td>
+                                    <td>{{ $orderLine->p6 == 0 ? '' : $orderLine->p6 }}</td>
+                                    <td>{{ $orderLine->p6x == 0 ? '' : $orderLine->p6x }}</td>
+                                    <td>{{ $orderLine->p7 == 0 ? '' : $orderLine->p7 }}</td>
+                                    <td>{{ $orderLine->p7x == 0 ? '' : $orderLine->p7x }}</td>
+                                    <td>{{ $orderLine->p8 == 0 ? '' : $orderLine->p8 }}</td>
+                                    <td>{{ $orderLine->p8x == 0 ? '' : $orderLine->p8x }}</td>
+                                    <td>{{ $orderLine->p9 == 0 ? '' : $orderLine->p9 }}</td>
+                                    <td>{{ $orderLine->p9x == 0 ? '' : $orderLine->p9x }}</td>
+                                    <td>{{ $orderLine->p10 == 0 ? '' : $orderLine->p10 }}</td>
+                                    <td>{{ $orderLine->p10x == 0 ? '' : $orderLine->p10x }}</td>
+                                    <td>{{ $orderLine->p11 == 0 ? '' : $orderLine->p11 }}</td>
+                                    <td>{{ $orderLine->p11x == 0 ? '' : $orderLine->p11x }}</td>
+                                    <td>{{ $orderLine->p12 == 0 ? '' : $orderLine->p12 }}</td>
+                                    <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td>
+                                    <td>{{ $orderLine->total_quantity }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Nom du coupeur</td>
+                                    <td colspan="2"></td>
+                                    <td colspan="4" align="center">Surface allouée</td>
+                                    <td colspan="5" align="center">Retour cuir</td>
+                                    <td colspan="4" align="center">Consommation</td>
+                                    <td colspan="5" align="center"></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>P.C.E.P</strong></td>
+                                    <td colspan="2"></td>
+                                    <td colspan="2" align="center" style="border-right: 1px solid #ddd;">Cuir Tige</td>
+                                    <td colspan="2" align="center">Doublure</td>
+                                    <td colspan="2" align="center" style="border-right: 1px solid #ddd;">Cuir Tige</td>
+                                    <td colspan="3" align="center">Doublure</td>
+                                    <td colspan="2" align="center" style="border-right: 1px solid #ddd;">Cuir Tige</td>
+                                    <td colspan="2" align="center">Doublure</td>
+                                    <td colspan="5" align="center"></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>P.C.M</strong></td>
+                                    <td colspan="2"></td>
+                                    <td colspan="2" align="center" style="border-right: 1px solid #ddd;"></td>
+                                    <td colspan="2" align="center"></td>
+                                    <td colspan="2" align="center" style="border-right: 1px solid #ddd;"></td>
+                                    <td colspan="3" align="center"></td>
+                                    <td colspan="2" align="center" style="border-right: 1px solid #ddd;"></td>
+                                    <td colspan="2" align="center"></td>
+                                    <td colspan="5" align="center"></td>
                                 </tr>
                             </tbody>
                         </table>
