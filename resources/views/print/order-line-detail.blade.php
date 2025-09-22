@@ -17,14 +17,16 @@
             margin-bottom: -3%;
         }
         td, th {
-            padding: 3px !important;
+            padding: 8px !important;
+            min-height: 40px;
+            height: auto;
         }
         .fad, .fac {
             display: none;
         }
         .panel-body {
             border-bottom: 2px dashed black;
-            margin-bottom: 2%;
+            margin-bottom: 0.5%;
             padding: 0px !important;
         }
         .table {
@@ -33,7 +35,10 @@
         }
         .table td, .table th {
             border: 1px solid #ddd;
-            padding: 3px;
+            padding: 8px;
+            min-height: 40px;
+            height: auto;
+            vertical-align: middle;
         }
         .table-striped tbody tr:nth-of-type(odd) {
             background-color: #f9f9f9;
@@ -65,7 +70,7 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <table class="table table-striped table-bordered table-dataTable">
+                        <table class="table table-striped table-bordered table-dataTable" style="height: 25%;">
                             <tbody>
                                 <tr style="background-color: #fff !important">
                                     <td>Code N°</td>
@@ -254,8 +259,8 @@
                         </table>
                     </div>
 
-                    <div class="panel-body">
-                        <table class="table table-striped table-bordered table-dataTable">
+                    <div class="panel-body" style="margin-top: -10px;">
+                        <table class="table table-striped table-bordered table-dataTable" style="height: 25%;">
                             <tbody>
                                 <tr style="background-color: #fff !important">
                                     <td><h4>Semelle</h4></td>
@@ -306,8 +311,8 @@
                         </table>
                     </div>
 
-                    <div class="panel-body">
-                        <table class="table table-striped table-bordered table-dataTable">
+                    <div class="panel-body" style="margin-top: -10px;">
+                        <table class="table table-striped table-bordered table-dataTable" style="height: 25%;">
                             <tbody>
                                 <tr style="background-color: #fff !important">
                                     <td colspan="2">Fiche de piquage</td>
@@ -441,8 +446,8 @@
                         </table>
                     </div>
 
-                    <div class="panel-body">
-                        <table class="table table-striped table-bordered table-dataTable">
+                    <div class="panel-body" style="margin-top: -10px;">
+                        <table class="table table-striped table-bordered table-dataTable" style="height: 25%;">
                             <tbody>
                                 <tr style="background-color: #fff !important">
                                     <td colspan="2">Fiche de coupe</td>
@@ -595,6 +600,9 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <div style="text-align: center; margin-top: 20px; font-size: 16px; font-weight: bold;">
+                            {{ str_replace("(n)", "&", $order->code) }}
+                        </div>
                     </div>
                 </div>
             </div>
