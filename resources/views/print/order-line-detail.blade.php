@@ -93,7 +93,7 @@
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>5,0</span>
                                         <hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 35 : 39 }}
+                                            {{ $genre == 'femme' ? 35 : 38 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -103,7 +103,7 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>6,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 36 : 40 }}
+                                            {{ $genre == 'femme' ? 36 : 39 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -113,7 +113,7 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>7,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 37 : 41 }}
+                                            {{ $genre == 'femme' ? 37 : 40 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -123,7 +123,7 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>8,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 38 : 42 }}
+                                            {{ $genre == 'femme' ? 38 : 41 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -133,7 +133,7 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>9,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 39 : 43 }}
+                                            {{ $genre == 'femme' ? 39 : 42 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -143,7 +143,7 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>10,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 40 : 44 }}
+                                            {{ $genre == 'femme' ? 40 : 43 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -153,7 +153,7 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>11,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 41 : 45 }}
+                                            {{ $genre == 'femme' ? 41 : 44 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -163,13 +163,13 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>12,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 42 : 46 }}
+                                            {{ $genre == 'femme' ? 42 : 45 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>13,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 43 : 47 }}
+                                            {{ $genre == 'femme' ? 43 : 46 }}
                                         </span>
                                     </th>
                                     <th>Total</th>
@@ -178,23 +178,44 @@
                                 <tr>
                                     <td>Talon</td>
                                     <td>{{ $orderLine->talon }}</td>
-                                    <td>{{ $orderLine->vpointure == 0 ? '' : $orderLine->vpointure }}</td>
-                                    <td>{{ $orderLine->p5 == 0 ? '' : $orderLine->p5 }}</td>
-                                    <td>{{ $orderLine->p5x == 0 ? '' : $orderLine->p5x }}</td>
-                                    <td>{{ $orderLine->p6 == 0 ? '' : $orderLine->p6 }}</td>
-                                    <td>{{ $orderLine->p6x == 0 ? '' : $orderLine->p6x }}</td>
-                                    <td>{{ $orderLine->p7 == 0 ? '' : $orderLine->p7 }}</td>
-                                    <td>{{ $orderLine->p7x == 0 ? '' : $orderLine->p7x }}</td>
-                                    <td>{{ $orderLine->p8 == 0 ? '' : $orderLine->p8 }}</td>
-                                    <td>{{ $orderLine->p8x == 0 ? '' : $orderLine->p8x }}</td>
-                                    <td>{{ $orderLine->p9 == 0 ? '' : $orderLine->p9 }}</td>
-                                    <td>{{ $orderLine->p9x == 0 ? '' : $orderLine->p9x }}</td>
-                                    <td>{{ $orderLine->p10 == 0 ? '' : $orderLine->p10 }}</td>
-                                    <td>{{ $orderLine->p10x == 0 ? '' : $orderLine->p10x }}</td>
-                                    <td>{{ $orderLine->p11 == 0 ? '' : $orderLine->p11 }}</td>
-                                    <td>{{ $orderLine->p11x == 0 ? '' : $orderLine->p11x }}</td>
-                                    <td>{{ $orderLine->p12 == 0 ? '' : $orderLine->p12 }}</td>
-                                    <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td>
+                                    <td></td> {{-- Pointure column is always empty --}}
+                                    @if($genre == 'femme')
+                                        {{-- For women: sizes 35-43 use columns p5 to p13 --}}
+                                        <td>{{ $orderLine->p5 == 0 ? '' : $orderLine->p5 }}</td> {{-- 35 --}}
+                                        <td>{{ $orderLine->p5x == 0 ? '' : $orderLine->p5x }}</td> {{-- 35.5 --}}
+                                        <td>{{ $orderLine->p6 == 0 ? '' : $orderLine->p6 }}</td> {{-- 36 --}}
+                                        <td>{{ $orderLine->p6x == 0 ? '' : $orderLine->p6x }}</td> {{-- 36.5 --}}
+                                        <td>{{ $orderLine->p7 == 0 ? '' : $orderLine->p7 }}</td> {{-- 37 --}}
+                                        <td>{{ $orderLine->p7x == 0 ? '' : $orderLine->p7x }}</td> {{-- 37.5 --}}
+                                        <td>{{ $orderLine->p8 == 0 ? '' : $orderLine->p8 }}</td> {{-- 38 --}}
+                                        <td>{{ $orderLine->p8x == 0 ? '' : $orderLine->p8x }}</td> {{-- 38.5 --}}
+                                        <td>{{ $orderLine->p9 == 0 ? '' : $orderLine->p9 }}</td> {{-- 39 --}}
+                                        <td>{{ $orderLine->p9x == 0 ? '' : $orderLine->p9x }}</td> {{-- 39.5 --}}
+                                        <td>{{ $orderLine->p10 == 0 ? '' : $orderLine->p10 }}</td> {{-- 40 --}}
+                                        <td>{{ $orderLine->p10x == 0 ? '' : $orderLine->p10x }}</td> {{-- 40.5 --}}
+                                        <td>{{ $orderLine->p11 == 0 ? '' : $orderLine->p11 }}</td> {{-- 41 --}}
+                                        <td>{{ $orderLine->p11x == 0 ? '' : $orderLine->p11x }}</td> {{-- 41.5 --}}
+                                        <td>{{ $orderLine->p12 == 0 ? '' : $orderLine->p12 }}</td> {{-- 42 --}}
+                                        <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td> {{-- 43 --}}
+                                    @else
+                                        {{-- For men: sizes 38-46 use columns p7 to p15 --}}
+                                        <td>{{ $orderLine->p7 == 0 ? '' : $orderLine->p7 }}</td> {{-- 38 --}}
+                                        <td>{{ $orderLine->p7x == 0 ? '' : $orderLine->p7x }}</td> {{-- 38.5 --}}
+                                        <td>{{ $orderLine->p8 == 0 ? '' : $orderLine->p8 }}</td> {{-- 39 --}}
+                                        <td>{{ $orderLine->p8x == 0 ? '' : $orderLine->p8x }}</td> {{-- 39.5 --}}
+                                        <td>{{ $orderLine->p9 == 0 ? '' : $orderLine->p9 }}</td> {{-- 40 --}}
+                                        <td>{{ $orderLine->p9x == 0 ? '' : $orderLine->p9x }}</td> {{-- 40.5 --}}
+                                        <td>{{ $orderLine->p10 == 0 ? '' : $orderLine->p10 }}</td> {{-- 41 --}}
+                                        <td>{{ $orderLine->p10x == 0 ? '' : $orderLine->p10x }}</td> {{-- 41.5 --}}
+                                        <td>{{ $orderLine->p11 == 0 ? '' : $orderLine->p11 }}</td> {{-- 42 --}}
+                                        <td>{{ $orderLine->p11x == 0 ? '' : $orderLine->p11x }}</td> {{-- 42.5 --}}
+                                        <td>{{ $orderLine->p12 == 0 ? '' : $orderLine->p12 }}</td> {{-- 43 --}}
+                                        <td>{{ $orderLine->p12x == 0 ? '' : $orderLine->p12x }}</td> {{-- 43.5 --}}
+                                        <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td> {{-- 44 --}}
+                                        <td>{{ $orderLine->p13x == 0 ? '' : $orderLine->p13x }}</td> {{-- 44.5 --}}
+                                        <td>{{ $orderLine->p14 == 0 ? '' : $orderLine->p14 }}</td> {{-- 45 --}}
+                                        <td>{{ $orderLine->p15 == 0 ? '' : $orderLine->p15 }}</td> {{-- 46 --}}
+                                    @endif
                                     <td>{{ $orderLine->total_quantity }}</td>
                                 </tr>
                                 <tr>
@@ -330,7 +351,7 @@
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>5,0</span>
                                         <hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 35 : 39 }}
+                                            {{ $genre == 'femme' ? 35 : 38 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -340,7 +361,7 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>6,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 36 : 40 }}
+                                            {{ $genre == 'femme' ? 36 : 39 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -350,7 +371,7 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>7,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 37 : 41 }}
+                                            {{ $genre == 'femme' ? 37 : 40 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -360,7 +381,7 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>8,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 38 : 42 }}
+                                            {{ $genre == 'femme' ? 38 : 41 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -370,7 +391,7 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>9,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 39 : 43 }}
+                                            {{ $genre == 'femme' ? 39 : 42 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -380,7 +401,7 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>10,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 40 : 44 }}
+                                            {{ $genre == 'femme' ? 40 : 43 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -390,7 +411,7 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>11,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 41 : 45 }}
+                                            {{ $genre == 'femme' ? 41 : 44 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -400,13 +421,13 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>12,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 42 : 46 }}
+                                            {{ $genre == 'femme' ? 42 : 45 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>13,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 43 : 47 }}
+                                            {{ $genre == 'femme' ? 43 : 46 }}
                                         </span>
                                     </th>
                                     <th>Total</th>
@@ -415,23 +436,44 @@
                                 <tr>
                                     <td>Date de livraison</td>
                                     <td>{{ $order->livraison ? $order->livraison->format('Y-m-d') : '' }}</td>
-                                    <td>{{ $orderLine->vpointure == 0 ? '' : $orderLine->vpointure }}</td>
-                                    <td>{{ $orderLine->p5 == 0 ? '' : $orderLine->p5 }}</td>
-                                    <td>{{ $orderLine->p5x == 0 ? '' : $orderLine->p5x }}</td>
-                                    <td>{{ $orderLine->p6 == 0 ? '' : $orderLine->p6 }}</td>
-                                    <td>{{ $orderLine->p6x == 0 ? '' : $orderLine->p6x }}</td>
-                                    <td>{{ $orderLine->p7 == 0 ? '' : $orderLine->p7 }}</td>
-                                    <td>{{ $orderLine->p7x == 0 ? '' : $orderLine->p7x }}</td>
-                                    <td>{{ $orderLine->p8 == 0 ? '' : $orderLine->p8 }}</td>
-                                    <td>{{ $orderLine->p8x == 0 ? '' : $orderLine->p8x }}</td>
-                                    <td>{{ $orderLine->p9 == 0 ? '' : $orderLine->p9 }}</td>
-                                    <td>{{ $orderLine->p9x == 0 ? '' : $orderLine->p9x }}</td>
-                                    <td>{{ $orderLine->p10 == 0 ? '' : $orderLine->p10 }}</td>
-                                    <td>{{ $orderLine->p10x == 0 ? '' : $orderLine->p10x }}</td>
-                                    <td>{{ $orderLine->p11 == 0 ? '' : $orderLine->p11 }}</td>
-                                    <td>{{ $orderLine->p11x == 0 ? '' : $orderLine->p11x }}</td>
-                                    <td>{{ $orderLine->p12 == 0 ? '' : $orderLine->p12 }}</td>
-                                    <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td>
+                                    <td></td> {{-- Pointure column is always empty --}}
+                                    @if($genre == 'femme')
+                                        {{-- For women: sizes 35-43 use columns p5 to p13 --}}
+                                        <td>{{ $orderLine->p5 == 0 ? '' : $orderLine->p5 }}</td> {{-- 35 --}}
+                                        <td>{{ $orderLine->p5x == 0 ? '' : $orderLine->p5x }}</td> {{-- 35.5 --}}
+                                        <td>{{ $orderLine->p6 == 0 ? '' : $orderLine->p6 }}</td> {{-- 36 --}}
+                                        <td>{{ $orderLine->p6x == 0 ? '' : $orderLine->p6x }}</td> {{-- 36.5 --}}
+                                        <td>{{ $orderLine->p7 == 0 ? '' : $orderLine->p7 }}</td> {{-- 37 --}}
+                                        <td>{{ $orderLine->p7x == 0 ? '' : $orderLine->p7x }}</td> {{-- 37.5 --}}
+                                        <td>{{ $orderLine->p8 == 0 ? '' : $orderLine->p8 }}</td> {{-- 38 --}}
+                                        <td>{{ $orderLine->p8x == 0 ? '' : $orderLine->p8x }}</td> {{-- 38.5 --}}
+                                        <td>{{ $orderLine->p9 == 0 ? '' : $orderLine->p9 }}</td> {{-- 39 --}}
+                                        <td>{{ $orderLine->p9x == 0 ? '' : $orderLine->p9x }}</td> {{-- 39.5 --}}
+                                        <td>{{ $orderLine->p10 == 0 ? '' : $orderLine->p10 }}</td> {{-- 40 --}}
+                                        <td>{{ $orderLine->p10x == 0 ? '' : $orderLine->p10x }}</td> {{-- 40.5 --}}
+                                        <td>{{ $orderLine->p11 == 0 ? '' : $orderLine->p11 }}</td> {{-- 41 --}}
+                                        <td>{{ $orderLine->p11x == 0 ? '' : $orderLine->p11x }}</td> {{-- 41.5 --}}
+                                        <td>{{ $orderLine->p12 == 0 ? '' : $orderLine->p12 }}</td> {{-- 42 --}}
+                                        <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td> {{-- 43 --}}
+                                    @else
+                                        {{-- For men: sizes 38-46 use columns p7 to p15 --}}
+                                        <td>{{ $orderLine->p7 == 0 ? '' : $orderLine->p7 }}</td> {{-- 38 --}}
+                                        <td>{{ $orderLine->p7x == 0 ? '' : $orderLine->p7x }}</td> {{-- 38.5 --}}
+                                        <td>{{ $orderLine->p8 == 0 ? '' : $orderLine->p8 }}</td> {{-- 39 --}}
+                                        <td>{{ $orderLine->p8x == 0 ? '' : $orderLine->p8x }}</td> {{-- 39.5 --}}
+                                        <td>{{ $orderLine->p9 == 0 ? '' : $orderLine->p9 }}</td> {{-- 40 --}}
+                                        <td>{{ $orderLine->p9x == 0 ? '' : $orderLine->p9x }}</td> {{-- 40.5 --}}
+                                        <td>{{ $orderLine->p10 == 0 ? '' : $orderLine->p10 }}</td> {{-- 41 --}}
+                                        <td>{{ $orderLine->p10x == 0 ? '' : $orderLine->p10x }}</td> {{-- 41.5 --}}
+                                        <td>{{ $orderLine->p11 == 0 ? '' : $orderLine->p11 }}</td> {{-- 42 --}}
+                                        <td>{{ $orderLine->p11x == 0 ? '' : $orderLine->p11x }}</td> {{-- 42.5 --}}
+                                        <td>{{ $orderLine->p12 == 0 ? '' : $orderLine->p12 }}</td> {{-- 43 --}}
+                                        <td>{{ $orderLine->p12x == 0 ? '' : $orderLine->p12x }}</td> {{-- 43.5 --}}
+                                        <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td> {{-- 44 --}}
+                                        <td>{{ $orderLine->p13x == 0 ? '' : $orderLine->p13x }}</td> {{-- 44.5 --}}
+                                        <td>{{ $orderLine->p14 == 0 ? '' : $orderLine->p14 }}</td> {{-- 45 --}}
+                                        <td>{{ $orderLine->p15 == 0 ? '' : $orderLine->p15 }}</td> {{-- 46 --}}
+                                    @endif
                                     <td>{{ $orderLine->total_quantity }}</td>
                                 </tr>
                                 <tr>
@@ -465,7 +507,7 @@
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>5,0</span>
                                         <hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 35 : 39 }}
+                                            {{ $genre == 'femme' ? 35 : 38 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -475,7 +517,7 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>6,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 36 : 40 }}
+                                            {{ $genre == 'femme' ? 36 : 39 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -485,7 +527,7 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>7,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 37 : 41 }}
+                                            {{ $genre == 'femme' ? 37 : 40 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -495,7 +537,7 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>8,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 38 : 42 }}
+                                            {{ $genre == 'femme' ? 38 : 41 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -505,7 +547,7 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>9,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 39 : 43 }}
+                                            {{ $genre == 'femme' ? 39 : 42 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -515,7 +557,7 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>10,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 40 : 44 }}
+                                            {{ $genre == 'femme' ? 40 : 43 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -525,7 +567,7 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>11,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 41 : 45 }}
+                                            {{ $genre == 'femme' ? 41 : 44 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
@@ -535,13 +577,13 @@
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>12,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 42 : 46 }}
+                                            {{ $genre == 'femme' ? 42 : 45 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
                                         <span class="anglais" @if($langue == 'français') style="display:none" @endif>13,0</span><hr>
                                         <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
-                                            {{ $genre == 'femme' ? 43 : 47 }}
+                                            {{ $genre == 'femme' ? 43 : 46 }}
                                         </span>
                                     </th>
                                     <th>Total</th>
@@ -549,23 +591,44 @@
                                 <tr>
                                     <td>Date de livraison</td>
                                     <td>{{ $order->livraison ? $order->livraison->format('Y-m-d') : '' }}</td>
-                                    <td>{{ $orderLine->vpointure == 0 ? '' : $orderLine->vpointure }}</td>
-                                    <td>{{ $orderLine->p5 == 0 ? '' : $orderLine->p5 }}</td>
-                                    <td>{{ $orderLine->p5x == 0 ? '' : $orderLine->p5x }}</td>
-                                    <td>{{ $orderLine->p6 == 0 ? '' : $orderLine->p6 }}</td>
-                                    <td>{{ $orderLine->p6x == 0 ? '' : $orderLine->p6x }}</td>
-                                    <td>{{ $orderLine->p7 == 0 ? '' : $orderLine->p7 }}</td>
-                                    <td>{{ $orderLine->p7x == 0 ? '' : $orderLine->p7x }}</td>
-                                    <td>{{ $orderLine->p8 == 0 ? '' : $orderLine->p8 }}</td>
-                                    <td>{{ $orderLine->p8x == 0 ? '' : $orderLine->p8x }}</td>
-                                    <td>{{ $orderLine->p9 == 0 ? '' : $orderLine->p9 }}</td>
-                                    <td>{{ $orderLine->p9x == 0 ? '' : $orderLine->p9x }}</td>
-                                    <td>{{ $orderLine->p10 == 0 ? '' : $orderLine->p10 }}</td>
-                                    <td>{{ $orderLine->p10x == 0 ? '' : $orderLine->p10x }}</td>
-                                    <td>{{ $orderLine->p11 == 0 ? '' : $orderLine->p11 }}</td>
-                                    <td>{{ $orderLine->p11x == 0 ? '' : $orderLine->p11x }}</td>
-                                    <td>{{ $orderLine->p12 == 0 ? '' : $orderLine->p12 }}</td>
-                                    <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td>
+                                    <td></td> {{-- Pointure column is always empty --}}
+                                    @if($genre == 'femme')
+                                        {{-- For women: sizes 35-43 use columns p5 to p13 --}}
+                                        <td>{{ $orderLine->p5 == 0 ? '' : $orderLine->p5 }}</td> {{-- 35 --}}
+                                        <td>{{ $orderLine->p5x == 0 ? '' : $orderLine->p5x }}</td> {{-- 35.5 --}}
+                                        <td>{{ $orderLine->p6 == 0 ? '' : $orderLine->p6 }}</td> {{-- 36 --}}
+                                        <td>{{ $orderLine->p6x == 0 ? '' : $orderLine->p6x }}</td> {{-- 36.5 --}}
+                                        <td>{{ $orderLine->p7 == 0 ? '' : $orderLine->p7 }}</td> {{-- 37 --}}
+                                        <td>{{ $orderLine->p7x == 0 ? '' : $orderLine->p7x }}</td> {{-- 37.5 --}}
+                                        <td>{{ $orderLine->p8 == 0 ? '' : $orderLine->p8 }}</td> {{-- 38 --}}
+                                        <td>{{ $orderLine->p8x == 0 ? '' : $orderLine->p8x }}</td> {{-- 38.5 --}}
+                                        <td>{{ $orderLine->p9 == 0 ? '' : $orderLine->p9 }}</td> {{-- 39 --}}
+                                        <td>{{ $orderLine->p9x == 0 ? '' : $orderLine->p9x }}</td> {{-- 39.5 --}}
+                                        <td>{{ $orderLine->p10 == 0 ? '' : $orderLine->p10 }}</td> {{-- 40 --}}
+                                        <td>{{ $orderLine->p10x == 0 ? '' : $orderLine->p10x }}</td> {{-- 40.5 --}}
+                                        <td>{{ $orderLine->p11 == 0 ? '' : $orderLine->p11 }}</td> {{-- 41 --}}
+                                        <td>{{ $orderLine->p11x == 0 ? '' : $orderLine->p11x }}</td> {{-- 41.5 --}}
+                                        <td>{{ $orderLine->p12 == 0 ? '' : $orderLine->p12 }}</td> {{-- 42 --}}
+                                        <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td> {{-- 43 --}}
+                                    @else
+                                        {{-- For men: sizes 38-46 use columns p7 to p15 --}}
+                                        <td>{{ $orderLine->p7 == 0 ? '' : $orderLine->p7 }}</td> {{-- 38 --}}
+                                        <td>{{ $orderLine->p7x == 0 ? '' : $orderLine->p7x }}</td> {{-- 38.5 --}}
+                                        <td>{{ $orderLine->p8 == 0 ? '' : $orderLine->p8 }}</td> {{-- 39 --}}
+                                        <td>{{ $orderLine->p8x == 0 ? '' : $orderLine->p8x }}</td> {{-- 39.5 --}}
+                                        <td>{{ $orderLine->p9 == 0 ? '' : $orderLine->p9 }}</td> {{-- 40 --}}
+                                        <td>{{ $orderLine->p9x == 0 ? '' : $orderLine->p9x }}</td> {{-- 40.5 --}}
+                                        <td>{{ $orderLine->p10 == 0 ? '' : $orderLine->p10 }}</td> {{-- 41 --}}
+                                        <td>{{ $orderLine->p10x == 0 ? '' : $orderLine->p10x }}</td> {{-- 41.5 --}}
+                                        <td>{{ $orderLine->p11 == 0 ? '' : $orderLine->p11 }}</td> {{-- 42 --}}
+                                        <td>{{ $orderLine->p11x == 0 ? '' : $orderLine->p11x }}</td> {{-- 42.5 --}}
+                                        <td>{{ $orderLine->p12 == 0 ? '' : $orderLine->p12 }}</td> {{-- 43 --}}
+                                        <td>{{ $orderLine->p12x == 0 ? '' : $orderLine->p12x }}</td> {{-- 43.5 --}}
+                                        <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td> {{-- 44 --}}
+                                        <td>{{ $orderLine->p13x == 0 ? '' : $orderLine->p13x }}</td> {{-- 44.5 --}}
+                                        <td>{{ $orderLine->p14 == 0 ? '' : $orderLine->p14 }}</td> {{-- 45 --}}
+                                        <td>{{ $orderLine->p15 == 0 ? '' : $orderLine->p15 }}</td> {{-- 46 --}}
+                                    @endif
                                     <td>{{ $orderLine->total_quantity }}</td>
                                 </tr>
                                 <tr>
