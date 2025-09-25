@@ -90,85 +90,85 @@
                                         $genre = $orderLine->genre ?? 'homme';
                                     @endphp
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>5,0</span>
+                                        <span class="anglais">4,0</span>
                                         <hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="pointure français">
                                             {{ $genre == 'femme' ? 35 : 38 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>5,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">4,5</span><hr>
+                                        <span class="français">x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>6,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">5,0</span><hr>
+                                        <span class="pointure français">
                                             {{ $genre == 'femme' ? 36 : 39 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>6,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">5,5</span><hr>
+                                        <span class="français">x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>7,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">6,0</span><hr>
+                                        <span class="pointure français">
                                             {{ $genre == 'femme' ? 37 : 40 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>7,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">6,5</span><hr>
+                                        <span class="français">x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>8,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">7,0</span><hr>
+                                        <span class="pointure français">
                                             {{ $genre == 'femme' ? 38 : 41 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>8,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">7,5</span><hr>
+                                        <span class="français">x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>9,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">8,0</span><hr>
+                                        <span class="pointure français">
                                             {{ $genre == 'femme' ? 39 : 42 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>9,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">8,5</span><hr>
+                                        <span class="français">x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>10,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">9,0</span><hr>
+                                        <span class="pointure français">
                                             {{ $genre == 'femme' ? 40 : 43 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>10,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">9,5</span><hr>
+                                        <span class="français">x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>11,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">10,0</span><hr>
+                                        <span class="pointure français">
                                             {{ $genre == 'femme' ? 41 : 44 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>11,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">10,5</span><hr>
+                                        <span class="français">x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>12,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">11,0</span><hr>
+                                        <span class="pointure français">
                                             {{ $genre == 'femme' ? 42 : 45 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>13,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">12,0</span><hr>
+                                        <span class="pointure français">
                                             {{ $genre == 'femme' ? 43 : 46 }}
                                         </span>
                                     </th>
@@ -348,85 +348,85 @@
                                     <th>{{ str_replace("(n)", "&", $order->code) }}</th>
                                     <th>{{ $orderLine->pointure ?? 'Pointure' }}</th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>5,0</span>
+                                        <span class="anglais">4,0</span>
                                         <hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="pointure français" >
                                             {{ $genre == 'femme' ? 35 : 38 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>5,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">4,5</span><hr>
+                                        <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>6,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">5,0</span><hr>
+                                        <span class="pointure français" >
                                             {{ $genre == 'femme' ? 36 : 39 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>6,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">5,5</span><hr>
+                                        <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>7,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">6,0</span><hr>
+                                        <span class="pointure français" >
                                             {{ $genre == 'femme' ? 37 : 40 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>7,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">6,5</span><hr>
+                                        <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>8,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">7,0</span><hr>
+                                        <span class="pointure français" >
                                             {{ $genre == 'femme' ? 38 : 41 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>8,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">7,5</span><hr>
+                                        <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>9,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">8,0</span><hr>
+                                        <span class="pointure français" >
                                             {{ $genre == 'femme' ? 39 : 42 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>9,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">8,5</span><hr>
+                                        <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>10,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">9,0</span><hr>
+                                        <span class="pointure français" >
                                             {{ $genre == 'femme' ? 40 : 43 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>10,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">9,5</span><hr>
+                                        <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>11,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">10,0</span><hr>
+                                        <span class="pointure français" >
                                             {{ $genre == 'femme' ? 41 : 44 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>11,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">10,5</span><hr>
+                                        <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>12,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">11,0</span><hr>
+                                        <span class="pointure français" >
                                             {{ $genre == 'femme' ? 42 : 45 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>13,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">12,0</span><hr>
+                                        <span class="pointure français" >
                                             {{ $genre == 'femme' ? 43 : 46 }}
                                         </span>
                                     </th>
@@ -504,85 +504,85 @@
                                     <th>{{ str_replace("(n)", "&", $order->code) }}</th>
                                     <th>{{ $orderLine->pointure ?? 'Pointure' }}</th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>5,0</span>
+                                        <span class="anglais">4,0</span>
                                         <hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="pointure français" >
                                             {{ $genre == 'femme' ? 35 : 38 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>5,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">4,5</span><hr>
+                                        <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>6,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">5,0</span><hr>
+                                        <span class="pointure français" >
                                             {{ $genre == 'femme' ? 36 : 39 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>6,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">5,5</span><hr>
+                                        <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>7,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">6,0</span><hr>
+                                        <span class="pointure français" >
                                             {{ $genre == 'femme' ? 37 : 40 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>7,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">6,5</span><hr>
+                                        <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>8,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">7,0</span><hr>
+                                        <span class="pointure français" >
                                             {{ $genre == 'femme' ? 38 : 41 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>8,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">7,5</span><hr>
+                                        <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>9,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">8,0</span><hr>
+                                        <span class="pointure français" >
                                             {{ $genre == 'femme' ? 39 : 42 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>9,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">8,5</span><hr>
+                                        <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>10,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">9,0</span><hr>
+                                        <span class="pointure français" >
                                             {{ $genre == 'femme' ? 40 : 43 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>10,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">9,5</span><hr>
+                                        <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>11,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">10,0</span><hr>
+                                        <span class="pointure français" >
                                             {{ $genre == 'femme' ? 41 : 44 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>11,5</span><hr>
-                                        <span class="français" @if($langue == 'anglais') style="display:none" @endif>x</span>
+                                        <span class="anglais">10,5</span><hr>
+                                        <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>12,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">11,0</span><hr>
+                                        <span class="pointure français" >
                                             {{ $genre == 'femme' ? 42 : 45 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais" @if($langue == 'français') style="display:none" @endif>13,0</span><hr>
-                                        <span class="pointure français" @if($langue == 'anglais') style="display:none" @endif>
+                                        <span class="anglais">12,0</span><hr>
+                                        <span class="pointure français" >
                                             {{ $genre == 'femme' ? 43 : 46 }}
                                         </span>
                                     </th>

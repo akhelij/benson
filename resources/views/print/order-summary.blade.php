@@ -136,10 +136,20 @@
                                             <th rowspan="2">Cuir dessus</th>
                                             <th rowspan="2" class="pointure"></th>
                                             <th rowspan="2">
-                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>5,0</span>
+                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>4,0</span>
                                                 <hr>
                                                 <span class="pointure français" @if($currentLanguage == 'anglais') style="display:none" @endif>
-                                                    {{ $currentGenre == 'femme' ? 35 : 39 }}
+                                                    {{ $currentGenre == 'femme' ? 35 : 38 }}
+                                                </span>
+                                            </th>
+                                            <th rowspan="2">
+                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>4,5</span><hr>
+                                                <span class="français" @if($currentLanguage == 'anglais') style="display:none" @endif>x</span>
+                                            </th>
+                                            <th rowspan="2">
+                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>5,0</span><hr>
+                                                <span class="pointure français" @if($currentLanguage == 'anglais') style="display:none" @endif>
+                                                    {{ $currentGenre == 'femme' ? 36 : 39 }}
                                                 </span>
                                             </th>
                                             <th rowspan="2">
@@ -149,7 +159,7 @@
                                             <th rowspan="2">
                                                 <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>6,0</span><hr>
                                                 <span class="pointure français" @if($currentLanguage == 'anglais') style="display:none" @endif>
-                                                    {{ $currentGenre == 'femme' ? 36 : 40 }}
+                                                    {{ $currentGenre == 'femme' ? 37 : 40 }}
                                                 </span>
                                             </th>
                                             <th rowspan="2">
@@ -159,7 +169,7 @@
                                             <th rowspan="2">
                                                 <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>7,0</span><hr>
                                                 <span class="pointure français" @if($currentLanguage == 'anglais') style="display:none" @endif>
-                                                    {{ $currentGenre == 'femme' ? 37 : 41 }}
+                                                    {{ $currentGenre == 'femme' ? 38 : 41 }}
                                                 </span>
                                             </th>
                                             <th rowspan="2">
@@ -169,7 +179,7 @@
                                             <th rowspan="2">
                                                 <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>8,0</span><hr>
                                                 <span class="pointure français" @if($currentLanguage == 'anglais') style="display:none" @endif>
-                                                    {{ $currentGenre == 'femme' ? 38 : 42 }}
+                                                    {{ $currentGenre == 'femme' ? 39 : 42 }}
                                                 </span>
                                             </th>
                                             <th rowspan="2">
@@ -179,7 +189,7 @@
                                             <th rowspan="2">
                                                 <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>9,0</span><hr>
                                                 <span class="pointure français" @if($currentLanguage == 'anglais') style="display:none" @endif>
-                                                    {{ $currentGenre == 'femme' ? 39 : 43 }}
+                                                    {{ $currentGenre == 'femme' ? 40 : 43 }}
                                                 </span>
                                             </th>
                                             <th rowspan="2">
@@ -189,7 +199,7 @@
                                             <th rowspan="2">
                                                 <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>10,0</span><hr>
                                                 <span class="pointure français" @if($currentLanguage == 'anglais') style="display:none" @endif>
-                                                    {{ $currentGenre == 'femme' ? 40 : 44 }}
+                                                    {{ $currentGenre == 'femme' ? 41 : 44 }}
                                                 </span>
                                             </th>
                                             <th rowspan="2">
@@ -199,23 +209,13 @@
                                             <th rowspan="2">
                                                 <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>11,0</span><hr>
                                                 <span class="pointure français" @if($currentLanguage == 'anglais') style="display:none" @endif>
-                                                    {{ $currentGenre == 'femme' ? 41 : 45 }}
+                                                    {{ $currentGenre == 'femme' ? 42 : 45 }}
                                                 </span>
-                                            </th>
-                                            <th rowspan="2">
-                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>11,5</span><hr>
-                                                <span class="français" @if($currentLanguage == 'anglais') style="display:none" @endif>x</span>
                                             </th>
                                             <th rowspan="2">
                                                 <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>12,0</span><hr>
                                                 <span class="pointure français" @if($currentLanguage == 'anglais') style="display:none" @endif>
-                                                    {{ $currentGenre == 'femme' ? 42 : 46 }}
-                                                </span>
-                                            </th>
-                                            <th rowspan="2">
-                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>13,0</span><hr>
-                                                <span class="pointure français" @if($currentLanguage == 'anglais') style="display:none" @endif>
-                                                    {{ $currentGenre == 'femme' ? 43 : 47 }}
+                                                    {{ $currentGenre == 'femme' ? 43 : 46 }}
                                                 </span>
                                             </th>
                                             <th rowspan="2">Total</th>
