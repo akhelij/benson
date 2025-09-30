@@ -199,22 +199,22 @@
                                         <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td> {{-- 43 --}}
                                     @else
                                         {{-- For men: sizes 38-46 use columns p7 to p15 --}}
-                                        <td>{{ $orderLine->p7 == 0 ? '' : $orderLine->p7 }}</td> {{-- 38 --}}
-                                        <td>{{ $orderLine->p7x == 0 ? '' : $orderLine->p7x }}</td> {{-- 38.5 --}}
-                                        <td>{{ $orderLine->p8 == 0 ? '' : $orderLine->p8 }}</td> {{-- 39 --}}
-                                        <td>{{ $orderLine->p8x == 0 ? '' : $orderLine->p8x }}</td> {{-- 39.5 --}}
-                                        <td>{{ $orderLine->p9 == 0 ? '' : $orderLine->p9 }}</td> {{-- 40 --}}
-                                        <td>{{ $orderLine->p9x == 0 ? '' : $orderLine->p9x }}</td> {{-- 40.5 --}}
-                                        <td>{{ $orderLine->p10 == 0 ? '' : $orderLine->p10 }}</td> {{-- 41 --}}
-                                        <td>{{ $orderLine->p10x == 0 ? '' : $orderLine->p10x }}</td> {{-- 41.5 --}}
-                                        <td>{{ $orderLine->p11 == 0 ? '' : $orderLine->p11 }}</td> {{-- 42 --}}
-                                        <td>{{ $orderLine->p11x == 0 ? '' : $orderLine->p11x }}</td> {{-- 42.5 --}}
-                                        <td>{{ $orderLine->p12 == 0 ? '' : $orderLine->p12 }}</td> {{-- 43 --}}
-                                        <td>{{ $orderLine->p12x == 0 ? '' : $orderLine->p12x }}</td> {{-- 43.5 --}}
-                                        <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td> {{-- 44 --}}
-                                        <td>{{ $orderLine->p13x == 0 ? '' : $orderLine->p13x }}</td> {{-- 44.5 --}}
-                                        <td>{{ $orderLine->p14 == 0 ? '' : $orderLine->p14 }}</td> {{-- 45 --}}
-                                        <td>{{ $orderLine->p15 == 0 ? '' : $orderLine->p15 }}</td> {{-- 46 --}}
+                                        <td>{{ $orderLine->p8 == 0 ? '' : $orderLine->p8 }}</td> {{-- 38 --}}
+                                        <td>{{ $orderLine->p8x == 0 ? '' : $orderLine->p8x }}</td> {{-- 38.5 --}}
+                                        <td>{{ $orderLine->p9 == 0 ? '' : $orderLine->p9 }}</td> {{-- 39 --}}
+                                        <td>{{ $orderLine->p9x == 0 ? '' : $orderLine->p9x }}</td> {{-- 39.5 --}}
+                                        <td>{{ $orderLine->p10 == 0 ? '' : $orderLine->p10 }}</td> {{-- 40 --}}
+                                        <td>{{ $orderLine->p10x == 0 ? '' : $orderLine->p10x }}</td> {{-- 40.5 --}}
+                                        <td>{{ $orderLine->p11 == 0 ? '' : $orderLine->p11 }}</td> {{-- 41 --}}
+                                        <td>{{ $orderLine->p11x == 0 ? '' : $orderLine->p11x }}</td> {{-- 41.5 --}}
+                                        <td>{{ $orderLine->p12 == 0 ? '' : $orderLine->p12 }}</td> {{-- 42 --}}
+                                        <td>{{ $orderLine->p12x == 0 ? '' : $orderLine->p12x }}</td> {{-- 42.5 --}}
+                                        <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td> {{-- 43 --}}
+                                        <td>{{ $orderLine->p13x == 0 ? '' : $orderLine->p13x }}</td> {{-- 43.5 --}}
+                                        <td>{{ $orderLine->p14 == 0 ? '' : $orderLine->p14 }}</td> {{-- 44 --}}
+                                        <td>{{ $orderLine->p14x == 0 ? '' : $orderLine->p14x }}</td> {{-- 44.5 --}}
+                                        <td>{{ $orderLine->p15 == 0 ? '' : $orderLine->p15 }}</td> {{-- 45 --}}
+                                        <td>{{ $orderLine->p16 == 0 ? '' : $orderLine->p16 }}</td> {{-- 46 --}}
                                     @endif
                                     <td>{{ $orderLine->total_quantity }}</td>
                                 </tr>
