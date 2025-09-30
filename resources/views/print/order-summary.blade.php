@@ -134,7 +134,7 @@
                                             <th rowspan="2">Article</th>
                                             <th rowspan="2">Semelle</th>
                                             <th rowspan="2">Cuir dessus</th>
-                                            <th rowspan="2" class="pointure"></th>
+                                            <th rowspan="2" class="pointure">Pointure</th>
                                             <th rowspan="2">
                                                 <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>4,0</span>
                                                 <hr>
@@ -212,6 +212,12 @@
                                                     {{ $currentGenre == 'femme' ? 42 : 45 }}
                                                 </span>
                                             </th>
+                                            @if($currentGenre == 'homme')
+                                            <th rowspan="2">
+                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>11,5</span><hr>
+                                                <span class="français" @if($currentLanguage == 'anglais') style="display:none" @endif>x</span>
+                                            </th>
+                                            @endif
                                             <th rowspan="2">
                                                 <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>12,0</span><hr>
                                                 <span class="pointure français" @if($currentLanguage == 'anglais') style="display:none" @endif>
@@ -230,26 +236,47 @@
                                     @endif
                                     
                                     <tr>
-                                        <td>{{ $ligne->forme }}/{{ $ligne->article }}</td>
-                                        <td>{{ $ligne->semelle }} {{ $ligne->construction }}</td>
-                                        <td>{{ $ligne->cuir }}</td>
-                                        <td>{{ $ligne->vpointure ?? '' }}</td>
-                                        <td>{{ $ligne->p5 == 0 ? '' : $ligne->p5 }}</td>
-                                        <td>{{ $ligne->p5x == 0 ? '' : $ligne->p5x }}</td>
-                                        <td>{{ $ligne->p6 == 0 ? '' : $ligne->p6 }}</td>
-                                        <td>{{ $ligne->p6x == 0 ? '' : $ligne->p6x }}</td>
-                                        <td>{{ $ligne->p7 == 0 ? '' : $ligne->p7 }}</td>
-                                        <td>{{ $ligne->p7x == 0 ? '' : $ligne->p7x }}</td>
-                                        <td>{{ $ligne->p8 == 0 ? '' : $ligne->p8 }}</td>
-                                        <td>{{ $ligne->p8x == 0 ? '' : $ligne->p8x }}</td>
-                                        <td>{{ $ligne->p9 == 0 ? '' : $ligne->p9 }}</td>
-                                        <td>{{ $ligne->p9x == 0 ? '' : $ligne->p9x }}</td>
-                                        <td>{{ $ligne->p10 == 0 ? '' : $ligne->p10 }}</td>
-                                        <td>{{ $ligne->p10x == 0 ? '' : $ligne->p10x }}</td>
-                                        <td>{{ $ligne->p11 == 0 ? '' : $ligne->p11 }}</td>
-                                        <td>{{ $ligne->p11x == 0 ? '' : $ligne->p11x }}</td>
-                                        <td>{{ $ligne->p12 == 0 ? '' : $ligne->p12 }}</td>
-                                        <td>{{ $ligne->p13 == 0 ? '' : $ligne->p13 }}</td>
+                                        <td>{{ $ligne->formeItem->nom ?? $ligne->forme }}/{{ $ligne->articleItem->nom ?? $ligne->article }}</td>
+                                        <td>{{ $ligne->semelleItem->nom ?? $ligne->semelle }} {{ $ligne->constructionItem->nom ?? $ligne->construction }}</td>
+                                        <td>{{ $ligne->cuirItem->nom ?? $ligne->cuir }}</td>
+                                        <td></td> {{-- Pointure column is always empty --}}
+                                        @if($ligne->genre == 'femme')
+                                            {{-- For women: sizes 35-43 use columns p5 to p13 --}}
+                                            <td>{{ $ligne->p5 == 0 ? '' : $ligne->p5 }}</td> {{-- 35 --}}
+                                            <td>{{ $ligne->p5x == 0 ? '' : $ligne->p5x }}</td> {{-- 35.5 --}}
+                                            <td>{{ $ligne->p6 == 0 ? '' : $ligne->p6 }}</td> {{-- 36 --}}
+                                            <td>{{ $ligne->p6x == 0 ? '' : $ligne->p6x }}</td> {{-- 36.5 --}}
+                                            <td>{{ $ligne->p7 == 0 ? '' : $ligne->p7 }}</td> {{-- 37 --}}
+                                            <td>{{ $ligne->p7x == 0 ? '' : $ligne->p7x }}</td> {{-- 37.5 --}}
+                                            <td>{{ $ligne->p8 == 0 ? '' : $ligne->p8 }}</td> {{-- 38 --}}
+                                            <td>{{ $ligne->p8x == 0 ? '' : $ligne->p8x }}</td> {{-- 38.5 --}}
+                                            <td>{{ $ligne->p9 == 0 ? '' : $ligne->p9 }}</td> {{-- 39 --}}
+                                            <td>{{ $ligne->p9x == 0 ? '' : $ligne->p9x }}</td> {{-- 39.5 --}}
+                                            <td>{{ $ligne->p10 == 0 ? '' : $ligne->p10 }}</td> {{-- 40 --}}
+                                            <td>{{ $ligne->p10x == 0 ? '' : $ligne->p10x }}</td> {{-- 40.5 --}}
+                                            <td>{{ $ligne->p11 == 0 ? '' : $ligne->p11 }}</td> {{-- 41 --}}
+                                            <td>{{ $ligne->p11x == 0 ? '' : $ligne->p11x }}</td> {{-- 41.5 --}}
+                                            <td>{{ $ligne->p12 == 0 ? '' : $ligne->p12 }}</td> {{-- 42 --}}
+                                            <td>{{ $ligne->p13 == 0 ? '' : $ligne->p13 }}</td> {{-- 43 --}}
+                                        @else
+                                            {{-- For men: sizes 38-46 use columns p7 to p16 --}}
+                                            <td>{{ $ligne->p7 == 0 ? '' : $ligne->p7 }}</td> {{-- 38 --}}
+                                            <td>{{ $ligne->p7x == 0 ? '' : $ligne->p7x }}</td> {{-- 38.5 --}}
+                                            <td>{{ $ligne->p8 == 0 ? '' : $ligne->p8 }}</td> {{-- 39 --}}
+                                            <td>{{ $ligne->p8x == 0 ? '' : $ligne->p8x }}</td> {{-- 39.5 --}}
+                                            <td>{{ $ligne->p9 == 0 ? '' : $ligne->p9 }}</td> {{-- 40 --}}
+                                            <td>{{ $ligne->p9x == 0 ? '' : $ligne->p9x }}</td> {{-- 40.5 --}}
+                                            <td>{{ $ligne->p10 == 0 ? '' : $ligne->p10 }}</td> {{-- 41 --}}
+                                            <td>{{ $ligne->p10x == 0 ? '' : $ligne->p10x }}</td> {{-- 41.5 --}}
+                                            <td>{{ $ligne->p11 == 0 ? '' : $ligne->p11 }}</td> {{-- 42 --}}
+                                            <td>{{ $ligne->p11x == 0 ? '' : $ligne->p11x }}</td> {{-- 42.5 --}}
+                                            <td>{{ $ligne->p12 == 0 ? '' : $ligne->p12 }}</td> {{-- 43 --}}
+                                            <td>{{ $ligne->p12x == 0 ? '' : $ligne->p12x }}</td> {{-- 43.5 --}}
+                                            <td>{{ $ligne->p13 == 0 ? '' : $ligne->p13 }}</td> {{-- 44 --}}
+                                            <td>{{ $ligne->p13x == 0 ? '' : $ligne->p13x }}</td> {{-- 44.5 --}}
+                                            <td>{{ $ligne->p14 == 0 ? '' : $ligne->p14 }}</td> {{-- 45 --}}
+                                            <td>{{ $ligne->p16 == 0 ? '' : $ligne->p16 }}</td> {{-- 46 --}}
+                                        @endif
                                         <td>{{ $ligne->total_quantity }}</td>
                                         <td></td>
                                         <td></td>
@@ -258,9 +285,13 @@
                                     </tr>
                                     <tr>
                                         <td>{{ $ligne->client }}</td>
-                                        <td></td>
-                                        <td>{{ $ligne->supplement }}</td>
-                                        <td colspan="22"></td>
+                                        <td>{{ $ligne->doublureItem->nom ?? $ligne->doublure }}</td>
+                                        <td>{{ $ligne->supplementItem->nom ?? $ligne->supplement }}</td>
+                                        @if($ligne->genre == 'femme')
+                                            <td colspan="21"></td>
+                                        @else
+                                            <td colspan="22"></td>
+                                        @endif
                                     </tr>
                                 @endforeach
                                 
@@ -277,14 +308,5 @@
         </div>
     </div>
 
-    <script>
-        // Set the pointure header dynamically
-        document.addEventListener('DOMContentLoaded', function() {
-            var pointureElements = document.getElementsByClassName("pointure");
-            if (pointureElements.length > 0 && {{ $order->orderLines->count() }} > 0) {
-                pointureElements[0].innerHTML = "{{ $order->orderLines->first()->pointure ?? 'Pointure' }}";
-            }
-        });
-    </script>
 </body>
 </html>
