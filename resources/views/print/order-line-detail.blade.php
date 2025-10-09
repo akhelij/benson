@@ -75,16 +75,15 @@
                                 <tr style="background-color: #fff !important">
                                     <td>Code N°</td>
                                     <td>{{ str_replace("(n)", "&", $order->code) }}</td>
-                                    <td colspan="4">{{ $orderLine->formeItem->nom ?? $orderLine->forme }}/{{ $orderLine->articleItem->nom ?? $orderLine->article }}{{ isset($orderLine->client) ? " - " . $orderLine->client : '' }}</td>
-                                    <td colspan="5">{{ $orderLine->semelleItem->nom ?? $orderLine->semelle }}/{{ $orderLine->constructionItem->nom ?? $orderLine->construction }}</td>
-                                    <td colspan="4">{{ $orderLine->cuirItem->nom ?? $orderLine->cuir }}/{{ $orderLine->doublureItem->nom ?? $orderLine->doublure }}</td>
+                                    <td colspan="5">{{ $orderLine->formeItem->nom ?? $orderLine->forme }}/{{ $orderLine->articleItem->nom ?? $orderLine->article }}{{ isset($orderLine->client) ? " - " . $orderLine->client : '' }}</td>
+                                    <td colspan="4">{{ $orderLine->semelleItem->nom ?? $orderLine->semelle }}/{{ $orderLine->constructionItem->nom ?? $orderLine->construction }}</td>
+                                    <td colspan="5">{{ $orderLine->cuirItem->nom ?? $orderLine->cuir }}/{{ $orderLine->doublureItem->nom ?? $orderLine->doublure }}</td>
                                     <td colspan="5">{{ $orderLine->supplementItem->nom ?? $orderLine->supplement }}</td>
                                 </tr>
                                 
                                 <tr style="background-color: #fff !important">
                                     <th>Date de livraison</th>
                                     <th>{{ $order->livraison ? $order->livraison->format('Y-m-d') : '' }}</th>
-                                    <th>{{ $orderLine->pointure ?? 'Pointure' }}</th>
                                     @php
                                         $langue = $orderLine->langue ?? 'français';
                                         $genre = $orderLine->genre ?? 'homme';
@@ -167,9 +166,19 @@
                                         </span>
                                     </th>
                                     <th class="size-header">
+                                        <span class="anglais">11,5</span><hr>
+                                        <span class="français">x</span>
+                                    </th>
+                                    <th class="size-header">
                                         <span class="anglais">12,0</span><hr>
                                         <span class="pointure français">
                                             {{ $genre == 'femme' ? 43 : 46 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais">13,0</span><hr>
+                                        <span class="pointure français">
+                                            {{ $genre == 'femme' ? 44 : 47 }}
                                         </span>
                                     </th>
                                     <th>Total</th>
@@ -178,7 +187,6 @@
                                 <tr>
                                     <td>Talon</td>
                                     <td>{{ $orderLine->talon }}</td>
-                                    <td></td> {{-- Pointure column is always empty --}}
                                     @if($genre == 'femme')
                                         {{-- For women: sizes 35-43 use columns p5 to p13 --}}
                                         <td>{{ $orderLine->p5 == 0 ? '' : $orderLine->p5 }}</td> {{-- 35 --}}
@@ -196,25 +204,29 @@
                                         <td>{{ $orderLine->p11 == 0 ? '' : $orderLine->p11 }}</td> {{-- 41 --}}
                                         <td>{{ $orderLine->p11x == 0 ? '' : $orderLine->p11x }}</td> {{-- 41.5 --}}
                                         <td>{{ $orderLine->p12 == 0 ? '' : $orderLine->p12 }}</td> {{-- 42 --}}
-                                        <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td> {{-- 43 --}}
-                                    @else
-                                        {{-- For men: sizes 38-46 use columns p7 to p15 --}}
-                                        <td>{{ $orderLine->p8 == 0 ? '' : $orderLine->p8 }}</td> {{-- 38 --}}
-                                        <td>{{ $orderLine->p8x == 0 ? '' : $orderLine->p8x }}</td> {{-- 38.5 --}}
-                                        <td>{{ $orderLine->p9 == 0 ? '' : $orderLine->p9 }}</td> {{-- 39 --}}
-                                        <td>{{ $orderLine->p9x == 0 ? '' : $orderLine->p9x }}</td> {{-- 39.5 --}}
-                                        <td>{{ $orderLine->p10 == 0 ? '' : $orderLine->p10 }}</td> {{-- 40 --}}
-                                        <td>{{ $orderLine->p10x == 0 ? '' : $orderLine->p10x }}</td> {{-- 40.5 --}}
-                                        <td>{{ $orderLine->p11 == 0 ? '' : $orderLine->p11 }}</td> {{-- 41 --}}
-                                        <td>{{ $orderLine->p11x == 0 ? '' : $orderLine->p11x }}</td> {{-- 41.5 --}}
-                                        <td>{{ $orderLine->p12 == 0 ? '' : $orderLine->p12 }}</td> {{-- 42 --}}
                                         <td>{{ $orderLine->p12x == 0 ? '' : $orderLine->p12x }}</td> {{-- 42.5 --}}
                                         <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td> {{-- 43 --}}
-                                        <td>{{ $orderLine->p13x == 0 ? '' : $orderLine->p13x }}</td> {{-- 43.5 --}}
                                         <td>{{ $orderLine->p14 == 0 ? '' : $orderLine->p14 }}</td> {{-- 44 --}}
-                                        <td>{{ $orderLine->p14x == 0 ? '' : $orderLine->p14x }}</td> {{-- 44.5 --}}
-                                        <td>{{ $orderLine->p15 == 0 ? '' : $orderLine->p15 }}</td> {{-- 45 --}}
-                                        <td>{{ $orderLine->p16 == 0 ? '' : $orderLine->p16 }}</td> {{-- 46 --}}
+                                    @else
+                                        {{-- For men: sizes 38-47 use columns p7 to p16 --}}
+                                        <td>{{ $orderLine->p7 == 0 ? '' : $orderLine->p7 }}</td> {{-- 38 --}}
+                                        <td>{{ $orderLine->p7x == 0 ? '' : $orderLine->p7x }}</td> {{-- 38.5 --}}
+                                        <td>{{ $orderLine->p8 == 0 ? '' : $orderLine->p8 }}</td> {{-- 39 --}}
+                                        <td>{{ $orderLine->p8x == 0 ? '' : $orderLine->p8x }}</td> {{-- 39.5 --}}
+                                        <td>{{ $orderLine->p9 == 0 ? '' : $orderLine->p9 }}</td> {{-- 40 --}}
+                                        <td>{{ $orderLine->p9x == 0 ? '' : $orderLine->p9x }}</td> {{-- 40.5 --}}
+                                        <td>{{ $orderLine->p10 == 0 ? '' : $orderLine->p10 }}</td> {{-- 41 --}}
+                                        <td>{{ $orderLine->p10x == 0 ? '' : $orderLine->p10x }}</td> {{-- 41.5 --}}
+                                        <td>{{ $orderLine->p11 == 0 ? '' : $orderLine->p11 }}</td> {{-- 42 --}}
+                                        <td>{{ $orderLine->p11x == 0 ? '' : $orderLine->p11x }}</td> {{-- 42.5 --}}
+                                        <td>{{ $orderLine->p12 == 0 ? '' : $orderLine->p12 }}</td> {{-- 43 --}}
+                                        <td>{{ $orderLine->p12x == 0 ? '' : $orderLine->p12x }}</td> {{-- 43.5 --}}
+                                        <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td> {{-- 44 --}}
+                                        <td>{{ $orderLine->p13x == 0 ? '' : $orderLine->p13x }}</td> {{-- 44.5 --}}
+                                        <td>{{ $orderLine->p14 == 0 ? '' : $orderLine->p14 }}</td> {{-- 45 --}}
+                                        <td>{{ $orderLine->p14x == 0 ? '' : $orderLine->p14x }}</td> {{-- 45.5 --}}
+                                        <td>{{ $orderLine->p15 == 0 ? '' : $orderLine->p15 }}</td> {{-- 46 --}}
+                                        <td>{{ $orderLine->p16 == 0 ? '' : $orderLine->p16 }}</td> {{-- 47 --}}
                                     @endif
                                     <td>{{ $orderLine->total_quantity }}</td>
                                 </tr>
@@ -239,7 +251,7 @@
                                             <div style="width: 200px; height: 150px; border: 1px dashed #ccc; display: flex; align-items: center; justify-content: center; font-size: 12px;">Image Produit</div>
                                         @endif
                                     </td>
-                                    <td colspan="6" rowspan="3" align="center" style="background-color: #ccc">
+                                    <td colspan="7" rowspan="3" align="center" style="background-color: #ccc">
                                         <label>Logo 1ere</label><br>
                                         @if($order->logo1)
                                             <img src="{{ asset('storage/' . $order->logo1) }}" class="logo-img" alt="Logo 1">
@@ -259,7 +271,7 @@
                                 <tr>
                                     <td>Perforation</td>
                                     <td>{{ $orderLine->perforation == 1 ? 'oui' : 'sans' }}</td>
-                                    <td colspan="6" rowspan="3" align="center" style="background-color: #ccc">
+                                    <td colspan="7" rowspan="3" align="center" style="background-color: #ccc">
                                         <label>Logo Semelle</label><br>
                                         @if($order->logo)
                                             <img src="{{ asset('storage/' . $order->logo) }}" class="logo-img" alt="Logo Semelle">
@@ -337,16 +349,15 @@
                             <tbody>
                                 <tr style="background-color: #fff !important">
                                     <td colspan="2">Fiche de piquage</td>
-                                    <td colspan="4">{{ $orderLine->formeItem->nom ?? $orderLine->forme }}/{{ $orderLine->articleItem->nom ?? $orderLine->article }}</td>
+                                    <td colspan="5">{{ $orderLine->formeItem->nom ?? $orderLine->forme }}/{{ $orderLine->articleItem->nom ?? $orderLine->article }}</td>
                                     <td colspan="5">{{ $orderLine->semelleItem->nom ?? $orderLine->semelle }}/{{ $orderLine->constructionItem->nom ?? $orderLine->construction }}</td>
-                                    <td colspan="4">{{ $orderLine->cuirItem->nom ?? $orderLine->cuir }}/{{ $orderLine->doublureItem->nom ?? $orderLine->doublure }}</td>
+                                    <td colspan="5">{{ $orderLine->cuirItem->nom ?? $orderLine->cuir }}/{{ $orderLine->doublureItem->nom ?? $orderLine->doublure }}</td>
                                     <td colspan="5">{{ $orderLine->supplementItem->nom ?? $orderLine->supplement }}</td>
                                 </tr>
                                 
                                 <tr style="background-color: #fff !important">
                                     <th>Code N°</th>
                                     <th>{{ str_replace("(n)", "&", $order->code) }}</th>
-                                    <th>{{ $orderLine->pointure ?? 'Pointure' }}</th>
                                     <th class="size-header">
                                         <span class="anglais">4,0</span>
                                         <hr>
@@ -420,14 +431,24 @@
                                     </th>
                                     <th class="size-header">
                                         <span class="anglais">11,0</span><hr>
-                                        <span class="pointure français" >
+                                        <span class="pointure français">
                                             {{ $genre == 'femme' ? 42 : 45 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
+                                        <span class="anglais">11,5</span><hr>
+                                        <span class="français">x</span>
+                                    </th>
+                                    <th class="size-header">
                                         <span class="anglais">12,0</span><hr>
-                                        <span class="pointure français" >
+                                        <span class="pointure français">
                                             {{ $genre == 'femme' ? 43 : 46 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais">13,0</span><hr>
+                                        <span class="pointure français">
+                                            {{ $genre == 'femme' ? 44 : 47 }}
                                         </span>
                                     </th>
                                     <th>Total</th>
@@ -436,7 +457,6 @@
                                 <tr>
                                     <td>Date de livraison</td>
                                     <td>{{ $order->livraison ? $order->livraison->format('Y-m-d') : '' }}</td>
-                                    <td></td> {{-- Pointure column is always empty --}}
                                     @if($genre == 'femme')
                                         {{-- For women: sizes 35-43 use columns p5 to p13 --}}
                                         <td>{{ $orderLine->p5 == 0 ? '' : $orderLine->p5 }}</td> {{-- 35 --}}
@@ -454,9 +474,10 @@
                                         <td>{{ $orderLine->p11 == 0 ? '' : $orderLine->p11 }}</td> {{-- 41 --}}
                                         <td>{{ $orderLine->p11x == 0 ? '' : $orderLine->p11x }}</td> {{-- 41.5 --}}
                                         <td>{{ $orderLine->p12 == 0 ? '' : $orderLine->p12 }}</td> {{-- 42 --}}
+                                        <td>{{ $orderLine->p12x == 0 ? '' : $orderLine->p12x }}</td> {{-- 42.5 --}}
                                         <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td> {{-- 43 --}}
                                     @else
-                                        {{-- For men: sizes 38-46 use columns p7 to p15 --}}
+                                        {{-- For men: sizes 38-47 use columns p7 to p16 --}}
                                         <td>{{ $orderLine->p7 == 0 ? '' : $orderLine->p7 }}</td> {{-- 38 --}}
                                         <td>{{ $orderLine->p7x == 0 ? '' : $orderLine->p7x }}</td> {{-- 38.5 --}}
                                         <td>{{ $orderLine->p8 == 0 ? '' : $orderLine->p8 }}</td> {{-- 39 --}}
@@ -472,7 +493,9 @@
                                         <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td> {{-- 44 --}}
                                         <td>{{ $orderLine->p13x == 0 ? '' : $orderLine->p13x }}</td> {{-- 44.5 --}}
                                         <td>{{ $orderLine->p14 == 0 ? '' : $orderLine->p14 }}</td> {{-- 45 --}}
+                                        <td>{{ $orderLine->p14x == 0 ? '' : $orderLine->p14x }}</td> {{-- 45.5 --}}
                                         <td>{{ $orderLine->p15 == 0 ? '' : $orderLine->p15 }}</td> {{-- 46 --}}
+                                        <td>{{ $orderLine->p16 == 0 ? '' : $orderLine->p16 }}</td> {{-- 47 --}}
                                     @endif
                                     <td>{{ $orderLine->total_quantity }}</td>
                                 </tr>
@@ -482,7 +505,7 @@
                                     <td colspan="4" align="center">Couleur du fil</td>
                                     <td colspan="5" align="center"></td>
                                     <td colspan="4" align="center">Bout Dur</td>
-                                    <td colspan="5" align="center"></td>
+                                    <td colspan="6" align="center"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -502,7 +525,6 @@
                                 <tr style="background-color: #fff !important">
                                     <th>Code N°</th>
                                     <th>{{ str_replace("(n)", "&", $order->code) }}</th>
-                                    <th>{{ $orderLine->pointure ?? 'Pointure' }}</th>
                                     <th class="size-header">
                                         <span class="anglais">4,0</span>
                                         <hr>
@@ -576,14 +598,24 @@
                                     </th>
                                     <th class="size-header">
                                         <span class="anglais">11,0</span><hr>
-                                        <span class="pointure français" >
+                                        <span class="pointure français">
                                             {{ $genre == 'femme' ? 42 : 45 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
+                                        <span class="anglais">11,5</span><hr>
+                                        <span class="français">x</span>
+                                    </th>
+                                    <th class="size-header">
                                         <span class="anglais">12,0</span><hr>
-                                        <span class="pointure français" >
+                                        <span class="pointure français">
                                             {{ $genre == 'femme' ? 43 : 46 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais">13,0</span><hr>
+                                        <span class="pointure français">
+                                            {{ $genre == 'femme' ? 44 : 47 }}
                                         </span>
                                     </th>
                                     <th>Total</th>
@@ -591,7 +623,6 @@
                                 <tr>
                                     <td>Date de livraison</td>
                                     <td>{{ $order->livraison ? $order->livraison->format('Y-m-d') : '' }}</td>
-                                    <td></td> {{-- Pointure column is always empty --}}
                                     @if($genre == 'femme')
                                         {{-- For women: sizes 35-43 use columns p5 to p13 --}}
                                         <td>{{ $orderLine->p5 == 0 ? '' : $orderLine->p5 }}</td> {{-- 35 --}}
@@ -609,9 +640,11 @@
                                         <td>{{ $orderLine->p11 == 0 ? '' : $orderLine->p11 }}</td> {{-- 41 --}}
                                         <td>{{ $orderLine->p11x == 0 ? '' : $orderLine->p11x }}</td> {{-- 41.5 --}}
                                         <td>{{ $orderLine->p12 == 0 ? '' : $orderLine->p12 }}</td> {{-- 42 --}}
+                                        <td>{{ $orderLine->p12x == 0 ? '' : $orderLine->p12x }}</td> {{-- 42.5 --}}
                                         <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td> {{-- 43 --}}
+                                        <td>{{ $orderLine->p14 == 0 ? '' : $orderLine->p14 }}</td> {{-- 44 --}}
                                     @else
-                                        {{-- For men: sizes 38-46 use columns p7 to p15 --}}
+                                        {{-- For men: sizes 38-47 use columns p7 to p16 --}}
                                         <td>{{ $orderLine->p7 == 0 ? '' : $orderLine->p7 }}</td> {{-- 38 --}}
                                         <td>{{ $orderLine->p7x == 0 ? '' : $orderLine->p7x }}</td> {{-- 38.5 --}}
                                         <td>{{ $orderLine->p8 == 0 ? '' : $orderLine->p8 }}</td> {{-- 39 --}}
@@ -627,39 +660,38 @@
                                         <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td> {{-- 44 --}}
                                         <td>{{ $orderLine->p13x == 0 ? '' : $orderLine->p13x }}</td> {{-- 44.5 --}}
                                         <td>{{ $orderLine->p14 == 0 ? '' : $orderLine->p14 }}</td> {{-- 45 --}}
+                                        <td>{{ $orderLine->p14x == 0 ? '' : $orderLine->p14x }}</td> {{-- 45.5 --}}
                                         <td>{{ $orderLine->p15 == 0 ? '' : $orderLine->p15 }}</td> {{-- 46 --}}
+                                        <td>{{ $orderLine->p16 == 0 ? '' : $orderLine->p16 }}</td> {{-- 47 --}}
                                     @endif
                                     <td>{{ $orderLine->total_quantity }}</td>
                                 </tr>
                                 <tr>
                                     <td>Nom du coupeur</td>
-                                    <td colspan="2"></td>
-                                    <td colspan="4" align="center">Surface allouée</td>
-                                    <td colspan="5" align="center">Retour cuir</td>
-                                    <td colspan="4" align="center">Consommation</td>
-                                    <td colspan="5" align="center"></td>
+                                    <td colspan="1"></td>
+                                    <td colspan="7" align="center">Surface allouée</td>
+                                    <td colspan="7" align="center">Retour cuir</td>
+                                    <td colspan="7" align="center">Consommation</td>
                                 </tr>
                                 <tr>
                                     <td><strong>P.C.E.P</strong></td>
-                                    <td colspan="2"></td>
-                                    <td colspan="2" align="center" style="border-right: 1px solid #ddd;">Cuir Tige</td>
-                                    <td colspan="2" align="center">Doublure</td>
-                                    <td colspan="2" align="center" style="border-right: 1px solid #ddd;">Cuir Tige</td>
+                                    <td colspan="1"></td>
+                                    <td colspan="4" align="center" style="border-right: 1px solid #ddd;">Cuir Tige</td>
                                     <td colspan="3" align="center">Doublure</td>
-                                    <td colspan="2" align="center" style="border-right: 1px solid #ddd;">Cuir Tige</td>
-                                    <td colspan="2" align="center">Doublure</td>
-                                    <td colspan="5" align="center"></td>
+                                    <td colspan="4" align="center" style="border-right: 1px solid #ddd;">Cuir Tige</td>
+                                    <td colspan="3" align="center">Doublure</td>
+                                    <td colspan="4" align="center" style="border-right: 1px solid #ddd;">Cuir Tige</td>
+                                    <td colspan="3" align="center">Doublure</td>
                                 </tr>
                                 <tr>
                                     <td><strong>P.C.M</strong></td>
-                                    <td colspan="2"></td>
-                                    <td colspan="2" align="center" style="border-right: 1px solid #ddd;"></td>
-                                    <td colspan="2" align="center"></td>
-                                    <td colspan="2" align="center" style="border-right: 1px solid #ddd;"></td>
+                                    <td colspan="1"></td>
+                                    <td colspan="4" align="center" style="border-right: 1px solid #ddd;"></td>
                                     <td colspan="3" align="center"></td>
-                                    <td colspan="2" align="center" style="border-right: 1px solid #ddd;"></td>
-                                    <td colspan="2" align="center"></td>
-                                    <td colspan="5" align="center"></td>
+                                    <td colspan="4" align="center" style="border-right: 1px solid #ddd;"></td>
+                                    <td colspan="3" align="center"></td>
+                                    <td colspan="4" align="center" style="border-right: 1px solid #ddd;"></td>
+                                    <td colspan="3" align="center"></td>
                                 </tr>
                             </tbody>
                         </table>

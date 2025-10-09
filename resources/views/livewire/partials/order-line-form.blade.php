@@ -271,6 +271,7 @@
                                        type="number" 
                                        min="0"
                                        max="999"
+                                       id="size_{{ $currentGenre }}_{{ $sizes['db'] }}"
                                        class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                                        placeholder="0">
                             </td>
