@@ -396,7 +396,11 @@ class OrderManagement extends Component
         // Calculate total quantity
         $totalQuantity = 0;
         foreach (OrderLine::SIZE_COLUMNS as $column) {
-            $totalQuantity += $this->currentLine[$column] ?? 0;
+            $value = $this->currentLine[$column] ?? 0;
+            // Filter and convert to int
+            $totalQuantity += filter_var($value, FILTER_VALIDATE_INT) !== false 
+                ? (int)$value 
+                : 0;
         }
         
         if ($totalQuantity == 0) {
