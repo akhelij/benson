@@ -113,7 +113,7 @@
                             <tbody>
                                 <tr>
                                     <td colspan="11">Note : {{ $order->notes }}</td>
-                                    <td colspan="14">Transport terms : {{ $order->transort }}</td>
+                                    <td colspan="15">Transport terms : {{ $order->transort }}</td>
                                 </tr>
                                 
                                 @php
@@ -134,100 +134,104 @@
                                             <th rowspan="2">Article</th>
                                             <th rowspan="2">Semelle</th>
                                             <th rowspan="2">Cuir dessus</th>
-                                            <th rowspan="2" class="pointure">Pointure</th>
-                                            <th rowspan="2">
-                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>4,0</span>
+                                            <th class="size-header">
+                                                <span class="anglais">4,0</span>
                                                 <hr>
-                                                <span class="pointure français" @if($currentLanguage == 'anglais') style="display:none" @endif>
-                                                    {{ $currentGenre == 'femme' ? 35 : 38 }}
+                                                <span class="pointure français" >
+                                                    {{ $ligne->genre == 'femme' ? 35 : 38 }}
                                                 </span>
                                             </th>
-                                            <th rowspan="2">
-                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>4,5</span><hr>
-                                                <span class="français" @if($currentLanguage == 'anglais') style="display:none" @endif>x</span>
+                                            <th class="size-header">
+                                                <span class="anglais">4,5</span><hr>
+                                                <span class="français" >x</span>
                                             </th>
-                                            <th rowspan="2">
-                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>5,0</span><hr>
-                                                <span class="pointure français" @if($currentLanguage == 'anglais') style="display:none" @endif>
-                                                    {{ $currentGenre == 'femme' ? 36 : 39 }}
+                                            <th class="size-header">
+                                                <span class="anglais">5,0</span><hr>
+                                                <span class="pointure français" >
+                                                    {{ $ligne->genre == 'femme' ? 36 : 39 }}
                                                 </span>
                                             </th>
-                                            <th rowspan="2">
-                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>5,5</span><hr>
-                                                <span class="français" @if($currentLanguage == 'anglais') style="display:none" @endif>x</span>
+                                            <th class="size-header">
+                                                <span class="anglais">5,5</span><hr>
+                                                <span class="français" >x</span>
                                             </th>
-                                            <th rowspan="2">
-                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>6,0</span><hr>
-                                                <span class="pointure français" @if($currentLanguage == 'anglais') style="display:none" @endif>
-                                                    {{ $currentGenre == 'femme' ? 37 : 40 }}
+                                            <th class="size-header">
+                                                <span class="anglais">6,0</span><hr>
+                                                <span class="pointure français" >
+                                                    {{ $ligne->genre == 'femme' ? 37 : 40 }}
                                                 </span>
                                             </th>
-                                            <th rowspan="2">
-                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>6,5</span><hr>
-                                                <span class="français" @if($currentLanguage == 'anglais') style="display:none" @endif>x</span>
+                                            <th class="size-header">
+                                                <span class="anglais">6,5</span><hr>
+                                                <span class="français" >x</span>
                                             </th>
-                                            <th rowspan="2">
-                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>7,0</span><hr>
-                                                <span class="pointure français" @if($currentLanguage == 'anglais') style="display:none" @endif>
-                                                    {{ $currentGenre == 'femme' ? 38 : 41 }}
+                                            <th class="size-header">
+                                                <span class="anglais">7,0</span><hr>
+                                                <span class="pointure français" >
+                                                    {{ $ligne->genre == 'femme' ? 38 : 41 }}
                                                 </span>
                                             </th>
-                                            <th rowspan="2">
-                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>7,5</span><hr>
-                                                <span class="français" @if($currentLanguage == 'anglais') style="display:none" @endif>x</span>
+                                            <th class="size-header">
+                                                <span class="anglais">7,5</span><hr>
+                                                <span class="français" >x</span>
                                             </th>
-                                            <th rowspan="2">
-                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>8,0</span><hr>
-                                                <span class="pointure français" @if($currentLanguage == 'anglais') style="display:none" @endif>
-                                                    {{ $currentGenre == 'femme' ? 39 : 42 }}
+                                            <th class="size-header">
+                                                <span class="anglais">8,0</span><hr>
+                                                <span class="pointure français" >
+                                                    {{ $ligne->genre == 'femme' ? 39 : 42 }}
                                                 </span>
                                             </th>
-                                            <th rowspan="2">
-                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>8,5</span><hr>
-                                                <span class="français" @if($currentLanguage == 'anglais') style="display:none" @endif>x</span>
+                                            <th class="size-header">
+                                                <span class="anglais">8,5</span><hr>
+                                                <span class="français" >x</span>
                                             </th>
-                                            <th rowspan="2">
-                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>9,0</span><hr>
-                                                <span class="pointure français" @if($currentLanguage == 'anglais') style="display:none" @endif>
-                                                    {{ $currentGenre == 'femme' ? 40 : 43 }}
+                                            <th class="size-header">
+                                                <span class="anglais">9,0</span><hr>
+                                                <span class="pointure français" >
+                                                    {{ $ligne->genre == 'femme' ? 40 : 43 }}
                                                 </span>
                                             </th>
-                                            <th rowspan="2">
-                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>9,5</span><hr>
-                                                <span class="français" @if($currentLanguage == 'anglais') style="display:none" @endif>x</span>
+                                            <th class="size-header">
+                                                <span class="anglais">9,5</span><hr>
+                                                <span class="français" >x</span>
                                             </th>
-                                            <th rowspan="2">
-                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>10,0</span><hr>
-                                                <span class="pointure français" @if($currentLanguage == 'anglais') style="display:none" @endif>
-                                                    {{ $currentGenre == 'femme' ? 41 : 44 }}
+                                            <th class="size-header">
+                                                <span class="anglais">10,0</span><hr>
+                                                <span class="pointure français" >
+                                                    {{ $ligne->genre == 'femme' ? 41 : 44 }}
                                                 </span>
                                             </th>
-                                            <th rowspan="2">
-                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>10,5</span><hr>
-                                                <span class="français" @if($currentLanguage == 'anglais') style="display:none" @endif>x</span>
+                                            <th class="size-header">
+                                                <span class="anglais">10,5</span><hr>
+                                                <span class="français" >x</span>
                                             </th>
-                                            <th rowspan="2">
-                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>11,0</span><hr>
-                                                <span class="pointure français" @if($currentLanguage == 'anglais') style="display:none" @endif>
-                                                    {{ $currentGenre == 'femme' ? 42 : 45 }}
+                                            <th class="size-header">
+                                                <span class="anglais">11,0</span><hr>
+                                                <span class="pointure français">
+                                                    {{ $ligne->genre == 'femme' ? 42 : 45 }}
                                                 </span>
                                             </th>
-                                            @if($currentGenre == 'homme')
-                                            <th rowspan="2">
-                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>11,5</span><hr>
-                                                <span class="français" @if($currentLanguage == 'anglais') style="display:none" @endif>x</span>
+                                            <th class="size-header">
+                                                <span class="anglais">11,5</span><hr>
+                                                <span class="français">x</span>
                                             </th>
-                                            @endif
-                                            <th rowspan="2">
-                                                <span class="anglais" @if($currentLanguage == 'français') style="display:none" @endif>12,0</span><hr>
-                                                <span class="pointure français" @if($currentLanguage == 'anglais') style="display:none" @endif>
-                                                    {{ $currentGenre == 'femme' ? 43 : 46 }}
+                                            <th class="size-header">
+                                                <span class="anglais">12,0</span><hr>
+                                                <span class="pointure français">
+                                                    {{ $ligne->genre == 'femme' ? 43 : 46 }}
                                                 </span>
                                             </th>
-                                            <th rowspan="2">Total</th>
+                                            <th class="size-header">
+                                                <span class="anglais">13,0</span><hr>
+                                                <span class="pointure français">
+                                                    {{ $ligne->genre == 'femme' ? 44 : 47 }}
+                                                </span>
+                                            </th>
+                                            <th>Total</th>
                                             <th colspan="4">Avancement</th>
                                         </tr>
                                         <tr>
+                                            <th colspan="19"></th>
                                             <th>CP</th>
                                             <th>PQ</th>
                                             <th>MO</th>
@@ -239,7 +243,6 @@
                                         <td>{{ $ligne->formeItem->nom ?? $ligne->forme }}/{{ $ligne->articleItem->nom ?? $ligne->article }}</td>
                                         <td>{{ $ligne->semelleItem->nom ?? $ligne->semelle }} {{ $ligne->constructionItem->nom ?? $ligne->construction }}</td>
                                         <td>{{ $ligne->cuirItem->nom ?? $ligne->cuir }}</td>
-                                        <td></td> {{-- Pointure column is always empty --}}
                                         @if($ligne->genre == 'femme')
                                             {{-- For women: sizes 35-43 use columns p5 to p13 --}}
                                             <td>{{ $ligne->p5 == 0 ? '' : $ligne->p5 }}</td> {{-- 35 --}}
@@ -257,7 +260,9 @@
                                             <td>{{ $ligne->p11 == 0 ? '' : $ligne->p11 }}</td> {{-- 41 --}}
                                             <td>{{ $ligne->p11x == 0 ? '' : $ligne->p11x }}</td> {{-- 41.5 --}}
                                             <td>{{ $ligne->p12 == 0 ? '' : $ligne->p12 }}</td> {{-- 42 --}}
+                                            <td>{{ $ligne->p12x == 0 ? '' : $ligne->p12x }}</td> {{-- 42.5 --}}
                                             <td>{{ $ligne->p13 == 0 ? '' : $ligne->p13 }}</td> {{-- 43 --}}
+                                            <td>{{ $ligne->p14 == 0 ? '' : $ligne->p14 }}</td> {{-- 44 --}}
                                         @else
                                             {{-- For men: sizes 38-46 use columns p7 to p16 --}}
                                             <td>{{ $ligne->p7 == 0 ? '' : $ligne->p7 }}</td> {{-- 38 --}}
@@ -275,7 +280,9 @@
                                             <td>{{ $ligne->p13 == 0 ? '' : $ligne->p13 }}</td> {{-- 44 --}}
                                             <td>{{ $ligne->p13x == 0 ? '' : $ligne->p13x }}</td> {{-- 44.5 --}}
                                             <td>{{ $ligne->p14 == 0 ? '' : $ligne->p14 }}</td> {{-- 45 --}}
-                                            <td>{{ $ligne->p16 == 0 ? '' : $ligne->p16 }}</td> {{-- 46 --}}
+                                            <td>{{ $ligne->p14x == 0 ? '' : $ligne->p14x }}</td> {{-- 45.5 --}}
+                                            <td>{{ $ligne->p15 == 0 ? '' : $ligne->p15 }}</td> {{-- 46 --}}
+                                            <td>{{ $ligne->p16 == 0 ? '' : $ligne->p16 }}</td> {{-- 47 --}}
                                         @endif
                                         <td>{{ $ligne->total_quantity }}</td>
                                         <td></td>
@@ -288,15 +295,15 @@
                                         <td>{{ $ligne->doublureItem->nom ?? $ligne->doublure }}</td>
                                         <td>{{ $ligne->supplementItem->nom ?? $ligne->supplement }}</td>
                                         @if($ligne->genre == 'femme')
-                                            <td colspan="21"></td>
+                                            <td colspan="23"></td>
                                         @else
-                                            <td colspan="22"></td>
+                                            <td colspan="23"></td>
                                         @endif
                                     </tr>
                                 @endforeach
                                 
                                 <tr>
-                                    <td colspan="18"></td>
+                                    <td colspan="19"></td>
                                     <td colspan="2">Total des paires :</td>
                                     <td colspan="5">{{ $totalPairs }}</td>
                                 </tr>
