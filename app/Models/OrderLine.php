@@ -14,7 +14,7 @@ class OrderLine extends Model
     const SIZE_COLUMNS = [
         'p5', 'p5x', 'p6', 'p6x', 'p7', 'p7x', 'p8', 'p8x',
         'p9', 'p9x', 'p10', 'p10x', 'p11', 'p11x', 'p12', 'p12x',
-        'p13', 'p13x', 'p14', 'p14x', 'p15', 'p16', 'p17'
+        'p13', 'p13x', 'p14', 'p14x', 'p15', 'p15x', 'p16', 'p17'
     ];
 
     protected $fillable = [
@@ -30,7 +30,7 @@ class OrderLine extends Model
         // Include all size columns
         'p5', 'p5x', 'p6', 'p6x', 'p7', 'p7x', 'p8', 'p8x',
         'p9', 'p9x', 'p10', 'p10x', 'p11', 'p11x', 'p12', 'p12x',
-        'p13', 'p13x', 'p14', 'p14x', 'p15', 'p16', 'p17',
+        'p13', 'p13x', 'p14', 'p14x', 'p15', 'p15x', 'p16', 'p17',
         'prix',
         'devise',
         'talon',
@@ -68,7 +68,8 @@ class OrderLine extends Model
         'p12' => 'integer', 'p12x' => 'integer',
         'p13' => 'integer', 'p13x' => 'integer',
         'p14' => 'integer', 'p14x' => 'integer',
-        'p15' => 'integer', 'p16' => 'integer', 'p17' => 'integer',
+        'p15' => 'integer', 'p15x' => 'integer',
+        'p16' => 'integer', 'p17' => 'integer',
     ];
 
     /**

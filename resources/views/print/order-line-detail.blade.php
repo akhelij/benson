@@ -89,96 +89,132 @@
                                         $genre = $orderLine->genre ?? 'homme';
                                     @endphp
                                     <th class="size-header">
-                                        <span class="anglais">4,0</span>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 5 : 4 }}
+                                        </span>
                                         <hr>
-                                        <span class="pointure français">
-                                            {{ $genre == 'femme' ? 35 : 38 }}
+                                        <span class="pointure français" >
+                                            {{ $orderLine->genre == 'femme' ? 35 : 38 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais">4,5</span><hr>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 5.5 : 4.5 }}
+                                        </span><hr>
+                                        <span class="français" >x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 6 : 5 }}
+                                        </span><hr>
+                                        <span class="pointure français" >
+                                            {{ $orderLine->genre == 'femme' ? 36 : 39 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 6.5 : 5.5 }}
+                                        </span><hr>
+                                        <span class="français" >x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 7 : 6 }}
+                                        </span><hr>
+                                        <span class="pointure français" >
+                                            {{ $orderLine->genre == 'femme' ? 37 : 40 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 7.5 : 6.5 }}
+                                        </span><hr>
+                                        <span class="français" >x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 8 : 7 }}
+                                        </span><hr>
+                                        <span class="pointure français" >
+                                            {{ $orderLine->genre == 'femme' ? 38 : 41 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 8.5 : 7.5 }}
+                                        </span><hr>
+                                        <span class="français" >x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 9 : 8 }}
+                                        </span><hr>
+                                        <span class="pointure français" >
+                                            {{ $orderLine->genre == 'femme' ? 39 : 42 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 9.5 : 8.5 }}
+                                        </span><hr>
+                                        <span class="français" >x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 10 : 9 }}
+                                        </span><hr>
+                                        <span class="pointure français" >
+                                            {{ $orderLine->genre == 'femme' ? 40 : 43 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 10.5 : 9.5 }}
+                                        </span><hr>
+                                        <span class="français" >x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 11 : 10 }}
+                                        </span><hr>
+                                        <span class="pointure français" >
+                                            {{ $orderLine->genre == 'femme' ? 41 : 44 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 11.5 : 10.5 }}
+                                        </span><hr>
+                                        <span class="français" >x</span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 12 : 11 }}
+                                        </span><hr>
+                                        <span class="pointure français">
+                                            {{ $orderLine->genre == 'femme' ? 42 : 45 }}
+                                        </span>
+                                    </th>
+                                    <th class="size-header">
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 12.5 : 11.5 }}
+                                        </span><hr>
                                         <span class="français">x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais">5,0</span><hr>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 13 : 12 }}
+                                        </span><hr>
                                         <span class="pointure français">
-                                            {{ $genre == 'femme' ? 36 : 39 }}
+                                            {{ $orderLine->genre == 'femme' ? 43 : 46 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais">5,5</span><hr>
-                                        <span class="français">x</span>
-                                    </th>
-                                    <th class="size-header">
-                                        <span class="anglais">6,0</span><hr>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 14 : 13 }}
+                                        </span><hr>
                                         <span class="pointure français">
-                                            {{ $genre == 'femme' ? 37 : 40 }}
-                                        </span>
-                                    </th>
-                                    <th class="size-header">
-                                        <span class="anglais">6,5</span><hr>
-                                        <span class="français">x</span>
-                                    </th>
-                                    <th class="size-header">
-                                        <span class="anglais">7,0</span><hr>
-                                        <span class="pointure français">
-                                            {{ $genre == 'femme' ? 38 : 41 }}
-                                        </span>
-                                    </th>
-                                    <th class="size-header">
-                                        <span class="anglais">7,5</span><hr>
-                                        <span class="français">x</span>
-                                    </th>
-                                    <th class="size-header">
-                                        <span class="anglais">8,0</span><hr>
-                                        <span class="pointure français">
-                                            {{ $genre == 'femme' ? 39 : 42 }}
-                                        </span>
-                                    </th>
-                                    <th class="size-header">
-                                        <span class="anglais">8,5</span><hr>
-                                        <span class="français">x</span>
-                                    </th>
-                                    <th class="size-header">
-                                        <span class="anglais">9,0</span><hr>
-                                        <span class="pointure français">
-                                            {{ $genre == 'femme' ? 40 : 43 }}
-                                        </span>
-                                    </th>
-                                    <th class="size-header">
-                                        <span class="anglais">9,5</span><hr>
-                                        <span class="français">x</span>
-                                    </th>
-                                    <th class="size-header">
-                                        <span class="anglais">10,0</span><hr>
-                                        <span class="pointure français">
-                                            {{ $genre == 'femme' ? 41 : 44 }}
-                                        </span>
-                                    </th>
-                                    <th class="size-header">
-                                        <span class="anglais">10,5</span><hr>
-                                        <span class="français">x</span>
-                                    </th>
-                                    <th class="size-header">
-                                        <span class="anglais">11,0</span><hr>
-                                        <span class="pointure français">
-                                            {{ $genre == 'femme' ? 42 : 45 }}
-                                        </span>
-                                    </th>
-                                    <th class="size-header">
-                                        <span class="anglais">11,5</span><hr>
-                                        <span class="français">x</span>
-                                    </th>
-                                    <th class="size-header">
-                                        <span class="anglais">12,0</span><hr>
-                                        <span class="pointure français">
-                                            {{ $genre == 'femme' ? 43 : 46 }}
-                                        </span>
-                                    </th>
-                                    <th class="size-header">
-                                        <span class="anglais">13,0</span><hr>
-                                        <span class="pointure français">
-                                            {{ $genre == 'femme' ? 44 : 47 }}
+                                            {{ $orderLine->genre == 'femme' ? 44 : 47 }}
                                         </span>
                                     </th>
                                     <th>Total</th>
@@ -209,8 +245,6 @@
                                         <td>{{ $orderLine->p14 == 0 ? '' : $orderLine->p14 }}</td> {{-- 44 --}}
                                     @else
                                         {{-- For men: sizes 38-47 use columns p7 to p16 --}}
-                                        <td>{{ $orderLine->p7 == 0 ? '' : $orderLine->p7 }}</td> {{-- 38 --}}
-                                        <td>{{ $orderLine->p7x == 0 ? '' : $orderLine->p7x }}</td> {{-- 38.5 --}}
                                         <td>{{ $orderLine->p8 == 0 ? '' : $orderLine->p8 }}</td> {{-- 39 --}}
                                         <td>{{ $orderLine->p8x == 0 ? '' : $orderLine->p8x }}</td> {{-- 39.5 --}}
                                         <td>{{ $orderLine->p9 == 0 ? '' : $orderLine->p9 }}</td> {{-- 40 --}}
@@ -226,7 +260,9 @@
                                         <td>{{ $orderLine->p14 == 0 ? '' : $orderLine->p14 }}</td> {{-- 45 --}}
                                         <td>{{ $orderLine->p14x == 0 ? '' : $orderLine->p14x }}</td> {{-- 45.5 --}}
                                         <td>{{ $orderLine->p15 == 0 ? '' : $orderLine->p15 }}</td> {{-- 46 --}}
+                                        <td>{{ $orderLine->p15x == 0 ? '' : $orderLine->p15x }}</td> {{-- 46.5 --}}
                                         <td>{{ $orderLine->p16 == 0 ? '' : $orderLine->p16 }}</td> {{-- 47 --}}
+                                        <td>{{ $orderLine->p17 == 0 ? '' : $orderLine->p17 }}</td> {{-- 48 --}}
                                     @endif
                                     <td>{{ $orderLine->total_quantity }}</td>
                                 </tr>
@@ -476,10 +512,9 @@
                                         <td>{{ $orderLine->p12 == 0 ? '' : $orderLine->p12 }}</td> {{-- 42 --}}
                                         <td>{{ $orderLine->p12x == 0 ? '' : $orderLine->p12x }}</td> {{-- 42.5 --}}
                                         <td>{{ $orderLine->p13 == 0 ? '' : $orderLine->p13 }}</td> {{-- 43 --}}
+                                        <td>{{ $orderLine->p14 == 0 ? '' : $orderLine->p14 }}</td> {{-- 44 --}}
                                     @else
                                         {{-- For men: sizes 38-47 use columns p7 to p16 --}}
-                                        <td>{{ $orderLine->p7 == 0 ? '' : $orderLine->p7 }}</td> {{-- 38 --}}
-                                        <td>{{ $orderLine->p7x == 0 ? '' : $orderLine->p7x }}</td> {{-- 38.5 --}}
                                         <td>{{ $orderLine->p8 == 0 ? '' : $orderLine->p8 }}</td> {{-- 39 --}}
                                         <td>{{ $orderLine->p8x == 0 ? '' : $orderLine->p8x }}</td> {{-- 39.5 --}}
                                         <td>{{ $orderLine->p9 == 0 ? '' : $orderLine->p9 }}</td> {{-- 40 --}}
@@ -495,7 +530,9 @@
                                         <td>{{ $orderLine->p14 == 0 ? '' : $orderLine->p14 }}</td> {{-- 45 --}}
                                         <td>{{ $orderLine->p14x == 0 ? '' : $orderLine->p14x }}</td> {{-- 45.5 --}}
                                         <td>{{ $orderLine->p15 == 0 ? '' : $orderLine->p15 }}</td> {{-- 46 --}}
+                                        <td>{{ $orderLine->p15x == 0 ? '' : $orderLine->p15x }}</td> {{-- 46.5 --}}
                                         <td>{{ $orderLine->p16 == 0 ? '' : $orderLine->p16 }}</td> {{-- 47 --}}
+                                        <td>{{ $orderLine->p17 == 0 ? '' : $orderLine->p17 }}</td> {{-- 48 --}}
                                     @endif
                                     <td>{{ $orderLine->total_quantity }}</td>
                                 </tr>
@@ -526,96 +563,132 @@
                                     <th>Code N°</th>
                                     <th>{{ str_replace("(n)", "&", $order->code) }}</th>
                                     <th class="size-header">
-                                        <span class="anglais">4,0</span>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 5 : 4 }}
+                                        </span>
                                         <hr>
                                         <span class="pointure français" >
-                                            {{ $genre == 'femme' ? 35 : 38 }}
+                                            {{ $orderLine->genre == 'femme' ? 35 : 38 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais">4,5</span><hr>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 5.5 : 4.5 }}
+                                        </span><hr>
                                         <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais">5,0</span><hr>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 6 : 5 }}
+                                        </span><hr>
                                         <span class="pointure français" >
-                                            {{ $genre == 'femme' ? 36 : 39 }}
+                                            {{ $orderLine->genre == 'femme' ? 36 : 39 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais">5,5</span><hr>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 6.5 : 5.5 }}
+                                        </span><hr>
                                         <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais">6,0</span><hr>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 7 : 6 }}
+                                        </span><hr>
                                         <span class="pointure français" >
-                                            {{ $genre == 'femme' ? 37 : 40 }}
+                                            {{ $orderLine->genre == 'femme' ? 37 : 40 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais">6,5</span><hr>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 7.5 : 6.5 }}
+                                        </span><hr>
                                         <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais">7,0</span><hr>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 8 : 7 }}
+                                        </span><hr>
                                         <span class="pointure français" >
-                                            {{ $genre == 'femme' ? 38 : 41 }}
+                                            {{ $orderLine->genre == 'femme' ? 38 : 41 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais">7,5</span><hr>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 8.5 : 7.5 }}
+                                        </span><hr>
                                         <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais">8,0</span><hr>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 9 : 8 }}
+                                        </span><hr>
                                         <span class="pointure français" >
-                                            {{ $genre == 'femme' ? 39 : 42 }}
+                                            {{ $orderLine->genre == 'femme' ? 39 : 42 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais">8,5</span><hr>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 9.5 : 8.5 }}
+                                        </span><hr>
                                         <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais">9,0</span><hr>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 10 : 9 }}
+                                        </span><hr>
                                         <span class="pointure français" >
-                                            {{ $genre == 'femme' ? 40 : 43 }}
+                                            {{ $orderLine->genre == 'femme' ? 40 : 43 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais">9,5</span><hr>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 10.5 : 9.5 }}
+                                        </span><hr>
                                         <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais">10,0</span><hr>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 11 : 10 }}
+                                        </span><hr>
                                         <span class="pointure français" >
-                                            {{ $genre == 'femme' ? 41 : 44 }}
+                                            {{ $orderLine->genre == 'femme' ? 41 : 44 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais">10,5</span><hr>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 11.5 : 10.5 }}
+                                        </span><hr>
                                         <span class="français" >x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais">11,0</span><hr>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 12 : 11 }}
+                                        </span><hr>
                                         <span class="pointure français">
-                                            {{ $genre == 'femme' ? 42 : 45 }}
+                                            {{ $orderLine->genre == 'femme' ? 42 : 45 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais">11,5</span><hr>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 12.5 : 11.5 }}
+                                        </span><hr>
                                         <span class="français">x</span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais">12,0</span><hr>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 13 : 12 }}
+                                        </span><hr>
                                         <span class="pointure français">
-                                            {{ $genre == 'femme' ? 43 : 46 }}
+                                            {{ $orderLine->genre == 'femme' ? 43 : 46 }}
                                         </span>
                                     </th>
                                     <th class="size-header">
-                                        <span class="anglais">13,0</span><hr>
+                                        <span class="anglais">
+                                            {{ $orderLine->genre == 'femme' ? 14 : 13 }}
+                                        </span><hr>
                                         <span class="pointure français">
-                                            {{ $genre == 'femme' ? 44 : 47 }}
+                                            {{ $orderLine->genre == 'femme' ? 44 : 47 }}
                                         </span>
                                     </th>
                                     <th>Total</th>
@@ -645,8 +718,6 @@
                                         <td>{{ $orderLine->p14 == 0 ? '' : $orderLine->p14 }}</td> {{-- 44 --}}
                                     @else
                                         {{-- For men: sizes 38-47 use columns p7 to p16 --}}
-                                        <td>{{ $orderLine->p7 == 0 ? '' : $orderLine->p7 }}</td> {{-- 38 --}}
-                                        <td>{{ $orderLine->p7x == 0 ? '' : $orderLine->p7x }}</td> {{-- 38.5 --}}
                                         <td>{{ $orderLine->p8 == 0 ? '' : $orderLine->p8 }}</td> {{-- 39 --}}
                                         <td>{{ $orderLine->p8x == 0 ? '' : $orderLine->p8x }}</td> {{-- 39.5 --}}
                                         <td>{{ $orderLine->p9 == 0 ? '' : $orderLine->p9 }}</td> {{-- 40 --}}
@@ -662,7 +733,9 @@
                                         <td>{{ $orderLine->p14 == 0 ? '' : $orderLine->p14 }}</td> {{-- 45 --}}
                                         <td>{{ $orderLine->p14x == 0 ? '' : $orderLine->p14x }}</td> {{-- 45.5 --}}
                                         <td>{{ $orderLine->p15 == 0 ? '' : $orderLine->p15 }}</td> {{-- 46 --}}
+                                        <td>{{ $orderLine->p15x == 0 ? '' : $orderLine->p15x }}</td> {{-- 46.5 --}}
                                         <td>{{ $orderLine->p16 == 0 ? '' : $orderLine->p16 }}</td> {{-- 47 --}}
+                                        <td>{{ $orderLine->p17 == 0 ? '' : $orderLine->p17 }}</td> {{-- 48 --}}
                                     @endif
                                     <td>{{ $orderLine->total_quantity }}</td>
                                 </tr>

@@ -43,14 +43,13 @@ services:
 
   mysql:
     image: "mysql:8.0"
+    platform: linux/arm64
     ports:
       - "${FORWARD_DB_PORT:-3306}:3306"
     environment:
       MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
       MYSQL_ROOT_HOST: "%"
       MYSQL_DATABASE: "${DB_DATABASE}"
-      MYSQL_USER: "${DB_USERNAME}"
-      MYSQL_PASSWORD: "${DB_PASSWORD}"
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
     volumes:
       - "sail-mysql:/var/lib/mysql"
@@ -65,7 +64,6 @@ services:
       - --table-definition-cache=2000
       - --performance-schema=OFF
       - --bind-address=0.0.0.0
-      - --socket=/tmp/mysql.sock
     networks:
       - sail
     # healthcheck:
@@ -76,7 +74,8 @@ services:
     #   start_period: 30s
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: arm64v8/phpmyadmin
+    platform: linux/arm64
     ports:
       - "${FORWARD_PHPMYADMIN_PORT:-8080}:80"
     environment:
@@ -94,6 +93,7 @@ services:
 
   redis:
     image: "redis:alpine"
+    platform: linux/arm64
     ports:
       - "${FORWARD_REDIS_PORT:-6379}:6379"
     volumes:

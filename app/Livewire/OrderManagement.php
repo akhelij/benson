@@ -8,7 +8,6 @@ use Livewire\WithFileUploads;
 use App\Models\Order;
 use App\Models\OrderLine;
 use App\Models\Item;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class OrderManagement extends Component
@@ -413,17 +412,51 @@ class OrderManagement extends Component
         $lineData['total_quantity'] = $totalQuantity;
         $lineData['total_amount'] = $totalQuantity * $this->productPrice;
         
-        if ($this->editingLineIndex !== null) {
-            // Update existing line
-            if (isset($this->orderLines[$this->editingLineIndex]['line_id'])) {
-                $lineData['line_id'] = $this->orderLines[$this->editingLineIndex]['line_id'];
+        // If editing an existing order, save to database immediately
+        if ($this->orderId) {
+            DB::beginTransaction();
+            try {
+                $order = Order::find($this->orderId);
+                $sanitizedData = $this->sanitizeOrderLineData($lineData);
+                
+                if ($this->editingLineIndex !== null && isset($this->orderLines[$this->editingLineIndex]['line_id'])) {
+                    // Update existing line in database
+                    $line = OrderLine::find($this->orderLines[$this->editingLineIndex]['line_id']);
+                    if ($line) {
+                        $line->update($sanitizedData);
+                        $lineData['line_id'] = $line->id;
+                        $this->orderLines[$this->editingLineIndex] = $lineData;
+                        $message = 'Ligne mise à jour avec succès';
+                    }
+                } else {
+                    // Create new line in database
+                    $line = $order->orderLines()->create($sanitizedData);
+                    $lineData['line_id'] = $line->id;
+                    $this->orderLines[] = $lineData;
+                    $message = 'Ligne ajoutée avec succès';
+                }
+                
+                // Recalculate order totals
+                $order->recalculateTotals()->save();
+                
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollBack();
+                session()->flash('error', 'Erreur lors de la sauvegarde: ' . $e->getMessage());
+                return;
             }
-            $this->orderLines[$this->editingLineIndex] = $lineData;
-            $message = 'Ligne mise à jour avec succès';
         } else {
-            // Add new line
-            $this->orderLines[] = $lineData;
-            $message = 'Ligne ajoutée avec succès';
+            // For new orders, just add to array (will be saved when order is created)
+            if ($this->editingLineIndex !== null) {
+                if (isset($this->orderLines[$this->editingLineIndex]['line_id'])) {
+                    $lineData['line_id'] = $this->orderLines[$this->editingLineIndex]['line_id'];
+                }
+                $this->orderLines[$this->editingLineIndex] = $lineData;
+                $message = 'Ligne mise à jour avec succès';
+            } else {
+                $this->orderLines[] = $lineData;
+                $message = 'Ligne ajoutée avec succès';
+            }
         }
         
         $this->resetLineForm();
@@ -540,6 +573,27 @@ class OrderManagement extends Component
      */
     public function removeOrderLine($index)
     {
+        // If editing an existing order and line has an ID, delete from database
+        if ($this->orderId && isset($this->orderLines[$index]['line_id'])) {
+            DB::beginTransaction();
+            try {
+                $lineId = $this->orderLines[$index]['line_id'];
+                OrderLine::find($lineId)?->delete();
+                
+                // Recalculate order totals
+                $order = Order::find($this->orderId);
+                if ($order) {
+                    $order->recalculateTotals()->save();
+                }
+                
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollBack();
+                session()->flash('error', 'Erreur lors de la suppression: ' . $e->getMessage());
+                return;
+            }
+        }
+        
         unset($this->orderLines[$index]);
         $this->orderLines = array_values($this->orderLines);
         session()->flash('message', 'Ligne supprimée');
@@ -691,24 +745,24 @@ class OrderManagement extends Component
         } else {
             // Men's sizes: 38-47 (EU/FR)
             return [
-                '38' => ['eu' => '38', 'us' => '5', 'fr' => '38', 'db' => 'p7'],
-                '38.5' => ['eu' => '38.5', 'us' => '5.5', 'fr' => '38.5', 'db' => 'p7x'],
-                '39' => ['eu' => '39', 'us' => '6', 'fr' => '39', 'db' => 'p8'],
-                '39.5' => ['eu' => '39.5', 'us' => '6.5', 'fr' => '39.5', 'db' => 'p8x'],
-                '40' => ['eu' => '40', 'us' => '7', 'fr' => '40', 'db' => 'p9'],
-                '40.5' => ['eu' => '40.5', 'us' => '7.5', 'fr' => '40.5', 'db' => 'p9x'],
-                '41' => ['eu' => '41', 'us' => '8', 'fr' => '41', 'db' => 'p10'],
-                '41.5' => ['eu' => '41.5', 'us' => '8.5', 'fr' => '41.5', 'db' => 'p10x'],
-                '42' => ['eu' => '42', 'us' => '9', 'fr' => '42', 'db' => 'p11'],
-                '42.5' => ['eu' => '42.5', 'us' => '9.5', 'fr' => '42.5', 'db' => 'p11x'],
-                '43' => ['eu' => '43', 'us' => '10', 'fr' => '43', 'db' => 'p12'],
-                '43.5' => ['eu' => '43.5', 'us' => '10.5', 'fr' => '43.5', 'db' => 'p12x'],
-                '44' => ['eu' => '44', 'us' => '11', 'fr' => '44', 'db' => 'p13'],
-                '44.5' => ['eu' => '44.5', 'us' => '11.5', 'fr' => '44.5', 'db' => 'p13x'],
-                '45' => ['eu' => '45', 'us' => '12', 'fr' => '45', 'db' => 'p14'],
-                '45.5' => ['eu' => '45.5', 'us' => '12.5', 'fr' => '45.5', 'db' => 'p14x'],
-                '46' => ['eu' => '46', 'us' => '13', 'fr' => '46', 'db' => 'p15'],
-                '47' => ['eu' => '47', 'us' => '14', 'fr' => '47', 'db' => 'p16'],
+                '38' => ['eu' => '38', 'us' => '4', 'fr' => '38', 'db' => 'p8'],
+                '38.5' => ['eu' => '38.5', 'us' => '4.5', 'fr' => '38.5', 'db' => 'p8x'],
+                '39' => ['eu' => '39', 'us' => '5', 'fr' => '39', 'db' => 'p9'],
+                '39.5' => ['eu' => '39.5', 'us' => '5.5', 'fr' => '39.5', 'db' => 'p9x'],
+                '40' => ['eu' => '40', 'us' => '6', 'fr' => '40', 'db' => 'p10'],
+                '40.5' => ['eu' => '40.5', 'us' => '6.5', 'fr' => '40.5', 'db' => 'p10x'],
+                '41' => ['eu' => '41', 'us' => '7', 'fr' => '41', 'db' => 'p11'],
+                '41.5' => ['eu' => '41.5', 'us' => '7.5', 'fr' => '41.5', 'db' => 'p11x'],
+                '42' => ['eu' => '42', 'us' => '8', 'fr' => '42', 'db' => 'p12'],
+                '42.5' => ['eu' => '42.5', 'us' => '8.5', 'fr' => '42.5', 'db' => 'p12x'],
+                '43' => ['eu' => '43', 'us' => '9', 'fr' => '43', 'db' => 'p13'],
+                '43.5' => ['eu' => '43.5', 'us' => '9.5', 'fr' => '43.5', 'db' => 'p13x'],
+                '44' => ['eu' => '44', 'us' => '10', 'fr' => '44', 'db' => 'p14'],
+                '44.5' => ['eu' => '44.5', 'us' => '10.5', 'fr' => '44.5', 'db' => 'p14x'],
+                '45' => ['eu' => '45', 'us' => '11', 'fr' => '45', 'db' => 'p15'],
+                '45.5' => ['eu' => '45.5', 'us' => '11.5', 'fr' => '45.5', 'db' => 'p15x'],
+                '46' => ['eu' => '46', 'us' => '12', 'fr' => '46', 'db' => 'p16'],
+                '47' => ['eu' => '47', 'us' => '13', 'fr' => '47', 'db' => 'p17'],
             ];
         }
     }
