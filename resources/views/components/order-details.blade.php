@@ -75,11 +75,11 @@
                             <td class="px-4 py-3 text-sm text-gray-900">{{ $line->article }}</td>
                             <td class="px-4 py-3 text-sm text-gray-600">
                                 <div class="space-y-1">
-                                    @if($line->forme)<span class="text-xs">Forme: {{ $line->forme }}</span><br>@endif
-                                    @if($line->semelle)<span class="text-xs">Semelle: {{ $line->semelle }}</span><br>@endif
-                                    @if($line->cuir)<span class="text-xs">Cuir: {{ $line->cuir }}</span><br>@endif
-                                    @if($line->doublure)<span class="text-xs">Doublure: {{ $line->doublure }}</span><br>@endif
-                                    @if($line->construction)<span class="text-xs">Construction: {{ $line->construction }}</span>@endif
+                                    @if($line->formeItem->nom)<span class="text-xs">Forme: {{ $line->formeItem->nom }}</span><br>@endif
+                                    @if($line->semelleItem->nom)<span class="text-xs">Semelle: {{ $line->semelleItem->nom }}</span><br>@endif
+                                    @if($line->cuirItem->nom)<span class="text-xs">Cuir: {{ $line->cuirItem->nom }}</span><br>@endif
+                                    @if($line->doublureItem->nom)<span class="text-xs">Doublure: {{ $line->doublureItem->nom }}</span><br>@endif
+                                    @if($line->constructionItem->nom)<span class="text-xs">Construction: {{ $line->constructionItem->nom }}</span>@endif
                                 </div>
                             </td>
                             <td class="px-4 py-3">
