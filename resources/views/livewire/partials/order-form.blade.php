@@ -115,12 +115,24 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @foreach($orderLines as $index => $line)
                         <tr>
-                            <td class="px-4 py-2 text-sm">{{ $line['article'] }}</td>
+                            <td class="px-4 py-2 text-sm">
+                                {{ $line['article'] }}
+                            </td>
                             <td class="px-4 py-2 text-sm">
                                 <div class="text-xs space-y-1">
-                                    @if(!empty($line['forme']))<span>Forme: {{ $line['forme'] }}</span><br>@endif
-                                    @if(!empty($line['cuir']))<span>Cuir: {{ $line['cuir'] }}</span><br>@endif
-                                    @if(!empty($line['finition']))<span>Finition: {{ $line['finition'] }}</span>@endif
+                                    @if(!empty($line['forme']))
+                                        <span>Forme: 
+                                            {{ $line['forme'] }}
+                                        </span><br>
+                                    @endif
+                                    @if(!empty($line['cuir']))
+                                        <span>Cuir: 
+                                            {{ $line['cuir'] }}
+                                        </span><br>
+                                    @endif
+                                    @if(!empty($line['finition']))
+                                        <span>Finition: {{ $line['finition'] }}</span>
+                                    @endif
                                 </div>
                             </td>
                             <td class="px-4 py-2 text-sm">{{ $line['total_quantity'] ?? 0 }}</td>

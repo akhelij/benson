@@ -276,9 +276,9 @@
                                     @endif
                                     
                                     <tr>
-                                        <td>{{ $ligne->formeItem->nom ?? $ligne->forme }}/{{ $ligne->articleItem->nom ?? $ligne->article }}</td>
-                                        <td>{{ $ligne->semelleItem->nom ?? $ligne->semelle }} {{ $ligne->constructionItem->nom ?? $ligne->construction }}</td>
-                                        <td>{{ $ligne->cuirItem->nom ?? $ligne->cuir }}</td>
+                                        <td>{{ $ligne->forme }}/{{ $ligne->article }}</td>
+                                        <td>{{ $ligne->semelle }} {{ $ligne->construction }}</td>
+                                        <td>{{ $ligne->cuir }}</td>
                                         @if($ligne->genre == 'femme')
                                             {{-- For women: sizes 35-43 use columns p5 to p13 --}}
                                             <td>{{ $ligne->p5 == 0 ? '' : $ligne->p5 }}</td> {{-- 35 --}}
@@ -328,8 +328,8 @@
                                     </tr>
                                     <tr>
                                         <td>{{ $ligne->client }}</td>
-                                        <td>{{ $ligne->doublureItem->nom ?? $ligne->doublure }}</td>
-                                        <td>{{ $ligne->supplementItem->nom ?? $ligne->supplement }}</td>
+                                        <td>{{ $ligne->doublure }}</td>
+                                        <td>{{ $ligne->supplement }}</td>
                                         @if($ligne->genre == 'femme')
                                             <td colspan="23"></td>
                                         @else

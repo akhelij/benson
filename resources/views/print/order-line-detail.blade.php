@@ -75,10 +75,10 @@
                                 <tr style="background-color: #fff !important">
                                     <td>Code N°</td>
                                     <td>{{ str_replace("(n)", "&", $order->code) }}</td>
-                                    <td colspan="5">{{ $orderLine->formeItem->nom ?? $orderLine->forme }}/{{ $orderLine->articleItem->nom ?? $orderLine->article }}{{ isset($orderLine->client) ? " - " . $orderLine->client : '' }}</td>
-                                    <td colspan="4">{{ $orderLine->semelleItem->nom ?? $orderLine->semelle }}/{{ $orderLine->constructionItem->nom ?? $orderLine->construction }}</td>
-                                    <td colspan="5">{{ $orderLine->cuirItem->nom ?? $orderLine->cuir }}/{{ $orderLine->doublureItem->nom ?? $orderLine->doublure }}</td>
-                                    <td colspan="5">{{ $orderLine->supplementItem->nom ?? $orderLine->supplement }}</td>
+                                    <td colspan="5">{{ $orderLine->forme }}/{{ $orderLine->article }}{{ isset($orderLine->client) ? " - " . $orderLine->client : '' }}</td>
+                                    <td colspan="4">{{ $orderLine->semelle }}/{{ $orderLine->construction }}</td>
+                                    <td colspan="5">{{ $orderLine->cuir }}/{{ $orderLine->doublure }}</td>
+                                    <td colspan="5">{{ $orderLine->supplement }}</td>
                                 </tr>
                                 
                                 <tr style="background-color: #fff !important">
@@ -553,10 +553,10 @@
                             <tbody>
                                 <tr style="background-color: #fff !important">
                                     <td colspan="2">Fiche de coupe</td>
-                                    <td colspan="4">{{ $orderLine->formeItem->nom ?? $orderLine->forme }}/{{ $orderLine->articleItem->nom ?? $orderLine->article }}</td>
-                                    <td colspan="5">{{ $orderLine->semelleItem->nom ?? $orderLine->semelle }}/{{ $orderLine->constructionItem->nom ?? $orderLine->construction }}</td>
-                                    <td colspan="4">{{ $orderLine->cuirItem->nom ?? $orderLine->cuir }}/{{ $orderLine->doublureItem->nom ?? $orderLine->doublure }}</td>
-                                    <td colspan="5">{{ $orderLine->supplementItem->nom ?? $orderLine->supplement }}</td>
+                                    <td colspan="4">{{ $orderLine->forme }}/{{ $orderLine->article }}</td>
+                                    <td colspan="5">{{ $orderLine->semelle }}/{{ $orderLine->construction }}</td>
+                                    <td colspan="4">{{ $orderLine->cuir }}/{{ $orderLine->doublure }}</td>
+                                    <td colspan="5">{{ $orderLine->supplement }}</td>
                                 </tr>
                                 
                                 <tr style="background-color: #fff !important">
