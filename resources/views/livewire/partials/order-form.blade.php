@@ -116,18 +116,27 @@
                         @foreach($orderLines as $index => $line)
                         <tr>
                             <td class="px-4 py-2 text-sm">
-                                {{ $line['article'] }}
+                                @php
+                                    $articleItem = \App\Models\Item::find($line['article']);
+                                @endphp
+                                {{ $articleItem ? $articleItem->nom : '-' }}
                             </td>
                             <td class="px-4 py-2 text-sm">
                                 <div class="text-xs space-y-1">
                                     @if(!empty($line['forme']))
+                                        @php
+                                            $formeItem = \App\Models\Item::find($line['forme']);
+                                        @endphp
                                         <span>Forme: 
-                                            {{ $line['forme'] }}
+                                            {{ $formeItem ? $formeItem->nom : '-' }}
                                         </span><br>
                                     @endif
                                     @if(!empty($line['cuir']))
+                                        @php
+                                            $cuirItem = \App\Models\Item::find($line['cuir']);
+                                        @endphp
                                         <span>Cuir: 
-                                            {{ $line['cuir'] }}
+                                            {{ $cuirItem ? $cuirItem->nom : '-' }}
                                         </span><br>
                                     @endif
                                     @if(!empty($line['finition']))

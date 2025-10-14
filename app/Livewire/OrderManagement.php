@@ -616,7 +616,15 @@ class OrderManagement extends Component
      */
     public function viewOrder($orderId)
     {
-        $this->viewingOrder = Order::with('orderLines')->find($orderId);
+        $this->viewingOrder = Order::with([
+            'orderLines.formeItem',
+            'orderLines.articleItem',
+            'orderLines.semelleItem',
+            'orderLines.constructionItem',
+            'orderLines.cuirItem',
+            'orderLines.doublureItem',
+            'orderLines.supplementItem'
+        ])->find($orderId);
         $this->showViewModal = true;
     }
 

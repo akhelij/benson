@@ -73,15 +73,15 @@
                     @foreach($order->orderLines as $line)
                         <tr>
                             <td class="px-4 py-3 text-sm text-gray-900">
-                                {{ $line->article }}
+                                {{ $line->articleItem->nom ?? '-' }}
                             </td>
                             <td class="px-4 py-3 text-sm text-gray-600">
                                 <div class="space-y-1">
-                                    <span class="text-xs">Forme: {{ $line->forme }}</span><br>
-                                    <span class="text-xs">Semelle: {{ $line->semelle }}</span><br>
-                                    <span class="text-xs">Cuir: {{ $line->cuir }}</span><br>
-                                    <span class="text-xs">Doublure: {{ $line->doublure }}</span><br>
-                                    <span class="text-xs">Construction: {{ $line->construction }}</span>
+                                    <span class="text-xs">Forme: {{ $line->formeItem->nom ?? '-' }}</span><br>
+                                    <span class="text-xs">Semelle: {{ $line->semelleItem->nom ?? '-' }}</span><br>
+                                    <span class="text-xs">Cuir: {{ $line->cuirItem->nom ?? '-' }}</span><br>
+                                    <span class="text-xs">Doublure: {{ $line->doublureItem->nom ?? '-' }}</span><br>
+                                    <span class="text-xs">Construction: {{ $line->constructionItem->nom ?? '-' }}</span>
                                 </div>
                             </td>
                             <td class="px-4 py-3">

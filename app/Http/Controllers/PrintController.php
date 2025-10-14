@@ -13,7 +13,15 @@ class PrintController extends Controller
      */
     public function printOrder($id)
     {
-        $order = Order::with('orderLines')->findOrFail($id);
+        $order = Order::with([
+            'orderLines.formeItem',
+            'orderLines.articleItem',
+            'orderLines.semelleItem',
+            'orderLines.constructionItem',
+            'orderLines.cuirItem',
+            'orderLines.doublureItem',
+            'orderLines.supplementItem'
+        ])->findOrFail($id);
         $totalPairs = $order->calculateTotalQuantity();
         
         return view('print.order-summary', compact('order', 'totalPairs'));

@@ -75,10 +75,10 @@
                                 <tr style="background-color: #fff !important">
                                     <td>Code N°</td>
                                     <td>{{ str_replace("(n)", "&", $order->code) }}</td>
-                                    <td colspan="5">{{ $orderLine->forme }}/{{ $orderLine->article }}{{ isset($orderLine->client) ? " - " . $orderLine->client : '' }}</td>
-                                    <td colspan="4">{{ $orderLine->semelle }}/{{ $orderLine->construction }}</td>
-                                    <td colspan="5">{{ $orderLine->cuir }}/{{ $orderLine->doublure }}</td>
-                                    <td colspan="5">{{ $orderLine->supplement }}</td>
+                                    <td colspan="5">{{ $orderLine->formeItem->nom ?? '-' }}/{{ $orderLine->articleItem->nom ?? '-' }}{{ isset($orderLine->client) ? " - " . $orderLine->client : '' }}</td>
+                                    <td colspan="4">{{ $orderLine->semelleItem->nom ?? '-' }}/{{ $orderLine->constructionItem->nom ?? '-' }}</td>
+                                    <td colspan="5">{{ $orderLine->cuirItem->nom ?? '-' }}/{{ $orderLine->doublureItem->nom ?? '-' }}</td>
+                                    <td colspan="5">{{ $orderLine->supplementItem->nom ?? '-' }}</td>
                                 </tr>
                                 
                                 <tr style="background-color: #fff !important">
