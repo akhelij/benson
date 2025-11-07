@@ -116,7 +116,7 @@ class FormesArticles extends Component
         ]);
 
         if ($this->formeImage) {
-            $forme->addMedia($this->formeImage->getRealPath())
+            $forme->addMedia($this->formeImage)
                 ->toMediaCollection('images');
         }
 
@@ -154,7 +154,7 @@ class FormesArticles extends Component
 
         if ($this->editFormeImage) {
             $forme->clearMediaCollection('images');
-            $forme->addMedia($this->editFormeImage->getRealPath())
+            $forme->addMedia($this->editFormeImage)
                 ->toMediaCollection('images');
         }
 
@@ -210,7 +210,7 @@ class FormesArticles extends Component
         ]);
 
         if ($this->articleImage) {
-            $article->addMedia($this->articleImage->getRealPath())
+            $article->addMedia($this->articleImage)
                 ->toMediaCollection('images');
         }
 
@@ -255,7 +255,7 @@ class FormesArticles extends Component
 
         if ($this->editArticleImage) {
             $article->clearMediaCollection('images');
-            $article->addMedia($this->editArticleImage->getRealPath())
+            $article->addMedia($this->editArticleImage)
                 ->toMediaCollection('images');
         }
 
