@@ -116,8 +116,7 @@ class FormesArticles extends Component
         ]);
 
         if ($this->formeImage) {
-            $forme->addMedia($this->formeImage)
-                ->toMediaCollection('images');
+            $forme->addMedia($this->formeImage, 'images');
         }
 
         $this->addingForme = false;
@@ -154,8 +153,7 @@ class FormesArticles extends Component
 
         if ($this->editFormeImage) {
             $forme->clearMediaCollection('images');
-            $forme->addMedia($this->editFormeImage)
-                ->toMediaCollection('images');
+            $forme->addMedia($this->editFormeImage, 'images');
         }
 
         $this->editingFormeId = null;
@@ -210,8 +208,7 @@ class FormesArticles extends Component
         ]);
 
         if ($this->articleImage) {
-            $article->addMedia($this->articleImage)
-                ->toMediaCollection('images');
+            $article->addMedia($this->articleImage, 'images');
         }
 
         $this->addingArticle = false;
@@ -255,8 +252,7 @@ class FormesArticles extends Component
 
         if ($this->editArticleImage) {
             $article->clearMediaCollection('images');
-            $article->addMedia($this->editArticleImage)
-                ->toMediaCollection('images');
+            $article->addMedia($this->editArticleImage, 'images');
         }
 
         $this->editingArticleId = null;
