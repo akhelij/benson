@@ -16,6 +16,10 @@ class SemellesConstructions extends Component
     public $itemToDelete = null;
     public $deleteType = null; // 'semelle' or 'construction'
 
+    // Image preview
+    public $showImagePreview = false;
+    public $previewImageUrl = null;
+
     // Search terms
     public $searchSemelles = '';
     public $searchConstructions = '';
@@ -387,6 +391,33 @@ class SemellesConstructions extends Component
     public function updatingSearchDoublure()
     {
         $this->resetPage('doubluresPage');
+    }
+
+    // Image methods
+    public function deleteSemelleImage($semelleId)
+    {
+        $semelle = Item::findOrFail($semelleId);
+        $semelle->clearMediaCollection('images');
+        session()->flash('message', 'Image supprimée avec succès!');
+    }
+
+    public function deleteDoublureImage($doublureId)
+    {
+        $doublure = Item::findOrFail($doublureId);
+        $doublure->clearMediaCollection('images');
+        session()->flash('message', 'Image supprimée avec succès!');
+    }
+
+    public function previewImage($imageUrl)
+    {
+        $this->previewImageUrl = $imageUrl;
+        $this->showImagePreview = true;
+    }
+
+    public function closeImagePreview()
+    {
+        $this->showImagePreview = false;
+        $this->previewImageUrl = null;
     }
 
     public function render()

@@ -109,7 +109,22 @@
                             @else
                                 <td class="px-4 py-3">
                                     @if($cuir->getFirstMediaUrl('images'))
-                                        <img src="{{ $cuir->getFirstMediaUrl('images') }}" alt="{{ $cuir->nom }}" class="w-10 h-10 object-cover rounded-lg shadow-sm">
+                                        <div class="relative" style="width: 40px; height: 40px;" x-data="{ showDelete: false }" @mouseenter="showDelete = true" @mouseleave="showDelete = false">
+                                            <img src="{{ $cuir->getFirstMediaUrl('images') }}" 
+                                                 alt="{{ $cuir->nom }}" 
+                                                 wire:click="previewImage('{{ $cuir->getFirstMediaUrl('images') }}')"
+                                                 class="w-10 h-10 object-cover rounded-lg shadow-sm cursor-pointer hover:opacity-75 transition-opacity">
+                                            <button wire:click.stop="deleteCuirImage({{ $cuir->id }})" 
+                                                    x-show="showDelete"
+                                                    x-transition
+                                                    style="display: none; top: -6px; right: -6px;"
+                                                    class="absolute bg-white text-red-600 rounded-full w-4 h-4 flex items-center justify-center hover:bg-red-50 shadow-lg z-10 border border-red-500"
+                                                    title="Supprimer l'image">
+                                                <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                                </svg>
+                                            </button>
+                                        </div>
                                     @else
                                         <div class="w-10 h-10 bg-gradient-to-br from-amber-100 to-amber-200 rounded-lg flex items-center justify-center shadow-sm">
                                             <span class="text-amber-800 font-bold text-xs">{{ strtoupper(substr($cuir->nom, 0, 2)) }}</span>
@@ -359,7 +374,22 @@
                             @else
                                 <td class="px-4 py-3">
                                     @if($doublure->getFirstMediaUrl('images'))
-                                        <img src="{{ $doublure->getFirstMediaUrl('images') }}" alt="{{ $doublure->nom }}" class="w-10 h-10 object-cover rounded-lg shadow-sm">
+                                        <div class="relative" style="width: 40px; height: 40px;" x-data="{ showDelete: false }" @mouseenter="showDelete = true" @mouseleave="showDelete = false">
+                                            <img src="{{ $doublure->getFirstMediaUrl('images') }}" 
+                                                 alt="{{ $doublure->nom }}" 
+                                                 wire:click="previewImage('{{ $doublure->getFirstMediaUrl('images') }}')"
+                                                 class="w-10 h-10 object-cover rounded-lg shadow-sm cursor-pointer hover:opacity-75 transition-opacity">
+                                            <button wire:click.stop="deleteDoublureImage({{ $doublure->id }})" 
+                                                    x-show="showDelete"
+                                                    x-transition
+                                                    style="display: none; top: -6px; right: -6px;"
+                                                    class="absolute bg-white text-red-600 rounded-full w-4 h-4 flex items-center justify-center hover:bg-red-50 shadow-lg z-10 border border-red-500"
+                                                    title="Supprimer l'image">
+                                                <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                                </svg>
+                                            </button>
+                                        </div>
                                     @else
                                         <div class="w-10 h-10 bg-gradient-to-br from-amber-100 to-amber-200 rounded-lg flex items-center justify-center shadow-sm">
                                             <span class="text-amber-800 font-bold text-xs">{{ strtoupper(substr($doublure->nom, 0, 2)) }}</span>
@@ -418,6 +448,21 @@
                     Supprimer
                 </button>
             </div>
+        </div>
+    </div>
+    @endif
+
+    <!-- Image Preview Modal -->
+    @if($showImagePreview)
+    <div class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50" wire:click="closeImagePreview">
+        <div class="relative max-w-4xl max-h-screen p-4" wire:click.stop>
+            <button wire:click="closeImagePreview" 
+                    class="absolute -top-2 -right-2 bg-white text-gray-800 rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors z-10">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+            <img src="{{ $previewImageUrl }}" alt="Preview" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl">
         </div>
     </div>
     @endif

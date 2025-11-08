@@ -40,6 +40,10 @@ class FormesArticles extends Component
     public $deleteType = null;
     public $deleteId = null;
 
+    // Image preview
+    public $showImagePreview = false;
+    public $previewImageUrl = null;
+
     protected $rules = [
         'newForme.nom' => 'required|string|max:255',
         'editForme.nom' => 'required|string|max:255',
@@ -309,6 +313,33 @@ class FormesArticles extends Component
         $this->showDeleteConfirmation = false;
         $this->deleteType = null;
         $this->deleteId = null;
+    }
+
+    // Image methods
+    public function deleteFormeImage($formeId)
+    {
+        $forme = Item::findOrFail($formeId);
+        $forme->clearMediaCollection('images');
+        session()->flash('message', 'Image supprimée avec succès!');
+    }
+
+    public function deleteArticleImage($articleId)
+    {
+        $article = Item::findOrFail($articleId);
+        $article->clearMediaCollection('images');
+        session()->flash('message', 'Image supprimée avec succès!');
+    }
+
+    public function previewImage($imageUrl)
+    {
+        $this->previewImageUrl = $imageUrl;
+        $this->showImagePreview = true;
+    }
+
+    public function closeImagePreview()
+    {
+        $this->showImagePreview = false;
+        $this->previewImageUrl = null;
     }
 
     // Search methods

@@ -16,6 +16,10 @@ class CuirsSupplements extends Component
     public $itemToDelete = null;
     public $deleteType = null; // 'cuir', 'doublure', or 'supplement'
 
+    // Image preview
+    public $showImagePreview = false;
+    public $previewImageUrl = null;
+
     // Search filters
     public $searchCuir = '';
     public $searchSupplement = '';
@@ -354,6 +358,33 @@ class CuirsSupplements extends Component
             $doublure->delete();
             session()->flash('message', 'Doublure supprimée avec succès.');
         }
+    }
+
+    // Image methods
+    public function deleteCuirImage($cuirId)
+    {
+        $cuir = Item::findOrFail($cuirId);
+        $cuir->clearMediaCollection('images');
+        session()->flash('message', 'Image supprimée avec succès!');
+    }
+
+    public function deleteDoublureImage($doublureId)
+    {
+        $doublure = Item::findOrFail($doublureId);
+        $doublure->clearMediaCollection('images');
+        session()->flash('message', 'Image supprimée avec succès!');
+    }
+
+    public function previewImage($imageUrl)
+    {
+        $this->previewImageUrl = $imageUrl;
+        $this->showImagePreview = true;
+    }
+
+    public function closeImagePreview()
+    {
+        $this->showImagePreview = false;
+        $this->previewImageUrl = null;
     }
 
     public function render()
