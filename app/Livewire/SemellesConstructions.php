@@ -108,7 +108,6 @@ class SemellesConstructions extends Component
         ]);
 
         if ($this->semelleImage) {
-            $semelle->clearMediaCollection('images');
             $semelle->addMedia($this->semelleImage, 'images');
         }
 
@@ -251,7 +250,6 @@ class SemellesConstructions extends Component
         ]);
 
         if ($this->doublureImage) {
-            $doublure->clearMediaCollection('images');
             $doublure->addMedia($this->doublureImage, 'images');
         }
 

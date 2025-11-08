@@ -40,7 +40,7 @@ class Media extends Model
      */
     public function getUrlAttribute()
     {
-        return Storage::url($this->path);
+        return asset('storage/' . $this->path);
     }
 
     /**
