@@ -287,7 +287,7 @@
                             @php
                                 $total = 0;
                                 foreach($sizeMapping as $euSize => $sizes) {
-                                    $total += $currentLine[$sizes['db']] ?? 0;
+                                    $total += (int) ($currentLine[$sizes['db']] ?? 0);
                                 }
                             @endphp
                             {{ $total }} paires
@@ -323,11 +323,12 @@
                     @php
                         $totalQty = 0;
                         foreach (\App\Models\OrderLine::SIZE_COLUMNS as $column) {
-                            $totalQty += $currentLine[$column] ?? 0;
+                            $totalQty += (int) ($currentLine[$column] ?? 0);
                         }
-                        $totalAmount = $totalQty * ($productPrice ?? 0);
+                        $unitPrice = (float) ($productPrice ?? 0);
+                        $totalAmount = $totalQty * $unitPrice;
                     @endphp
-                    {{ $totalQty }} paires × €{{ number_format($productPrice ?? 0, 2) }} = 
+                    {{ $totalQty }} paires × €{{ number_format($unitPrice, 2) }} =
                     <span class="text-green-600">€{{ number_format($totalAmount, 2) }}</span>
                 </p>
             </div>
